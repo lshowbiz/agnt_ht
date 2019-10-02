@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmCombinationRelated"
+            table="JPM_COMBINATION_RELATED"
+    >
+
+    <id
+        name="uniNo"
+            column="UNI_NO"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PM]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="productNo"
+                    column="PRODUCT_NO"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="productName"
+                    column="PRODUCT_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="productDate"
+                    column="PRODUCT_DATE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="subProductNo"
+                    column="SUB_PRODUCT_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="subProductName"
+                    column="SUB_PRODUCT_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="qty"
+                    column="QTY"
+                length="5"
+        >
+
+        </property>
+
+        <property
+            name="price"
+                    column="PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="pv"
+                    column="PV"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="totalPrice"
+                    column="TOTAL_PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="totalPv"
+                    column="TOTAL_PV"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="isFree"
+                    column="IS_FREE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="createUserCode"
+                    column="CREATE_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="updateUserCode"
+                    column="UPDATE_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="updateTime"
+                    column="UPDATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="4000"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

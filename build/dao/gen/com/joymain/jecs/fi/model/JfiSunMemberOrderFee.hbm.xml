@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.JfiSunMemberOrderFee"
+            table="JFI_SUN_MEMBER_ORDER_FEE"
+    >
+
+    <id
+        name="mofId"
+            column="MOF_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <many-to-one
+            name="jfiSunMemberOrder"
+                not-null="true"
+        >
+
+            <column
+                name="MO_ID" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="fee"
+                    column="FEE"
+                length="18"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="feeType"
+                    column="FEE_TYPE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="detailType"
+                    column="DETAIL_TYPE"
+                length="10"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

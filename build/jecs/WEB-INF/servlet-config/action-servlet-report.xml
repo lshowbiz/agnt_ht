@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+   
+    <bean id="pdDetailReportController" class="com.joymain.jecs.pd.webapp.action.PdDetailReportController" autowire="byName"/>
+   <bean id="pdShipDetailReportController" class="com.joymain.jecs.pd.webapp.action.PdShipDetailReportController" autowire="byName"/>
+   <bean id="pdSendInfoReportController" class="com.joymain.jecs.pd.webapp.action.PdSendInfoReportController" autowire="byName"/>
+   <bean id="pdSendInfoTeamReportController" class="com.joymain.jecs.pd.webapp.action.PdSendInfoTeamReportController" autowire="byName">
+   	<property name="formView" value="pd/pdSendInfoTeamReport"/>
+        <property name="successView" value="redirect:pdSendInfoTeamReport.html"/>
+   </bean>
+   <bean id="pdOrderPrintController" class="com.joymain.jecs.pd.webapp.action.PdOrderPrintController" autowire="byName"/>
+   <bean id="pdOutWarehouseReportController" class="com.joymain.jecs.pd.webapp.action.PdOutWarehouseReportController" autowire="byName"/>
+   <bean id="pdSunShipmentController" class="com.joymain.jecs.pd.webapp.action.PdSunShipmentController" autowire="byName"/>
+   <bean id="pdPrintLabelController" class="com.joymain.jecs.pd.webapp.action.PdPrintLabelController" autowire="byName"/>
+   <bean id="jmiMcMemberController" class="com.joymain.jecs.mi.webapp.action.JmiMcMemberController" autowire="byName"/>
+   <bean id="csvTool" class="com.joymain.jecs.util.CsvTool" autowire="byName"/>
+    <!--JpmProductSale-BEAN-END-->
+    <bean id="rpUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <!--SysReportLog-URL-START-->
+                 <prop key="/pdDetailReports.html">pdDetailReportController</prop>
+                <prop key="/pdSendInfoReports.html">pdSendInfoReportController</prop>
+                <prop key="/pdSendInfoTeamReport.html">pdSendInfoTeamReportController</prop>
+                <prop key="/pdSunShipments.html">pdSunShipmentController</prop>
+                 <prop key="/pdOrderPrints.html">pdOrderPrintController</prop>
+                 
+                 <prop key="/pdShipDetailReports.html">pdShipDetailReportController</prop>
+                 <prop key="/pdPrintLabels.html">pdPrintLabelController</prop>
+                <!--SysReportLog-URL-END-->
+                <prop key="/jmiMcMembers.html">jmiMcMemberController</prop>
+              	<prop key="/pdOutWarehouseReports.html">pdOutWarehouseReportController</prop>
+            </props>
+           </property>
+    </bean>
+</beans>

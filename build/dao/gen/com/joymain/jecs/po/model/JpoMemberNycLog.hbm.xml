@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.po.model.JpoMemberNycLog"
+            table="JPO_MEMBER_NYC_LOG"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.String"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="targetId"
+                    column="TARGET_ID"
+        >
+
+        </property>
+
+        <property
+            name="oldData"
+                    column="OLD_DATA"
+        >
+
+        </property>
+
+        <property
+            name="newData"
+                    column="NEW_DATA"
+        >
+
+        </property>
+
+        <property
+            name="creatAt"
+                    column="CREAT_AT"
+        >
+
+        </property>
+
+        <property
+            name="creator"
+                    column="CREATOR"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

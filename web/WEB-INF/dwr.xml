@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd">
+<dwr>
+    <allow>
+        <!--create creator="spring" javascript="UserManager">
+            <param name="beanName" value="userManager"/>
+            <include method="getUsers"/>
+        </create>
+        <convert converter="bean" match="com.joymain.jecs.model.User"/-->
+        <convert converter="bean" match="java.lang.StackTraceElement" />  
+		<convert converter="exception" match="java.lang.Exception"/> 
+        <create creator="spring" javascript="alCompanyManager">
+            <param name="beanName" value="alCompanyManager"/> 
+        </create>
+        <create creator="spring" javascript="sysUserRoleManager">
+            <param name="beanName" value="sysUserRoleManager"/>
+        </create>
+         <create creator="spring" javascript="sysUserManager">
+            <param name="beanName" value="sysUserManager"/>
+        </create>
+        <create creator="spring" javascript="jpmProductManager">
+            <param name="beanName" value="jpmProductManager"/>
+        </create>
+        <convert converter="bean" javascript="JpmProduct" match="com.joymain.jecs.pm.model.JpmProduct"/>
+        <convert converter="bean" javascript="JpmProductCombination" match="com.joymain.jecs.pm.model.JpmProductCombination"/>
+        
+        <create creator="spring" javascript="pdWarehouseStockManager">
+            <param name="beanName" value="pdWarehouseStockManager"/>
+        </create>
+        
+        <create creator="spring" javascript="pdWarehouseManager">
+            <param name="beanName" value="pdWarehouseManager"/>
+        </create>
+        
+        <create creator="spring" javascript="jocsInterfaceRetransmissionManager">
+            <param name="beanName" value="jocsInterfaceRetransmissionManager"/>
+        </create>
+        
+				<create creator="spring" javascript="amAnnounceManager">
+            <param name="beanName" value="amAnnounceManager"/>
+        </create>
+        
+        <convert converter="hibernate3" javascript="SysUser" match="com.joymain.jecs.sys.model.SysUser"/>
+
+        <convert converter="bean" javascript="Bill99" match="com.joymain.jecs.util.bill99.Bill99"/>
+        <create creator="spring" javascript="bill99Util">
+            <param name="beanName" value="bill99Util"/>
+        </create>
+
+        <convert converter="bean" javascript="Bill99ms" match="com.joymain.jecs.util.bill99ms.Bill99ms"/>
+        <create creator="spring" javascript="bill99msUtil">
+            <param name="beanName" value="bill99msUtil"/>
+        </create>
+
+        <convert converter="bean" javascript="Alipay" match="com.joymain.jecs.util.alipay.Alipay"/>
+        <create creator="spring" javascript="alipayUtil">
+            <param name="beanName" value="alipayUtil"/>
+        </create>
+
+        <convert converter="bean" javascript="Tenpay" match="com.joymain.jecs.util.tenpay.Tenpay"/>
+        <create creator="spring" javascript="tenpayUtil">
+            <param name="beanName" value="tenpayUtil"/>
+        </create>
+        
+		<create creator="spring" javascript="alCityManager">
+            <param name="beanName" value="alCityManager"/>
+        </create>
+		<create creator="spring" javascript="alDistrictManager">
+            <param name="beanName" value="alDistrictManager"/>
+        </create>
+        <convert converter="hibernate3" javascript="AlCity" match="com.joymain.jecs.al.model.AlCity"/>
+        <convert converter="hibernate3" javascript="AlDistrict" match="com.joymain.jecs.al.model.AlDistrict"/>
+        
+		<create creator="spring" javascript="jalTownManager">
+            <param name="beanName" value="jalTownManager"/>
+        </create>
+        <convert converter="hibernate3" javascript="JalTown" match="com.joymain.jecs.al.model.JalTown"/>
+        
+        <create creator="spring" javascript="jpoProductNumLimitManager">
+            <param name="beanName" value="jpoProductNumLimitManager"/>
+        </create>
+        <convert converter="hibernate3" javascript="JpoProductNumLimit" match="com.joymain.jecs.po.model.JpoProductNumLimit"/>
+        
+        <create creator="spring" javascript="amMessageManager">
+            <param name="beanName" value="amMessageManager"/>
+        </create>
+				
+        <convert converter="hibernate3" javascript="AmMessage" match="com.joymain.jecs.am.model.AmMessage">
+        		<param name="include" value="agentNo"/>
+        </convert>
+        
+        <create creator="spring" javascript="jmiMemberManager">
+            <param name="beanName" value="jmiMemberManager"/>
+        </create>
+         <convert converter="hibernate3" javascript="JmiAddrBook" match="com.joymain.jecs.mi.model.JmiAddrBook"/>
+         <convert converter="hibernate3" javascript="JmiAddrBook" match="com.joymain.jecs.mi.model.JmiMember"/>
+        <create creator="spring" javascript="jbdUserCardListManager">
+            <param name="beanName" value="jbdUserCardListManager"/>
+        </create>
+         <convert converter="hibernate3" javascript="JbdUserCardList" match="com.joymain.jecs.bd.model.JbdUserCardList"/>
+         
+        <create creator="spring" javascript="jbdMemberLinkCalcHistManager">
+            <param name="beanName" value="jbdMemberLinkCalcHistManager"/>
+        </create>
+        <create creator="spring" javascript="alCountryManager">
+            <param name="beanName" value="alCountryManager"/>
+        </create>
+         <convert converter="hibernate3" javascript="JalStateProvince" match="com.joymain.jecs.al.model.AlStateProvince"/>
+        <create creator="spring" javascript="sysBankManager">
+            <param name="beanName" value="sysBankManager"/>
+        </create>
+         <convert converter="hibernate3" javascript="SysBank" match="com.joymain.jecs.sys.model.SysBank"/>
+		<create creator="spring" javascript="jalPostalcodeManager">
+            <param name="beanName" value="jalPostalcodeManager"/>
+        </create>
+        <convert converter="hibernate3" javascript="JalPostalcode" match="com.joymain.jecs.al.model.JalPostalcode"/>
+        <!-- Add By WuCf JpmProductSaleTeamType -->
+        <create creator="spring" javascript="jpmProductSaleTeamTypeManager">
+            <param name="beanName" value="jpmProductSaleTeamTypeManager"/>
+        </create>
+          
+        <create creator="spring" javascript="inwDemandManager">
+            <param name="beanName" value="inwDemandManager"/>
+        </create>
+         <convert converter="hibernate3" javascript="InwDemand" match="com.joymain.jecs.am.model.InwDemand"/>
+         
+        <convert converter="bean" javascript="InwProblem" match="com.joymain.jecs.am.model.InwProblem"/>
+        <create creator="spring" javascript="inwProblemManager">
+            <param name="beanName" value="inwProblemManager"/>
+        </create>
+        
+        <convert converter="bean" javascript="InwDemandsort" match="com.joymain.jecs.am.model.InwDemandsort"/>
+        <create creator="spring" javascript="inwDemandsortManager">
+            <param name="beanName" value="inwDemandsortManager"/>
+        </create>
+        
+        <create creator="spring" javascript="jpmProductWineTemplateSubManager">
+            <param name="beanName" value="jpmProductWineTemplateSubManager"/>
+        </create>
+        <create creator="spring" javascript="jpmProductWineTemplateManager">
+            <param name="beanName" value="jpmProductWineTemplateManager"/>
+        </create>
+        <create creator="spring" javascript="jpmWineOrderInterfaceManager">
+            <param name="beanName" value="jpmWineOrderInterfaceManager"/>
+        </create>
+        <create creator="spring" javascript="jpmWineSettingInfManager">
+            <param name="beanName" value="jpmWineSettingInfManager"/>
+        </create>
+        <create creator="spring" javascript="jmiAddrBookManager">
+            <param name="beanName" value="jmiAddrBookManager"/>
+        </create>
+        
+        <convert converter="bean" javascript="InwSuggestion" match="com.joymain.jecs.am.model.InwSuggestion"/>
+        <create creator="spring" javascript="inwSuggestionManager">
+            <param name="beanName" value="inwSuggestionManager"/>
+        </create>
+        
+        <convert converter="bean" javascript="PdShUrl" match="com.joymain.jecs.pd.model.PdShUrl"/>
+        <create creator="spring" javascript="pdShUrlManager">
+            <param name="beanName" value="pdShUrlManager"/>
+        </create>
+        
+         <convert converter="bean" javascript="PdExchangeOrderDetail" match="com.joymain.jecs.pd.model.PdExchangeOrderDetail"/>
+        <create creator="spring" javascript="pdExchangeOrderDetailManager">
+            <param name="beanName" value="pdExchangeOrderDetailManager"/>
+        </create>
+        
+         <convert converter="bean" javascript="PdSendInfo" match="com.joymain.jecs.pd.model.PdSendInfo"/>
+        <create creator="spring" javascript="pdSendInfoManager">
+            <param name="beanName" value="pdSendInfoManager"/>
+        </create>
+        
+        <convert converter="bean" javascript="JpoMemberOrder" match="com.joymain.jecs.po.model.JpoMemberOrder"/>
+        <create creator="spring" javascript="jpoMemberOrderManager">
+            <param name="beanName" value="jpoMemberOrderManager"/>
+        </create>
+        
+         <convert converter="bean" javascript="PdExchangeOrder" match="com.joymain.jecs.pd.model.PdExchangeOrder"/>
+        <create creator="spring" javascript="pdExchangeOrderManager">
+            <param name="beanName" value="pdExchangeOrderManager"/>
+        </create>
+        
+        <create creator="spring" javascript="jmiAssureManager">
+            <param name="beanName" value="jmiAssureManager"/>
+        </create>
+        
+        <convert converter="bean" javascript="JmiSmsNote" match="com.joymain.jecs.mi.model.JmiSmsNote"/>
+        <create creator="spring" javascript="jmiSmsNoteManager">
+            <param name="beanName" value="jmiSmsNoteManager"/>
+        </create>
+         <filter class="com.joymain.jecs.webapp.filter.DWRFilter"></filter>
+    </allow>
+</dwr>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.mi.model.JmiRemitSale"
+            table="Ws_Tp_Member"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.math.BigDecimal"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_JBD]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+        >
+
+        </property>
+
+        <property
+            name="startWeek"
+                    column="START_WEEK"
+        >
+
+        </property>
+
+        <property
+            name="endWeek"
+                    column="END_WEEK"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+        >
+
+        </property>
+
+        <property
+            name="createUser"
+                    column="CREATE_USER"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

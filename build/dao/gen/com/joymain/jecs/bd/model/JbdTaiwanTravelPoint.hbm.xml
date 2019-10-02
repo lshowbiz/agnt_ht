@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.JbdTaiwanTravelPoint"
+            table="JBD_TAIWAN_TRAVEL_POINT"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.math.BigDecimal"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="userName"
+                    column="USER_NAME"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="phone"
+                    column="PHONE"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="passStar1"
+                    column="PASS_STAR1"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="passStar2"
+                    column="PASS_STAR2"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="passStar3"
+                    column="PASS_STAR3"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="passStar4"
+                    column="PASS_STAR4"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="recommendZuanshi"
+                    column="RECOMMEND_ZUANSHI"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="recommendShenghuoguan"
+                    column="RECOMMEND_SHENGHUOGUAN"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="shenghuoguanCheck"
+                    column="SHENGHUOGUAN_CHECK"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="total"
+                    column="TOTAL"
+                length="22"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

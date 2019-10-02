@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmSalepromoterPro"
+            table="JPM_SALEPROMOTER_PRO"
+    >
+
+    <id
+        name="id"
+            column="ID"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="spno"
+                    column="SPNO"
+                length="10"
+                not-null="false"
+        >
+
+        </property>
+
+        <property
+            name="prono"
+                    column="PRONO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="pttid"
+                    column="PTTID"
+        >
+
+        </property>
+
+        <property
+            name="pronum"
+                    column="PRO_NUM"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

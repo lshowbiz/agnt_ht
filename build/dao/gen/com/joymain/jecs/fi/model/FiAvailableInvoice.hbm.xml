@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.FiAvailableInvoice"
+            table="FI_AVAILABLE_INVOICE"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.String"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="userName"
+                    column="USER_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="invoiceValue"
+                    column="INVOICE_VALUE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="bond"
+                    column="BOND"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="jyear"
+                    column="J_YEAR"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="jmonth"
+                    column="J_MONTH"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="ownedCompany"
+                    column="OWNED_COMPANY"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="logicalDelete"
+                    column="LOGICAL_DELETE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="2"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

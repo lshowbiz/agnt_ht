@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.JbdDayCustRecommend"
+            table="JBD_DAY_CUST_RECOMMEND"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <many-to-one
+            name="jmiMember"
+        >
+
+            <column
+                name="USER_CODE" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="wweek"
+                    column="W_WEEK"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="userName"
+                    column="USER_NAME"
+        >
+
+        </property>
+
+        <property
+            name="memberLevel"
+                    column="MEMBER_LEVEL"
+        >
+
+        </property>
+
+        <property
+            name="memberStar"
+                    column="MEMBER_STAR"
+        >
+
+        </property>
+
+        <property
+            name="recommendPv"
+                    column="RECOMMEND_PV"
+        >
+
+        </property>
+
+        <property
+            name="sendMoney"
+                    column="SEND_MONEY"
+        >
+
+        </property>
+
+        <property
+            name="rax"
+                    column="RAX"
+        >
+
+        </property>
+
+        <property
+            name="deductMoney"
+                    column="DEDUCT_MONEY"
+        >
+
+        </property>
+
+        <property
+            name="freezeStatus"
+                    column="FREEZE_STATUS"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+        >
+
+        </property>
+
+        <property
+            name="sendDate"
+                    column="SEND_DATE"
+        >
+
+        </property>
+
+        <property
+            name="comDate"
+                    column="COM_DATE"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

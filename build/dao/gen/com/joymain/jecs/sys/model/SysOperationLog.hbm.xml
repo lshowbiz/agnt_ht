@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sys.model.SysOperationLog"
+            table="JSYS_OPERATION_LOG"
+    >
+
+    <id
+        name="logId"
+            column="LOG_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_LOG]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="operaterCode"
+                    column="OPERATER_CODE"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="operaterName"
+                    column="OPERATER_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="ipAddr"
+                    column="IP_ADDR"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="operateTime"
+                    column="OPERATE_TIME"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="visitUrl"
+                    column="VISIT_URL"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="operateData"
+                    column="OPERATE_DATA"
+        >
+
+        </property>
+
+        <property
+            name="moduleName"
+                    column="MODULE_NAME"
+                length="150"
+        >
+
+        </property>
+
+        <property
+            name="doType"
+                    column="DO_TYPE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="doResult"
+                    column="DO_RESULT"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="userType"
+                    column="USER_TYPE"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+        >
+
+        </property>
+
+        <property
+            name="userName"
+                    column="USER_NAME"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

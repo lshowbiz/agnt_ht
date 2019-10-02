@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.FoundationOrder"
+            table="FOUNDATION_ORDER"
+    >
+
+    <id
+        name="orderId"
+            column="ORDER_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_FI]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <many-to-one
+            name="jmiMember"
+                not-null="true"
+        >
+
+            <column
+                name="USER_CODE" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="payType"
+                    column="PAY_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="fiNum"
+                    column="FI_NUM"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="field1"
+                    column="FIELD1"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="field2"
+                    column="FIELD2"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="amount"
+                    column="AMOUNT"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="endTime"
+                    column="END_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="startTime"
+                    column="START_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <many-to-one
+            name="foundationItem"
+                not-null="true"
+        >
+
+            <column
+                name="FI_ID" 
+            />
+
+        </many-to-one>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pd.model.PdCheckstockOrderDetail"
+            table="PD_CHECKSTOCK_ORDER_DETAIL"
+    >
+
+    <id
+        name="uniNo"
+            column="UNI_NO"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="productNo"
+                    column="PRODUCT_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="price"
+                    column="PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="sysQty"
+                    column="SYS_QTY"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="realQty"
+                    column="REAL_QTY"
+                length="10"
+        >
+
+        </property>
+
+        <many-to-one
+            name="pdCheckstockOrder"
+                not-null="true"
+        >
+
+            <column
+                name="PCO_NO" 
+            />
+
+        </many-to-one>
+
+    </class>    
+
+</hibernate-mapping>
+

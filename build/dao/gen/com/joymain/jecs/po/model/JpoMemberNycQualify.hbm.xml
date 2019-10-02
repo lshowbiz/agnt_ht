@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.po.model.JpoMemberNycQualify"
+            table="JPO_MEMBER_NYC_QUALIFY"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PO]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+        >
+
+        </property>
+
+        <property
+            name="userName"
+                    column="USER_NAME"
+        >
+
+        </property>
+
+        <property
+            name="papernumber"
+                    column="PAPERNUMBER"
+        >
+
+        </property>
+
+        <property
+            name="recommendNo"
+                    column="RECOMMEND_NO"
+        >
+
+        </property>
+
+        <property
+            name="recommendName"
+                    column="RECOMMEND_NAME"
+        >
+
+        </property>
+
+        <property
+            name="memberOrderNo"
+                    column="MEMBER_ORDER_NO"
+        >
+
+        </property>
+
+        <property
+            name="productNo"
+                    column="PRODUCT_NO"
+        >
+
+        </property>
+
+        <property
+            name="productName"
+                    column="PRODUCT_NAME"
+        >
+
+        </property>
+
+        <property
+            name="qualify"
+                    column="QUALIFY"
+        >
+
+        </property>
+
+        <property
+            name="checkDate"
+                    column="CHECK_DATE"
+        >
+
+        </property>
+
+        <property
+            name="qualifyDate"
+                    column="QUALIFY_DATE"
+        >
+
+        </property>
+
+        <property
+            name="checkTime"
+                    column="CHECK_TIME"
+        >
+
+        </property>
+
+        <property
+            name="jsWeek"
+                    column="JS_WEEK"
+        >
+
+        </property>
+
+        <property
+            name="remarks"
+                    column="REMARKS"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

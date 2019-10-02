@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.al.model.AlCompany"
+            table="JAL_COMPANY"
+    >
+
+    <id
+        name="companyId"
+            column="COMPANY_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_AL]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="companyName"
+                    column="COMPANY_NAME"
+                length="250"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="characterCode"
+                    column="CHARACTER_CODE"
+                length="10"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="currencyCode"
+                    column="CURRENCY_CODE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="preAgentCode"
+                    column="PRE_AGENT_CODE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="regName"
+                    column="REG_NAME"
+                length="250"
+        >
+
+        </property>
+
+        <property
+            name="taxRate"
+                    column="TAX_RATE"
+                length="126"
+        >
+
+        </property>
+
+        <property
+            name="taxType"
+                    column="TAX_TYPE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="zipCode"
+                    column="ZIP_CODE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="countryCode"
+                    column="COUNTRY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="stateProvinceCode"
+                    column="STATE_PROVINCE_CODE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="city"
+                    column="CITY"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="address"
+                    column="ADDRESS"
+                length="250"
+        >
+
+        </property>
+
+        <property
+            name="phone"
+                    column="PHONE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="timeZone"
+                    column="TIME_ZONE"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="dateFormat"
+                    column="DATE_FORMAT"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="timeFormat"
+                    column="TIME_FORMAT"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="exchangeRate"
+                    column="EXCHANGE_RATE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="productNo"
+                    column="PRODUCT_NO"
+                length="20"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

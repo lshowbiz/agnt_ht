@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.FiBillAccount"
+            table="FI_BILL_ACCOUNT"
+    >
+
+    <id
+        name="accountId"
+            column="ACCOUNT_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="maxMoney"
+                    type="java.lang.Long"
+                    column="MAX_MONEY"
+        >
+
+        </property>
+
+        <property
+            name="province"
+                    column="PROVINCE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="merchantType"
+                    column="MERCHANT_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="password"
+                    column="PASSWORD"
+                length="1024"
+        >
+
+        </property>
+
+        <property
+            name="password2"
+                    column="PASSWORD2"
+                length="1024"
+        >
+
+        </property>
+
+        <property
+            name="busicode"
+                    column="BUSICODE"
+                length="256"
+        >
+
+        </property>
+
+        <property
+            name="businessType"
+                    column="BUSINESS_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="billAccountCode"
+                    column="BILL_ACCOUNT_CODE"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="billAccountPassword"
+                    column="BILL_ACCOUNT_PASSWORD"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="createUserCode"
+                    column="CREATE_USER_CODE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="createUserName"
+                    column="CREATE_USER_NAME"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="isDefault"
+                    column="IS_DEFAULT"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="accountName"
+                    column="ACCOUNT_NAME"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="registerEmail"
+                    column="REGISTER_EMAIL"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="linkNum"
+                    column="LINK_NUM"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="accountType"
+                    column="ACCOUNT_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="providerType"
+                    column="PROVIDER_TYPE"
+                length="1"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

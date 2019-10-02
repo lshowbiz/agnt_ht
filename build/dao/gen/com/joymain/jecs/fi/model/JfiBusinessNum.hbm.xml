@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.JfiBusinessNum"
+            table="JFI_BUSINESS_NUM"
+    >
+
+    <id
+        name="businessId"
+            column="BUSINESS_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="paymentCompany"
+                    column="PAYMENT_COMPANY"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="merchantId"
+                    column="MERCHANT_ID"
+                length="128"
+        >
+
+        </property>
+
+        <property
+            name="merchantName"
+                    column="MERCHANT_NAME"
+                length="256"
+        >
+
+        </property>
+
+        <property
+            name="merchantType"
+                    column="MERCHANT_TYPE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="password"
+                    column="PASSWORD"
+                length="1024"
+        >
+
+        </property>
+
+        <property
+            name="password2"
+                    column="PASSWORD2"
+                length="1024"
+        >
+
+        </property>
+
+        <property
+            name="busicode"
+                    column="BUSICODE"
+                length="256"
+        >
+
+        </property>
+
+        <property
+            name="address"
+                    column="ADDRESS"
+                length="256"
+        >
+
+        </property>
+
+        <property
+            name="maxMoney"
+                    column="MAX_MONEY"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="merchantStatus"
+                    column="MERCHANT_STATUS"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="createName"
+                    column="CREATE_NAME"
+                length="256"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="256"
+        >
+
+        </property>
+
+        <property
+            name="operateName"
+                    column="OPERATE_NAME"
+                length="256"
+        >
+
+        </property>
+
+        <property
+            name="operateTime"
+                    column="OPERATE_TIME"
+                length="256"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

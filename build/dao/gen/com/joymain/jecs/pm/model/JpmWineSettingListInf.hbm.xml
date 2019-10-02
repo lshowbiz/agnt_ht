@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmWineSettingListInf"
+            table="JPM_WINE_SETTING_LIST_INF"
+    >
+
+    <id
+        name="idf"
+            column="IDF"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="materialNo"
+                    column="MATERIAL_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="qty"
+                    column="QTY"
+                length="5"
+        >
+
+        </property>
+
+        <property
+            name="sdate"
+                    column="SDATE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="edate"
+                    column="EDATE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="memo"
+                    column="MEMO"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="lossRatio"
+                    column="LOSS_RATIO"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="isMainMaterial"
+                    column="IS_MAIN_MATERIAL"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="isSendMaterial"
+                    column="IS_SEND_MATERIAL"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="isDelegateOut"
+                    column="IS_DELEGATE_OUT"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="isFeatureItem"
+                    column="IS_FEATURE_ITEM"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="picName"
+                    column="PIC_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <many-to-one
+            name="jpmWineSettingListInf"
+                not-null="true"
+        >
+
+            <column
+                name="SETTING_ID" 
+            />
+
+        </many-to-one>
+
+    </class>    
+
+</hibernate-mapping>
+

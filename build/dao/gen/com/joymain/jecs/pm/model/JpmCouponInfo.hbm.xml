@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmCouponInfo"
+            table="JPM_COUPON_INFO"
+    >
+
+    <id
+        name="cpId"
+            column="CP_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PM]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="cpName"
+                    column="CP_NAME"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="cpValue"
+                    column="CP_VALUE"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="startTime"
+                    column="START_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="endTime"
+                    column="END_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="createUserCode"
+                    column="CREATE_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="updateTime"
+                    column="UPDATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="updateUserCode"
+                    column="UPDATE_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="2000"
+        >
+
+        </property>
+
+        <set
+            name="jpmCouponRelationships"
+            lazy="true"
+            inverse="true"
+            cascade="all-delete-orphan"
+            order-by="CP_ID"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="CP_ID"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.pm.model.JpmCouponRelationship"
+            />
+
+        </set>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.po.model.JpoCounterOrder"
+            table="JPO_COUNTER_ORDER"
+    >
+
+    <id
+        name="coNo"
+            column="CO_NO"
+                type="java.lang.String"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="warehouseNo"
+                    column="WAREHOUSE_NO"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="amount"
+                    column="AMOUNT"
+                length="18"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="confirmTime"
+                    column="CONFIRM_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="shipTime"
+                    column="SHIP_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="confirmUserNo"
+                    column="CONFIRM_USER_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="createUserNo"
+                    column="CREATE_USER_NO"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="csStatus"
+                    column="CS_STATUS"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="stockFlag"
+                    column="STOCK_FLAG"
+                length="1"
+        >
+
+        </property>
+
+        <many-to-one
+            name="shipper"
+        >
+
+            <column
+                name="SHIPPER_CODE" 
+            />
+
+        </many-to-one>
+
+        <many-to-one
+            name="sysUser"
+                not-null="true"
+        >
+
+            <column
+                name="USER_CODE" 
+            />
+
+        </many-to-one>
+
+        <set
+            name="jpoCounterOrderDetails"
+            lazy="true"
+            inverse="true"
+            cascade="all-delete-orphan"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="CO_NO"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.po.model.JpoCounterOrderDetail"
+            />
+
+        </set>
+
+        <many-to-one
+            name="repealerCode"
+        >
+
+            <column
+                name="REPEALER_CODE" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="repealTime"
+                    column="REPEAL_TIME"
+                length="7"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

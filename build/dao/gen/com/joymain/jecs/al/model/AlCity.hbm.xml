@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.al.model.AlCity"
+            table="JAL_CITY"
+    >
+
+    <id
+        name="cityId"
+            column="CITY_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="cityCode"
+                    column="CITY_CODE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="cityName"
+                    column="CITY_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <many-to-one
+            name="alStateProvince"
+                not-null="true"
+        >
+
+            <column
+                name="STATE_PROVINCE_ID" 
+            />
+
+        </many-to-one>
+
+        <set
+            name="alDistricts"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+            order-by="DISTRICT_CODE asc"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="CITY_ID"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.al.model.AlDistrict"
+            />
+
+        </set>
+
+    </class>    
+
+</hibernate-mapping>
+

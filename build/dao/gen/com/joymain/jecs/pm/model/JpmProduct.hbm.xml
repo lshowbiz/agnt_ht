@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmProduct"
+            table="JPM_PRODUCT"
+    >
+
+    <id
+        name="productNo"
+            column="PRODUCT_NO"
+                type="java.lang.String"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <set
+            name="jpmProductCombinations"
+            lazy="false"
+            inverse="true"
+            cascade="all-delete-orphan"
+            order-by="product_No"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="PRODUCT_NO"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.pm.model.JpmProductCombination"
+            />
+
+        </set>
+
+        <property
+            name="statisticsCategory"
+                    column="STATISTICS_CATEGORY"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="productCategory"
+                    column="PRODUCT_CATEGORY"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="productName"
+                    column="PRODUCT_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="unitNo"
+                    column="UNIT_NO"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="smNo"
+                    column="SM_NO"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="productDesc"
+                    column="PRODUCT_DESC"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="combineFlag"
+                    column="COMBINE_FLAG"
+        >
+
+        </property>
+
+        <property
+            name="lockFlag"
+                    column="LOCK_FLAG"
+        >
+
+        </property>
+
+        <property
+            name="productStyle"
+                    column="PRODUCT_STYLE"
+        >
+
+        </property>
+
+        <property
+            name="productSize"
+                    column="PRODUCT_SIZE"
+        >
+
+        </property>
+
+        <property
+            name="productProvider"
+                    column="PRODUCT_PROVIDER"
+        >
+
+        </property>
+
+        <property
+            name="erpProductNo"
+                    column="ERP_PRODUCT_NO"
+        >
+
+        </property>
+
+        <property
+            name="erpPrice"
+                    column="ERP_PRICE"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

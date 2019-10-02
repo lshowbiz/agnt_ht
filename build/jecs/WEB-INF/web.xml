@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+
+
+	<display-name>jecs</display-name>
+
+	<!-- precompiled jsp mappings -->
+
+	<!-- Define the basename for a resource bundle for I18N -->
+	<!-- <context-param> <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name> 
+		<param-value>ApplicationResources</param-value> </context-param> -->
+	<!-- Fallback locale if no bundles found for browser's preferred locale -->
+	<!-- Force a single locale using param-name 'javax.servlet.jsp.jstl.fmt.locale' -->
+	<!-- <context-param> <param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name> 
+		<param-value>en</param-value> </context-param> -->
+	<!-- Context Configuration locations for Spring XML files -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:/applicationContext-mail.xml,
+			classpath:/applicationContext-jms-activemq.xml,
+			/WEB-INF/applicationContext-*.xml,
+			/WEB-INF/security.xml,
+			/WEB-INF/action-servlet.xml,
+			/WEB-INF/servlet-config/action-servlet-*.xml,
+			</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>extremecomponentsPreferencesLocation</param-name>
+		<param-value>/extremetable.properties</param-value>
+	</context-param>
+
+	<!--filter> <filter-name>securityFilter</filter-name> <filter-class>org.acegisecurity.util.FilterToBeanProxy</filter-class> 
+		<init-param> <param-name>targetClass</param-name> <param-value>org.acegisecurity.util.FilterChainProxy</param-value> 
+		</init-param> </filter -->
+	<filter>
+		<filter-name>cacheFilter</filter-name>
+		<filter-class>com.opensymphony.oscache.web.filter.CacheFilter</filter-class>
+	</filter>
+	<!-- <filter> <filter-name>clickstreamFilter</filter-name> <filter-class>com.opensymphony.clickstream.ClickstreamFilter</filter-class> 
+		</filter> -->
+	<filter>
+		<filter-name>powerFilter</filter-name>
+		<filter-class>com.joymain.jecs.webapp.filter.PowerFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>powerFilter</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>powerFilter</filter-name>
+		<url-pattern>/logout.jsp</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<filter>
+		<filter-name>hibernateFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+	<filter>
+		<filter-name>reportHibernateFilter</filter-name>
+		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+		<init-param>
+			<param-name>sessionFactoryBeanName</param-name>
+			<param-value>sessionFactoryReport</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>rewriteFilter</filter-name>
+		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+		<init-param>
+			<param-name>logLevel</param-name>
+			<param-value>commons</param-value>
+		</init-param>
+	</filter>
+	<!-- <filter> <filter-name>sitemesh</filter-name> <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class> 
+		</filter> -->
+	<filter>
+		<filter-name>sitemesh</filter-name>
+		<filter-class>org.extremecomponents.table.filter.SitemeshPageFilter</filter-class>
+	</filter>
+
+	<!-- <filter> <filter-name>compressionFilter</filter-name> <filter-class>com.joymain.jecs.webapp.filter.GZIPFilter</filter-class> 
+		</filter> -->
+
+	<filter>
+		<filter-name>localeFilter</filter-name>
+		<filter-class>com.joymain.jecs.webapp.filter.LocaleFilter</filter-class>
+	</filter>
+
+	<filter>
+		<filter-name>eXtremeExport</filter-name>
+		<filter-class>org.extremecomponents.table.filter.ExportFilter</filter-class>
+		<init-param>
+			<param-name>responseHeadersSetBeforeDoFilter</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>restFilter</filter-name>
+		<filter-class>com.joymain.jecs.webapp.filter.RestFilter</filter-class>
+	</filter>
+
+
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/j_security_check</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<!--filter-mapping> <filter-name>securityFilter</filter-name> <url-pattern>/j_security_check</url-pattern> 
+		</filter-mapping> <filter-mapping> <filter-name>securityFilter</filter-name> 
+		<url-pattern>/dwr/*</url-pattern> </filter-mapping> <filter-mapping> <filter-name>securityFilter</filter-name> 
+		<url-pattern>*.html</url-pattern> </filter-mapping> <filter-mapping> <filter-name>securityFilter</filter-name> 
+		<url-pattern>*.jsp</url-pattern> </filter-mapping -->
+	<!-- Commented out for 2 reasons: 1) it's a pain when developing JSPs, and 
+		2) it causes the Signup webtest to fail -->
+	<!--filter-mapping> <filter-name>cacheFilter</filter-name> <url-pattern>*.jsp</url-pattern> 
+		</filter-mapping -->
+	<filter-mapping>
+		<filter-name>eXtremeExport</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>eXtremeExport</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>hibernateFilter</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>reportHibernateFilter</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>hibernateFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<!-- <filter-mapping> <filter-name>clickstreamFilter</filter-name> <url-pattern>*.html</url-pattern> 
+		</filter-mapping> <filter-mapping> <filter-name>clickstreamFilter</filter-name> 
+		<url-pattern>*.jsp</url-pattern> </filter-mapping> -->
+	<filter-mapping>
+		<filter-name>localeFilter</filter-name>
+		<url-pattern>*.html</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>localeFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	<!-- <filter-mapping> <filter-name>exportFilter</filter-name> <url-pattern>*.html</url-pattern> 
+		</filter-mapping> -->
+
+	<filter-mapping>
+		<filter-name>sitemesh</filter-name>
+		<url-pattern>*.html</url-pattern>
+		<!--dispatcher>REQUEST</dispatcher> <dispatcher>FORWARD</dispatcher -->
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>sitemesh</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+		<!--dispatcher>REQUEST</dispatcher> <dispatcher>FORWARD</dispatcher -->
+	</filter-mapping>
+	<!-- <filter-mapping> <filter-name>compressionFilter</filter-name> <url-pattern>*.css</url-pattern> 
+		</filter-mapping> <filter-mapping> <filter-name>compressionFilter</filter-name> 
+		<url-pattern>*.jsp</url-pattern> </filter-mapping> <filter-mapping> <filter-name>compressionFilter</filter-name> 
+		<url-pattern>*.js</url-pattern> </filter-mapping> <filter-mapping> <filter-name>compressionFilter</filter-name> 
+		<url-pattern>*.html</url-pattern> </filter-mapping> -->
+	<filter-mapping>
+		<filter-name>rewriteFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<!--dispatcher>REQUEST</dispatcher> <dispatcher>FORWARD</dispatcher -->
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>restFilter</filter-name>
+		<url-pattern>/services/rest/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
+	<listener>
+		<listener-class>com.opensymphony.clickstream.ClickstreamListener</listener-class>
+	</listener>
+	<!-- <listener> <listener-class>com.joymain.jecs.webapp.listener.PowerbackingListener</listener-class> 
+		</listener> -->
+	<!-- <listener> <listener-class>net.sf.navigator.menu.MenuContextListener</listener-class> 
+		</listener> -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.joymain.jecs.webapp.listener.StartupListener</listener-class>
+	</listener>
+	<!-- <listener> <listener-class>com.joymain.jecs.webapp.listener.UserCounterListener</listener-class> 
+		</listener> -->
+
+
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>dwr-invoker</servlet-name>
+		<!-- <display-name>DWR Servlet</display-name> -->
+		<servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<param-name>crossDomainSessionSecurity</param-name>
+			<param-value>false</param-value>
+		</init-param>
+		<init-param>
+			<param-name>allowScriptTagRemoting</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+	<!-- <servlet> <servlet-name>dwr-invoker</servlet-name> <servlet-class>uk.ltd.getahead.dwr.DWRServlet</servlet-class> 
+		<init-param> <param-name>debug</param-name> <param-value>true</param-value> 
+		</init-param> </servlet> -->
+
+	<servlet>
+		<servlet-name>Connector</servlet-name>
+		<servlet-class>net.fckeditor.connector.ConnectorServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- CXF -->
+	<servlet>
+		<servlet-name>CXFServlet</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CXFServlet</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet-mapping>
+		<servlet-name>Connector</servlet-name>
+		<url-pattern>
+			/fckeditor/editor/filemanager/connectors/*
+		</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>dwr-invoker</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>generateverifycodeservlet</servlet-name>
+		<servlet-class>com.joymain.jecs.webapp.util.GenerateVerifyCodeServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>generateverifycodeservlet</servlet-name>
+		<url-pattern>/generateverifycode</url-pattern>
+	</servlet-mapping>
+
+	<!-- pos机接口 jfoy begin -->
+	<servlet>
+		<servlet-name>posBillServlet</servlet-name>
+		<servlet-class>com.joymain.jecs.webapp.util.PosBillServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>posBillServlet</servlet-name>
+		<url-pattern>/posBillServlet</url-pattern>
+	</servlet-mapping>
+	<!-- pos机接口 jfoy end -->
+
+	<!-- 第三方应用数据接收接口 jfoy begin -->
+	<servlet>
+		<servlet-name>msgHttpService</servlet-name>
+		<servlet-class>com.joymain.jecs.webapp.util.MsgHttpService</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>msgHttpService</servlet-name>
+		<url-pattern>/msgHttpService</url-pattern>
+	</servlet-mapping>
+	<!-- -->
+
+	<!-- druid -->
+	<servlet>
+		<servlet-name>DruidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+		 <init-param>
+            <!-- 允许清空统计数据 -->
+            <param-name>resetEnable</param-name>
+            <param-value>true</param-value>
+        </init-param>
+		<init-param>
+			<param-name>loginUsername</param-name>
+			<param-value>root</param-value>
+		</init-param>
+		<init-param>
+			<param-name>loginPassword</param-name>
+			<param-value>1</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DruidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
+	</servlet-mapping>
+	<filter>
+		<filter-name>DruidWebStatFilter</filter-name>
+		<filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+		<init-param>
+			<param-name>exclusions</param-name>
+			<param-value>*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>DruidWebStatFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<servlet>
+		<servlet-name>ImageServlet</servlet-name>
+		<servlet-class>net.sf.jasperreports.j2ee.servlets.ImageServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ImageServlet</servlet-name>
+		<url-pattern>/reportImage</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>300</session-timeout>
+	</session-config>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>400</error-code>
+		<location>/index.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/403.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.jsp</location>
+	</error-page>
+
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/WEB-INF/jecs.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tld/jecs.tld</taglib-location>
+		</taglib>
+
+		<taglib>
+			<taglib-uri>/WEB-INF/core.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/c-rt.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tld/c-rt.tld</taglib-location>
+		</taglib>
+
+		<taglib>
+			<taglib-uri>/WEB-INF/t.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tld/t.tld</taglib-location>
+		</taglib>
+
+		<taglib>
+			<taglib-uri>/WEB-INF/x.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tld/x.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/x-rt.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tld/x-rt.tld</taglib-location>
+		</taglib>
+
+		<taglib>
+			<taglib-uri>/WEB-INF/sql.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tld/sql.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/sql-rt.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tld/sql-rt.tld</taglib-location>
+		</taglib>
+
+		<taglib>
+			<taglib-uri>/WEB-INF/fmt.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tld/fmt.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/fmt-rt.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tld/fmt-rt.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/fn.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tld/fn.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/extremecomponents.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tld/extremecomponents.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/elfunc.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tld/elfunc.tld</taglib-location>
+		</taglib>
+
+
+
+	</jsp-config>
+
+	<mime-mapping>
+		<extension>rar</extension>
+		<mime-type>application/rar</mime-type>
+	</mime-mapping>
+
+	<distributable />
+</web-app>

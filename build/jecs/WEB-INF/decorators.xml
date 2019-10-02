@@ -1,0 +1,131 @@
+<decorators defaultdir="/decorators">
+    <excludes>
+    	<pattern>/druid/*</pattern>
+        <pattern>/resources/*</pattern>
+		<pattern>/scripts/*</pattern>
+		<pattern>/WEB-INF/pages/dialog.jsp*</pattern>
+		<pattern>/dialog.html*</pattern>
+		<pattern>/login.html*</pattern>
+		<pattern>/WEB-INF/pages/loginForm.jsp*</pattern>
+		
+		<pattern>/loginRedirect.html*</pattern>
+		<pattern>/WEB-INF/pages/loginRedirect.jsp*</pattern>
+		
+		<pattern>/index.html*</pattern>
+		<pattern>/WEB-INF/pages/index.jsp*</pattern>
+		<pattern>/fckeditor/*</pattern>
+		
+		<pattern>//jfiB2CUpdate.html*</pattern>
+		<pattern>/WEB-INF/pages/fi/jfiHiTrustB2CUpdate.jsp*</pattern>
+		
+		<pattern>/jfiPayAlipayReceiveNotify.html*</pattern>
+		<pattern>/WEB-INF/pages/fi/jfiPayAlipayReceive.jsp*</pattern>
+		
+		<pattern>/jfiPayTenpayReceiveNotify.html*</pattern>
+		<pattern>/WEB-INF/pages/fi/jfiPayTenpayReceive.jsp*</pattern>
+		
+		<pattern>/jfiPayChanjetReceive.html*</pattern>
+		<pattern>/WEB-INF/pages/fi/jfiPayChanjetReceive.jsp*</pattern>
+		
+		<pattern>/jfiPay99billReceive.html*</pattern>
+		<pattern>/WEB-INF/pages/fi/jfiPay99billReceive.jsp*</pattern>
+		
+		<pattern>/mobilPayReceive.html*</pattern>
+		<pattern>/WEB-INF/pages/fi/mobilPayReceive.jsp*</pattern>
+		
+		<pattern>/mobilWebPayReceive.html*</pattern>
+		<pattern>/WEB-INF/pages/fi/mobilPayShow.jsp*</pattern>
+
+		<pattern>/jfiPay99billmsReceive.html*</pattern>
+		<pattern>/WEB-INF/pages/fi/jfiPay99billmsReceive.jsp*</pattern>
+		
+		<pattern>/jfi99billPosReceiveBackLogs.html*</pattern>
+		<pattern>/WEB-INF/pages/fi/jfiPay99billPosReceive.jsp*</pattern>
+		
+		<pattern>/jpoMemberOrderPHInvoice.html*</pattern>
+		<pattern>/WEB-INF/pages/po/jpoMemberOrderPHInvoice.jsp*</pattern>
+		
+		<pattern>/jpoRecommendPHInvoice.html*</pattern>
+		<pattern>/WEB-INF/pages/po/jpoRecommendPHInvoice.jsp*</pattern>
+		
+		<pattern>/sys_menu.html*</pattern>
+		<pattern>/WEB-INF/pages/sys/sys_menu.jsp*</pattern>
+		
+		<pattern>/sys/sys_module_frm.html*</pattern>
+		<pattern>/WEB-INF/pages/sys/sys_module_frms.jsp*</pattern>
+		
+		<pattern>/al/al_character_frm.html*</pattern>
+		<pattern>/WEB-INF/pages/al/al_character_frm.jsp*</pattern>
+		
+		<pattern>/sys/sys_list_frm.html*</pattern>
+		<pattern>/WEB-INF/sys/sys_list_frm.jsp*</pattern>
+		
+		<pattern>/sys/sys_config_frm.html*</pattern>
+		<pattern>/WEB-INF/sys/sys_config_frm.jsp*</pattern>
+		
+		<pattern>/workspace.html*</pattern>
+		<pattern>/WEB-INF/pages/workspace.jsp*</pattern>
+		
+		<pattern>/sys/sys_department_frm.html*</pattern>
+		<pattern>/WEB-INF/sys/sys_department_frm.jsp*</pattern>
+		
+		<pattern>/sys/sys_bank_frm.html*</pattern>
+		<pattern>/WEB-INF/sys/sys_bank_frm.jsp*</pattern>
+		
+		<pattern>/al/al_country_frm.html*</pattern>
+		<pattern>/WEB-INF/al/al_country_frm.jsp*</pattern>
+		
+		<pattern>/sys_power_frm.html*</pattern>
+		<pattern>/sysLoginTool.html*</pattern>
+		
+		<pattern>/sys_power_m_frm.html*</pattern>
+		<pattern>/WEB-INF/pages/sys/sys_power_frm.jsp*</pattern>
+		
+		<pattern>/pdWarehouseUsers.html?strAction=pdWarehouseUserMain*</pattern>
+		<pattern>/WEB-INF/pages/pd/pdWarehouseUserMain.jsp*</pattern>
+		
+		<pattern>/pdWarehouseAreas.html?strAction=pdWarehouseAreaMain*</pattern>
+		<pattern>/WEB-INF/pages/pd/pdWarehouseAreaMains.jsp*</pattern>
+		
+		<pattern>/pdShipStrategys.html?strAction=pdShipStrategyMain*</pattern>
+		<pattern>/WEB-INF/pages/pd/pdShipStrategyMain.jsp*</pattern>
+		
+		<pattern>/pdShipStrategys.html?strAction=pdShipStrategyMain*</pattern>
+		<pattern>/WEB-INF/pages/pd/pdShipStrategyMain.jsp*</pattern>
+		
+		<pattern>/maintaining.jsp*</pattern>
+		
+		<pattern>/register.html*</pattern>
+		<pattern>/registerUS.html*</pattern>
+		
+		<pattern>/sys_progress_bar.html*</pattern>
+		<pattern>/common/sys_progress_bar.jsp*</pattern>
+		
+		  
+		<pattern>/memberRegisterW.do*</pattern>
+		<pattern>/WEB-INF/mi/memberCreateOutWForm.jsp*</pattern>
+		
+		<pattern>/notice.jsp*</pattern>
+		
+		<pattern>/refundExport.html*</pattern>
+		<pattern>/WEB-INF/pages/pr/jprRefundExport.jsp*</pattern>
+
+		<pattern>/mail/*</pattern>
+		
+		<pattern>/miniweb/*</pattern>
+		<pattern>/jpoMemberOrderStatisticAll.html*</pattern>
+		<pattern>/jpoMemberOrderStatisticSTJ.html*</pattern>
+    </excludes> 
+    <decorator name="default" page="default.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+    <decorator name="mobile" page="m.jsp">
+    	<pattern>/mobile/*</pattern>
+        <pattern>/WEB-INF/pages/mobile/*</pattern>
+    </decorator>
+	
+	<decorator name="print" page="print.jsp">
+		<pattern>/sa_fi_income_print.html*</pattern>
+		<pattern>/WEB-INF/pages/sa/sa_fi_income_print.jsp*</pattern>
+	</decorator>
+</decorators>

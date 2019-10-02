@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.mi.model.JmiStore"
+            table="JMI_STORE"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_MI]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="postalcode"
+                    column="POSTALCODE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="mailAddr"
+                    column="MAIL_ADDR"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="mobiletele"
+                    column="MOBILETELE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="faxtele"
+                    column="FAXTELE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="email"
+                    column="EMAIL"
+                length="40"
+        >
+
+        </property>
+
+        <property
+            name="subStoreAddr"
+                    column="SUB_STORE_ADDR"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="province"
+                    column="PROVINCE"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="city"
+                    column="CITY"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="district"
+                    column="DISTRICT"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="businessArea"
+                    column="BUSINESS_AREA"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="personTotal"
+                    column="PERSON_TOTAL"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="cityType"
+                    column="CITY_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="averageIncome"
+                    column="AVERAGE_INCOME"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="isdeal"
+                    column="ISDEAL"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="business"
+                    column="BUSINESS"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="createUser"
+                    column="CREATE_USER"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="checkTime"
+                    column="CHECK_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="checkUser"
+                    column="CHECK_USER"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="confirmTime"
+                    column="CONFIRM_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="confirmUser"
+                    column="CONFIRM_USER"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="checkStatus"
+                    column="CHECK_STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="confirmStatus"
+                    column="CONFIRM_STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="checkRemark"
+                    column="CHECK_REMARK"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="confirmRemark"
+                    column="CONFIRM_REMARK"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="editTime"
+                    column="EDIT_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <many-to-one
+            name="jmiMember"
+                not-null="true"
+                unique="true"
+                cascade="save-update"
+        >
+
+            <column
+                name="USER_CODE" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="honorStar"
+                    column="HONOR_STAR"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="orderTime"
+                    column="ORDER_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="address"
+                    column="ADDRESS"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="orderDate"
+                    column="ORDER_DATE"
+                length="7"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

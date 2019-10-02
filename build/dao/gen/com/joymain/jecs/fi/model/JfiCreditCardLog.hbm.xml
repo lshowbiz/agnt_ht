@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.JfiCreditCardLog"
+            table="JFI_CREDIT_CARD_LOG"
+    >
+
+    <id
+        name="logId"
+            column="LOG_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_FI]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="30"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="firstName"
+                    column="FIRST_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="lastName"
+                    column="LAST_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="company"
+                    column="COMPANY"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="address"
+                    column="ADDRESS"
+                length="60"
+        >
+
+        </property>
+
+        <property
+            name="city"
+                    column="CITY"
+                length="40"
+        >
+
+        </property>
+
+        <property
+            name="state"
+                    column="STATE"
+                length="40"
+        >
+
+        </property>
+
+        <property
+            name="zip"
+                    column="ZIP"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="country"
+                    column="COUNTRY"
+                length="60"
+        >
+
+        </property>
+
+        <property
+            name="SFirstName"
+                    column="S_FIRST_NAME"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="SLastName"
+                    column="S_LAST_NAME"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="SCompany"
+                    column="S_COMPANY"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="SAddress"
+                    column="S_ADDRESS"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="SCity"
+                    column="S_CITY"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="SState"
+                    column="S_STATE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="SZip"
+                    column="S_ZIP"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="SCountry"
+                    column="S_COUNTRY"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="phone"
+                    column="PHONE"
+                length="25"
+        >
+
+        </property>
+
+        <property
+            name="fax"
+                    column="FAX"
+                length="25"
+        >
+
+        </property>
+
+        <property
+            name="email"
+                    column="EMAIL"
+                length="255"
+        >
+
+        </property>
+
+        <property
+            name="customerIp"
+                    column="CUSTOMER_IP"
+                length="15"
+        >
+
+        </property>
+
+        <property
+            name="cardType"
+                    column="CARD_TYPE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="cardNumber"
+                    column="CARD_NUMBER"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="expireDate"
+                    column="EXPIRE_DATE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="payAmount"
+                    column="PAY_AMOUNT"
+                length="18"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="payTime"
+                    column="PAY_TIME"
+                length="7"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="payResult"
+                    column="PAY_RESULT"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="memberOrderNo"
+                    column="MEMBER_ORDER_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="payCause"
+                    column="PAY_CAUSE"
+                length="4"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="returnData"
+                    column="RETURN_DATA"
+                length="3500"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

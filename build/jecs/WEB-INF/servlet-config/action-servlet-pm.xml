@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+   
+   
+   <!--JpmProductCombination-BEAN-START-->
+    <bean id="jpmProductCombinationController" class="com.joymain.jecs.pm.webapp.action.JpmProductCombinationController" autowire="byName"/>
+
+    <bean id="jpmProductCombinationFormController" class="com.joymain.jecs.pm.webapp.action.JpmProductCombinationFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmProductCombinationForm"/>
+        <property name="successView" value="redirect:jpmProductCombinations.html"/>
+    </bean>
+    <!--JpmProductCombination-BEAN-END-->
+   <bean id="jpmProductTreeController" class="com.joymain.jecs.pm.webapp.action.JpmProductTreeController" autowire="byName"/>
+    <!--JpmProductSaleLog-BEAN-START-->
+    
+    <!--JpmProductNewRelated-BEAN-END-->
+   <bean id="jpmProductTree2Controller" class="com.joymain.jecs.pm.webapp.action.JpmProductTree2Controller" autowire="byName"/>
+    <!--JpmProductNewRelated-BEAN-START-->
+    
+    <bean id="jpmProductSaleLogController" class="com.joymain.jecs.pm.webapp.action.JpmProductSaleLogController" autowire="byName"/>
+
+    <bean id="jpmProductSaleLogFormController" class="com.joymain.jecs.pm.webapp.action.JpmProductSaleLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmProductSaleLogForm"/>
+        <property name="successView" value="redirect:jpmProductSaleLogs.html"/>
+    </bean>
+    <!--JpmProductSaleLog-BEAN-END-->
+   <!--JpmProduct-BEAN-START-->
+    <bean id="jpmProductController" class="com.joymain.jecs.pm.webapp.action.JpmProductController" autowire="byName"/>
+
+    <bean id="jpmProductFormController" class="com.joymain.jecs.pm.webapp.action.JpmProductFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmProductForm"/>
+        <property name="successView" value="redirect:jpmProducts.html"/>
+    </bean>
+    <!--JpmProduct-BEAN-END-->
+    <!--JpmProductSale-BEAN-START-->
+    <bean id="jpmProductSaleController" class="com.joymain.jecs.pm.webapp.action.JpmProductSaleController" autowire="byName"/>
+
+    <bean id="jpmProductSaleFormController" class="com.joymain.jecs.pm.webapp.action.JpmProductSaleFormController" autowire="byName">
+        
+        <property name="formView" value="pm/jpmProductSaleForm"/>
+        <property name="successView" value="redirect:jpmProductSales.html"/>
+    </bean>
+   <!--JpmProductSale-BEAN-END-->
+    <!--JpmCardSeq-BEAN-START-->
+    <bean id="jpmCardSeqController" class="com.joymain.jecs.pm.webapp.action.JpmCardSeqController" autowire="byName"/>
+
+    <bean id="jpmCardSeqFormController" class="com.joymain.jecs.pm.webapp.action.JpmCardSeqFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmCardSeqForm"/>
+        <property name="successView" value="redirect:jpmCardSeqs.html"/>
+    </bean>
+    <!--JpmCardSeq-BEAN-END-->
+    
+    <!--JmiMemberTeam-BEAN-START-->
+    <bean id="jmiMemberTeamController" class="com.joymain.jecs.pm.webapp.action.JmiMemberTeamController" autowire="byName"/>
+
+    <bean id="jmiMemberTeamFormController" class="com.joymain.jecs.pm.webapp.action.JmiMemberTeamFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jmiMemberTeamForm"/>
+        <property name="successView" value="redirect:jmiMemberTeams.html"/>
+    </bean>
+    <!--JmiMemberTeam-BEAN-END-->
+    
+    <!--JpmSalesAnalysis-BEAN-START-->
+    <bean id="jpmSalesAnalysisController" class="com.joymain.jecs.pm.webapp.action.JpmSalesAnalysisController" autowire="byName"/>
+    <!--JpmSalesAnalysis-BEAN-END-->
+    
+    <!--JpmProductSaleNew-BEAN-START-->
+    <bean id="jpmProductSaleNewController" class="com.joymain.jecs.pm.webapp.action.JpmProductSaleNewController" autowire="byName"/>
+
+	 <!--  JpmProductSaleNewReportController-BEAN-START -->
+    <bean id="jpmProductSaleNewReportController" class="com.joymain.jecs.pm.webapp.action.JpmProductSaleNewReportController" autowire="byName"/>
+    
+    <bean id="jpmProductSaleNewFormController" class="com.joymain.jecs.pm.webapp.action.JpmProductSaleNewFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmProductSaleNewForm"/>
+        <property name="successView" value="redirect:jpmProductSaleNews.html"/>
+    </bean>
+    <!--JpmProductSaleNew-BEAN-END-->
+    <!--JpmProductSaleImage-BEAN-START-->
+    <bean id="jpmProductSaleImageController" class="com.joymain.jecs.pm.webapp.action.JpmProductSaleImageController" autowire="byName"/>
+
+    <bean id="jpmProductSaleImageFormController" class="com.joymain.jecs.pm.webapp.action.JpmProductSaleImageFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmProductSaleImageForm"/>
+        <property name="successView" value="redirect:jpmProductSaleImages.html"/>
+    </bean>
+    <!--JpmProductSaleImage-BEAN-END-->
+    <!--JpmProductSaleTeamType-BEAN-START-->
+    <bean id="jpmProductSaleTeamTypeController" class="com.joymain.jecs.pm.webapp.action.JpmProductSaleTeamTypeController" autowire="byName"/>
+
+    <bean id="jpmProductSaleTeamTypeFormController" class="com.joymain.jecs.pm.webapp.action.JpmProductSaleTeamTypeFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmProductSaleTeamTypeForm"/>
+        <property name="successView" value="redirect:jpmProductSaleTeamTypes.html"/>
+    </bean>
+    <!--JpmProductSaleTeamType-BEAN-END-->
+    <!--JpmProductSaleRelated-BEAN-START-->
+    <bean id="jpmProductSaleRelatedController" class="com.joymain.jecs.pm.webapp.action.JpmProductSaleRelatedController" autowire="byName"/>
+
+    <bean id="jpmProductSaleRelatedFormController" class="com.joymain.jecs.pm.webapp.action.JpmProductSaleRelatedFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmProductSaleRelatedForm"/>
+        <property name="successView" value="redirect:jpmProductSaleRelateds.html"/>
+    </bean>
+    <!--JpmProductSaleRelated-BEAN-END-->
+    
+    <bean id="jpmCardSeqGradeController" class="com.joymain.jecs.pm.webapp.action.JpmCardSeqGradeController" autowire="byName"/>
+    
+    <!--JpmCombinationRelated-BEAN-START-->
+    <bean id="jpmCombinationRelatedController" class="com.joymain.jecs.pm.webapp.action.JpmCombinationRelatedController" autowire="byName"/>
+
+    <bean id="jpmCombinationRelatedFormController" class="com.joymain.jecs.pm.webapp.action.JpmCombinationRelatedFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmCombinationRelatedForm"/>
+        <property name="successView" value="redirect:jpmCombinationRelateds.html"/>
+    </bean>
+    <!--JpmCombinationRelated-BEAN-END-->
+    
+    <bean id="pmUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+            
+            	<prop key="/jpmProductTree.html">jpmProductTreeController</prop>            	
+            	<prop key="/pm/jpmProductMain.html">forwardJspController</prop>
+            	
+            	<prop key="/jpmProductTree2.html">jpmProductTree2Controller</prop>
+            	<prop key="/pm/jpmProductMain2.html">forwardJspController</prop>
+                <!--SysReportLog-URL-START-->
+                <prop key="/sysReportLogs.html">sysReportLogController</prop>
+                <prop key="/editSysReportLog.html">sysReportLogFormController</prop>
+                <!--SysReportLog-URL-END-->
+                
+                
+                <!--JpmProduct-URL-START-->
+                <prop key="/jpmProducts.html">jpmProductController</prop>
+                <prop key="/editJpmProduct.html">jpmProductFormController</prop>
+                <!--JpmProduct-URL-END-->
+                <!--JpmProductSale-URL-START-->
+                <prop key="/jpmProductSales.html">jpmProductSaleController</prop>
+                <prop key="/editJpmProductSale.html">jpmProductSaleFormController</prop>
+                <!-- JpmProductSale-URL-END-->
+                <!--JpmProductSaleLog-URL-START-->
+                <prop key="/jpmProductSaleLogs.html">jpmProductSaleLogController</prop>
+                <prop key="/editJpmProductSaleLog.html">jpmProductSaleLogFormController</prop>
+                <!--JpmProductSaleLog-URL-END-->
+                
+                 <!--JpmProductCombination-URL-START-->
+                <prop key="/jpmProductCombinations.html">jpmProductCombinationController</prop>
+                <prop key="/editJpmProductCombination.html">jpmProductCombinationFormController</prop>
+                <!--JpmProductCombination-URL-END-->
+                <!--JpmCardSeq-URL-START-->
+                <prop key="/jpmCardSeqs.html">jpmCardSeqController</prop>
+                <prop key="/editJpmCardSeq.html">jpmCardSeqFormController</prop>
+                <!--JpmCardSeq-URL-END-->
+                
+                <!--JmiMemberTeam-URL-START-->
+                <prop key="/jmiMemberTeams.html">jmiMemberTeamController</prop>
+                <prop key="/editJmiMemberTeam.html">jmiMemberTeamFormController</prop>
+                <!--JmiMemberTeam-URL-END-->
+                
+                <!--JpmSalesAnalysis-URL-START-->
+                <prop key="/jpmSalesAnalysis.html">jpmSalesAnalysisController</prop>
+                <!--JpmSalesAnalysis-URL-END-->
+                
+                <prop key="/jpmCardSeqGrades.html">jpmCardSeqGradeController</prop>
+                
+                <!--JpmProductSaleNew-URL-START-->
+                <prop key="/jpmProductSaleNews.html">jpmProductSaleNewController</prop>
+                <prop key="/editJpmProductSaleNew.html">jpmProductSaleNewFormController</prop>
+                <prop key="/jpmProductSaleNewReport.html">jpmProductSaleNewReportController</prop>
+                <!--JpmProductSaleNew-URL-END-->
+                <!--JpmProductSaleImage-URL-START-->
+                <prop key="/jpmProductSaleImages.html">jpmProductSaleImageController</prop>
+                <prop key="/editJpmProductSaleImage.html">jpmProductSaleImageFormController</prop>
+                <!--JpmProductSaleImage-URL-END-->
+                <!--JpmProductSaleTeamType-URL-START-->
+                <prop key="/jpmProductSaleTeamTypes.html">jpmProductSaleTeamTypeController</prop>
+                <prop key="/editJpmProductSaleTeamType.html">jpmProductSaleTeamTypeFormController</prop>
+                <!--JpmProductSaleTeamType-URL-END-->
+                <!--JpmProductSaleRelated-URL-START-->
+                <prop key="/jpmProductSaleRelateds.html">jpmProductSaleRelatedController</prop>
+                <prop key="/editJpmProductSaleRelated.html">jpmProductSaleRelatedFormController</prop>
+                 <!--JpmProductSaleRelated-URL-END-->
+                
+                <prop key="/discountSale.html">jpmSalePromoterController</prop>
+				<prop key="/editJpmSalePromoter.html">jpmSalePromoterFormController</prop>
+               	<prop key="/presentSale.html">jpmSalePeresentController</prop>
+               	<prop key="/editJpmSalePeresent.html">jpmSalePeresentFormController</prop>
+               	<prop key="/integralSale.html">jpmSaleIntegralController</prop>
+               	<prop key="/editJpmSaleIntegral.html">jpmSaleIntegralFormController</prop>
+               	<prop key="/orderPVPresentSale.html">jpmSaleOrderPVController</prop>
+               	<prop key="/editOrderPVPresentSale.html">jpmSaleOrderPVFormController</prop>
+                
+                <!-- add by soul start -->
+                 <!--JpmProductWineTemplate-URL-START-->
+                <prop key="/jpmProductWineTemplates.html">jpmProductWineTemplateController</prop>
+                <prop key="/editJpmProductWineTemplate.html">jpmProductWineTemplateFormController</prop>
+                <!--JpmProductWineTemplate-URL-END-->
+                <!--JpmProductWineTemplateSub-URL-START-->
+                <prop key="/jpmProductWineTemplateSubs.html">jpmProductWineTemplateSubController</prop>
+                <prop key="/editJpmProductWineTemplateSub.html">jpmProductWineTemplateSubFormController</prop>
+                <!--JpmProductWineTemplateSub-URL-END-->
+                <!--JpmWineTemplatePicture-URL-START-->
+                <prop key="/jpmWineTemplatePictures.html">jpmWineTemplatePictureController</prop>
+                <prop key="/editJpmWineTemplatePicture.html">jpmWineTemplatePictureFormController</prop>
+                <!--JpmWineTemplatePicture-URL-END-->
+                <!--JpmWineOrderInterface-URL-START-->
+                <prop key="/jpmWineOrderInterfaces.html">jpmWineOrderInterfaceController</prop>
+                <prop key="/editJpmWineOrderInterface.html">jpmWineOrderInterfaceFormController</prop>
+                <!--JpmWineOrderInterface-URL-END-->
+                <!--JpmWineOrderListInterface-URL-START-->
+               <!--  <prop key="/jpmWineOrderListInterfaces.html">jpmWineOrderListInterfaceController</prop>
+                <prop key="/editJpmWineOrderListInterface.html">jpmWineOrderListInterfaceFormController</prop> -->
+                <!--JpmWineOrderListInterface-URL-END-->
+                
+                <!--JpmWineSettingInf-URL-START-->
+                <prop key="/jpmWineSettingInfs.html">jpmWineSettingInfController</prop>
+                <prop key="/editJpmWineSettingInf.html">jpmWineSettingInfFormController</prop>
+                <!--JpmWineSettingInf-URL-END-->
+                <!-- add by soul end -->
+                
+                <!--JpmCombinationRelated-URL-START-->
+                <prop key="/jpmCombinationRelateds.html">jpmCombinationRelatedController</prop>
+                <prop key="/editJpmCombinationRelated.html">jpmCombinationRelatedFormController</prop>
+                <!--JpmCombinationRelated-URL-END-->
+                <!-- Add additional URL mappings here -->
+            </props>
+           </property>
+    </bean>
+    
+     <!--JpmSalePromoter-BEAN-START-->
+    <bean id="jpmSalePromoterController" class="com.joymain.jecs.pm.webapp.action.JpmSalePromoterController" autowire="byName"/>
+
+    <bean id="jpmSalePromoterFormController" class="com.joymain.jecs.pm.webapp.action.JpmSalePromoterFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmSalePromoterForm"/>
+        <!--  property name="successView" value="redirect:jpmSalePromoters.html"/-->
+        <property name="successView" value="redirect:/discountSale.html"/>
+    </bean>
+    <!--JpmSalePromoter-BEAN-END-->
+    
+    <bean id="jpmSalePeresentController" class="com.joymain.jecs.pm.webapp.action.JpmSalePresentController" autowire="byName"/>
+
+    <bean id="jpmSalePeresentFormController" class="com.joymain.jecs.pm.webapp.action.JpmSalePresentFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmSalePeresentForm"/>
+        <property name="successView" value="redirect:/presentSale.html"/>
+    </bean>
+    
+    <bean id="jpmSaleIntegralController" class="com.joymain.jecs.pm.webapp.action.JpmSaleIntegralController" autowire="byName"/>
+
+    <bean id="jpmSaleIntegralFormController" class="com.joymain.jecs.pm.webapp.action.JpmSaleIntegralFormController" autowire="byName">
+        <property name="formView" value="pm/jpmsaleIntegralForm"/>
+        <property name="successView" value="redirect:/integralSale.html"/>
+    </bean>
+    
+    <bean id="jpmSaleOrderPVController" class="com.joymain.jecs.pm.webapp.action.JpmSalePresentPVController" autowire="byName"/>
+    
+    <bean id="jpmSaleOrderPVFormController" class="com.joymain.jecs.pm.webapp.action.JpmSalePresentOrderPVFormController" autowire="byName">
+        <property name="formView" value="pm/jpmsaleOrderPVForm"/>
+        <property name="successView" value="redirect:/orderPVPresentSale.html"/>
+    </bean>
+    
+     <!-- add by soul start -->
+    <!--JpmProductWineTemplate-BEAN-START-->
+    <bean id="jpmProductWineTemplateController" class="com.joymain.jecs.pm.webapp.action.JpmProductWineTemplateController" autowire="byName"/>
+
+    <bean id="jpmProductWineTemplateFormController" class="com.joymain.jecs.pm.webapp.action.JpmProductWineTemplateFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmProductWineTemplateForm"/>
+        <property name="successView" value="redirect:jpmProductWineTemplates.html"/>
+    </bean>
+    <!--JpmProductWineTemplate-BEAN-END-->
+    <!--JpmProductWineTemplateSub-BEAN-START-->
+    <bean id="jpmProductWineTemplateSubController" class="com.joymain.jecs.pm.webapp.action.JpmProductWineTemplateSubController" autowire="byName"/>
+
+    <bean id="jpmProductWineTemplateSubFormController" class="com.joymain.jecs.pm.webapp.action.JpmProductWineTemplateSubFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmProductWineTemplateSubForm"/>
+        <property name="successView" value="redirect:jpmProductWineTemplateSubs.html"/>
+    </bean>
+    <!--JpmProductWineTemplateSub-BEAN-END-->
+    <!--JpmWineTemplatePicture-BEAN-START-->
+    <bean id="jpmWineTemplatePictureController" class="com.joymain.jecs.pm.webapp.action.JpmWineTemplatePictureController" autowire="byName"/>
+
+    <bean id="jpmWineTemplatePictureFormController" class="com.joymain.jecs.pm.webapp.action.JpmWineTemplatePictureFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmWineTemplatePictureForm"/>
+        <property name="successView" value="redirect:jpmWineTemplatePictures.html"/>
+    </bean>
+    <!--JpmWineTemplatePicture-BEAN-END-->
+    
+        <!--JpmWineOrderInterface-BEAN-START-->
+    <bean id="jpmWineOrderInterfaceController" class="com.joymain.jecs.pm.webapp.action.JpmWineOrderInterfaceController" autowire="byName"/>
+
+    <bean id="jpmWineOrderInterfaceFormController" class="com.joymain.jecs.pm.webapp.action.JpmWineOrderInterfaceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmWineOrderInterfaceForm"/>
+        <property name="successView" value="redirect:jpmWineOrderInterfaces.html"/>
+    </bean>
+    <!--JpmWineOrderInterface-BEAN-END-->
+    <!--JpmWineOrderListInterface-BEAN-START-->
+    <!-- <bean id="jpmWineOrderListInterfaceController" class="com.joymain.jecs.pm.webapp.action.JpmWineOrderListInterfaceController" autowire="byName"/>
+
+    <bean id="jpmWineOrderListInterfaceFormController" class="com.joymain.jecs.pm.webapp.action.JpmWineOrderListInterfaceFormController" autowire="byName">
+        <property name="formView" value="pm/jpmWineOrderListInterfaceForm"/>
+        <property name="successView" value="redirect:jpmWineOrderListInterfaces.html"/>
+    </bean> -->
+    <!--JpmWineOrderListInterface-BEAN-END-->
+    
+    <!--JpmWineSettingInf-BEAN-START-->
+    <bean id="jpmWineSettingInfController" class="com.joymain.jecs.pm.webapp.action.JpmWineSettingInfController" autowire="byName"/>
+
+    <bean id="jpmWineSettingInfFormController" class="com.joymain.jecs.pm.webapp.action.JpmWineSettingInfFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmWineSettingInfForm"/>
+        <property name="successView" value="redirect:jpmWineSettingInfs.html"/>
+    </bean>
+    <!--JpmWineSettingInf-BEAN-END-->
+    <!-- add by soul end -->
+</beans>

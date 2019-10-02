@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.VJbdSellCalcSubDetail"
+            table="V_JBD_SELL_CALC_SUB_DETAIL"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="bounsRate"
+                    column="BOUNS_RATE"
+        >
+
+        </property>
+
+        <property
+            name="bounsPv"
+                    column="BOUNS_PV"
+        >
+
+        </property>
+
+        <property
+            name="wyear"
+                    column="W_YEAR"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="wmonth"
+                    column="W_MONTH"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="wweek"
+                    column="W_WEEK"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="nlevel"
+                    column="NLEVEL"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="recommendedCode"
+                    column="RECOMMENDED_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="recommendedCompanyCode"
+                    column="RECOMMENDED_COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="recommendedOrderNo"
+                    column="RECOMMENDED_ORDER_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="recommendedOrderClass"
+                    column="RECOMMENDED_ORDER_CLASS"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="recommendedOrderType"
+                    column="RECOMMENDED_ORDER_TYPE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="pv"
+                    column="PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="bounsType"
+                    column="BOUNS_TYPE"
+                length="2"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

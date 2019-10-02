@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmProductSale"
+            table="JPM_PRODUCT_SALE"
+    >
+
+    <id
+        name="uniNo"
+            column="UNI_NO"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PM]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="hotFlag"
+                    column="HOT_FLAG"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="isHidden"
+                    column="IS_HIDDEN"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="sortFlag"
+                    column="SORT_FLAG"
+        >
+
+        </property>
+
+        <property
+            name="storeControlFirst"
+                    column="STORE_CONTROL_FIRST"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="storeControlUpdate"
+                    column="STORE_CONTROL_UPDATE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="storeControlRepurchase"
+                    column="STORE_CONTROL_REPURCHASE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="controlAutosale"
+                    column="CONTROL_AUTOSALE"
+                length="1"
+        >
+
+        </property>
+
+        <many-to-one
+            name="jpmProduct"
+                not-null="true"
+        >
+
+            <column
+                name="PRODUCT_NO" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="productName"
+                    column="PRODUCT_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="fpPrice"
+                    column="FP_PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="fpPv"
+                    column="FP_PV"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="mpPrice"
+                    column="MP_PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="mpPv"
+                    column="MP_PV"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="storeFpPrice"
+                    column="STORE_FP_PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="storeFpPv"
+                    column="STORE_FP_PV"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="storeMpPrice"
+                    column="STORE_MP_PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="storeMpPv"
+                    column="STORE_MP_PV"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="whoPrice"
+                    column="WHO_PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="discountPrice"
+                    column="DISCOUNT_PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="weight"
+                    column="WEIGHT"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="volume"
+                    column="VOLUME"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="length"
+                    column="LENGTH"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="width"
+                    column="WIDTH"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="height"
+                    column="HEIGHT"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="imageLink"
+                    column="IMAGE_LINK"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="albumLink"
+                    column="ALBUM_LINK"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="confirm"
+                    column="CONFIRM"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="controlFirst"
+                    column="CONTROL_FIRST"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="controlUpdate"
+                    column="CONTROL_UPDATE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="controlRepurchase"
+                    column="CONTROL_REPURCHASE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="productDesc"
+                    column="PRODUCT_DESC"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="subStoreFirst"
+                    column="SUB_STORE_FIRST"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="subStoreUpdate"
+                    column="SUB_STORE_UPDATE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="subStoreRepurchase"
+                    column="SUB_STORE_REPURCHASE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="changeabledFlag"
+                    column="CHANGEABLED_FLAG"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="substoreFpPrice"
+                    column="SUBSTORE_FP_PRICE"
+        >
+
+        </property>
+
+        <property
+            name="substoreFpPv"
+                    column="SUBSTORE_FP_PV"
+        >
+
+        </property>
+
+        <property
+            name="substoreMpPrice"
+                    column="SUBSTORE_MP_PRICE"
+        >
+
+        </property>
+
+        <property
+            name="substoreMpPv"
+                    column="SUBSTORE_MP_PV"
+        >
+
+        </property>
+
+        <property
+            name="storageCordon"
+                    column="STORAGE_CORDON"
+        >
+
+        </property>
+
+        <property
+            name="startOnSale"
+                    column="START_ON_SALE"
+        >
+
+        </property>
+
+        <property
+            name="endOnSale"
+                    column="END_ON_SALE"
+        >
+
+        </property>
+
+        <property
+            name="controlPointExchange"
+                    column="CONTROL_POINT_EXCHANGE"
+        >
+
+        </property>
+
+        <property
+            name="shipStrategy"
+                    column="SHIP_STRATEGY"
+        >
+
+        </property>
+
+        <set
+            name="jmiMemberTeams"
+            table="pm_team_product"
+            lazy="false"
+            cascade="save-update"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="uni_no"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-many-to-many tag is deprecated, use @hibernate.many-to-many instead -->
+            <many-to-many
+                class="com.joymain.jecs.pm.model.JmiMemberTeam"
+                column="code"
+                outer-join="auto"
+             />
+
+        </set>
+
+        <property
+            name="briefIntroduction"
+                    column="BRIEF_INTRODUCTION"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="healthKnowledge"
+                    column="HEALTH_KNOWLEDGE"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="productSpecification"
+                    column="PRODUCT_SPECIFICATION"
+                length="50"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

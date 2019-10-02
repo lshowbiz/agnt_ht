@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pd.model.PdLogisticsBaseNum"
+            table="PD_LOGISTICS_BASE_NUM"
+    >
+
+    <id
+        name="numId"
+            column="NUM_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <many-to-one
+            name="pdLogisticsBase"
+                    class="com.joymain.jecs.pd.model.PdLogisticsBase"
+        >
+
+            <column
+                name="BASE_ID" 
+                not-null="true"
+            />
+
+        </many-to-one>
+
+        <property
+            name="pdLogisticsBaseNum_no"
+                    column="PDLOGISTICSBASENUM_NO"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="name"
+                    column="NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="mailTime"
+                    column="MAIL_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="otherOne"
+                    column="OTHER_ONE"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="otherTwo"
+                    column="OTHER_TWO"
+                length="200"
+        >
+
+        </property>
+
+        <list
+            name="pdLogisticsBaseDetail_items"
+            inverse="true"
+            cascade="all"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="NUM_ID"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-index tag is deprecated, use @hibernate.index instead -->
+            <index
+                column="positionPdDetail"
+            />
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.pd.model.PdLogisticsBaseDetail"
+            />
+
+        </list>
+
+    </class>    
+
+</hibernate-mapping>
+

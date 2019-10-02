@@ -1,0 +1,335 @@
+<%@ page contentType="text/html; charset=utf-8" language="java" pageEncoding="utf-8"%>
+<%@ page import="java.text.*" %>   
+<%@ page import="java.util.*" %> 
+<%@ page import="com.buybal.util.signers.*" %> 
+<%@ page import="com.joymain.jecs.util.chanjet.*" %> 
+<%@ page import="java.io.*" %> 
+<%@ page import="org.apache.commons.httpclient.methods.*" %> 
+<%@ page import="org.apache.commons.httpclient.*" %> 
+<%@ page import="java.beans.*" %> 
+<%@ page import="org.dom4j.*" %> 
+
+<html>
+  <head>
+    <title>查询交易记录</title> 
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="../common/css/public_css_ussys.css" type="text/css">
+	<link type="text/css" rel="stylesheet" href="../common/syntaxHighlighter/css/SyntaxHighlighter.css"></link>
+	<script language="javascript" src="../common/syntaxHighlighter/js/shCore.js"></script>
+	<script language="javascript" src="../common/syntaxHighlighter/js/shBrushJava.js"></script>
+
+  </head>
+<%
+
+
+  
+
+  request.setCharacterEncoding("utf-8"); 
+  response.setCharacterEncoding("utf-8");
+	StringBuffer signSb = new StringBuffer(); 
+	
+	signSb.append("businessId="); 
+	String businessId = ""; 
+	if(request.getParameter("businessId")!=null) 
+	  businessId = request.getParameter("businessId");
+	signSb.append(businessId);  
+	 
+	
+	signSb.append("&platIdtfy="); 
+	String platIdtfy = ""; 
+	if(request.getParameter("platIdtfy")!=null) 
+	  platIdtfy = request.getParameter("platIdtfy");
+	signSb.append(platIdtfy);  
+	 
+	
+	signSb.append("&merchantId="); 
+	String merchantId = ""; 
+	if(request.getParameter("merchantId")!=null) 
+	  merchantId = request.getParameter("merchantId"); 
+	signSb.append(merchantId);  
+	  
+		
+	signSb.append("&orderId="); 
+	String orderId = ""; 
+	if(request.getParameter("orderId")!=null) 
+	  orderId = request.getParameter("orderId"); 
+	signSb.append(orderId);  
+	 
+	
+	
+	signSb.append("&orderDate="); 
+	String orderDate = ""; 
+	if(request.getParameter("orderDate")!=null) 
+	  orderDate = request.getParameter("orderDate"); 
+	signSb.append(orderDate);  
+	 
+	
+	signSb.append("&deviceId="); 
+	String deviceId = ""; 
+	if(request.getParameter("deviceId")!=null) 
+	  deviceId = request.getParameter("deviceId"); 
+	signSb.append(deviceId);     
+
+    /*
+	 *以下两种签名选择一种
+     *MD5加密签名*/
+    
+	String key="&key=12356780Poi)(*";//加商户密钥key
+	signSb.append(key);
+	String plain = signSb.toString();
+	byte[]  temp  =   plain.getBytes("UTF-8");
+	String pubString=new String(temp);
+	String sign=Md5.encodeMD5(pubString);
+	
+
+    /*
+	 *公私钥签名 商户号100000131*/
+	 /*
+	String plain = signSb.toString();
+	String sign = SignVer.sign(plain, "D:/Program Files/apache-tomcat-7.0.37/webapps/demo/WEB-INF/cert/100000131.key.p8"); 
+	*/
+
+   
+   //签名信息
+   System.out.println("签名前的串:"+plain);
+   System.out.println("签名后的串:"+sign);
+
+
+
+    /*******************************************以下是发送HTTP请求、并接受查询结果****************************************/
+
+    StringBuffer contentBuffer = new StringBuffer();
+	HttpClient client =  new HttpClient();
+	//String httpPara ="http://59.151.72.42:2917/gateway/gatewayManage.do?action=queryPayResultManage";
+	String httpPara ="http://www.chanpay.com:2917/gateway/gatewayManage.do?action=queryPayResultManage";
+	//String httpPara ="http://localhost:8080/cjtgate/gateway/gatewayManage.do?action=queryPayResultManage";
+	PostMethod postMethod = new PostMethod(httpPara);
+	postMethod.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=utf-8");
+		   
+	
+	postMethod.setParameter("businessId",request.getParameter("businessId"));
+	postMethod.setParameter("platIdtfy",platIdtfy);
+	postMethod.setParameter("merchantId",merchantId);
+	postMethod.setParameter("orderId",orderId);
+	postMethod.setParameter("orderDate",orderDate);
+	postMethod.setParameter("deviceId",deviceId);
+	postMethod.setParameter("signType",request.getParameter("signType"));
+	postMethod.setParameter("version",request.getParameter("version"));
+	postMethod.setParameter("signMsg",sign);
+
+    //发送订单查询请求
+	int statusCode=-1;
+	try{
+	   statusCode = client.executeMethod(postMethod);
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+	String resultString=postMethod.getResponseBodyAsString();
+	System.out.println(" status code:" + statusCode);
+	System.out.println("responseBody:"+resultString); 
+	System.out.println("contentBuffer.toString():"+ contentBuffer.toString());
+
+   
+    //接受查询结果
+	Document doc=DocumentHelper.parseText(resultString);
+	Element root=doc.getRootElement();
+	//head
+	Element headElement=root.element("head");
+	String re_signType=headElement.element("signType").getText();
+	String re_version=headElement.element("version").getText();
+	
+	//body
+	Element bodyElement=root.element("body");
+	String re_merchantId =bodyElement.element("merchantId").getText();
+	String re_orderId =bodyElement.element("orderId").getText();
+	String re_orderDate =bodyElement.element("orderDate").getText();
+	String re_detailId =bodyElement.element("detailId").getText();
+	String re_detailTime =bodyElement.element("detailTime").getText();
+	String re_amount =bodyElement.element("amount").getText();
+	String re_payResult =bodyElement.element("payResult").getTextTrim().equals("00")?"支付完成":"未完成支付";
+	String re_businessId =bodyElement.element("businessId").getText();
+	String re_platIdtfy =bodyElement.element("platIdtfy").getText();
+	String re_amt_type =bodyElement.element("amt_type").getText();
+	String re_errCode =bodyElement.element("errCode").getText();
+	String re_errMsg =bodyElement.element("errMsg").getText();
+	String re_payeeBankAccount =bodyElement.element("payeeBankAccount").getText();
+	String re_bankId =bodyElement.element("bankId").getText();
+	String re_bankDealId =bodyElement.element("bankDealId").getText();
+	String re_payeeBankType =bodyElement.element("payeeBankType").getText();
+	String re_payeeBankName =bodyElement.element("payeeBankName").getText();
+	String re_payeeName =bodyElement.element("payeeName").getText();
+	String re_deviceId =bodyElement.element("deviceId").getText();
+	String re_signMsg=bodyElement.element("signMsg").getText();
+	
+    
+	//验签
+	/*
+	businessId=val&platIdtfy=val&merchantId=val&orderId=val&orderDate=val&detailId=val&detailTime=val&bankId=val&bankDealId=val&amount=val&amt_type=val&payResult=val&errCode=val&payeeBankAccount=val&payeeBankType=val&deviceId=va
+	*/
+	StringBuffer replain = new StringBuffer();
+	replain.append("businessId="+re_businessId);
+	replain.append("&platIdtfy="+re_platIdtfy);
+	replain.append("&merchantId="+re_merchantId);
+	replain.append("&orderId="+re_orderId);
+	replain.append("&orderDate="+re_orderDate);
+	replain.append("&detailId="+re_detailId);
+	replain.append("&detailTime="+re_detailTime);
+	replain.append("&bankId="+re_bankId);
+	replain.append("&bankDealId="+re_bankDealId);
+	replain.append("&amount="+re_amount);
+	replain.append("&amt_type="+re_amt_type);
+	replain.append("&payResult="+re_payResult);
+	replain.append("&errCode="+re_errCode);
+	replain.append("&payeeBankAccount="+re_payeeBankAccount);
+	replain.append("&payeeBankType="+re_payeeBankType);
+	replain.append("&deviceId="+re_deviceId);
+	boolean check=false;//签名状态
+	
+	/*
+	 *
+	 *MD5加密验签*/
+	
+	
+	replain.append(key);//商户密钥
+	String re_plain=replain.toString();
+	String re_sign=Md5.encodeMD5(re_plain);
+	//String re_sign=Md5.encodeMD5(re_plain);
+	check=re_signMsg.equals(re_sign);
+	System.out.println("接收的MD5密文串:"+re_signMsg);
+	System.out.println("MD5签名串:"+re_sign);
+    
+	
+
+	/*
+	 *
+	 *公私钥验签 商户号100000131 */
+
+	 /*
+	String re_plain=replain.toString();
+	check = SignVer.verify(re_plain, re_signMsg,"D:/Program Files/apache-tomcat-7.0.37/webapps/merdemo/WEB-INF/classes/cert/935acff9f80961b2b241d82bede6dfa4.cert.der");
+    */
+
+    
+    
+	System.out.println("接受的明文串:"+re_plain);
+	System.out.println("验签结果:"+check);
+
+
+
+%>
+
+  <body>
+
+    <div id="MAINA">
+      <div class="mindexa">
+
+         <div class="mright">
+          <h3>查询结果：</h3>
+          <div class="mrmain">
+          <form name="sendOrder" method="post">
+            <table>
+              <tbody>
+			     <tr>
+                  <th>验签状态【errMsg】：</th>
+                  <td><input type="text" class="wtxt" value="<%=check==true?"成功":"失败" %>" name="re_errMsg"/> <span>*</span></td>
+                </tr>
+			    <tr>
+                 <th>商户号【merchantId】：</th>
+                  <td><input type="text" class="wtxt" value="<%=re_merchantId %>" name="merchantId"/> <span>*</span></td>
+                </tr>
+				<tr>
+                  <th>订单号【orderId】：</th>
+                  <td><input type="text" class="wtxt" value="<%=re_orderId %>" name="orderId"/> <span>*</span></td>
+                </tr>
+				<tr>
+                  <th>订单金额【amount】：</th>
+                  <td><input type="text" class="wtxt" value="<%=re_amount %>" name="amount"/> 单位为分<span>*</span></td>
+                </tr>
+				<tr>
+                  <th>支付时间【detailTime】：</th>
+                  <td><input type="text" class="wtxt" value="<%=re_detailTime%>" name="detailTime"/> <span>*</span></td>
+                </tr>
+				<tr>
+                  <th>支付状态【payResult】：</th>
+                  <td><input type="text" class="wtxt" value="<%=re_payResult %>" name="payResult"/> <span>*</span></td>
+                </tr>
+                <tr>
+                  <th>错误信息【errMsg】：</th>
+                  <td><input type="text" class="wtxt" value="<%=re_errMsg %>" name="re_errMsg"/> <span>*</span></td>
+                </tr>
+
+                <%--<tr>
+                  <th>签名类型【signType】：</th>
+                  <td><input type="text" class="wtxt" value="<%=request.getParameter("signType")%>" name="signType"/> <span>*</span></td>
+                </tr>
+                <tr>
+                  <th>版本号【version】：</th>
+                  <td><input type="text" value="<%=request.getParameter("version")%>" class="wtxt" name="version"/> <span>*</span></td>
+                </tr>
+                <tr>
+                  <th>业务编号【businessId】：</th>
+                  <td><input type="text" value="<%=request.getParameter("businessId")%>" class="wtxt" name="businessId"/> <span>*</span></td>
+                </tr>
+                <tr>
+                  <th>平台标识【platIdtfy】：</th>
+                  <td><input type="text" class="wtxt" name="platIdtfy" value="<%=request.getParameter("platIdtfy")%>"/> <span>*</span></td>
+                </tr>
+                <tr>
+                  <th>商户号【merchantId】：</th>
+                  <td><input type="text" class="wtxt" name="merchantId" value="<%=request.getParameter("merchantId")%>"/> <span>*</span></td>
+                </tr>
+                <tr>
+                  <th>订单号【orderId】：</th>
+                  <td><input type="text" value="<%=request.getParameter("orderId")%>" class="wtxt" name="orderId"/> <span>*</span></td>
+                </tr>
+                <tr>
+                  <th>下单日期【orderDate】：</th>
+                  <td><input type="text" value="<%=request.getParameter("orderDate")%>" class="wtxt" name="orderDate"/> <span>*</span></td>
+                </tr>
+                <tr>
+                  <th>设备号【deviceId】：</th>
+                  <td><input type="text" value="<%=request.getParameter("deviceId")%>" class="wtxt" name="deviceId"/> <span>*</span></td>
+                </tr>
+                <tr>
+                  <th valign="top" nowrap>签名串【signMsg】：</th>
+                  <td><input type="text" readonly="readonly" name="signMsg" value="<%=sign%>"></textarea></td>
+                </tr>
+                <tr>
+                  <th valign="top" nowrap>签名串【plain】：</th>
+                  <td><textarea name="plain" cols="40" rows="5" readonly="readonly"><%=plain%></textarea></td>
+                </tr>
+                 <tr>
+                  <td colspan="2"><div class="pbutton2 pline" align="center"><input type="submit" value="提交" class="button" onClick="sub();"/><input type="button" value="查看代码" class="button" onClick="document.getElementById('codeDiv').style.display='block';"/></div></td>
+                </tr>
+				--%>
+              </tbody>
+            </table>
+      </form>
+			<div id="codeDiv" style="display:none">
+			<table width="200" border="0">
+			  <tr>
+				<td>
+
+				</td>
+			  </tr>
+			</table>
+			</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+        
+  <div id="FOOTA">          
+<input type="button" class="button" name="cancel" onclick="window.location='chanjetCheckOrderState.html'" value="返回" />
+</div>
+  </body>
+</html>
+<script>
+
+function sub(){
+	document.sendOrder.submit();
+}
+</script>

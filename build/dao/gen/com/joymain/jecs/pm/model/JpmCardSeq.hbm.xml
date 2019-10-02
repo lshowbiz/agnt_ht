@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmCardSeq"
+            table="JPM_CARD_SEQ"
+            dynamic-update="true"
+            dynamic-insert="true"
+            optimistic-lock="version"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_SYS]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <version
+            name="version"
+            column="VERSION"
+            type="java.lang.Integer"
+        />
+
+        <property
+            name="cardNo"
+                    column="CARD_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="memberOrderNo"
+                    column="MEMBER_ORDER_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="password"
+                    column="PASSWORD"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="state"
+                    column="STATE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="molId"
+                    column="MOL_ID"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="grade"
+                    column="GRADE"
+                length="1"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

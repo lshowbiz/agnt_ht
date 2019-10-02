@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sys.model.SysUser"
+            table="JSYS_USER"
+    >
+
+    <id
+        name="userCode"
+            column="USER_CODE"
+                type="java.lang.String"
+            length="20"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="errNum"
+                    column="ERR_NUM"
+        >
+
+        </property>
+
+        <property
+            name="token"
+                    column="TOKEN"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+        >
+
+        </property>
+
+        <property
+            name="sendStatus"
+                    column="SEND_STATUS"
+        >
+
+        </property>
+
+        <one-to-one
+            name="jmiMember"
+            cascade="none"
+            constrained="false"
+        >
+
+        </one-to-one>
+
+        <property
+            name="honorStar"
+                    column="HONOR_STAR"
+        >
+
+        </property>
+
+        <property
+            name="password2"
+                    column="PASSWORD2"
+                length="32"
+        >
+
+        </property>
+
+        <property
+            name="state"
+                    column="STATE"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="userName"
+                    column="USER_NAME"
+                length="16"
+                not-null="false"
+        >
+
+        </property>
+
+        <property
+            name="password"
+                    column="PASSWORD"
+                length="32"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="userType"
+                    column="USER_TYPE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="defCharacterCoding"
+                    column="DEF_CHARACTER_CODING"
+                length="10"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="userArea"
+                    column="USER_AREA"
+        >
+
+        </property>
+
+        <property
+            name="ipCheck"
+                    column="IP_CHECK"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="firstName"
+                    column="FIRST_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="lastName"
+                    column="LAST_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="lastLoginErrorTime"
+                    column="LAST_LOGIN_ERROR_TIME"
+        >
+
+        </property>
+
+        <property
+            name="failureTimes"
+                    column="FAILURE_TIMES"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

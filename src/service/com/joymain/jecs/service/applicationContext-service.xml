@@ -1,0 +1,2315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+	<bean id="hibernateInterceptor" class="org.springframework.orm.hibernate3.HibernateInterceptor">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+    <aop:config>
+   		<aop:advisor advice-ref="hibernateInterceptor" pointcut="execution(* *..AutoShipQuartz.*(..))" order="1" />	
+        <aop:advisor id="userManagerTx" advice-ref="userManagerTxAdvice" pointcut="execution(* *..service.UserManager.*(..))" order="2"/>        
+        <aop:advisor id="userManagerSecurity" advice-ref="userSecurityAdvice" pointcut="execution(* *..service.UserManager.saveUser(..))" order="3"/>
+        <aop:advisor id="managerTx" advice-ref="txAdvice" pointcut="execution(* *..service.*Manager.*(..))" order="4"/>
+    </aop:config>
+    
+    <tx:advice id="txAdvice">
+        <tx:attributes>
+            <tx:method name="get*" read-only="true"/>
+			<tx:method name="login" no-rollback-for="AppException"/>
+            <tx:method name="*" rollback-for="Exception"/>
+        </tx:attributes>
+    </tx:advice>
+
+		
+    
+    <tx:advice id="userManagerTxAdvice">
+        <tx:attributes>
+            <tx:method name="save*" rollback-for="UserExistsException"/>
+        </tx:attributes>
+    </tx:advice>
+    
+	<!--jdbcTemplate-START-->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+	
+	
+	<bean id="jdbcTemplateReport" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref bean="dataSourceReport" />
+		</property>
+	</bean>
+	<!--jdbcTemplate-END-->
+	
+    <bean id="lookupManager" class="com.joymain.jecs.service.impl.LookupManagerImpl">
+        <property name="lookupDao" ref="lookupDao"/>
+    </bean>
+
+    <bean id="manager" class="com.joymain.jecs.service.impl.BaseManager">
+        <property name="dao" ref="dao"/>
+    </bean>
+
+    <bean id="userManager" class="com.joymain.jecs.service.impl.UserManagerImpl">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+    
+    <bean id="userSecurityAdvice" class="com.joymain.jecs.service.UserSecurityAdvice">
+        <property name="userCache" ref="userCache"/>
+    </bean>
+
+    <bean id="userCache" class="org.acegisecurity.providers.dao.cache.EhCacheBasedUserCache">
+        <property name="cache">
+            <bean class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+                <property name="cacheManager">
+                    <bean class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"/>
+                </property>
+                <property name="cacheName" value="userCache"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="roleManager" class="com.joymain.jecs.service.impl.RoleManagerImpl">
+        <property name="roleDao" ref="roleDao"/>
+    </bean>
+
+    <!--bean id="mailEngine" class="com.joymain.jecs.service.MailEngine">
+        <property name="mailSender" ref="mailSender"/>
+        <property name="velocityEngine" ref="velocityEngine"/>
+    </bean-->
+
+    <!--bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${mail.host}"/>
+        <property name="username" value="${mail.username}"/>
+        <property name="password" value="${mail.password}"/>
+    </bean-->
+    
+    <bean id="sypayUtil" class="com.joymain.jecs.util.sypay.SypayUtilImpl">
+        <property name="jfiPayLogManager" ref="jfiPayLogManager"/>
+    </bean>
+    
+    <bean id="yspayUtil" class="com.joymain.jecs.util.yspay.YspayUtilImpl">
+        <property name="jfiPayLogManager" ref="jfiPayLogManager"/>
+    </bean>
+    
+     <bean id="umbpayUtil2" class="com.joymain.jecs.util.umbpay.UmbpayUtilImpl2">
+        <property name="jfiPayLogManager" ref="jfiPayLogManager"/>
+    </bean>
+	
+	<bean id="mobilUtil" class="com.joymain.jecs.util.mpos.MobilUtilImpl">
+        <property name="jfi99billLogManager" ref="jfi99billLogManager"/>
+        <property name="jpoMemberOrderManager" ref="jpoMemberOrderManager"/>
+    </bean>
+
+
+    <bean id="bill99Util" class="com.joymain.jecs.util.bill99.Bill99UtilImpl">
+        <property name="jfi99billLogManager" ref="jfi99billLogManager"/>
+        <property name="sysIdManager" ref="sysIdManager"/>
+        <property name="jmiMemberManager" ref="jmiMemberManager"/>
+        <property name="jpoMemberOrderManager" ref="jpoMemberOrderManager"/>
+    </bean>
+    
+    <bean id="bill99msUtil" class="com.joymain.jecs.util.bill99ms.Bill99msUtilImpl">
+        <property name="jfi99billmsLogManager" ref="jfi99billmsLogManager"/>
+        <property name="sysIdManager" ref="sysIdManager"/>
+        <property name="jmiMemberManager" ref="jmiMemberManager"/>
+        <property name="jpoMemberOrderManager" ref="jpoMemberOrderManager"/>
+    </bean>
+    
+    <bean id="alipayUtil" class="com.joymain.jecs.util.alipay.AlipayUtilImpl">
+        <property name="jfiAlipayLogManager" ref="jfiAlipayLogManager"/>
+        <property name="sysIdManager" ref="sysIdManager"/>
+    </bean>
+    
+    <bean id="tenpayUtil" class="com.joymain.jecs.util.tenpay.TenpayUtilImpl">
+        <property name="jfiTenpayLogManager" ref="jfiTenpayLogManager"/>
+        <property name="sysIdManager" ref="sysIdManager"/>
+        <property name="jpoMemberOrderManager" ref="jpoMemberOrderManager"/>
+        <property name="jmiMemberManager" ref="jmiMemberManager"/>
+    </bean>
+    
+    <bean id="hiTrustUtil" class="com.joymain.jecs.util.hitrust.HiTrustUtilImpl">
+        <property name="jpoMemberOrderManager" ref="jpoMemberOrderManager"/>
+        <property name="sysIdManager" ref="sysIdManager"/>
+    </bean>
+    
+    <bean id="usCreditCardUtil" class="com.joymain.jecs.util.uspay.UsCreditCardUtilImpl">
+        <property name="jpoMemberOrderManager" ref="jpoMemberOrderManager"/>
+        <property name="sysIdManager" ref="sysIdManager"/>
+    </bean>
+    
+	<!--System manage's manage bean definition start-->
+	<bean id="sysUserManager" class="com.joymain.jecs.sys.service.impl.SysUserManagerImpl" autowire="byName" />
+	<!--System manage's manage bean definition end-->
+
+	<!--SysListKey-START-->
+	<bean id="sysListKeyManager" class="com.joymain.jecs.sys.service.impl.SysListKeyManagerImpl">
+		<property name="sysListKeyDao" ref="sysListKeyDao" />
+	</bean>
+	<!--SysListKey-END-->
+	<!--SysListValue-START-->
+	<bean id="sysListValueManager" class="com.joymain.jecs.sys.service.impl.SysListValueManagerImpl">
+		<property name="sysListValueDao" ref="sysListValueDao" />
+	</bean>
+	<!--SysListValue-END-->
+	<!--SysConfigKey-START-->
+	<bean id="sysConfigKeyManager" class="com.joymain.jecs.sys.service.impl.SysConfigKeyManagerImpl">
+		<property name="sysConfigKeyDao" ref="sysConfigKeyDao" />
+	</bean>
+	<!--SysConfigKey-END-->
+	<!--SysConfigValue-START-->
+	<bean id="sysConfigValueManager" class="com.joymain.jecs.sys.service.impl.SysConfigValueManagerImpl">
+		<property name="sysConfigValueDao" ref="sysConfigValueDao" />
+	</bean>
+	<!--SysConfigValue-END-->
+
+	
+	<!--SysId-START-->
+	<bean id="sysIdManager" class="com.joymain.jecs.sys.service.impl.SysIdManagerImpl">
+		<property name="sysIdDao" ref="sysIdDao" />
+	</bean>
+	<!--SysId-END-->
+
+	<!--AlCharacterType-START-->
+	<bean id="alCharacterTypeManager" class="com.joymain.jecs.al.service.impl.AlCharacterTypeManagerImpl">
+		<property name="alCharacterTypeDao" ref="alCharacterTypeDao" />
+	</bean>
+	<!--AlCharacterType-END-->
+	<!--SysClickLog-START-->
+	<bean id="sysClickLogManager" class="com.joymain.jecs.sys.service.impl.SysClickLogManagerImpl">
+		<property name="sysClickLogDao" ref="sysClickLogDao" />
+	</bean>
+	<!--SysClickLog-END-->
+	<!--SysDataLog-START-->
+	<bean id="sysDataLogManager" class="com.joymain.jecs.sys.service.impl.SysDataLogManagerImpl">
+		<property name="sysDataLogDao" ref="sysDataLogDao" />
+	</bean>
+	<!--SysDataLog-END-->
+
+    <!-- Configure Velocity for sending e-mail -->
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+        <property name="velocityProperties">
+            <props>
+                <prop key="resource.loader">class</prop>
+                <prop key="class.resource.loader.class">
+                    org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+                </prop>
+                <prop key="velocimacro.library"></prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="mailMessage" class="org.springframework.mail.SimpleMailMessage" scope="prototype">
+        <property name="from" value="${mail.default.from}"/>
+    </bean>
+
+    <!-- Add new Managers here -->
+	<!--AlBranch-START-->
+	<bean id="alBranchManager" class="com.joymain.jecs.al.service.impl.AlBranchManagerImpl">
+		<property name="alBranchDao" ref="alBranchDao" />
+	</bean>
+	<!--AlBranch-END-->
+	<!--AlCharacterCoding-START-->
+	<bean id="alCharacterCodingManager" class="com.joymain.jecs.al.service.impl.AlCharacterCodingManagerImpl">
+		<property name="alCharacterCodingDao" ref="alCharacterCodingDao" />
+	</bean>
+	<!--AlCharacterCoding-END-->
+	<!--AlCharacterKey-START-->
+	<bean id="alCharacterKeyManager" class="com.joymain.jecs.al.service.impl.AlCharacterKeyManagerImpl">
+		<property name="alCharacterKeyDao" ref="alCharacterKeyDao" />
+	</bean>
+	<!--AlCharacterKey-END-->
+	<!--AlCharacterValue-START-->
+	<bean id="alCharacterValueManager" class="com.joymain.jecs.al.service.impl.AlCharacterValueManagerImpl">
+		<property name="alCharacterValueDao" ref="alCharacterValueDao" />
+	</bean>
+	<!--AlCharacterValue-END-->
+	<!--AlCompany-START-->
+	<bean id="alCompanyManager" class="com.joymain.jecs.al.service.impl.AlCompanyManagerImpl">
+		<property name="alCompanyDao" ref="alCompanyDao" />
+	</bean>
+	<!--AlCompany-END-->
+	<!--AlCountry-START-->
+	<bean id="alCountryManager" class="com.joymain.jecs.al.service.impl.AlCountryManagerImpl">
+		<property name="alCountryDao" ref="alCountryDao" />
+	</bean>
+	<!--AlCountry-END-->
+	<!--AlCurrency-START-->
+	<bean id="alCurrencyManager" class="com.joymain.jecs.al.service.impl.AlCurrencyManagerImpl">
+		<property name="alCurrencyDao" ref="alCurrencyDao" />
+	</bean>
+	<!--AlCurrency-END-->
+	<!--AlRegion-START-->
+	<bean id="alRegionManager" class="com.joymain.jecs.al.service.impl.AlRegionManagerImpl">
+		<property name="alRegionDao" ref="alRegionDao" />
+	</bean>
+	<!--AlRegion-END-->
+	<!--AlStateProvince-START-->
+	<bean id="alStateProvinceManager" class="com.joymain.jecs.al.service.impl.AlStateProvinceManagerImpl">
+		<property name="alStateProvinceDao" ref="alStateProvinceDao" />
+	</bean>
+	<!--AlStateProvince-END-->
+
+
+
+	
+	
+    <!--SysOperationLog-START-->    
+    <bean id="sysOperationLogManager" class="com.joymain.jecs.sys.service.impl.SysOperationLogManagerImpl">
+        <property name="sysOperationLogDao" ref="sysOperationLogDao"/>
+    </bean>
+    <!--SysOperationLog-END-->
+    
+    <!--SysUsrTypePow-START-->    
+    <bean id="sysUsrTypePowManager" class="com.joymain.jecs.sys.service.impl.SysUsrTypePowManagerImpl">
+        <property name="sysUsrTypePowDao" ref="sysUsrTypePowDao"/>
+    </bean>
+    <!--SysUsrTypePow-END-->
+    
+    <!--SysManagerModlPow-START-->    
+    <bean id="sysManagerModlPowManager" class="com.joymain.jecs.sys.service.impl.SysManagerModlPowManagerImpl">
+        <property name="sysManagerModlPowDao" ref="sysManagerModlPowDao"/>
+        <property name="sysManagerUserDao" ref="sysManagerUserDao"/>
+        <property name="sysModuleDao" ref="sysModuleDao"/>
+    </bean>
+    <!--SysManagerModlPow-END-->
+    
+    <!--SysCompanyPow-START-->    
+    <bean id="sysCompanyPowManager" class="com.joymain.jecs.sys.service.impl.SysCompanyPowManagerImpl">
+        <property name="sysCompanyPowDao" ref="sysCompanyPowDao"/>
+    </bean>
+    <!--SysCompanyPow-END-->
+    <!--SysDepartment-START-->    
+    <bean id="sysDepartmentManager" class="com.joymain.jecs.sys.service.impl.SysDepartmentManagerImpl">
+        <property name="sysDepartmentDao" ref="sysDepartmentDao"/>
+    </bean>
+    <!--SysDepartment-END-->
+    <!--SysManager-START-->    
+    <bean id="sysManagerManager" class="com.joymain.jecs.sys.service.impl.SysManagerManagerImpl">
+        <property name="sysManagerDao" ref="sysManagerDao"/>
+    </bean>
+    <!--SysManager-END-->
+    <!--SysManagerUser-START-->    
+    <bean id="sysManagerUserManager" class="com.joymain.jecs.sys.service.impl.SysManagerUserManagerImpl">
+        <property name="sysManagerUserDao" ref="sysManagerUserDao"/>
+    </bean>
+    <!--SysManagerUser-END-->
+    <!--SysModule-START-->    
+    <bean id="sysModuleManager" class="com.joymain.jecs.sys.service.impl.SysModuleManagerImpl">
+        <property name="sysModuleDao" ref="sysModuleDao"/>
+    </bean>
+    <!--SysModule-END-->
+    <!--SysRole-START-->    
+    <bean id="sysRoleManager" class="com.joymain.jecs.sys.service.impl.SysRoleManagerImpl">
+        <property name="sysRoleDao" ref="sysRoleDao"/>
+    </bean>
+    <!--SysRole-END-->
+    <!--SysUserRole-START-->    
+    <bean id="sysUserRoleManager" class="com.joymain.jecs.sys.service.impl.SysUserRoleManagerImpl">
+        <property name="sysUserRoleDao" ref="sysUserRoleDao"/>
+    </bean>
+    <!--SysUserRole-END-->
+    <!--SysRolePower-START-->    
+    <bean id="sysRolePowerManager" class="com.joymain.jecs.sys.service.impl.SysRolePowerManagerImpl">
+        <property name="sysRolePowerDao" ref="sysRolePowerDao"/>
+    </bean>
+    <!--SysRolePower-END-->
+    
+    <!--SysBank-START-->    
+    <bean id="sysBankManager" class="com.joymain.jecs.sys.service.impl.SysBankManagerImpl">
+        <property name="sysBankDao" ref="sysBankDao"/>
+    </bean>
+    <!--SysBank-END-->
+    
+    <!--SysVisitLog-START-->    
+    <bean id="sysVisitLogManager" class="com.joymain.jecs.sys.service.impl.SysVisitLogManagerImpl">
+        <property name="sysVisitLogDao" ref="sysVisitLogDao"/>
+    </bean>
+    <!--SysVisitLog-END-->
+    <!--SysUserIp-START-->    
+    <bean id="sysUserIpManager" class="com.joymain.jecs.sys.service.impl.SysUserIpManagerImpl">
+        <property name="sysUserIpDao" ref="sysUserIpDao"/>
+    </bean>
+    <!--SysUserIp-END-->
+    <!--SysReportLog-START-->    
+    <bean id="sysReportLogManager" class="com.joymain.jecs.sys.service.impl.SysReportLogManagerImpl">
+        <property name="sysReportLogDao" ref="sysReportLogDao"/>
+    </bean>
+    <!--SysReportLog-END-->
+    
+    
+    <!--AlCompanyArea-START-->    
+    <bean id="alCompanyAreaManager" class="com.joymain.jecs.al.service.impl.AlCompanyAreaManagerImpl">
+        <property name="alCompanyAreaDao" ref="alCompanyAreaDao"/>
+    </bean>
+    <!--AlCompanyArea-END-->
+    
+    <!--JmiMember-START-->    
+    <bean id="jmiMemberManager" class="com.joymain.jecs.mi.service.impl.JmiMemberManagerImpl">
+        <property name="jmiMemberDao" ref="jmiMemberDao"/>
+        <property name="sysIdManager" ref="sysIdManager"/>
+        <property name="jmiRecommendRefDao" ref="jmiRecommendRefDao"/>
+        <property name="jmiLinkRefDao" ref="jmiLinkRefDao"/>
+        <property name="alCompanyManager" ref="alCompanyManager"/>
+        <property name="jmiMemberUpgradeNoteManager" ref="jmiMemberUpgradeNoteManager"/>
+        <property name="sysUserRoleManager" ref="sysUserRoleManager"/>
+        <property name="jfiBankbookBalanceManager" ref="jfiBankbookBalanceManager"/>
+        <property name="sysRoleManager" ref="sysRoleManager"/>
+        <property name="jbdBonusBalanceManager" ref="jbdBonusBalanceManager"/>
+        <property name="jbdUserCardListManager" ref="jbdUserCardListManager"/>
+        <property name="jpoMemberOrderManager" ref="jpoMemberOrderManager"/>
+        <property name="bdPeriodManager" ref="bdPeriodManager"/>
+        <property name="jamMsnDetailManager" ref="jamMsnDetailManager"/>
+        <property name="jamMsnTypeManager" ref="jamMsnTypeManager"/>
+        <property name="jfiPayBankManager" ref="jfiPayBankManager"/>
+        <property name="ecRegisterSender" ref="ecRegisterSender"/>
+        <property name="jmiSubStoreManager" ref="jmiSubStoreManager"/>
+        <property name="jmiBlacklistManager" ref="jmiBlacklistManager"/>
+        <property name="jbdTravelPointManager" ref="jbdTravelPointManager"/>
+        <property name="jbdSummaryListManager" ref="jbdSummaryListManager"/>
+        <property name="alCityManager" ref="alCityManager"/>
+        <property name="fiBcoinBalanceDao" ref="fiBcoinBalanceDao"/>
+        <property name="fiCcoinBalanceDao" ref="fiCcoinBalanceDao"/>
+        <property name="fiBankbookBalanceManager" ref="fiBankbookBalanceManager"/>
+        <property name="fiBankbookJournalDao" ref="fiBankbookJournalDao"/>
+        <property name="fiCcoinJournalDao" ref="fiCcoinJournalDao"/>
+        <property name="fiBcoinJournalDao" ref="fiBcoinJournalDao"/>
+        <property name="jfiBankbookJournalDao" ref="jfiBankbookJournalDao"/>
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+        <property name="jmiLevelNoteManager" ref="jmiLevelNoteManager"/>
+        <property name="fiFundbookBalanceManager" ref="fiFundbookBalanceManager"/>
+        <property name="fiLovecoinBalanceManager" ref="fiLovecoinBalanceManager"/>
+        <property name="jmiDealListManager" ref="jmiDealListManager"/>
+        <property name="jmiStateLogManager" ref="jmiStateLogManager"/>
+        <property name="jfiDepositBalanceManager" ref="jfiDepositBalanceManager"/>
+        
+        <property name="jmiMemberLogDao" ref="jmiMemberLogDao"/>
+        <property name="fiProductPointBalanceDao" ref="fiProductPointBalanceDao"/>
+        <property name="jmiAddrBookManager" ref="jmiAddrBookManager"/>
+        <property name="fiCommonAddrManager" ref="fiCommonAddrManager"/>
+        <property name="jmiYdSendListManager" ref="jmiYdSendListManager"/>
+    </bean>
+    <!--JmiMember-END-->
+    <!--JmiMemberUpgradeNote-START-->    
+    <bean id="jmiMemberUpgradeNoteManager" class="com.joymain.jecs.mi.service.impl.JmiMemberUpgradeNoteManagerImpl">
+        <property name="jmiMemberUpgradeNoteDao" ref="jmiMemberUpgradeNoteDao"/>
+    </bean>
+    <!--JmiMemberUpgradeNote-END-->
+    <!--JfiBankbookBalance-START-->    
+    <bean id="jfiBankbookBalanceManager" class="com.joymain.jecs.fi.service.impl.JfiBankbookBalanceManagerImpl">
+        <property name="jfiBankbookBalanceDao" ref="jfiBankbookBalanceDao"/>
+    </bean>
+    <!--JfiBankbookBalance-END-->
+    <!--JfiBankbookJournal-START-->    
+    <bean id="jfiBankbookJournalManager" class="com.joymain.jecs.fi.service.impl.JfiBankbookJournalManagerImpl">
+        <property name="jfiBankbookJournalDao" ref="jfiBankbookJournalDao"/>
+        <property name="jfiBankbookTempDao" ref="jfiBankbookTempDao"/>
+        <property name="jfiBankbookBalanceDao" ref="jfiBankbookBalanceDao"/>
+        <property name="jfi99billLogManager" ref="jfi99billLogManager"/>
+        <property name="jfi99billmsLogManager" ref="jfi99billmsLogManager"/>
+        <property name="jfiAlipayLogManager" ref="jfiAlipayLogManager"/>
+        <property name="jfiTenpayLogManager" ref="jfiTenpayLogManager"/>
+        <property name="jfiHiTrustLogManager" ref="jfiHiTrustLogManager"/>
+        <property name="jfiUsCreditCardLogManager" ref="jfiUsCreditCardLogManager"/>
+        <property name="jfiChanjetLogManager" ref="jfiChanjetLogManager"/>
+        <property name="jfiUmbpayLogManager" ref="jfiUmbpayLogManager"/>
+        <property name="chinapnrLogManager" ref="jfiChinapnrLogManager"/>
+        <property name="fiChannelLogManager" ref="fiChannelLogManager"/>
+        <property name="jfiYeepayLogManager" ref="jfiYeepayLogManager"/>
+        <property name="jfiPayLogManager" ref="jfiPayLogManager"/>
+        <property name="jpoBankBookPayListDao" ref="jpoBankBookPayListDao"/>
+    </bean>
+    <!--JfiBankbookJournal-END-->
+    <!--JfiBankbookTemp-START-->    
+    <bean id="jfiBankbookTempManager" class="com.joymain.jecs.fi.service.impl.JfiBankbookTempManagerImpl">
+        <property name="jfiBankbookTempDao" ref="jfiBankbookTempDao"/>
+    </bean>
+    <!--JfiBankbookTemp-END-->
+    <!--JfiPayAdvice-START-->    
+    <bean id="jfiPayAdviceManager" class="com.joymain.jecs.fi.service.impl.JfiPayAdviceManagerImpl">
+        <property name="jfiPayAdviceDao" ref="jfiPayAdviceDao"/>
+    </bean>
+    <!--JfiPayAdvice-END-->
+    <!--JfiPayBank-START-->    
+    <bean id="jfiPayBankManager" class="com.joymain.jecs.fi.service.impl.JfiPayBankManagerImpl">
+        <property name="jfiPayBankDao" ref="jfiPayBankDao"/>
+    </bean>
+    <!--JfiPayBank-END-->
+    <!--JfiPayData-START-->    
+    <bean id="jfiPayDataManager" class="com.joymain.jecs.fi.service.impl.JfiPayDataManagerImpl">
+        <property name="jfiPayDataDao" ref="jfiPayDataDao"/>
+        <property name="jfiPayAdviceDao" ref="jfiPayAdviceDao"/>
+    </bean>
+    <!--JfiPayData-END-->
+    <!--JmiAddrBook-START-->    
+    <bean id="jmiAddrBookManager" class="com.joymain.jecs.mi.service.impl.JmiAddrBookManagerImpl">
+        <property name="jmiAddrBookDao" ref="jmiAddrBookDao"/>
+        <property name="jmiMemberDao" ref="jmiMemberDao"/>
+    </bean>
+    <!--JmiAddrBook-END-->
+    <!--JmiLinkRef-START-->    
+    <bean id="jmiLinkRefManager" class="com.joymain.jecs.mi.service.impl.JmiLinkRefManagerImpl">
+        <property name="jmiLinkRefDao" ref="jmiLinkRefDao"/>
+        <property name="jmiMemberDao" ref="jmiMemberDao"/>
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+    <bean id="jmiLinkRefManagerReport" class="com.joymain.jecs.mi.service.impl.JmiLinkRefManagerImpl">
+        <property name="jmiLinkRefDao" ref="jmiLinkRefDaoReport"/>
+        <property name="jmiMemberDao" ref="jmiMemberDaoReport"/>
+    </bean>
+    <bean id="jmiRefStateLogManager" class="com.joymain.jecs.mi.service.impl.JmiRefStateLogManagerImpl">
+    	<property name="jmiRefStateLogDao" ref="jmiRefStateLogDao"/>
+    </bean>
+    <!--JmiLinkRef-END-->
+    <!--JmiRecommendRef-START-->    
+    <bean id="jmiRecommendRefManager" class="com.joymain.jecs.mi.service.impl.JmiRecommendRefManagerImpl">
+        <property name="jmiRecommendRefDao" ref="jmiRecommendRefDao"/>
+        <property name="jmiMemberDao" ref="jmiMemberDao"/>
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+    <bean id="jmiRecommendRefManagerReport" class="com.joymain.jecs.mi.service.impl.JmiRecommendRefManagerImpl">
+        <property name="jmiRecommendRefDao" ref="jmiRecommendRefDaoReport"/>
+        <property name="jmiMemberDao" ref="jmiMemberDaoReport"/>
+    </bean>
+    <!--JmiRecommendRef-END-->
+    <!--JpmProduct-START-->    
+    <bean id="jpmProductManager" class="com.joymain.jecs.pm.service.impl.JpmProductManagerImpl">
+        <property name="jpmProductDao" ref="jpmProductDao"/>
+    </bean>
+    <!--JpmProduct-END-->
+    <!--JpmProductSale-START-->    
+    <bean id="jpmProductSaleManager" class="com.joymain.jecs.pm.service.impl.JpmProductSaleManagerImpl">
+        <property name="jpmProductSaleDao" ref="jpmProductSaleDao"/>
+        <property name="jpmSalePromoterDao" ref="jpmSalePromoterDao"/>
+        
+    </bean>
+    <!--JpmProductSale-END-->
+    <!--JpmProductSaleLog-START-->    
+    <bean id="jpmProductSaleLogManager" class="com.joymain.jecs.pm.service.impl.JpmProductSaleLogManagerImpl">
+        <property name="jpmProductSaleLogDao" ref="jpmProductSaleLogDao"/>
+    </bean>
+    <!--JpmProductSaleLog-END-->
+    <!--Jfi99billLog-START-->    
+    <bean id="jfi99billLogManager" class="com.joymain.jecs.fi.service.impl.Jfi99billLogManagerImpl">
+        <property name="jfi99billLogDao" ref="jfi99billLogDao"/>
+    </bean>
+    <!--Jfi99billLog-END-->
+    <!--PdWarehouse-START-->    
+    <bean id="pdWarehouseManager" class="com.joymain.jecs.pd.service.impl.PdWarehouseManagerImpl">
+        <property name="pdWarehouseDao" ref="pdWarehouseDao"/>
+    </bean>
+    <!--PdWarehouse-END-->
+    <!--PdWarehouseStockTrace-START-->    
+    <bean id="pdWarehouseStockTraceManager" class="com.joymain.jecs.pd.service.impl.PdWarehouseStockTraceManagerImpl">
+        <property name="pdWarehouseStockTraceDao" ref="pdWarehouseStockTraceDao"/>
+        <property name="jpmProductSaleManager" ref="jpmProductSaleManager"/>
+        <property name="pdFlitWarehouseDetailDao" ref="pdFlitWarehouseDetailDao"/>
+    </bean>
+    <!--PdWarehouseStockTrace-END-->
+    <!--PdWarehouseStock-START-->    
+    <bean id="pdWarehouseStockManager" class="com.joymain.jecs.pd.service.impl.PdWarehouseStockManagerImpl">
+        <property name="pdWarehouseStockDao" ref="pdWarehouseStockDao"/>
+        <property name="pdWarehouseDao" ref="pdWarehouseDao"/>
+        <property name="pdWarehouseStockTraceDao" ref="pdWarehouseStockTraceDao"/>
+        <property name="jpmProductSaleManager" ref="jpmProductSaleManager"/>
+    </bean>
+    <!--PdWarehouseStock-END-->
+    <!--PdSendInfo-START-->    
+    <bean id="pdSendInfoManager" class="com.joymain.jecs.pd.service.impl.PdSendInfoManagerImpl">
+    	<property name="jamMsnModuleManager" ref="jamMsnModuleManager"/>
+    	<property name="alDistrictManager" ref="alDistrictManager"/>
+        <property name="pdSendInfoDao" ref="pdSendInfoDao"/>
+        <property name="sysIdManager" ref="sysIdManager"/>
+        <property name="sysUserManager" ref="sysUserManager"/>
+        <property name="pdSendInfoDetailDao" ref="pdSendInfoDetailDao"/>
+         <property name="pdWarehouseAreaManager" ref="pdWarehouseAreaManager"/>
+         <property name="pdShipmentsDetailManager" ref="pdShipmentsDetailManager"/>
+         <property name="pdWarehouseStockManager" ref="pdWarehouseStockManager"/>
+         <property name="pdWarehouseDao" ref="pdWarehouseDao"/>
+         <property name="alCityManager" ref="alCityManager"/>
+         <property name="alStateProvinceManager" ref="alStateProvinceManager"/>
+         <property name="jpmProductSaleManager" ref="jpmProductSaleManager"/>
+         <property name="jpmProductSaleNewManager" ref="jpmProductSaleNewManager"/>
+         <property name="upsInteractiveLogManager" ref="upsInteractiveLogManager"/>
+         <property name="jpoMemberOrderDao" ref="jpoMemberOrderDao"/>
+         <property name="mailEngine" ref="mailEngine"/>
+         <property name="mailMessage" ref="mailMessage"/>
+         <property name="pdShipStrategyDetailManager" ref="pdShipStrategyDetailManager"/>
+   
+         <property name="jpmProductManager" ref="jpmProductManager"/>
+         <property name="jpmProductCombinationManager" ref="jpmProductCombinationManager"/>
+         <property name="jpmProductSaleTeamTypeManager" ref="jpmProductSaleTeamTypeManager"/>
+         <property name="pdLogisticsBaseManager" ref="pdLogisticsBaseManager"/>
+   		<property name="jocsInterfaceRetransmissionManager" ref="jocsInterfaceRetransmissionManager"/>
+   
+    </bean>
+    <!--PdSendInfo-END-->
+    <!--PdSendInfoDetail-START-->    
+    <bean id="pdSendInfoDetailManager" class="com.joymain.jecs.pd.service.impl.PdSendInfoDetailManagerImpl">
+        <property name="pdSendInfoDetailDao" ref="pdSendInfoDetailDao"/>
+    </bean>
+    <!--PdSendInfoDetail-END-->
+    <!--PdShipmentsDetail-START-->    
+    <bean id="pdShipmentsDetailManager" class="com.joymain.jecs.pd.service.impl.PdShipmentsDetailManagerImpl">
+        <property name="pdShipmentsDetailDao" ref="pdShipmentsDetailDao"/>
+        <property name="sysUserManager" ref="sysUserManager"/>
+        
+    </bean>
+    <!--PdShipmentsDetail-END-->
+    <!--PdWarehouseUser-START-->    
+    <bean id="pdWarehouseUserManager" class="com.joymain.jecs.pd.service.impl.PdWarehouseUserManagerImpl">
+        <property name="pdWarehouseUserDao" ref="pdWarehouseUserDao"/>
+    </bean>
+    <!--PdWarehouseUser-END-->
+    <!--PdWarehouseArea-START-->    
+    <bean id="pdWarehouseAreaManager" class="com.joymain.jecs.pd.service.impl.PdWarehouseAreaManagerImpl">
+        <property name="pdWarehouseAreaDao" ref="pdWarehouseAreaDao"/>
+    </bean>
+    <!--PdWarehouseArea-END-->
+    <!--AmAnnounce-START-->    
+    <bean id="amAnnounceManager" class="com.joymain.jecs.am.service.impl.AmAnnounceManagerImpl">
+        <property name="amAnnounceDao" ref="amAnnounceDao"/>
+        <property name="amAnnounceRecordManager" ref="amAnnounceRecordManager"/>
+    </bean>
+    <!--AmAnnounce-END-->
+    <!--AmAnnounceRecord-START-->    
+    <bean id="amAnnounceRecordManager" class="com.joymain.jecs.am.service.impl.AmAnnounceRecordManagerImpl">
+        <property name="amAnnounceRecordDao" ref="amAnnounceRecordDao"/>
+    </bean>
+    <!--AmAnnounceRecord-END-->
+    <!--AmPermit-START-->    
+    <bean id="amPermitManager" class="com.joymain.jecs.am.service.impl.AmPermitManagerImpl">
+        <property name="amPermitDao" ref="amPermitDao"/>
+    </bean>
+    <!--AmPermit-END-->
+    <!--JpoMemberOrder-START-->    
+    <bean id="jpoMemberOrderManager" class="com.joymain.jecs.po.service.impl.JpoMemberOrderManagerImpl">
+        <property name="jpoMemberOrderDao" ref="jpoMemberOrderDao"/>
+        <property name="jpoMemberOrderListDao" ref="jpoMemberOrderListDao"/>
+        <property name="jpoMemberOrderFeeDao" ref="jpoMemberOrderFeeDao"/>
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+        <property name="sysUserDao" ref="sysUserDao"/>
+        <property name="jmiMemberDao" ref="jmiMemberDao"/>
+        <property name="jmiMemberUpgradeNoteDao" ref="jmiMemberUpgradeNoteDao"/>
+        <property name="sysRoleManager" ref="sysRoleManager"/>
+        <property name="sysUserRoleManager" ref="sysUserRoleManager"/>
+        <property name="pdSendInfoManager" ref="pdSendInfoManager"/>
+        <property name="sysListValueManager" ref="sysListValueManager"/>
+        <property name="jbdUserCardListManager" ref="jbdUserCardListManager"/>
+        <property name="jpmCardSeqManager" ref="jpmCardSeqManager"/>
+        <property name="bdPeriodManager" ref="bdPeriodManager"/>
+        <property name="jmiStoreManager" ref="jmiStoreManager"/>
+        <property name="fiCoinLogManager" ref="fiCoinLogManager"/>
+        <property name="ecCoinSender" ref="ecCoinSender"/>
+        <property name="jpmProductSaleManager" ref="jpmProductSaleManager"/>
+        <property name="jbdSummaryListManager" ref="jbdSummaryListManager"/>
+        <property name="alCompanyManager" ref="alCompanyManager"/>
+        <property name="alStateProvinceManager" ref="alStateProvinceManager"/>
+        <property name="fiBcoinBalanceManager" ref="fiBcoinBalanceManager"/>
+        <property name="fiBcoinJournalManager" ref="fiBcoinJournalManager"/>
+        <property name="fiBankbookJournalManager" ref="fiBankbookJournalManager"/>
+        <property name="sysIdManager" ref="sysIdManager"/>
+        <property name="jpmSalePromoterDao" ref="jpmSalePromoterDao"/>
+        <property name="jmiMemberTeamManager" ref="jmiMemberTeamManager"/>
+        <property name="jpoMovieDao" ref="jpoMovieDao"/>
+        <property name="jpoProductNumLimitManager" ref="jpoProductNumLimitManager"/>
+        <property name="jpoBankBookPayListDao" ref="jpoBankBookPayListDao"/>
+    </bean>  
+   
+    <bean id="jpoMemberOrderManagerReport" class="com.joymain.jecs.po.service.impl.JpoMemberOrderManagerImpl">
+        <property name="jpoMemberOrderDao" ref="jpoMemberOrderDaoReport"/>
+		<property name="jbdSummaryListManager" ref="jbdSummaryListManager"/>
+    </bean>
+    <!--JpoMemberOrder-END-->
+    <!--JpoMemberOrderFee-START-->    
+    <bean id="jpoMemberOrderFeeManager" class="com.joymain.jecs.po.service.impl.JpoMemberOrderFeeManagerImpl">
+        <property name="jpoMemberOrderFeeDao" ref="jpoMemberOrderFeeDao"/>
+    </bean>
+    <!--JpoMemberOrderFee-END-->
+    <!--JpoMemberOrderList-START-->    
+    <bean id="jpoMemberOrderListManager" class="com.joymain.jecs.po.service.impl.JpoMemberOrderListManagerImpl">
+        <property name="jpoMemberOrderListDao" ref="jpoMemberOrderListDao"/>
+    </bean>
+    <!--JpoMemberOrderList-END-->
+    <!--JprRefund-START-->    
+    <bean id="jprRefundManager" class="com.joymain.jecs.pr.service.impl.JprRefundManagerImpl">
+        <property name="jprRefundDao" ref="jprRefundDao"/>
+        <property name="jprRefundListDao" ref="jprRefundListDao"/>
+        <property name="pdWarehouseStockManager" ref="pdWarehouseStockManager"/>
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+        <property name="jbdSummaryListManager" ref="jbdSummaryListManager"/>
+        <property name="fiBankbookJournalManager" ref="fiBankbookJournalManager"/>
+        <property name="jpoMemberOrderListDao" ref="jpoMemberOrderListDao"/>
+        <property name="jpoMemberOrderDao" ref="jpoMemberOrderDao"/>
+    </bean>
+    <!--JprRefund-END-->
+    <!--JprRefundList-START-->    
+    <bean id="jprRefundListManager" class="com.joymain.jecs.pr.service.impl.JprRefundListManagerImpl">
+        <property name="jprRefundListDao" ref="jprRefundListDao"/>
+    </bean>
+    <!--JprRefundList-END-->
+    <!--BdOutwardBank-START-->    
+    <bean id="bdOutwardBankManager" class="com.joymain.jecs.bd.service.impl.BdOutwardBankManagerImpl">
+        <property name="bdOutwardBankDao" ref="bdOutwardBankDao"/>
+    </bean>
+    <!--BdOutwardBank-END-->
+    <!--JbdSendRecord-START-->    
+    <bean id="jbdSendRecordManager" class="com.joymain.jecs.bd.service.impl.JbdSendRecordManagerImpl">
+        <property name="jbdSendRecordDao" ref="jbdSendRecordDao"/>
+    </bean>
+    <!--JbdSendRecord-END-->
+    <!--JbdSendRecordHist-START-->    
+    <bean id="jbdSendRecordHistManager" class="com.joymain.jecs.bd.service.impl.JbdSendRecordHistManagerImpl">
+        <property name="jbdSendRecordHistDao" ref="jbdSendRecordHistDao"/>
+        <property name="jbdBonusBalanceDao" ref="jbdBonusBalanceDao"/>
+        <property name="jbdMemberLinkCalcHistManager" ref="jbdMemberLinkCalcHistManager"/>
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+        <property name="fiBankbookJournalManager" ref="fiBankbookJournalManager"/>
+        <property name="jbdSendRecordNoteManager" ref="jbdSendRecordNoteManager"/>
+        <property name="jmiSpecialListDao" ref="jmiSpecialListDao"/>
+        <property name="jpoBankBookPayListDao" ref="jpoBankBookPayListDao"/>
+    </bean>
+    <!--JbdSendRecordHist-END-->
+    <!--JbdBonusBalance-START-->    
+    <bean id="jbdBonusBalanceManager" class="com.joymain.jecs.bd.service.impl.JbdBonusBalanceManagerImpl">
+        <property name="jbdBonusBalanceDao" ref="jbdBonusBalanceDao"/>
+        <property name="bdBounsDeductManager" ref="bdBounsDeductManager"/>
+        <property name="jmiMemberDao" ref="jmiMemberDao"/>
+    </bean>
+    <!--JbdBonusBalance-END-->
+    <!--PdEnterWarehouse-START-->    
+    <bean id="pdEnterWarehouseManager" class="com.joymain.jecs.pd.service.impl.PdEnterWarehouseManagerImpl">
+        <property name="pdEnterWarehouseDao" ref="pdEnterWarehouseDao"/>
+        <property name="pdWarehouseStockManager" ref="pdWarehouseStockManager"/>
+    </bean>
+    <!--PdEnterWarehouse-END-->
+    <!--PdEnterWarehouseDetail-START-->    
+    <bean id="pdEnterWarehouseDetailManager" class="com.joymain.jecs.pd.service.impl.PdEnterWarehouseDetailManagerImpl">
+        <property name="pdEnterWarehouseDetailDao" ref="pdEnterWarehouseDetailDao"/>
+    </bean>
+    <!--PdEnterWarehouseDetail-END-->
+    <!--PdOutWarehouse-START-->    
+    <bean id="pdOutWarehouseManager" class="com.joymain.jecs.pd.service.impl.PdOutWarehouseManagerImpl">
+        <property name="pdOutWarehouseDao" ref="pdOutWarehouseDao"/>
+        <property name="pdWarehouseStockManager" ref="pdWarehouseStockManager"/>
+    </bean>
+    <!--PdOutWarehouse-END-->
+    <!--PdOutWarehouseDetail-START-->    
+    <bean id="pdOutWarehouseDetailManager" class="com.joymain.jecs.pd.service.impl.PdOutWarehouseDetailManagerImpl">
+        <property name="pdOutWarehouseDetailDao" ref="pdOutWarehouseDetailDao"/>
+    </bean>
+    <!--PdOutWarehouseDetail-END-->
+    
+    <!--PdJpReportManager-START-->    
+    <bean id="pdJpReportManager" class="com.joymain.jecs.pd.service.impl.PdJpReportManagerImpl">
+        <property name="pdJpReportDao" ref="pdJpReportDao"/>
+    </bean>
+    <!--PdJpReportManager-END-->
+    
+    <!--PdChnReportManager-START-->    
+    <bean id="pdChnReportManager" class="com.joymain.jecs.pd.service.impl.PdChnReportManagerImpl">
+        <property name="pdChnReportDao" ref="pdChnReportDao"/>
+    </bean>
+    <!--PdChnReportManager-END-->
+    
+    <!--PdReturnPurchase-START-->    
+    <bean id="pdReturnPurchaseManager" class="com.joymain.jecs.pd.service.impl.PdReturnPurchaseManagerImpl">
+        <property name="pdReturnPurchaseDao" ref="pdReturnPurchaseDao"/>
+        <property name="pdWarehouseStockManager" ref="pdWarehouseStockManager"/>
+        <property name="pdShipmentsDetailManager" ref="pdShipmentsDetailManager"/>
+        <property name="pdSendInfoManager" ref="pdSendInfoManager"/>
+    </bean>
+    <!--PdReturnPurchase-END-->
+    <!--PdReturnPurchaseDetail-START-->    
+    <bean id="pdReturnPurchaseDetailManager" class="com.joymain.jecs.pd.service.impl.PdReturnPurchaseDetailManagerImpl">
+        <property name="pdReturnPurchaseDetailDao" ref="pdReturnPurchaseDetailDao"/>
+        <property name="jpmProductManager" ref="jpmProductManager"/>
+    </bean>
+    <!--PdReturnPurchaseDetail-END-->
+    <!--PdAdjustStock-START-->    
+    <bean id="pdAdjustStockManager" class="com.joymain.jecs.pd.service.impl.PdAdjustStockManagerImpl">
+        <property name="pdAdjustStockDao" ref="pdAdjustStockDao"/>
+        <property name="pdWarehouseStockManager" ref="pdWarehouseStockManager"/>
+    </bean>
+    <!--PdAdjustStock-END-->
+    <!--PdAdjustStockDetail-START-->    
+    <bean id="pdAdjustStockDetailManager" class="com.joymain.jecs.pd.service.impl.PdAdjustStockDetailManagerImpl">
+        <property name="pdAdjustStockDetailDao" ref="pdAdjustStockDetailDao"/>
+    </bean>
+    <!--PdAdjustStockDetail-END-->
+    <!--PdFlitWarehouse-START-->    
+    <bean id="pdFlitWarehouseManager" class="com.joymain.jecs.pd.service.impl.PdFlitWarehouseManagerImpl">
+        <property name="pdFlitWarehouseDao" ref="pdFlitWarehouseDao"/>
+        <property name="pdWarehouseStockManager" ref="pdWarehouseStockManager"/>
+    </bean>
+    <!--PdFlitWarehouse-END-->
+    <!--PdFlitWarehouseDetail-START-->    
+    <bean id="pdFlitWarehouseDetailManager" class="com.joymain.jecs.pd.service.impl.PdFlitWarehouseDetailManagerImpl">
+        <property name="pdFlitWarehouseDetailDao" ref="pdFlitWarehouseDetailDao"/>
+    </bean>
+    <!--PdFlitWarehouseDetail-END-->
+    <!--PdStatusExcStock-START-->    
+    <bean id="pdStatusExcStockManager" class="com.joymain.jecs.pd.service.impl.PdStatusExcStockManagerImpl">
+        <property name="pdStatusExcStockDao" ref="pdStatusExcStockDao"/>
+    </bean>
+    <!--PdStatusExcStock-END-->
+    <!--PdStatusExcStockDetail-START-->    
+    <bean id="pdStatusExcStockDetailManager" class="com.joymain.jecs.pd.service.impl.PdStatusExcStockDetailManagerImpl">
+        <property name="pdStatusExcStockDetailDao" ref="pdStatusExcStockDetailDao"/>
+    </bean>
+    <!--PdStatusExcStockDetail-END-->
+    <!--BdPeriod-START-->    
+    <bean id="bdPeriodManager" class="com.joymain.jecs.bd.service.impl.BdPeriodManagerImpl">
+        <property name="bdPeriodDao" ref="bdPeriodDao"/>
+    </bean>
+    <!--BdPeriod-END-->
+    <!--BdBounsDeduct-START-->    
+    <bean id="bdBounsDeductManager" class="com.joymain.jecs.bd.service.impl.BdBounsDeductManagerImpl">
+        <property name="bdBounsDeductDao" ref="bdBounsDeductDao"/>
+    </bean>
+    <!--BdBounsDeduct-END-->
+    
+     <bean id="jbdYd399RecommendListManager" class="com.joymain.jecs.bd.service.impl.JbdYd399RecommendListManagerImpl">
+        <!--JbdYd399RecommendList-->  
+        <property name="jbdYd399RecommendListDao" ref="jbdYd399RecommendListDao"/>
+        <property name="jbdYd399RecommendHistDao" ref="jbdYd399RecommendHistDao"/>
+         <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+    </bean>
+    
+    
+    <!--JbdDayCustRecommend-START-->    
+    <bean id="jbdDayCustRecommendManager" class="com.joymain.jecs.bd.service.impl.JbdDayCustRecommendManagerImpl">
+        <property name="jbdDayCustRecommendDao" ref="jbdDayCustRecommendDao"/>
+         <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+    </bean>
+    <!--JbdDayCustRecommend-END-->
+    <!--JbdDayCustRecommendOrder-START-->    
+    <bean id="jbdDayCustRecommendOrderManager" class="com.joymain.jecs.bd.service.impl.JbdDayCustRecommendOrderManagerImpl">
+        <property name="jbdDayCustRecommendOrderDao" ref="jbdDayCustRecommendOrderDao"/>
+    </bean>
+    <!--JbdDayCustRecommend-END-->
+    
+    <!--JbdSellCalcSubHist-START-->    
+    <bean id="jbdSellCalcSubHistManager" class="com.joymain.jecs.bd.service.impl.JbdSellCalcSubHistManagerImpl">
+        <property name="jbdSellCalcSubHistDao" ref="jbdSellCalcSubHistDao"/>
+    </bean>
+    <!--JbdSellCalcSubHist-END-->
+    <!--JbdMemberLinkCalcHist-START-->    
+    <bean id="jbdMemberLinkCalcHistManager" class="com.joymain.jecs.bd.service.impl.JbdMemberLinkCalcHistManagerImpl">
+        <property name="jbdMemberLinkCalcHistDao" ref="jbdMemberLinkCalcHistDao"/>
+        <property name="jbdSellCalcSubHistDao" ref="jbdSellCalcSubHistDao"/>
+        <property name="jmiMemberDao" ref="jmiMemberDao"/>
+        <property name="bdPeriodManager" ref="bdPeriodManager"/>
+        <property name="jbdGradeNoteManager" ref="jbdGradeNoteManager"/>
+        <property name="jbdTravelPoint2012Manager" ref="jbdTravelPoint2012Manager"/>
+        <property name="jbdTravelPoint2013Manager" ref="jbdTravelPoint2013Manager"/>
+    </bean>
+    <!--JbdMemberLinkCalcHist-END-->
+    <!--AlDistrict-START-->    
+    <bean id="alDistrictManager" class="com.joymain.jecs.al.service.impl.AlDistrictManagerImpl">
+        <property name="alDistrictDao" ref="alDistrictDao"/>
+    </bean>
+    <!--AlDistrict-END-->
+    <!--AlCity-START-->    
+    <bean id="alCityManager" class="com.joymain.jecs.al.service.impl.AlCityManagerImpl">
+        <property name="alCityDao" ref="alCityDao"/>
+    </bean>
+    <!--AlCity-END-->
+    <!--AmMessage-START-->    
+    <bean id="amMessageManager" class="com.joymain.jecs.am.service.impl.AmMessageManagerImpl">
+        <property name="amMessageDao" ref="amMessageDao"/>
+    </bean>
+    <!--AmMessage-END-->
+    <!--AmRegularMsg-START-->    
+    <bean id="amRegularMsgManager" class="com.joymain.jecs.am.service.impl.AmRegularMsgManagerImpl">
+        <property name="amRegularMsgDao" ref="amRegularMsgDao"/>
+    </bean>
+    <!--AmRegularMsg-END-->
+    <!--JbdUserCardList-START-->    
+    <bean id="jbdUserCardListManager" class="com.joymain.jecs.bd.service.impl.JbdUserCardListManagerImpl">
+        <property name="jbdUserCardListDao" ref="jbdUserCardListDao"/>
+        <property name="bdPeriodManager" ref="bdPeriodManager"/>
+    </bean>
+    <!--JbdUserCardList-END-->
+    <!--JpoShippingFee-START-->    
+    <bean id="jpoShippingFeeManager" class="com.joymain.jecs.po.service.impl.JpoShippingFeeManagerImpl">
+        <property name="jpoShippingFeeDao" ref="jpoShippingFeeDao"/>
+        <property name="pdShipFeeDao" ref="pdShipFeeDao"/>
+    </bean>
+    <!--JpoShippingFee-END-->
+    <!--JbdDayBounsCalc-START-->    
+    <bean id="jbdDayBounsCalcManager" class="com.joymain.jecs.bd.service.impl.JbdDayBounsCalcManagerImpl">
+        <property name="jbdDayBounsCalcDao" ref="jbdDayBounsCalcDao"/>
+    </bean>
+    <!--JbdDayBounsCalc-END-->
+    <!--JbdDayBounsCalcHist-START-->    
+    <bean id="jbdDayBounsCalcHistManager" class="com.joymain.jecs.bd.service.impl.JbdDayBounsCalcHistManagerImpl">
+        <property name="jbdDayBounsCalcHistDao" ref="jbdDayBounsCalcHistDao"/>
+    </bean>
+    <!--JbdDayBounsCalcHist-END-->
+    
+    <!--JbdManuallyAdjustStar-START-->    
+    <bean id="jbdManuallyAdjustStarManager" class="com.joymain.jecs.bd.service.impl.JbdManuallyAdjustStarManagerImpl">
+        <property name="jbdManuallyAdjustStarDao" ref="jbdManuallyAdjustStarDao"/>
+    </bean>
+    <!--JbdManuallyAdjustStar-END-->
+    <!--JbdVentureLeaderSubHist-START-->    
+    <bean id="jbdVentureLeaderSubHistManager" class="com.joymain.jecs.bd.service.impl.JbdVentureLeaderSubHistManagerImpl">
+        <property name="jbdVentureLeaderSubHistDao" ref="jbdVentureLeaderSubHistDao"/>
+    </bean>
+    <!--JbdVentureLeaderSubHist-END-->
+    <!--JbdSellCalcSubDetailHist-START-->    
+    <bean id="jbdSellCalcSubDetailHistManager" class="com.joymain.jecs.bd.service.impl.JbdSellCalcSubDetailHistManagerImpl">
+        <property name="jbdSellCalcSubDetailHistDao" ref="jbdSellCalcSubDetailHistDao"/>
+    </bean>
+    <!--JbdSellCalcSubDetailHist-END-->
+    <!--AmMessagePermit-START-->    
+    <bean id="amMessagePermitManager" class="com.joymain.jecs.am.service.impl.AmMessagePermitManagerImpl">
+        <property name="amMessagePermitDao" ref="amMessagePermitDao"/>
+    </bean>
+    <!--AmMessagePermit-END-->
+
+    <!--SysBackServiceInfo-START-->    
+    <bean id="sysBackServiceInfoManager" class="com.joymain.jecs.sys.service.impl.SysBackServiceInfoManagerImpl">
+        <property name="sysBackServiceInfoDao" ref="sysBackServiceInfoDao"/>
+    </bean>
+    <!--SysBackServiceInfo-END-->
+
+    <!--BillAccount-START-->    
+    <bean id="billAccountManager" class="com.joymain.jecs.fi.service.impl.BillAccountManagerImpl">
+        <property name="billAccountDao" ref="billAccountDao"/>
+    </bean>
+    <!--BillAccount-END-->
+
+    <!--JpoCounterOrder-START-->    
+    <bean id="jpoCounterOrderManager" class="com.joymain.jecs.po.service.impl.JpoCounterOrderManagerImpl">
+        <property name="jpoCounterOrderDao" ref="jpoCounterOrderDao"/>
+        <property name="pdWarehouseStockManager" ref="pdWarehouseStockManager"/>
+    </bean>
+    <!--JpoCounterOrder-END-->
+    <!--JpoCounterOrderDetail-START-->    
+    <bean id="jpoCounterOrderDetailManager" class="com.joymain.jecs.po.service.impl.JpoCounterOrderDetailManagerImpl">
+        <property name="jpoCounterOrderDetailDao" ref="jpoCounterOrderDetailDao"/>
+        <property name="jpmProductSaleManager" ref="jpmProductSaleManager"/>
+    </bean>
+    <!--JpoCounterOrderDetail-END-->
+    <!--JamMsnType-START-->    
+    <bean id="jamMsnTypeManager" class="com.joymain.jecs.am.service.impl.JamMsnTypeManagerImpl">
+        <property name="jamMsnTypeDao" ref="jamMsnTypeDao"/>
+    </bean>
+    <!--JamMsnType-END-->
+    <!--JamMsnDetail-START-->    
+    <bean id="jamMsnDetailManager" class="com.joymain.jecs.am.service.impl.JamMsnDetailManagerImpl">
+        <property name="jamMsnDetailDao" ref="jamMsnDetailDao"/>
+    </bean>
+    <!--JamMsnDetail-END-->
+    <!--SysLoginLog-START-->    
+    <bean id="sysLoginLogManager" class="com.joymain.jecs.sys.service.impl.SysLoginLogManagerImpl">
+        <property name="sysLoginLogDao" ref="sysLoginLogDao"/>
+    </bean>
+    <!--SysLoginLog-END-->
+    
+    <!--JpmProductCombination-START-->    
+    <bean id="jpmProductCombinationManager" class="com.joymain.jecs.pm.service.impl.JpmProductCombinationManagerImpl">
+        <property name="jpmProductCombinationDao" ref="jpmProductCombinationDao"/>
+    </bean>
+    <!--JpmProductCombination-END-->
+    <!--PdCombinationOrder-START-->    
+    <bean id="pdCombinationOrderManager" class="com.joymain.jecs.pd.service.impl.PdCombinationOrderManagerImpl">
+        <property name="pdCombinationOrderDao" ref="pdCombinationOrderDao"/>
+        <property name="jpmProductManager" ref="jpmProductManager"/>
+        <property name="pdCombinationDetailManager" ref="pdCombinationDetailManager"/>
+        <property name="pdWarehouseStockManager" ref="pdWarehouseStockManager"/>
+    </bean>
+    <!--PdCombinationOrder-END-->
+    <!--PdCombinationDetail-START-->    
+    <bean id="pdCombinationDetailManager" class="com.joymain.jecs.pd.service.impl.PdCombinationDetailManagerImpl">
+        <property name="pdCombinationDetailDao" ref="pdCombinationDetailDao"/>
+    </bean>
+    <!--PdCombinationDetail-END-->
+    <!--JbdCaculateLog-START-->    
+    <bean id="jbdCaculateLogManager" class="com.joymain.jecs.bd.service.impl.JbdCaculateLogManagerImpl">
+        <property name="jbdCaculateLogDao" ref="jbdCaculateLogDao"/>
+    </bean>
+    <!--JbdCaculateLog-END-->
+
+    <!--SmsSendLog-START-->    
+    <bean id="smsSendLogManager" class="com.joymain.jecs.sms.service.impl.SmsSendLogManagerImpl">
+        <property name="smsSendLogDao" ref="smsSendLogDao"/>
+    </bean>
+    <!--SmsSendLog-END-->
+
+    <!--PdCheckstockOrder-START-->    
+    <bean id="pdCheckstockOrderManager" class="com.joymain.jecs.pd.service.impl.PdCheckstockOrderManagerImpl">
+        <property name="pdCheckstockOrderDao" ref="pdCheckstockOrderDao"/>
+        <property name="pdWarehouseStockDao" ref="pdWarehouseStockDao"/>
+        <property name="pdWarehouseDao" ref="pdWarehouseDao"/>
+    </bean>
+    <!--PdCheckstockOrder-END-->
+    <!--PdCheckstockOrderDetail-START-->    
+    <bean id="pdCheckstockOrderDetailManager" class="com.joymain.jecs.pd.service.impl.PdCheckstockOrderDetailManagerImpl">
+        <property name="pdCheckstockOrderDetailDao" ref="pdCheckstockOrderDetailDao"/>
+    </bean>
+    <!--PdCheckstockOrderDetail-END-->
+
+    <!--JamMsnModule-START-->    
+    <bean id="jamMsnModuleManager" class="com.joymain.jecs.am.service.impl.JamMsnModuleManagerImpl">
+        <property name="jamMsnModuleDao" ref="jamMsnModuleDao"/>
+        <property name="jmiMemberDao" ref="jmiMemberDao"/>
+    </bean>
+    <!--JamMsnModule-END-->
+    <!--VtVote-START-->    
+    <bean id="vtVoteManager" class="com.joymain.jecs.vt.service.impl.VtVoteManagerImpl">
+        <property name="vtVoteDao" ref="vtVoteDao"/>
+    </bean>
+    <!--VtVote-END-->
+    <!--VtVoteDetail-START-->    
+    <bean id="vtVoteDetailManager" class="com.joymain.jecs.vt.service.impl.VtVoteDetailManagerImpl">
+        <property name="vtVoteDetailDao" ref="vtVoteDetailDao"/>
+    </bean>
+    <!--VtVoteDetail-END-->
+    <!--VtVoteNote-START-->    
+    <bean id="vtVoteNoteManager" class="com.joymain.jecs.vt.service.impl.VtVoteNoteManagerImpl">
+        <property name="vtVoteNoteDao" ref="vtVoteNoteDao"/>
+    </bean>
+    <!--VtVoteNote-END-->
+    <!--VtVotePow-START-->    
+    <bean id="vtVotePowManager" class="com.joymain.jecs.vt.service.impl.VtVotePowManagerImpl">
+        <property name="vtVotePowDao" ref="vtVotePowDao"/>
+    </bean>
+    <!--VtVotePow-END-->
+    <!--JbdUserCompanyCode-START-->    
+    <bean id="jbdUserCompanyCodeManager" class="com.joymain.jecs.bd.service.impl.JbdUserCompanyCodeManagerImpl">
+        <property name="jbdUserCompanyCodeDao" ref="jbdUserCompanyCodeDao"/>
+        <property name="jmiMemberManager" ref="jmiMemberManager"/>
+        <property name="jpoMemberOrderManager" ref="jpoMemberOrderManager"/>
+        <property name="alCompanyManager" ref="alCompanyManager"/>
+        <property name="sysRoleManager" ref="sysRoleManager"/>
+        <property name="sysUserRoleManager" ref="sysUserRoleManager"/>
+        <property name="jmiMemberCompanyNoteManager" ref="jmiMemberCompanyNoteManager"/>
+        <property name="jbdSummaryListManager" ref="jbdSummaryListManager"/>
+        <property name="jbdBonusBalanceManager" ref="jbdBonusBalanceManager"/>
+    </bean>
+    <!--JbdUserCompanyCode-END-->
+    
+    
+    
+    <!--JmiMemberCompanyNote-START-->    
+    <bean id="jmiMemberCompanyNoteManager" class="com.joymain.jecs.mi.service.impl.JmiMemberCompanyNoteManagerImpl">
+        <property name="jmiMemberCompanyNoteDao" ref="jmiMemberCompanyNoteDao"/>
+    </bean>
+    <!--JmiMemberCompanyNote-END-->
+    
+    <!--Jfi99billPosLog-START-->    
+    <bean id="jfi99billPosLogManager" class="com.joymain.jecs.fi.service.impl.Jfi99billPosLogManagerImpl">
+        <property name="jfi99billPosLogDao" ref="jfi99billPosLogDao"/>
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+    </bean>
+    <!--Jfi99billPosLog-END-->
+    <!--Jfi99billPosSendLog-START-->    
+    <bean id="jfi99billPosSendLogManager" class="com.joymain.jecs.fi.service.impl.Jfi99billPosSendLogManagerImpl">
+        <property name="jfi99billPosSendLogDao" ref="jfi99billPosSendLogDao"/>
+    </bean>
+    <!--Jfi99billPosSendLog-END-->
+    
+    <!--JpmCardSeq-START-->    
+    <bean id="jpmCardSeqManager" class="com.joymain.jecs.pm.service.impl.JpmCardSeqManagerImpl">
+        <property name="jpmCardSeqDao" ref="jpmCardSeqDao"/>
+        <property name="sysIdManager" ref="sysIdManager"/>
+    </bean>
+    <!--JpmCardSeq-END-->
+    <!--JfiSunMemberOrderList-START-->    
+    <bean id="jfiSunMemberOrderListManager" class="com.joymain.jecs.fi.service.impl.JfiSunMemberOrderListManagerImpl">
+        <property name="jfiSunMemberOrderListDao" ref="jfiSunMemberOrderListDao"/>
+    </bean>
+    <!--JfiSunMemberOrderList-END-->
+    <!--JfiSunMemberOrderFee-START-->    
+    <bean id="jfiSunMemberOrderFeeManager" class="com.joymain.jecs.fi.service.impl.JfiSunMemberOrderFeeManagerImpl">
+        <property name="jfiSunMemberOrderFeeDao" ref="jfiSunMemberOrderFeeDao"/>
+    </bean>
+    <!--JfiSunMemberOrderFee-END-->
+    <!--JfiSunMemberOrder-START-->    
+    <bean id="jfiSunMemberOrderManager" class="com.joymain.jecs.fi.service.impl.JfiSunMemberOrderManagerImpl">
+        <property name="jfiSunMemberOrderDao" ref="jfiSunMemberOrderDao"/>
+    </bean>
+    <!--JfiSunMemberOrder-END-->
+    <!--JfiSunDistribution-START-->    
+    <bean id="jfiSunDistributionManager" class="com.joymain.jecs.fi.service.impl.JfiSunDistributionManagerImpl">
+        <property name="jfiSunDistributionDao" ref="jfiSunDistributionDao"/>
+    </bean>
+    <!--JfiSunDistribution-END-->
+    <!--JfiSunConfigKey-START-->    
+    <bean id="jfiSunConfigKeyManager" class="com.joymain.jecs.fi.service.impl.JfiSunConfigKeyManagerImpl">
+        <property name="jfiSunConfigKeyDao" ref="jfiSunConfigKeyDao"/>
+    </bean>
+    <!--JfiSunConfigKey-END-->
+    <!--JbdTaiwanTravelPoint-START-->    
+    <bean id="jbdTaiwanTravelPointManager" class="com.joymain.jecs.bd.service.impl.JbdTaiwanTravelPointManagerImpl">
+        <property name="jbdTaiwanTravelPointDao" ref="jbdTaiwanTravelPointDao"/>
+    </bean>
+    <!--JbdTaiwanTravelPoint-END-->
+    <!--JmiTaiwanTravel-START-->    
+    <bean id="jmiTaiwanTravelManager" class="com.joymain.jecs.mi.service.impl.JmiTaiwanTravelManagerImpl">
+        <property name="jmiTaiwanTravelDao" ref="jmiTaiwanTravelDao"/>
+    </bean>
+    <!--JmiTaiwanTravel-END-->
+    <!--PdExchangeOrder-START-->    
+    <bean id="pdExchangeOrderManager" class="com.joymain.jecs.pd.service.impl.PdExchangeOrderManagerImpl">
+        <property name="pdExchangeOrderDao" ref="pdExchangeOrderDao"/>
+        <property name="jpoMemberOrderDao" ref="jpoMemberOrderDao"/>
+        <property name="pdExchangeOrderDetailManager" ref="pdExchangeOrderDetailManager"/>
+        <property name="pdExchangeOrderBackManager" ref="pdExchangeOrderBackManager"/>
+        <property name="jpmProductSaleManager" ref="jpmProductSaleManager"/>
+        <property name="pdWarehouseStockManager" ref="pdWarehouseStockManager"/>
+        <property name="pdShipmentsDetailManager" ref="pdShipmentsDetailManager"/>
+        <property name="pdSendInfoManager" ref="pdSendInfoManager"/>
+        <property name="jpmProductManager" ref="jpmProductManager"/>
+        <property name="pdSendInfoDetailDao" ref="pdSendInfoDetailDao"/>
+    </bean>
+    <!--PdExchangeOrder-END-->
+    <!--PdExchangeOrderBack-START-->    
+    <bean id="pdExchangeOrderBackManager" class="com.joymain.jecs.pd.service.impl.PdExchangeOrderBackManagerImpl">
+        <property name="pdExchangeOrderBackDao" ref="pdExchangeOrderBackDao"/>
+    </bean>
+    <!--PdExchangeOrderBack-END-->
+    <!--PdExchangeOrderDetail-START-->    
+    <bean id="pdExchangeOrderDetailManager" class="com.joymain.jecs.pd.service.impl.PdExchangeOrderDetailManagerImpl">
+        <property name="pdExchangeOrderDetailDao" ref="pdExchangeOrderDetailDao"/>
+    </bean>
+    <!--PdExchangeOrderDetail-END-->
+    <!--JmiSubStore-START-->    
+    <bean id="jmiSubStoreManager" class="com.joymain.jecs.mi.service.impl.JmiSubStoreManagerImpl">
+        <property name="jmiSubStoreDao" ref="jmiSubStoreDao"/>
+        <property name="sysUserRoleManager" ref="sysUserRoleManager"/>
+        <property name="sysRoleManager" ref="sysRoleManager"/>
+        <property name="jpoMemberOrderManager" ref="jpoMemberOrderManager"/>
+    </bean>
+    <!--JmiSubStore-END-->
+    <!--JpoAutoShip-START-->    
+    <bean id="jpoAutoShipManager" class="com.joymain.jecs.po.service.impl.JpoAutoShipManagerImpl">
+        <property name="jpoAutoShipDao" ref="jpoAutoShipDao"/>
+    </bean>
+    <!--JpoAutoShip-END-->
+    <!--JbdUserValidList-START-->    
+    <bean id="jbdUserValidListManager" class="com.joymain.jecs.bd.service.impl.JbdUserValidListManagerImpl">
+        <property name="jbdUserValidListDao" ref="jbdUserValidListDao"/>
+    </bean>
+    <!--JbdUserValidList-END-->
+    <!--JalTown-START-->    
+    <bean id="jalTownManager" class="com.joymain.jecs.al.service.impl.JalTownManagerImpl">
+        <property name="jalTownDao" ref="jalTownDao"/>
+    </bean>
+    <!--JalTown-END-->
+    <!--JmiStore-START-->    
+    <bean id="jmiStoreManager" class="com.joymain.jecs.mi.service.impl.JmiStoreManagerImpl">
+        <property name="jmiStoreDao" ref="jmiStoreDao"/>
+        <property name="sysUserRoleManager" ref="sysUserRoleManager"/>
+        <property name="sysRoleManager" ref="sysRoleManager"/>
+    </bean>
+    <!--JmiStore-END-->
+    
+    <!--fiBcoinJournal-START-->    
+    <bean id="fiBcoinJournalManager" class="com.joymain.jecs.fi.service.impl.FiBcoinJournalManagerImpl">
+        <property name="dao" ref="fiBcoinJournalDao"/>
+        <property name="fiBcoinBalanceDao" ref="fiBcoinBalanceDao"/>
+    </bean>
+    <!--fiBcoinJournal-END-->
+    
+    <!--FiCoinLog-START-->    
+    <bean id="fiCoinLogManager" class="com.joymain.jecs.fi.service.impl.FiCoinLogManagerImpl">
+        <property name="fiCoinLogDao" ref="fiCoinLogDao"/>
+    </bean>
+    <!--FiCoinLog-END-->
+    <!--JfiAlipayLog-START-->    
+    <bean id="jfiAlipayLogManager" class="com.joymain.jecs.fi.service.impl.JfiAlipayLogManagerImpl">
+        <property name="jfiAlipayLogDao" ref="jfiAlipayLogDao"/>
+    </bean>
+    <!--JfiAlipayLog-END-->
+    <!--JamDownload-START-->    
+    <bean id="jamDownloadManager" class="com.joymain.jecs.am.service.impl.JamDownloadManagerImpl">
+        <property name="jamDownloadDao" ref="jamDownloadDao"/>
+    </bean>
+    <!--JamDownload-END-->
+    <!--JmiBlacklist-START-->    
+    <bean id="jmiBlacklistManager" class="com.joymain.jecs.mi.service.impl.JmiBlacklistManagerImpl">
+        <property name="jmiBlacklistDao" ref="jmiBlacklistDao"/>
+    </bean>
+    <!--JmiBlacklist-END-->
+    <!--JfiHiTrustLog-START-->    
+    <bean id="jfiHiTrustLogManager" class="com.joymain.jecs.fi.service.impl.JfiHiTrustLogManagerImpl">
+        <property name="jfiHiTrustLogDao" ref="jfiHiTrustLogDao"/>
+    </bean>
+    <!--JfiHiTrustLog-END-->
+    
+    <!--JbdManuallyAdjustAlgebra-START-->    
+    <bean id="jbdManuallyAdjustAlgebraManager" class="com.joymain.jecs.bd.service.impl.JbdManuallyAdjustAlgebraManagerImpl">
+        <property name="jbdManuallyAdjustAlgebraDao" ref="jbdManuallyAdjustAlgebraDao"/>
+    </bean>
+    <!--JbdManuallyAdjustAlgebra-END-->
+    <!--JpoMemberOrderTask-START-->    
+    <bean id="jpoMemberOrderTaskManager" class="com.joymain.jecs.po.service.impl.JpoMemberOrderTaskManagerImpl">
+        <property name="jpoMemberOrderTaskDao" ref="jpoMemberOrderTaskDao"/>
+    </bean>
+    <!--JpoMemberOrderTask-END-->
+    <!--JpoMemberOrderListTask-START-->    
+    <bean id="jpoMemberOrderListTaskManager" class="com.joymain.jecs.po.service.impl.JpoMemberOrderListTaskManagerImpl">
+        <property name="jpoMemberOrderListTaskDao" ref="jpoMemberOrderListTaskDao"/>
+    </bean>
+    <!--JpoMemberOrderListTask-END-->
+    <!--JamPromotion-START-->    
+    <bean id="jamPromotionManager" class="com.joymain.jecs.am.service.impl.JamPromotionManagerImpl">
+        <property name="jamPromotionDao" ref="jamPromotionDao"/>
+    </bean>
+    <!--JamPromotion-END-->
+    <!--UpsInteractiveLog-START-->    
+    <bean id="upsInteractiveLogManager" class="com.joymain.jecs.sys.service.impl.UpsInteractiveLogManagerImpl">
+        <property name="upsInteractiveLogDao" ref="upsInteractiveLogDao"/>
+    </bean>
+    <!--UpsInteractiveLog-END-->
+    <!--JbdTravelPoint-START-->    
+    <bean id="jbdTravelPointManager" class="com.joymain.jecs.bd.service.impl.JbdTravelPointManagerImpl">
+        <property name="jbdTravelPointDao" ref="jbdTravelPointDao"/>
+    </bean>
+    <!--JbdTravelPoint-END-->
+    <!--JbdTravelPointDetail-START-->    
+    <bean id="jbdTravelPointDetailManager" class="com.joymain.jecs.bd.service.impl.JbdTravelPointDetailManagerImpl">
+        <property name="jbdTravelPointDetailDao" ref="jbdTravelPointDetailDao"/>
+        <property name="jbdTravelPointDao" ref="jbdTravelPointDao"/>
+        <property name="jbdTravelPointLogManager" ref="jbdTravelPointLogManager"/>
+    </bean>
+    <!--JbdTravelPointDetail-END-->
+     <!--  jmiRemitSale start -->
+        <bean id="jmiRemitSaleManager" class="com.joymain.jecs.mi.service.impl.JmiRemitSaleManagerImpl">
+        <property name="jmiRemitSaleDao" ref="jmiRemitSaleDao"/>
+    </bean>
+     <!--  jmiRemitSale end -->
+    <!--JbdTravelPointLog-START-->    
+    <bean id="jbdTravelPointLogManager" class="com.joymain.jecs.bd.service.impl.JbdTravelPointLogManagerImpl">
+        <property name="jbdTravelPointLogDao" ref="jbdTravelPointLogDao"/>
+    </bean>
+    <!--JbdTravelPointLog-END-->
+    <!--JbdSummaryList-START-->    
+    <bean id="jbdSummaryListManager" class="com.joymain.jecs.bd.service.impl.JbdSummaryListManagerImpl">
+        <property name="jbdSummaryListDao" ref="jbdSummaryListDao"/>
+    </bean>
+    <!--JbdSummaryList-END-->
+    <!--PdSendExtra-START-->    
+    <bean id="pdSendExtraManager" class="com.joymain.jecs.pd.service.impl.PdSendExtraManagerImpl">
+        <property name="pdSendExtraDao" ref="pdSendExtraDao"/>
+    </bean>
+    <!--PdSendExtra-END-->
+    <!--JbdVentureFundList-START-->    
+    <bean id="jbdVentureFundListManager" class="com.joymain.jecs.bd.service.impl.JbdVentureFundListManagerImpl">
+        <property name="jbdVentureFundListDao" ref="jbdVentureFundListDao"/>
+    </bean>
+    <!--JbdVentureFundList-END-->
+    <!--JfiUsCreditCardLog-START-->    
+    <bean id="jfiUsCreditCardLogManager" class="com.joymain.jecs.fi.service.impl.JfiUsCreditCardLogManagerImpl">
+        <property name="jfiUsCreditCardLogDao" ref="jfiUsCreditCardLogDao"/>
+    </bean>
+    <!--JfiUsCreditCardLog-END-->
+    
+    
+    
+    <!--JfiSunOrderList-START-->    
+    <bean id="jfiSunOrderListManager" class="com.joymain.jecs.fi.service.impl.JfiSunOrderListManagerImpl">
+        <property name="jfiSunOrderListDao" ref="jfiSunOrderListDao"/>
+    </bean>
+    <!--JfiSunOrderList-END-->
+    <!--JfiSunOrder-START-->    
+    <bean id="jfiSunOrderManager" class="com.joymain.jecs.fi.service.impl.JfiSunOrderManagerImpl">
+        <property name="jfiSunOrderDao" ref="jfiSunOrderDao"/>
+    </bean>
+    <!--JfiSunOrder-END-->
+    <!--JfiSunJmiMember-START-->    
+    <bean id="jfiSunJmiMemberManager" class="com.joymain.jecs.fi.service.impl.JfiSunJmiMemberManagerImpl">
+        <property name="jfiSunJmiMemberDao" ref="jfiSunJmiMemberDao"/>
+    </bean>
+    <!--JfiSunJmiMember-END-->
+    <!--JalPostalcode-START-->    
+    <bean id="jalPostalcodeManager" class="com.joymain.jecs.al.service.impl.JalPostalcodeManagerImpl">
+        <property name="jalPostalcodeDao" ref="jalPostalcodeDao"/>
+    </bean>
+    <!--JalPostalcode-END-->
+    <!--SunDistShip-START-->    
+    <bean id="sunDistShipManager" class="com.joymain.jecs.sun.service.impl.SunDistShipManagerImpl">
+        <property name="sunDistShipDao" ref="sunDistShipDao"/>
+    </bean>
+    <!--SunDistShip-END-->
+    <!--SunProductInfo-START-->    
+    <bean id="sunProductInfoManager" class="com.joymain.jecs.sun.service.impl.SunProductInfoManagerImpl">
+        <property name="sunProductInfoDao" ref="sunProductInfoDao"/>
+    </bean>
+    <!--SunProductInfo-END-->
+    <!--JbdSendNote-START-->    
+    <bean id="jbdSendNoteManager" class="com.joymain.jecs.bd.service.impl.JbdSendNoteManagerImpl">
+        <property name="jbdSendNoteDao" ref="jbdSendNoteDao"/>
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+    </bean>
+    <!--JbdSendNote-END-->
+    <!--JbdNetworkList-START-->    
+    <bean id="jbdNetworkListManager" class="com.joymain.jecs.bd.service.impl.JbdNetworkListManagerImpl">
+        <property name="jbdNetworkListDao" ref="jbdNetworkListDao"/>
+    </bean>
+    <!--JbdNetworkList-END--> 
+    <bean id="miMemberWebService" class="com.joymain.jecs.mi.service.impl.MiMemberWebServiceImpl">
+        <property name="jmiMemberManager" ref="jmiMemberManager"/>
+        <property name="jmiCustomerLevelNoteManager" ref="jmiCustomerLevelNoteManager"/>
+        <property name="jpoMemberOrderManager" ref="jpoMemberOrderManager"/>
+    </bean>
+    <!--JmiCustomerLevelNote-START-->    
+    <bean id="jmiCustomerLevelNoteManager" class="com.joymain.jecs.mi.service.impl.JmiCustomerLevelNoteManagerImpl">
+        <property name="jmiCustomerLevelNoteDao" ref="jmiCustomerLevelNoteDao"/>
+    </bean>
+    <!--JmiCustomerLevelNote-END-->
+    <!--JfiCreditCardLog-START-->    
+    <bean id="jfiCreditCardLogManager" class="com.joymain.jecs.fi.service.impl.JfiCreditCardLogManagerImpl">
+        <property name="jfiCreditCardLogDao" ref="jfiCreditCardLogDao"/>
+    </bean>
+    <!--JfiCreditCardLog-END-->
+    <!--FiBcoinBalance-START-->    
+    <bean id="fiBcoinBalanceManager" class="com.joymain.jecs.fi.service.impl.FiBcoinBalanceManagerImpl">
+        <property name="fiBcoinBalanceDao" ref="fiBcoinBalanceDao"/>
+    </bean>
+    <!--FiBcoinBalance-END-->
+    <!--FiCcoinJournal-START-->    
+    <bean id="fiCcoinJournalManager" class="com.joymain.jecs.fi.service.impl.FiCcoinJournalManagerImpl">
+        <property name="dao" ref="fiCcoinJournalDao"/>
+        <property name="fiCcoinBalanceDao" ref="fiCcoinBalanceDao"/>
+    </bean>
+    <!--FiCcoinJournal-END-->
+    <!--FiCcoinBalance-START-->    
+    <bean id="fiCcoinBalanceManager" class="com.joymain.jecs.fi.service.impl.FiCcoinBalanceManagerImpl">
+        <property name="fiCcoinBalanceDao" ref="fiCcoinBalanceDao"/>
+    </bean>
+    <!--FiCcoinBalance-END-->
+    <!--PdShipStrategy-START-->    
+    <bean id="pdShipStrategyManager" class="com.joymain.jecs.pd.service.impl.PdShipStrategyManagerImpl">
+        <property name="pdShipStrategyDao" ref="pdShipStrategyDao"/>
+    </bean>
+    <!--PdShipStrategy-END-->
+    <!--PdShipStrategyDetail-START-->    
+    <bean id="pdShipStrategyDetailManager" class="com.joymain.jecs.pd.service.impl.PdShipStrategyDetailManagerImpl">
+        <property name="pdShipStrategyDetailDao" ref="pdShipStrategyDetailDao"/>
+    </bean>
+    <!--PdShipStrategyDetail-END-->
+    <!--FiBankbookBalance-START-->    
+    <bean id="fiBankbookBalanceManager" class="com.joymain.jecs.fi.service.impl.FiBankbookBalanceManagerImpl">
+        <property name="fiBankbookBalanceDao" ref="fiBankbookBalanceDao"/>
+    </bean>
+    <!--FiBankbookBalance-END-->
+    <!--FiBankbookJournal-START-->    
+    <bean id="fiBankbookJournalManager" class="com.joymain.jecs.fi.service.impl.FiBankbookJournalManagerImpl">
+        <property name="fiBankbookJournalDao" ref="fiBankbookJournalDao"/>
+        <property name="fiBankbookTempDao" ref="fiBankbookTempDao"/>
+        <property name="fiBankbookBalanceDao" ref="fiBankbookBalanceDao"/>
+        <property name="jfiPosImportManager" ref="jfiPosImportManager"/>
+    </bean>
+    <!--FiBankbookJournal-END-->
+    <!--FiBankbookTemp-START-->    
+    <bean id="fiBankbookTempManager" class="com.joymain.jecs.fi.service.impl.FiBankbookTempManagerImpl">
+        <property name="fiBankbookTempDao" ref="fiBankbookTempDao"/>
+    </bean>
+    <!--FiBankbookTemp-END-->
+    <!--JfiTenpayLog-START-->    
+    <bean id="jfiTenpayLogManager" class="com.joymain.jecs.fi.service.impl.JfiTenpayLogManagerImpl">
+        <property name="jfiTenpayLogDao" ref="jfiTenpayLogDao"/>
+    </bean>
+    <!--JfiTenpayLog-END-->
+    <!--JbdTravelPoint2012-START-->    
+    <bean id="jbdTravelPoint2012Manager" class="com.joymain.jecs.bd.service.impl.JbdTravelPoint2012ManagerImpl">
+        <property name="jbdTravelPoint2012Dao" ref="jbdTravelPoint2012Dao"/>
+    </bean>
+    <!--JbdTravelPoint2012-END-->
+    <!--JbdTravelPointDetail2012-START-->    
+    <bean id="jbdTravelPointDetail2012Manager" class="com.joymain.jecs.bd.service.impl.JbdTravelPointDetail2012ManagerImpl">
+        <property name="jbdTravelPointDetail2012Dao" ref="jbdTravelPointDetail2012Dao"/>
+        <property name="jbdTravelPoint2012Dao" ref="jbdTravelPoint2012Dao"/>
+        <property name="jbdTravelPointLog2012Manager" ref="jbdTravelPointLog2012Manager"/>
+    </bean>
+    <!--JbdTravelPointDetail2012-END-->
+    <!--JbdTravelPointLog2012-START-->    
+    <bean id="jbdTravelPointLog2012Manager" class="com.joymain.jecs.bd.service.impl.JbdTravelPointLog2012ManagerImpl">
+        <property name="jbdTravelPointLog2012Dao" ref="jbdTravelPointLog2012Dao"/>
+    </bean>
+    <!--JbdTravelPointLog2012-END-->
+    <!--PdShipFee-START-->    
+    <bean id="pdShipFeeManager" class="com.joymain.jecs.pd.service.impl.PdShipFeeManagerImpl">
+        <property name="pdShipFeeDao" ref="pdShipFeeDao"/>
+    </bean>
+    <!--PdShipFee-END-->
+    <!--Jfi99billmsLog-START-->    
+    <bean id="jfi99billmsLogManager" class="com.joymain.jecs.fi.service.impl.Jfi99billmsLogManagerImpl">
+        <property name="jfi99billmsLogDao" ref="jfi99billmsLogDao"/>
+    </bean>
+    <!--Jfi99billmsLog-END-->
+    <!--PdWarehouseFrozenBatch-START-->    
+    <bean id="pdWarehouseFrozenBatchManager" class="com.joymain.jecs.pd.service.impl.PdWarehouseFrozenBatchManagerImpl">
+        <property name="pdWarehouseFrozenBatchDao" ref="pdWarehouseFrozenBatchDao"/>
+    </bean>
+    <!--PdWarehouseFrozenBatch-END-->
+    <!--PdWarehouseFrozenDetail-START-->    
+    <bean id="pdWarehouseFrozenDetailManager" class="com.joymain.jecs.pd.service.impl.PdWarehouseFrozenDetailManagerImpl">
+        <property name="pdWarehouseFrozenDetailDao" ref="pdWarehouseFrozenDetailDao"/>
+    </bean>
+    <!--PdWarehouseFrozenDetail-END-->
+    <!--AmNew-START-->    
+    <bean id="amNewManager" class="com.joymain.jecs.am.service.impl.AmNewManagerImpl">
+        <property name="amNewDao" ref="amNewDao"/>
+    </bean>
+    <!--AmNew-END-->
+    <!--JbdGradeNote-START-->    
+    <bean id="jbdGradeNoteManager" class="com.joymain.jecs.bd.service.impl.JbdGradeNoteManagerImpl">
+        <property name="jbdGradeNoteDao" ref="jbdGradeNoteDao"/>
+    </bean>
+    <!--JbdGradeNote-END-->
+    <!--JfiPosImport-START-->    
+    <bean id="jfiPosImportManager" class="com.joymain.jecs.fi.service.impl.JfiPosImportManagerImpl">
+        <property name="jfiPosImportDao" ref="jfiPosImportDao"/>
+    </bean>
+    <!--JfiPosImport-END-->
+    <!--JbdTravelPoint2013-START-->    
+    <bean id="jbdTravelPoint2013Manager" class="com.joymain.jecs.bd.service.impl.JbdTravelPoint2013ManagerImpl">
+        <property name="jbdTravelPoint2013Dao" ref="jbdTravelPoint2013Dao"/>
+    </bean>
+    <!--JbdTravelPoint2013-END-->
+    <!--JbdTravelPointLog2013-START-->    
+    <bean id="jbdTravelPointLog2013Manager" class="com.joymain.jecs.bd.service.impl.JbdTravelPointLog2013ManagerImpl">
+        <property name="jbdTravelPointLog2013Dao" ref="jbdTravelPointLog2013Dao"/>
+    </bean>
+    <!--JbdTravelPointLog2013-END-->
+    <!--JbdTravelPointDetail2013-START-->    
+    <bean id="jbdTravelPointDetail2013Manager" class="com.joymain.jecs.bd.service.impl.JbdTravelPointDetail2013ManagerImpl">
+        <property name="jbdTravelPointDetail2013Dao" ref="jbdTravelPointDetail2013Dao"/>
+        <property name="jbdTravelPoint2013Dao" ref="jbdTravelPoint2013Dao"/>
+        <property name="jbdTravelPointLog2013Manager" ref="jbdTravelPointLog2013Manager"/>
+        <property name="jbdTravelPointDetail2014Manager" ref="jbdTravelPointDetail2014Manager"/>
+    </bean>
+    <!--JbdTravelPointDetail2013-END-->
+    <!--JbdSpecialStar-START-->    
+    <bean id="jbdSpecialStarManager" class="com.joymain.jecs.bd.service.impl.JbdSpecialStarManagerImpl">
+        <property name="jbdSpecialStarDao" ref="jbdSpecialStarDao"/>
+    </bean>
+    <!--JbdSpecialStar-END-->
+    <!--JsysResource-START-->    
+    <bean id="jsysResourceManager" class="com.joymain.jecs.sys.service.impl.JsysResourceManagerImpl">
+        <property name="jsysResourceDao" ref="jsysResourceDao"/>
+    </bean>
+    <!--JsysResource-END-->
+    
+    
+    <!--JsysResRole-START-->    
+    <bean id="jsysResRoleManager" class="com.joymain.jecs.sys.service.impl.JsysResRoleManagerImpl">
+        <property name="jsysResRoleDao" ref="jsysResRoleDao"/>
+    </bean>
+    <!--JsysResRole-END-->
+    <!--FiTransferAccount-START-->    
+    <bean id="fiTransferAccountManager" class="com.joymain.jecs.fi.service.impl.FiTransferAccountManagerImpl">
+        <property name="fiTransferAccountDao" ref="fiTransferAccountDao"/>
+        <property name="sysUserDao" ref="sysUserDao"/>
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+        <property name="fiTransferFundbookManager" ref="fiTransferFundbookManager"/>
+    </bean>
+    <!--FiTransferAccount-END-->
+
+    
+    <!--JmiMemberTeam-START-->    
+    <bean id="jmiMemberTeamManager" class="com.joymain.jecs.pm.service.impl.JmiMemberTeamManagerImpl">
+        <property name="jmiMemberTeamDao" ref="jmiMemberTeamDao"/>
+        <property name="jmiMemberDao" ref="jmiMemberDao"/>
+    </bean>
+    <!--JmiMemberTeam-END-->
+    
+    <!--JmiMemberTeam-START-->    
+    <bean id="jpmSalesAnalysisManager" class="com.joymain.jecs.pm.service.impl.JpmSalesAnalysisManagerImpl">
+        <property name="jpmSalesAnalysisDao" ref="jpmSalesAnalysisDao"/>
+    </bean>
+    <!--JmiMemberTeam-END-->
+    
+    <!--JpmProductSaleNew-START-->    
+    <bean id="jpmProductSaleNewManager" class="com.joymain.jecs.pm.service.impl.JpmProductSaleNewManagerImpl">
+        <property name="jpmProductSaleNewDao" ref="jpmProductSaleNewDao"/>
+    </bean>
+    <!--JpmProductSaleNew-END-->
+    <!--JpmProductSaleImage-START-->    
+    <bean id="jpmProductSaleImageManager" class="com.joymain.jecs.pm.service.impl.JpmProductSaleImageManagerImpl">
+        <property name="jpmProductSaleImageDao" ref="jpmProductSaleImageDao"/>
+    </bean>
+    <!--JpmProductSaleImage-END-->
+    <!--JpmProductSaleTeamType-START-->    
+    <bean id="jpmProductSaleTeamTypeManager" class="com.joymain.jecs.pm.service.impl.JpmProductSaleTeamTypeManagerImpl">
+        <property name="jpmProductSaleTeamTypeDao" ref="jpmProductSaleTeamTypeDao"/>
+    </bean>
+    <!--JpmProductSaleTeamType-END-->
+    <!--JpmProductSaleRelated-START-->    
+    <bean id="jpmProductSaleRelatedManager" class="com.joymain.jecs.pm.service.impl.JpmProductSaleRelatedManagerImpl">
+        <property name="jpmProductSaleRelatedDao" ref="jpmProductSaleRelatedDao"/>
+    </bean>
+    <!--JpmProductSaleRelated-END-->
+    <!--ScheduleManage-START-->    
+    <bean id="scheduleManageManager" class="com.joymain.jecs.am.service.impl.ScheduleManageManagerImpl">
+        <property name="scheduleManageDao" ref="scheduleManageDao"/>
+    </bean>
+    <!--ScheduleManage-END-->
+    <!--PublicSchedule-START-->    
+    <bean id="publicScheduleManager" class="com.joymain.jecs.am.service.impl.PublicScheduleManagerImpl">
+        <property name="publicScheduleDao" ref="publicScheduleDao"/>
+    </bean>
+    <!--PublicSchedule-END-->
+     <!--JpmSalePromoter-START-->    
+    <bean id="jpmSalePromoterManager" class="com.joymain.jecs.pm.service.impl.JpmSalePromoterManagerImpl">
+        <property name="jpmSalePromoterDao" ref="jpmSalePromoterDao"/>
+        <property name="jpmSalepromoterProDao" ref="jpmSalepromoterProDao"/>
+    </bean>
+    <!--JpmSalePromoter-END-->
+    <!--JpmSalepromoterPro-START-->    
+    <bean id="jpmSalepromoterProManager" class="com.joymain.jecs.pm.service.impl.JpmSalepromoterProManagerImpl">
+        <property name="jpmSalepromoterProDao" ref="jpmSalepromoterProDao"/>
+    </bean>
+    <!--JpmSalepromoterPro-END-->
+    <bean id="jpmSalePromoterValidator" class="com.joymain.jecs.pm.model.JpmSalePromoterValidator"/>
+
+    <!--InwDemand-START-->    
+    <bean id="inwDemandManager" class="com.joymain.jecs.am.service.impl.InwDemandManagerImpl">
+        <property name="inwDemandDao" ref="inwDemandDao"/>
+        <property name="inwSuggestionManager" ref="inwSuggestionManager"/>
+        <property name="inwViewpeopleManager" ref="inwViewpeopleManager"/>
+    </bean>
+    <!--InwDemand-END-->
+    <!--InwProblem-START-->    
+    <bean id="inwProblemManager" class="com.joymain.jecs.am.service.impl.InwProblemManagerImpl">
+        <property name="inwProblemDao" ref="inwProblemDao"/>
+    </bean>
+    <!--InwProblem-END-->
+    <!--InwSuggestion-START-->    
+    <bean id="inwSuggestionManager" class="com.joymain.jecs.am.service.impl.InwSuggestionManagerImpl">
+        <property name="inwSuggestionDao" ref="inwSuggestionDao"/>
+    </bean>
+    <!--InwSuggestion-END-->
+    <!--InwViewpeople-START-->    
+    <bean id="inwViewpeopleManager" class="com.joymain.jecs.am.service.impl.InwViewpeopleManagerImpl">
+        <property name="inwViewpeopleDao" ref="inwViewpeopleDao"/>
+    </bean>
+    <!--InwViewpeople-END-->
+    <!--JalLibraryPlate-START-->    
+    <bean id="jalLibraryPlateManager" class="com.joymain.jecs.al.service.impl.JalLibraryPlateManagerImpl">
+        <property name="jalLibraryPlateDao" ref="jalLibraryPlateDao"/>
+    </bean>
+    <!--JalLibraryPlate-END-->
+    <!--JalLibraryColumn-START-->    
+    <bean id="jalLibraryColumnManager" class="com.joymain.jecs.al.service.impl.JalLibraryColumnManagerImpl">
+        <property name="jalLibraryColumnDao" ref="jalLibraryColumnDao"/>
+    </bean>
+    <!--JalLibraryColumn-END-->
+    <!--JalLibraryFile-START-->    
+    <bean id="jalLibraryFileManager" class="com.joymain.jecs.al.service.impl.JalLibraryFileManagerImpl">
+        <property name="jalLibraryFileDao" ref="jalLibraryFileDao"/>
+    </bean>
+    <!--JalLibraryFile-END-->
+    <!--InwIntegration-START-->    
+    <bean id="inwIntegrationManager" class="com.joymain.jecs.am.service.impl.InwIntegrationManagerImpl">
+        <property name="inwIntegrationDao" ref="inwIntegrationDao"/>
+    </bean>
+    <!--InwIntegration-END-->
+    <!--JbdSendRecordNote-START-->    
+    <bean id="jbdSendRecordNoteManager" class="com.joymain.jecs.bd.service.impl.JbdSendRecordNoteManagerImpl">
+        <property name="jbdSendRecordNoteDao" ref="jbdSendRecordNoteDao"/>
+    </bean>
+    <!--JbdSendRecordNote-END-->
+
+    <!--JbdTravelPoint2014-START-->    
+    <bean id="jbdTravelPoint2014Manager" class="com.joymain.jecs.bd.service.impl.JbdTravelPoint2014ManagerImpl">
+        <property name="jbdTravelPoint2014Dao" ref="jbdTravelPoint2014Dao"/>
+    </bean>
+    <!--JbdTravelPoint2014-END-->
+    <!--JbdTravelPointDetail2014-START-->    
+    <bean id="jbdTravelPointDetail2014Manager" class="com.joymain.jecs.bd.service.impl.JbdTravelPointDetail2014ManagerImpl">
+        <property name="jbdTravelPointDetail2014Dao" ref="jbdTravelPointDetail2014Dao"/>
+        <property name="jbdTravelPoint2014Dao" ref="jbdTravelPoint2014Dao"/>
+        <property name="jbdTravelPointLog2014Manager" ref="jbdTravelPointLog2014Manager"/>
+    </bean>
+    <!--JbdTravelPointDetail2014-END-->
+    <!--JbdTravelPointLog2014-START-->    
+    <bean id="jbdTravelPointLog2014Manager" class="com.joymain.jecs.bd.service.impl.JbdTravelPointLog2014ManagerImpl">
+        <property name="jbdTravelPointLog2014Dao" ref="jbdTravelPointLog2014Dao"/>
+    </bean>
+    <!--JbdTravelPointLog2014-END-->
+    
+    
+    <!--InwDemandsort-START-->    
+    <bean id="inwDemandsortManager" class="com.joymain.jecs.am.service.impl.InwDemandsortManagerImpl">
+        <property name="inwDemandsortDao" ref="inwDemandsortDao"/>
+        <property name="inwDemandDao" ref="inwDemandDao"/>
+    </bean>
+    <!--InwDemandsort-END-->
+    
+    
+    
+    
+    
+    <!--JbdManualCon-START-->    
+    <bean id="jbdManualConManager" class="com.joymain.jecs.bd.service.impl.JbdManualConManagerImpl">
+        <property name="jbdManualConDao" ref="jbdManualConDao"/>
+    </bean>
+    <!--JbdManualCon-END-->
+
+
+    <!--MiCoinLog-START-->    
+    <bean id="miCoinLogManager" class="com.joymain.jecs.mi.service.impl.MiCoinLogManagerImpl">
+        <property name="miCoinLogDao" ref="miCoinLogDao"/>
+    </bean>
+    <!--MiCoinLog-END-->
+    <!--JmiEcmallNote-START-->    
+    <bean id="jmiEcmallNoteManager" class="com.joymain.jecs.mi.service.impl.JmiEcmallNoteManagerImpl">
+        <property name="jmiEcmallNoteDao" ref="jmiEcmallNoteDao"/>
+    </bean>
+    <!--JmiEcmallNote-END-->
+
+	<!--FoundationOrder-START-->    
+    <bean id="foundationOrderManager" class="com.joymain.jecs.fi.service.impl.FoundationOrderManagerImpl">
+        <property name="foundationOrderDao" ref="foundationOrderDao"/>
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+        <property name="fiLovecoinJournalManager" ref="fiLovecoinJournalManager"/>
+    </bean>
+    <!--FoundationOrder-END-->
+    <!--FoundationItem-START-->    
+    <bean id="foundationItemManager" class="com.joymain.jecs.fi.service.impl.FoundationItemManagerImpl">
+        <property name="foundationItemDao" ref="foundationItemDao"/>
+    </bean>
+    <!--FoundationItem-END-->
+    
+    
+    <!--fiLovecoinJournal-START-->    
+    <bean id="fiLovecoinJournalManager" class="com.joymain.jecs.fi.service.impl.FiLovecoinJournalManagerImpl">
+        <property name="dao" ref="fiLovecoinJournalDao"/>
+        <property name="fiLovecoinBalanceDao" ref="fiLovecoinBalanceDao"/>
+    </bean>
+    <!--fiLovecoinJournal-END-->
+    
+    <!--FiLovecoinBalance-START-->    
+    <bean id="fiLovecoinBalanceManager" class="com.joymain.jecs.fi.service.impl.FiLovecoinBalanceManagerImpl">
+        <property name="fiLovecoinBalanceDao" ref="fiLovecoinBalanceDao"/>
+    </bean>
+    <!--FiLovecoinBalance-END-->
+
+
+    <!--JpmProductWineTemplate-START-->    
+    <bean id="jpmProductWineTemplateManager" class="com.joymain.jecs.pm.service.impl.JpmProductWineTemplateManagerImpl">
+        <property name="jpmProductWineTemplateDao" ref="jpmProductWineTemplateDao"/>
+        <property name="jpmProductWineTemplateSubDao" ref="jpmProductWineTemplateSubDao"/>
+    </bean>
+    <!--JpmProductWineTemplate-END-->
+    <!--JpmProductWineTemplateSub-START-->    
+    <bean id="jpmProductWineTemplateSubManager" class="com.joymain.jecs.pm.service.impl.JpmProductWineTemplateSubManagerImpl">
+        <property name="jpmProductWineTemplateSubDao" ref="jpmProductWineTemplateSubDao"/>
+    </bean>
+    <!--JpmProductWineTemplateSub-END-->
+    <!--JpmWineTemplatePicture-START-->    
+    <bean id="jpmWineTemplatePictureManager" class="com.joymain.jecs.pm.service.impl.JpmWineTemplatePictureManagerImpl">
+        <property name="jpmWineTemplatePictureDao" ref="jpmWineTemplatePictureDao"/>
+    </bean>
+    <!--JpmWineTemplatePicture-END-->
+
+    <!--JpmWineOrderInterface-START-->    
+    <bean id="jpmWineOrderInterfaceManager" class="com.joymain.jecs.pm.service.impl.JpmWineOrderInterfaceManagerImpl">
+        <property name="jpmWineOrderInterfaceDao" ref="jpmWineOrderInterfaceDao"/>
+        <property name="jpmWineOrderListInterfaceDao" ref="jpmWineOrderListInterfaceDao"/>
+    </bean>
+    <!--JpmWineOrderInterface-END-->
+    <!--JpmWineOrderListInterface-START-->    
+    <bean id="jpmWineOrderListInterfaceManager" class="com.joymain.jecs.pm.service.impl.JpmWineOrderListInterfaceManagerImpl">
+        <property name="jpmWineOrderListInterfaceDao" ref="jpmWineOrderListInterfaceDao"/>
+    </bean>
+    <!--JpmWineOrderListInterface-END-->
+    <bean id="webContextFactoryUtil" class="com.joymain.jecs.util.WebContextFactoryUtil"/>
+    
+    
+    <!--JpmWineSettingListInf-START-->    
+    <bean id="jpmWineSettingListInfManager" class="com.joymain.jecs.pm.service.impl.JpmWineSettingListInfManagerImpl">
+        <property name="jpmWineSettingListInfDao" ref="jpmWineSettingListInfDao"/>
+    </bean>
+    <!--JpmWineSettingListInf-END-->
+    <!--JpmWineSettingInf-START-->    
+    <bean id="jpmWineSettingInfManager" class="com.joymain.jecs.pm.service.impl.JpmWineSettingInfManagerImpl">
+        <property name="jpmWineSettingInfDao" ref="jpmWineSettingInfDao"/>
+    </bean>
+    <!--JpmWineSettingInf-END-->
+    
+    
+
+    <!--JmiZcwMember-START-->    
+    <bean id="jmiZcwMemberManager" class="com.joymain.jecs.fi.service.impl.JmiZcwMemberManagerImpl">
+        <property name="jmiZcwMemberDao" ref="jmiZcwMemberDao"/>
+    </bean>
+    <!--JmiZcwMember-END-->
+    <!--FiSecurityDeposit-START-->    
+    <bean id="fiSecurityDepositManager" class="com.joymain.jecs.fi.service.impl.FiSecurityDepositManagerImpl">
+        <property name="fiSecurityDepositDao" ref="fiSecurityDepositDao"/>
+        <property name="sysUserManager" ref="sysUserManager"/>
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+        <property name="jfiBankbookBalanceManager" ref="jfiBankbookBalanceManager"/>
+        <property name="fiSecurityDepositJournalManager" ref="fiSecurityDepositJournalManager"/>
+    </bean>
+    <!--FiSecurityDeposit-END-->
+
+    <!--FiSecurityDepositJournal-START-->    
+    <bean id="fiSecurityDepositJournalManager" class="com.joymain.jecs.fi.service.impl.FiSecurityDepositJournalManagerImpl">
+        <property name="fiSecurityDepositJournalDao" ref="fiSecurityDepositJournalDao"/>
+    </bean>
+    <!--FiSecurityDepositJournal-END-->
+
+    <!--JpmConfigDetailed-START-->    
+    <bean id="jpmConfigDetailedManager" class="com.joymain.jecs.pm.service.impl.JpmConfigDetailedManagerImpl">
+        <property name="jpmConfigDetailedDao" ref="jpmConfigDetailedDao"/>
+        
+        <property name="jpmConfigSpecDetailedDao" ref="jpmConfigSpecDetailedDao"/>
+        <property name="jpmMemberConfigDao" ref="jpmMemberConfigDao"/>
+        <property name="jpoMemberOrderListDao" ref="jpoMemberOrderListDao"/>
+        <property name="jpmProductWineTemplateDao" ref="jpmProductWineTemplateDao"/>
+        <property name="jpoMemberOrderDao" ref="jpoMemberOrderDao"/>
+    </bean>
+    <!--JpmConfigDetailed-END-->
+    <!--JpmMemberConfig-START-->    
+    <bean id="jpmMemberConfigManager" class="com.joymain.jecs.pm.service.impl.JpmMemberConfigManagerImpl">
+        <property name="jpmMemberConfigDao" ref="jpmMemberConfigDao"/>
+        
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+        <property name="jpmConfigSpecDetailedManager" ref="jpmConfigSpecDetailedManager"/>
+        <property name="jpmConfigDetailedManager" ref="jpmConfigDetailedManager"/>
+        <property name="jpmProductWineTemplateSubManager" ref="jpmProductWineTemplateSubManager"/>
+        <property name="jpmWineTemplatePictureManager" ref="jpmWineTemplatePictureManager"/>
+        <property name="jpoMemberOrderManager" ref="jpoMemberOrderManager"/>
+        <property name="jpmSendConsignmentManager" ref="jpmSendConsignmentManager"/>
+        <property name="jmiAddrBookManager" ref="jmiAddrBookManager"/>
+        <property name="jmiMemberManager" ref="jmiMemberManager"/>
+    </bean>
+    <!--JpmMemberConfig-END-->
+    <!--JpmConfigSpecDetailed-START-->    
+    <bean id="jpmConfigSpecDetailedManager" class="com.joymain.jecs.pm.service.impl.JpmConfigSpecDetailedManagerImpl">
+        <property name="jpmConfigSpecDetailedDao" ref="jpmConfigSpecDetailedDao"/>
+    </bean>
+    <!--JpmConfigSpecDetailed-END-->
+    <!--JpoWineMemberOrder-START-->    
+    <bean id="jpoWineMemberOrderManager" class="com.joymain.jecs.pm.service.impl.JpoWineMemberOrderManagerImpl">
+        <property name="jpoWineMemberOrderDao" ref="jpoWineMemberOrderDao"/>
+    </bean>
+    <!--JpoWineMemberOrder-END-->
+    <!--JpmSendConsignment-START-->    
+    <bean id="jpmSendConsignmentManager" class="com.joymain.jecs.pm.service.impl.JpmSendConsignmentManagerImpl">
+        <property name="jpmSendConsignmentDao" ref="jpmSendConsignmentDao"/>
+        
+        <property name="alCityManager" ref="alCityManager"/>
+        <property name="alStateProvinceManager" ref="alStateProvinceManager"/>
+        <property name="alDistrictManager" ref="alDistrictManager"/>
+    </bean>
+    <!--JpmSendConsignment-END-->
+    
+    <!--FiCoinConfig-START-->    
+    <bean id="fiCoinConfigManager" class="com.joymain.jecs.fi.service.impl.FiCoinConfigManagerImpl">
+        <property name="fiCoinConfigDao" ref="fiCoinConfigDao"/>
+    </bean>
+    <!--FiCoinConfig-END-->
+    
+    <!--FiBillAccountRelation-START-->    
+    <bean id="fiBillAccountRelationManager" class="com.joymain.jecs.fi.service.impl.FiBillAccountRelationManagerImpl">
+        <property name="fiBillAccountRelationDao" ref="fiBillAccountRelationDao"/>
+    </bean>
+    <!--FiBillAccountRelation-END-->
+    
+    
+    
+    <!--FiGetbillaccountLog-START-->    
+    <bean id="fiGetbillaccountLogManager" class="com.joymain.jecs.fi.service.impl.FiGetbillaccountLogManagerImpl">
+        <property name="fiGetbillaccountLogDao" ref="fiGetbillaccountLogDao"/>
+    </bean>
+    <!--FiGetbillaccountLog-END-->
+    
+    
+    
+    
+    <!--FiCommonAddr-START-->    
+    <bean id="fiCommonAddrManager" class="com.joymain.jecs.fi.service.impl.FiCommonAddrManagerImpl">
+        <property name="fiCommonAddrDao" ref="fiCommonAddrDao"/>
+    </bean>
+    <!--FiCommonAddr-END-->
+    <!--FiFundbookBalance-START-->    
+    <bean id="fiFundbookBalanceManager" class="com.joymain.jecs.fi.service.impl.FiFundbookBalanceManagerImpl">
+        <property name="fiFundbookBalanceDao" ref="fiFundbookBalanceDao"/>
+    </bean>
+    <!--FiFundbookBalance-END-->
+    <!--FiFundbookJournal-START-->    
+    <bean id="fiFundbookJournalManager" class="com.joymain.jecs.fi.service.impl.FiFundbookJournalManagerImpl">
+        <property name="fiFundbookJournalDao" ref="fiFundbookJournalDao"/>
+        <property name="fiFundbookBalanceDao" ref="fiFundbookBalanceDao"/>
+        <property name="fiFundbookTempDao" ref="fiFundbookTempDao"/>
+    </bean>
+    <!--FiFundbookJournal-END-->
+    <!--FiFundbookTemp-START-->    
+    <bean id="fiFundbookTempManager" class="com.joymain.jecs.fi.service.impl.FiFundbookTempManagerImpl">
+        <property name="fiFundbookTempDao" ref="fiFundbookTempDao"/>
+    </bean>
+    <!--FiFundbookTemp-END-->
+    <!--FiTransferFundbook-START-->    
+    <bean id="fiTransferFundbookManager" class="com.joymain.jecs.fi.service.impl.FiTransferFundbookManagerImpl">
+        <property name="fiTransferFundbookDao" ref="fiTransferFundbookDao"/>
+        <property name="fiFundbookJournalManager" ref="fiFundbookJournalManager"/>
+        <property name="fiBankbookJournalManager" ref="fiBankbookJournalManager"/>
+        <property name="sysUserDao" ref="sysUserDao"/>
+    </bean>
+    <!--FiTransferFundbook-END-->
+    
+    <!--FiBcoinPayconfig-START-->    
+    <bean id="fiBcoinPayconfigManager" class="com.joymain.jecs.fi.service.impl.FiBcoinPayconfigManagerImpl">
+        <property name="fiBcoinPayconfigDao" ref="fiBcoinPayconfigDao"/>
+        <property name="fiBcoinPayconfigDetailDao" ref="fiBcoinPayconfigDetailDao"/>
+    </bean>
+    <!--FiBcoinPayconfig-END-->
+    <!--FiBcoinPayconfigDetail-START-->    
+    <bean id="fiBcoinPayconfigDetailManager" class="com.joymain.jecs.fi.service.impl.FiBcoinPayconfigDetailManagerImpl">
+        <property name="fiBcoinPayconfigDetailDao" ref="fiBcoinPayconfigDetailDao"/>
+    </bean>
+    <!--FiBcoinPayconfigDetail-END-->
+    <!--InwDepartment-START-->    
+    <bean id="inwDepartmentManager" class="com.joymain.jecs.am.service.impl.InwDepartmentManagerImpl">
+        <property name="inwDepartmentDao" ref="inwDepartmentDao"/>
+    </bean>
+    <!--InwDepartment-END-->
+    <!--InwDepartCompetence-START-->    
+    <bean id="inwDepartCompetenceManager" class="com.joymain.jecs.am.service.impl.InwDepartCompetenceManagerImpl">
+        <property name="inwDepartCompetenceDao" ref="inwDepartCompetenceDao"/>
+    </bean>
+    <!--InwDepartCompetence-END-->
+
+    <!--JmiTicket-START-->    
+    <bean id="jmiTicketManager" class="com.joymain.jecs.mi.service.impl.JmiTicketManagerImpl">
+        <property name="jmiTicketDao" ref="jmiTicketDao"/>
+    </bean>
+    <!--JmiTicket-END-->
+
+    <!--InwIntegrationTotal-START-->    
+    <bean id="inwIntegrationTotalManager" class="com.joymain.jecs.am.service.impl.InwIntegrationTotalManagerImpl">
+        <property name="inwIntegrationTotalDao" ref="inwIntegrationTotalDao"/>
+    </bean>
+    <!--InwIntegrationTotal-END-->
+
+
+    <!--FiBillAccount-START-->    
+    <bean id="fiBillAccountManager" class="com.joymain.jecs.fi.service.impl.FiBillAccountManagerImpl">
+        <property name="fiBillAccountDao" ref="fiBillAccountDao"/>
+        <property name="fiCommonAddrDao" ref="fiCommonAddrDao"/>
+        <property name="fiBillAccountWarningManager" ref="fiBillAccountWarningManager"/>
+    </bean>
+    <!--FiBillAccount-END-->
+    <!--FiBillAccountWarning-START-->    
+    <bean id="fiBillAccountWarningManager" class="com.joymain.jecs.fi.service.impl.FiBillAccountWarningManagerImpl">
+        <property name="fiBillAccountWarningDao" ref="fiBillAccountWarningDao"/>
+    </bean>
+    <!--FiBillAccountWarning-END-->
+
+	<bean id="jbdMemberStarRewardsManager" class="com.joymain.jecs.bd.service.impl.JbdMemberStarRewardsManagerImpl">
+        <property name="jbdMemberStarRewardsDao" ref="jbdMemberStarRewardsDao"/>
+    </bean>
+
+	<bean id="jbdMemberCongrationsManager" class="com.joymain.jecs.bd.service.impl.JbdMemberCongrationsManagerImpl">
+        <property name="jbdMemberCongrationsDao" ref="jbdMemberCongrationsDao"/>
+    </bean>
+    <!--InwDepartPerson-START-->    
+    <bean id="inwDepartPersonManager" class="com.joymain.jecs.am.service.impl.InwDepartPersonManagerImpl">
+        <property name="inwDepartPersonDao" ref="inwDepartPersonDao"/>
+    </bean>
+    <!--InwDepartPerson-END-->
+    <!--PdShUrl-START-->    
+    <bean id="pdShUrlManager" class="com.joymain.jecs.pd.service.impl.PdShUrlManagerImpl">
+        <property name="pdShUrlDao" ref="pdShUrlDao"/>
+    </bean>
+    <!--PdShUrl-END-->
+    <!--JfiChinapayPosLog-START-->    
+    <bean id="jfiChinapayPosLogManager" class="com.joymain.jecs.fi.service.impl.JfiChinapayPosLogManagerImpl">
+        <property name="jfiChinapayPosLogDao" ref="jfiChinapayPosLogDao"/>
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+        <property name="sysUserManager" ref="sysUserManager"/>
+        <property name="jfiPosImportManager" ref="jfiPosImportManager"/>
+        
+    </bean>
+    <!--JfiChinapayPosLog-END-->
+    <!--JbdTravelPoint2015-START-->    
+    <bean id="jbdTravelPoint2015Manager" class="com.joymain.jecs.bd.service.impl.JbdTravelPoint2015ManagerImpl">
+        <property name="jbdTravelPoint2015Dao" ref="jbdTravelPoint2015Dao"/>
+    </bean>
+    <!--JbdTravelPoint2015-END-->
+    <!--JbdTravelPointLog2015-START-->    
+    <bean id="jbdTravelPointLog2015Manager" class="com.joymain.jecs.bd.service.impl.JbdTravelPointLog2015ManagerImpl">
+        <property name="jbdTravelPointLog2015Dao" ref="jbdTravelPointLog2015Dao"/>
+        <property name="jbdTravelPoint2015Dao" ref="jbdTravelPoint2015Dao"/>
+    </bean>
+    <!--JbdTravelPointLog2015-END-->
+    <!--JmiValidLevelList-START-->    
+    <bean id="jmiValidLevelListManager" class="com.joymain.jecs.mi.service.impl.JmiValidLevelListManagerImpl">
+        <property name="jmiValidLevelListDao" ref="jmiValidLevelListDao"/>
+        <property name="jmiLevelNoteManager" ref="jmiLevelNoteManager"/>
+        <property name="jmiMemberManager" ref="jmiMemberManager"/>
+        <property name="sysRoleManager" ref="sysRoleManager"/>
+        <property name="sysUserRoleManager" ref="sysUserRoleManager"/>
+        <property name="bdPeriodManager" ref="bdPeriodManager"/>
+    </bean>
+    <!--JmiValidLevelList-END-->
+    <!--JmiLevelNote-START-->    
+    <bean id="jmiLevelNoteManager" class="com.joymain.jecs.mi.service.impl.JmiLevelNoteManagerImpl">
+        <property name="jmiLevelNoteDao" ref="jmiLevelNoteDao"/>
+    </bean>
+    <!--JmiLevelNote-END-->
+    <!--JmiLevelLock-START-->    
+    <bean id="jmiLevelLockManager" class="com.joymain.jecs.mi.service.impl.JmiLevelLockManagerImpl">
+        <property name="jmiLevelLockDao" ref="jmiLevelLockDao"/>
+        <property name="jmiMemberManager" ref="jmiMemberManager"/>
+        <property name="sysRoleManager" ref="sysRoleManager"/>
+        <property name="sysUserRoleManager" ref="sysUserRoleManager"/>
+        <property name="bdPeriodManager" ref="bdPeriodManager"/>
+    </bean>
+    <!--JmiLevelLock-END-->
+    <!--JfiChanjetLog-START-->    
+    <bean id="jfiChanjetLogManager" class="com.joymain.jecs.fi.service.impl.JfiChanjetLogManagerImpl">
+        <property name="jfiChanjetLogDao" ref="jfiChanjetLogDao"/>
+    </bean>
+    <!--JfiChanjetLog-END-->
+    
+    <bean id="chanjetUtil" class="com.joymain.jecs.util.chanjet.ChanjetUtilImpl">
+        <property name="jfiChanjetLogManager" ref="jfiChanjetLogManager"/>
+        <property name="sysIdManager" ref="sysIdManager"/>
+    </bean>
+    
+    <bean id="mobilWebUtil" class="com.joymain.jecs.util.mobil.MobilWebUtilImpl">
+        <property name="jfi99billLogManager" ref="jfi99billLogManager"/>
+        <property name="jpoMemberOrderManager" ref="jpoMemberOrderManager"/>
+    </bean>
+
+    <!--JmiGradeLock-START-->    
+    <bean id="jmiGradeLockManager" class="com.joymain.jecs.mi.service.impl.JmiGradeLockManagerImpl">
+        <property name="jmiGradeLockDao" ref="jmiGradeLockDao"/>
+        <property name="jbdSummaryListManager" ref="jbdSummaryListManager"/>
+        <property name="jmiMemberManager" ref="jmiMemberManager"/>
+        <property name="bdPeriodManager" ref="bdPeriodManager"/>
+    </bean>
+    <!--JmiGradeLock-END-->
+
+    <!--FiMovieOrder-START-->    
+    <bean id="fiMovieOrderManager" class="com.joymain.jecs.fi.service.impl.FiMovieOrderManagerImpl">
+        <property name="fiMovieOrderDao" ref="fiMovieOrderDao"/>
+    </bean>
+    <!--FiMovieOrder-END-->
+    
+    <!--JpoProductNumLimit-START-->    
+    <bean id="jpoProductNumLimitManager" class="com.joymain.jecs.po.service.impl.JpoProductNumLimitManagerImpl">
+        <property name="jpoProductNumLimitDao" ref="jpoProductNumLimitDao"/>
+    </bean>
+    <!--JpoProductNumLimit-END-->
+    
+    <!--JfiUmbpayLog-START-->    
+    <bean id="jfiUmbpayLogManager" class="com.joymain.jecs.fi.service.impl.JfiUmbpayLogManagerImpl">
+        <property name="jfiUmbpayLogDao" ref="jfiUmbpayLogDao"/>
+    </bean>
+    <bean id="umbpayUtil" class="com.joymain.jecs.util.umbpay.UmbpayUtilImpl">
+        <property name="umbpayLogManager" ref="jfiUmbpayLogManager"/>
+    </bean>
+    
+    <bean id="jfiChinapnrLogManager" class="com.joymain.jecs.fi.service.impl.JfiChinapnrLogManagerImpl">
+        <property name="jfiChinapnrLogDao" ref="jfiChinapnrLogDao"/>
+    </bean>
+    <bean id="chinapnrUtil" class="com.joymain.jecs.util.chinapnr.ChinapnrUtilImpl">
+        <property name="chinapnrLogManager" ref="jfiChinapnrLogManager"/>
+    </bean>
+    
+    <bean id="fiChannelLogManager" class="com.joymain.jecs.fi.service.impl.FiChannelLogManagerImpl">
+        <property name="fiChannelLogDao" ref="fiChannelLogDao"/>
+    </bean>
+    <!--JmiDealList-START-->    
+    <bean id="jmiDealListManager" class="com.joymain.jecs.mi.service.impl.JmiDealListManagerImpl">
+        <property name="jmiDealListDao" ref="jmiDealListDao"/>
+    </bean>
+    <!--JmiDealList-END-->
+    
+     <!--PdMailReceipt-START-->    
+    <bean id="pdMailReceiptManager" class="com.joymain.jecs.pd.service.impl.PdMailReceiptManagerImpl">
+        <property name="pdMailReceiptDao" ref="pdMailReceiptDao"/>
+    </bean>
+    <!--PdMailReceipt-END-->
+    
+    <!--MailStatus-START-->    
+    <bean id="mailStatusManager" class="com.joymain.jecs.pd.service.impl.MailStatusManagerImpl">
+        <property name="mailStatusDao" ref="mailStatusDao"/>
+        <property name="itemsManager" ref="itemsManager"/>
+        <property name="pdLogisticsBaseNumDao" ref="pdLogisticsBaseNumDao"/>
+        <property name="pdLogisticsBaseDetailDao" ref="pdLogisticsBaseDetailDao"/>
+        <property name="jpmProductManager" ref="jpmProductManager"/>
+    </bean>
+    <!--MailStatus-END-->
+    <!--Items-START-->    
+    <bean id="itemsManager" class="com.joymain.jecs.pd.service.impl.ItemsManagerImpl">
+        <property name="itemsDao" ref="itemsDao"/>
+    </bean>
+    <!--Items-END-->
+    
+     <!--PdLogisticsBase-START-->    
+    <bean id="pdLogisticsBaseManager" class="com.joymain.jecs.pd.service.impl.PdLogisticsBaseManagerImpl">
+        <property name="pdLogisticsBaseDao" ref="pdLogisticsBaseDao"/>
+        <property name="jpoMemberOrderDao" ref="jpoMemberOrderDao"/>
+        <property name="pdLogisticsBaseNumDao" ref="pdLogisticsBaseNumDao"/>
+        <property name="pdLogisticsBaseDetailDao" ref="pdLogisticsBaseDetailDao"/>
+        <property name="pdSendInfoDao" ref="pdSendInfoDao"/>
+        <property name="mailStatusManager" ref="mailStatusManager"/>
+        <property name="jpoMemberOrderListDao" ref="jpoMemberOrderListDao"/>
+        <property name="pdSendInfoDetailDao" ref="pdSendInfoDetailDao"/>
+        <property name="pdMailReceiptManager" ref="pdMailReceiptManager"/>
+        <property name="pdWarehouseStockManager" ref="pdWarehouseStockManager"/>
+        <property name="jpmProductSaleNewManager" ref="jpmProductSaleNewManager"/>
+        
+    </bean>
+    <!--PdLogisticsBase-END-->
+    <!--PdLogisticsBaseNum-START-->    
+    <bean id="pdLogisticsBaseNumManager" class="com.joymain.jecs.pd.service.impl.PdLogisticsBaseNumManagerImpl">
+        <property name="pdLogisticsBaseNumDao" ref="pdLogisticsBaseNumDao"/>
+    </bean>
+    <!--PdLogisticsBaseNum-END-->
+    <!--PdLogisticsBaseDetail-START-->    
+    <bean id="pdLogisticsBaseDetailManager" class="com.joymain.jecs.pd.service.impl.PdLogisticsBaseDetailManagerImpl">
+        <property name="pdLogisticsBaseDetailDao" ref="pdLogisticsBaseDetailDao"/>
+    </bean>
+    <!--PdLogisticsBaseDetail-END-->
+    
+    <!--JocsInterfaceRetransmission-START-->    
+    <bean id="jocsInterfaceRetransmissionManager" class="com.joymain.jecs.pm.service.impl.JocsInterfaceRetransmissionManagerImpl">
+        <property name="jocsInterfaceRetransmissionDao" ref="jocsInterfaceRetransmissionDao"/>
+    </bean>
+    <!--JocsInterfaceRetransmission-END-->
+    <!--JmiStateLog-START-->    
+    <bean id="jmiStateLogManager" class="com.joymain.jecs.mi.service.impl.JmiStateLogManagerImpl">
+        <property name="jmiStateLogDao" ref="jmiStateLogDao"/>
+    </bean>
+    <!--JmiStateLog-END-->
+    
+    <!--FiPayAccount-START-->    
+    <bean id="fiPayAccountManager" class="com.joymain.jecs.fi.service.impl.FiPayAccountManagerImpl">
+        <property name="fiPayAccountDao" ref="fiPayAccountDao"/>
+    </bean>
+    <!--FiPayAccount-END-->
+    <!--FiPayAccountConfig-START-->    
+    <bean id="fiPayAccountConfigManager" class="com.joymain.jecs.fi.service.impl.FiPayAccountConfigManagerImpl">
+        <property name="fiPayAccountConfigDao" ref="fiPayAccountConfigDao"/>
+    </bean>
+    <!--FiPayAccountConfig-END-->
+    <!--JfiYeepayLog-START-->    
+    <bean id="jfiYeepayLogManager" class="com.joymain.jecs.fi.service.impl.JfiYeepayLogManagerImpl">
+        <property name="jfiYeepayLogDao" ref="jfiYeepayLogDao"/>
+    </bean>
+    <!--JfiYeepayLog-END-->
+    <bean id="yeePayUtil" class="com.joymain.jecs.util.yeepay.YeePayUtilImpl">
+        <property name="jfiYeepayLogManager" ref="jfiYeepayLogManager"/>
+    </bean>
+
+    <!--JfiReapalLog-START-->    
+    <bean id="jfiReapalLogManager" class="com.joymain.jecs.fi.service.impl.JfiReapalLogManagerImpl">
+        <property name="jfiReapalLogDao" ref="jfiReapalLogDao"/>
+    </bean>
+    <!--JfiReapalLog-END-->
+    <!--JmiSpecialList-START-->    
+    <bean id="jmiSpecialListManager" class="com.joymain.jecs.mi.service.impl.JmiSpecialListManagerImpl">
+        <property name="jmiSpecialListDao" ref="jmiSpecialListDao"/>
+    </bean>
+    <!--JmiSpecialList-END-->
+    
+    
+    
+    <!--JfiInvoiceDeposit-START-->    
+    <bean id="jfiInvoiceDepositManager" class="com.joymain.jecs.fi.service.impl.JfiInvoiceDepositManagerImpl">
+        <property name="jfiInvoiceDepositDao" ref="jfiInvoiceDepositDao"/>
+    </bean>
+    <!--JfiInvoiceDeposit-END-->
+    <!--JfiDepositList-START-->    
+    <bean id="jfiDepositListManager" class="com.joymain.jecs.fi.service.impl.JfiDepositListManagerImpl">
+        <property name="jfiDepositListDao" ref="jfiDepositListDao"/>
+    </bean>
+    <!--JfiDepositList-END-->
+    
+    <!--JfiInvoice-START-->    
+    <bean id="jfiInvoiceManager" class="com.joymain.jecs.fi.service.impl.JfiInvoiceManagerImpl">
+        <property name="jfiInvoiceDao" ref="jfiInvoiceDao"/>
+    </bean>
+    <!--JfiInvoice-END-->
+	<bean id="checkedFailedManager" class="com.joymain.jecs.po.service.impl.JpoCheckedFailedManagerImpl">
+        <property name="checkedFailedDao" ref="checkedFailedDao"/>
+    </bean>
+
+	<!--JfiPayLog-START-->    
+    <bean id="jfiPayLogManager" class="com.joymain.jecs.fi.service.impl.JfiPayLogManagerImpl">
+        <property name="jfiPayLogDao" ref="jfiPayLogDao"/>
+    </bean>
+    <!--JfiPayLog-END-->
+
+    
+    <!--JfiDepositJournal-START-->    
+    <bean id="jfiDepositJournalManager" class="com.joymain.jecs.fi.service.impl.JfiDepositJournalManagerImpl">
+        <property name="jfiDepositJournalDao" ref="jfiDepositJournalDao"/>
+        <property name="jfiDepositBalanceDao" ref="jfiDepositBalanceDao"/>
+    </bean>
+    <!--JfiDepositJournal-END-->
+    <!--JfiDepositMoney-START-->    
+    <bean id="jfiDepositMoneyManager" class="com.joymain.jecs.fi.service.impl.JfiDepositMoneyManagerImpl">
+        <property name="jfiDepositMoneyDao" ref="jfiDepositMoneyDao"/>
+    </bean>
+    <!--JfiDepositMoney-END-->
+    <!--JfiDepositSend-START-->    
+    <bean id="jfiDepositSendManager" class="com.joymain.jecs.fi.service.impl.JfiDepositSendManagerImpl">
+        <property name="jfiDepositSendDao" ref="jfiDepositSendDao"/>
+        <property name="jfiDepositJournalManager" ref="jfiDepositJournalManager"/>
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+        <property name="sysUserManager" ref="sysUserManager"/>
+    </bean>
+    <!--JfiDepositSend-END-->
+    <!--JfiDepositBalance-START-->    
+    <bean id="jfiDepositBalanceManager" class="com.joymain.jecs.fi.service.impl.JfiDepositBalanceManagerImpl">
+        <property name="jfiDepositBalanceDao" ref="jfiDepositBalanceDao"/>
+    </bean>
+    <!--JfiDepositBalance-END-->
+    <!--JfiDepositTemp-START-->    
+    <bean id="jfiDepositTempManager" class="com.joymain.jecs.fi.service.impl.JfiDepositTempManagerImpl">
+        <property name="jfiDepositTempDao" ref="jfiDepositTempDao"/>
+    </bean>
+    <!--JfiDepositTemp-END-->
+    <!--FiAvailableInvoice-START-->    
+    <bean id="fiAvailableInvoiceManager" class="com.joymain.jecs.fi.service.impl.FiAvailableInvoiceManagerImpl">
+        <property name="fiAvailableInvoiceDao" ref="fiAvailableInvoiceDao"/>
+        <property name="fiInvoiceChangeManager" ref="fiInvoiceChangeManager"/>
+        <property name="fiInvoiceBalanceManager" ref="fiInvoiceBalanceManager"/>
+        <property name="jfiDepositJournalManager" ref="jfiDepositJournalManager"/>
+    </bean>
+    <!--FiAvailableInvoice-END-->
+    <!--FiInvoiceChange-START-->    
+    <bean id="fiInvoiceChangeManager" class="com.joymain.jecs.fi.service.impl.FiInvoiceChangeManagerImpl">
+        <property name="fiInvoiceChangeDao" ref="fiInvoiceChangeDao"/>
+    </bean>
+    <!--FiInvoiceChange-END-->
+    <!--FiInvoiceBalance-START-->    
+    <bean id="fiInvoiceBalanceManager" class="com.joymain.jecs.fi.service.impl.FiInvoiceBalanceManagerImpl">
+        <property name="fiInvoiceBalanceDao" ref="fiInvoiceBalanceDao"/>
+    </bean>
+    <!--FiInvoiceBalance-END-->
+    
+    <bean id="jmiMemberRecordManager" class="com.joymain.jecs.memberrecord.service.impl.JmiMemberRecordManagerImpl">
+        <property name="jmiMemberRecordDao" ref="jmiMemberRecordDao"/>
+    </bean>
+    <!--JmiMemberLog-START-->    
+    <bean id="jmiMemberLogManager" class="com.joymain.jecs.mi.service.impl.JmiMemberLogManagerImpl">
+        <property name="jmiMemberLogDao" ref="jmiMemberLogDao"/>
+    </bean>
+    <!--JmiMemberLog-END-->
+    <!--JmiPrizeTourism-START-->    
+    <bean id="jmiPrizeTourismManager" class="com.joymain.jecs.mi.service.impl.JmiPrizeTourismManagerImpl">
+        <property name="jmiPrizeTourismDao" ref="jmiPrizeTourismDao"/>
+    </bean>
+    <!--JmiPrizeTourism-END-->
+    <!--JbdTravelPointAll-START-->    
+    <bean id="jbdTravelPointAllManager" class="com.joymain.jecs.bd.service.impl.JbdTravelPointAllManagerImpl">
+        <property name="jbdTravelPointAllDao" ref="jbdTravelPointAllDao"/>
+    </bean>
+    <!--JbdTravelPointAll-END-->
+    <!--JbdTravelPointLogAll-START-->    
+    <bean id="jbdTravelPointLogAllManager" class="com.joymain.jecs.bd.service.impl.JbdTravelPointLogAllManagerImpl">
+        <property name="jbdTravelPointLogAllDao" ref="jbdTravelPointLogAllDao"/>
+        <property name="jbdTravelPointAllDao" ref="jbdTravelPointAllDao"/>
+    </bean>
+    <!--JbdTravelPointLogAll-END-->
+    
+    <bean id="pdShipStrategyMainManager" class="com.joymain.jecs.pd.service.impl.PdShipStrategyMainManagerImpl">
+        <property name="pdShipStrategyMainDao" ref="pdShipStrategyMainDao"/>
+    </bean>
+    <!--JfiBusinessNum-START-->    
+    <bean id="jfiBusinessNumManager" class="com.joymain.jecs.fi.service.impl.JfiBusinessNumManagerImpl">
+        <property name="jfiBusinessNumDao" ref="jfiBusinessNumDao"/>
+    </bean>
+    <!--JfiBusinessNum-END-->
+    <!--JfiQuota-START-->    
+    <bean id="jfiQuotaManager" class="com.joymain.jecs.fi.service.impl.JfiQuotaManagerImpl">
+        <property name="jfiQuotaDao" ref="jfiQuotaDao"/>
+    </bean>
+    <!--JfiQuota-END-->
+    <!--JfiAmountDetail-START-->    
+    <bean id="jfiAmountDetailManager" class="com.joymain.jecs.fi.service.impl.JfiAmountDetailManagerImpl">
+        <property name="jfiAmountDetailDao" ref="jfiAmountDetailDao"/>
+    </bean>
+    <!--JfiAmountDetail-END-->
+    <!--JpmCombinationRelated-START-->    
+    <bean id="jpmCombinationRelatedManager" class="com.joymain.jecs.pm.service.impl.JpmCombinationRelatedManagerImpl">
+        <property name="jpmCombinationRelatedDao" ref="jpmCombinationRelatedDao"/>
+    </bean>
+    <!--JpmCombinationRelated-END-->
+     <!--PdNotChangeProduct-START-->    
+    <bean id="pdNotChangeProductManager" class="com.joymain.jecs.pd.service.impl.PdNotChangeProductManagerImpl">
+        <property name="pdNotChangeProductDao" ref="pdNotChangeProductDao"/>
+        <property name="jpmProductDao" ref="jpmProductDao"/>
+    </bean>
+    <!--PdNotChangeProduct-END-->
+    <!--JbdSubBonusList-START-->    
+    <bean id="jbdSubBonusListManager" class="com.joymain.jecs.bd.service.impl.JbdSubBonusListManagerImpl">
+        <property name="jbdSubBonusListDao" ref="jbdSubBonusListDao"/>
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+    </bean>
+    <!--JbdSubBonusList-END-->
+    
+    <!--JmiAssure-START-->    
+    <bean id="jmiAssureManager" class="com.joymain.jecs.mi.service.impl.JmiAssureManagerImpl">
+        <property name="jmiAssureDao" ref="jmiAssureDao"/>
+        <property name="jmiMemberDao" ref="jmiMemberDao"/>
+        <property name="bdPeriodDao" ref="bdPeriodDao"/>
+        <property name="jpoMemberOrderDao" ref="jpoMemberOrderDao"/>
+    </bean>
+    <!--JmiAssure-END-->
+    <!--JpoMemberNyc-START-->    
+    <bean id="jpoMemberNycManager" class="com.joymain.jecs.po.service.impl.JpoMemberNycManagerImpl">
+        <property name="jpoMemberNycDao" ref="jpoMemberNycDao"/>
+        <property name="jpoMemberNycLogDao" ref="jpoMemberNycLogDao"/>
+    </bean>
+    <!--JpoMemberNyc-END-->
+    <!--JpoMemberNycLog-START-->    
+    <bean id="jpoMemberNycLogManager" class="com.joymain.jecs.po.service.impl.JpoMemberNycLogManagerImpl">
+        <property name="jpoMemberNycLogDao" ref="jpoMemberNycLogDao"/>
+    </bean>
+    <!--JpoMemberNycLog-END-->
+    <!--JpoMemberNycQualify-START-->    
+    <bean id="jpoMemberNycQualifyManager" class="com.joymain.jecs.po.service.impl.JpoMemberNycQualifyManagerImpl">
+        <property name="jpoMemberNycQualifyDao" ref="jpoMemberNycQualifyDao"/>
+    </bean>
+    <!--JpoMemberNycQualify-END-->
+    <!--JbdMemberFrozen-START-->    
+    <bean id="jbdMemberFrozenManager" class="com.joymain.jecs.bd.service.impl.JbdMemberFrozenManagerImpl">
+        <property name="jbdMemberFrozenDao" ref="jbdMemberFrozenDao"/>
+    </bean>
+    <!--JbdMemberFrozen-END-->
+    
+    <!--FiProductPointTemp-START-->    
+    <bean id="fiProductPointTempManager" class="com.joymain.jecs.fi.service.impl.FiProductPointTempManagerImpl">
+        <property name="fiProductPointTempDao" ref="fiProductPointTempDao"/>
+    </bean>
+    <!--FiProductPointTemp-END-->
+    <!--FiBankbookJournal-START-->    
+    <bean id="fiProductPointJournalManager" class="com.joymain.jecs.fi.service.impl.FiProductPointJournalManagerImpl">
+        <property name="fiProductPointJournalDao" ref="fiProductPointJournalDao"/>
+        <property name="fiProductPointTempDao" ref="fiProductPointTempDao"/>
+        <property name="fiProductPointBalanceDao" ref="fiProductPointBalanceDao"/>
+        <property name="jfiPosImportManager" ref="jfiPosImportManager"/>
+    </bean>
+    <!--FiBankbookJournal-END-->
+    <!--JbdCalcDayFb-START-->    
+    <bean id="jbdCalcDayFbManager" class="com.joymain.jecs.bd.service.impl.JbdCalcDayFbManagerImpl">
+        <property name="jbdCalcDayFbDao" ref="jbdCalcDayFbDao"/>
+        <property name="fiProductPointJournalManager" ref="fiProductPointJournalManager"/>
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+    </bean>
+    <!--JbdCalcDayFb-END-->
+    <!--JbdCalcDayKbList-START-->    
+    <bean id="jbdCalcDayKbListManager" class="com.joymain.jecs.bd.service.impl.JbdCalcDayKbListManagerImpl">
+        <property name="jbdCalcDayKbListDao" ref="jbdCalcDayKbListDao"/>
+    </bean>
+    <!--JbdCalcDayKbList-END-->
+       <!--JpmCouponInfo-START-->    
+    <bean id="jpmCouponInfoManager" class="com.joymain.jecs.pm.service.impl.JpmCouponInfoManagerImpl">
+        <property name="jpmCouponInfoDao" ref="jpmCouponInfoDao"/>
+    </bean>
+    <!--JpmCouponInfo-END-->
+    <!--JpmCouponRelationship-START-->    
+    <bean id="jpmCouponRelationshipManager" class="com.joymain.jecs.pm.service.impl.JpmCouponRelationshipManagerImpl">
+        <property name="jpmCouponRelationshipDao" ref="jpmCouponRelationshipDao"/>
+    </bean>
+    <!--JpmCouponRelationship-END-->
+    <!--JpoUserCoupon-START-->    
+    <bean id="jpoUserCouponManager" class="com.joymain.jecs.po.service.impl.JpoUserCouponManagerImpl">
+        <property name="jpoUserCouponDao" ref="jpoUserCouponDao"/>
+        <property name="jpmCouponInfoDao" ref="jpmCouponInfoDao"/>
+    </bean>
+    <!--JpoUserCoupon-END-->
+    <!--JpoCouponRelationship-START-->    
+    <bean id="jpoCouponRelationshipManager" class="com.joymain.jecs.po.service.impl.JpoCouponRelationshipManagerImpl">
+        <property name="jpoCouponRelationshipDao" ref="jpoCouponRelationshipDao"/>
+    </bean>
+    <!--JpoCouponRelationship-END-->
+    
+    <!-- 验证码管理 -->
+     <bean id="jpoInviteListManager" class="com.joymain.jecs.po.service.impl.JpoInviteListManagerImpl">
+        <property name="jpoInviteListDao" ref="jpoInviteListDao"/>
+    </bean>
+        <!--JbdJdSendRecord-START-->    
+    <bean id="jbdJdSendRecordManager" class="com.joymain.jecs.bd.service.impl.JbdJdSendRecordManagerImpl">
+        <property name="jbdJdSendRecordDao" ref="jbdJdSendRecordDao"/>
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+    </bean>
+    <bean id="jbdDayCustRecommendKbManager" class="com.joymain.jecs.bd.service.impl.JbdDayCustRecommendKbManagerImpl">
+        <property name="jbdDayCustRecommendKbDao" ref="jbdDayCustRecommendKbDao"/>
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+    </bean>
+    <!--JbdJdSendRecord-END-->
+    <!--JbdYkJiandianList-START-->    
+    <bean id="jbdYkJiandianListManager" class="com.joymain.jecs.bd.service.impl.JbdYkJiandianListManagerImpl">
+        <property name="jbdYkJiandianListDao" ref="jbdYkJiandianListDao"/>
+    </bean>
+    <!--JbdYkJiandianList-END-->
+    
+     <!--JbdYkJiandianList-START-->    
+    <bean id="jbdYdRebateListManager" class="com.joymain.jecs.bd.service.impl.JbdYdRebateListManagerImpl">
+        <property name="jbdYdRebateListDao" ref="jbdYdRebateListDao"/>
+        <property name="jbdYdRebateHistDao" ref="jbdYdRebateHistDao"/>
+        <property name="jfiBankbookJournalManager" ref="jfiBankbookJournalManager"/>
+    </bean>
+    
+    <!--JbdYkJiandianList-END-->
+    
+     <bean id="jmiSmsNoteManager" class="com.joymain.jecs.mi.service.impl.JmiSmsNoteManagerImpl">
+        <property name="jmiSmsNoteDao" ref="jmiSmsNoteDao"/>
+        <property name="sysManagerDao" ref="sysManagerDao"/>
+        <property name="sysUserDao" ref="sysUserDao"/>
+    </bean>
+    
+     <bean id="jmiYdSendListManager" class="com.joymain.jecs.mi.service.impl.JmiYdSendListManagerImpl">
+        <property name="jmiYdSendListDao" ref="jmiYdSendListDao"/>
+    </bean>
+    
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

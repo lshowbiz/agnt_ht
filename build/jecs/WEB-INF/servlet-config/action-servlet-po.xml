@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<!--AlCharacterType-BEAN-START -->
+
+	<bean id="jpoMemberOrderTeamReportController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderTeamReportController"
+		autowire="byName" scope="prototype">
+		<property name="formView" value="po/jpoMemberOrderTeamReport" />
+		<property name="successView" value="" />
+	</bean>
+	<bean id="jpoOrderFMonthReportController"
+		class="com.joymain.jecs.po.webapp.action.JpoOrderFMonthReportController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpo_order_fmonth_report" />
+		<property name="successView" value="redirect:jpoOrderFMonthReport.html" />
+	</bean>
+	<bean id="jpoProductFMonthReportController"
+		class="com.joymain.jecs.po.webapp.action.JpoProductFMonthReportController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpo_product_fmonth_report" />
+		<property name="successView" value="redirect:jpoProductFMonthReport.html" />
+	</bean>
+	<!-- 邀请码 開始 -->
+	  <bean id="jpoInviteListController" class="com.joymain.jecs.po.webapp.action.JpoInviteListController" autowire="byName"/>
+	<bean id="batchJpoInviteListController" class="com.joymain.jecs.po.webapp.action.BatchJpoInviteListController" autowire="byName">
+        <property name="validator" ref="beanValidator"/>
+        <property name="cancelView" value="redirect:batchJpoInviteList.html"/>
+        <property name="formView" value="po/batchJpoInviteList"/>
+        <property name="successView" value="pd/pdUploadDisplay"/>
+    </bean>
+    
+    <bean id="jpoInviteListBatchController" class="com.joymain.jecs.po.webapp.action.JpoInviteListBatchController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="po/jpoInviteListFormBatch"/>
+        <property name="successView" value="redirect:jpoInviteLists.html"/>
+    </bean>
+    
+    	<!-- 邀请码 結束 -->
+	<bean id="jpoMemberOrderStatisticAllController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderStatisticAllController"
+		autowire="byName" />
+		
+	<bean id="jpoMemberOrderStatisticSTJReportController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderStatisticSTJReportController"
+		autowire="byName" />
+		
+
+	<bean id="jpoMemberIROrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberIROrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberIROrderForm" />
+		<property name="successView" value="redirect:jpoMemberIROrders.html" />
+	</bean>
+
+	<bean id="jpoMemberIROrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberIROrderController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderTeamMyCoolReportController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderTeamMyCoolReportController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderAreaWeekStatisticController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderAreaWeekStatisticController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderClearingPerformanceStatisticController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderClearingPerformanceStatisticController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderProductWeekStatisticController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderProductWeekStatisticController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderChangeDateStatisticController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderChangeDateStatisticController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderAreaStatisticController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderAreaStatisticController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderChangeDateController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderChangeDateController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderBatchChangeDateController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderBatchChangeDateController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderCheckController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderCheckController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderViewController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderViewController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderReportStatisticController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderReportStatisticController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderStatisticController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderStatisticController"
+		autowire="byName" />
+		
+	<bean id="jpoMemberOrderSTJStatisticController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderSTJStatisticController"
+		autowire="byName" />
+		
+	<bean id="jpoRecommendStatisticController"
+		class="com.joymain.jecs.po.webapp.action.JpoRecommendPHStatisticController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderPHStatisticController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderPHStatisticController"
+		autowire="byName" />
+	<!--JpoMemberOrder-BEAN-START -->
+	<bean id="jpoMemberOrderCityStatisticController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderCityStatisticController"
+		autowire="byName" />
+	<bean id="jpoMemberFOrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberFOrderController"
+		autowire="byName" />
+	<bean id="jpoMemberPraiseMeetingController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberPraiseMeetingController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderTypeReportController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderTypeReportController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderTypeCylindricalReportController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderTypeCylindricalReportController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderRenewalReportController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderRenewalReportController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderWeekReportController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderWeekReportController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderRepeatReportController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderRepeatReportController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderShopRController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderShopRController"
+		autowire="byName" />
+	<bean id="jpoMemberOrderShopSellReportController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderShopSellReportController"
+		autowire="byName" />
+
+	<bean id="jpoMemberFOrdereLevelController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberFOrdereLevelController">
+		<property name="formView" value="po/jpoMemberFOrderForm" />
+	</bean>
+
+
+	<bean id="jpoMemberFOrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberFOrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberFOrderForm" />
+		<property name="successView" value="redirect:jpoMemberFOrders.html" />
+	</bean>
+
+	<bean id="jpoMemberFOrderLCFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberFOrderLCFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberFOrderLCForm" />
+		<property name="successView" value="redirect:jpoMemberFOrders.html" />
+	</bean>
+	<!--JpoMemberOrder-BEAN-END -->
+	<!--JpoShippingFee-BEAN-START -->
+	<bean id="jpoShippingFeeController"
+		class="com.joymain.jecs.po.webapp.action.JpoShippingFeeController"
+		autowire="byName" />
+
+	<bean id="jpoShippingFeeFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoShippingFeeFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoShippingFeeForm" />
+		<property name="successView" value="redirect:jpoShippingFees.html" />
+	</bean>
+	<!--JpoShippingFee-BEAN-END -->
+	<!--JpoMemberOrder-BEAN-START -->
+	<bean id="jpoMemberSFOrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSFOrderController"
+		autowire="byName" />
+
+	<bean id="jpoMemberSFOrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSFOrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberSFOrderForm" />
+		<property name="successView" value="redirect:jpoMemberSFOrders.html" />
+	</bean>
+
+	<bean id="jpoMemberSFOrderLCFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSFOrderLCFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberSFOrderLCForm" />
+		<property name="successView" value="redirect:jpoMemberSFOrders.html" />
+	</bean>
+	<!--JpoMemberOrder-BEAN-END -->
+	<!--JpoMemberOrder-BEAN-START -->
+	<bean id="jpoMemberSSubFOrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSSubFOrderController"
+		autowire="byName" />
+
+	<bean id="jpoMemberSSubFOrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSSubFOrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberSSubFOrderForm" />
+		<property name="successView" value="redirect:jpoMemberSSubFOrders.html" />
+	</bean>
+
+	<bean id="jpoMemberSSubFOrderLCFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSSubFOrderLCFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberSSubFOrderLCForm" />
+		<property name="successView" value="redirect:jpoMemberSSubFOrders.html" />
+	</bean>
+	<!--JpoMemberOrder-BEAN-END -->
+	<!--JpoMemberOrder-BEAN-START -->
+	<bean id="jpoMemberSSubUOrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSSubUOrderController"
+		autowire="byName" />
+
+	<bean id="jpoMemberSSubUOrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSSubUOrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberSSubUOrderForm" />
+		<property name="successView" value="redirect:jpoMemberSSubUOrders.html" />
+	</bean>
+
+	<bean id="jpoMemberSSubUOrderLCFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSSubUOrderLCFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberSSubUOrderLCForm" />
+		<property name="successView" value="redirect:jpoMemberSSubUOrders.html" />
+	</bean>
+	<!--JpoMemberOrder-BEAN-END -->
+	<!--JpoMemberOrder-BEAN-START -->
+	<bean id="jpoMemberSSubROrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSSubROrderController"
+		autowire="byName" />
+
+	<bean id="jpoMemberSSubROrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSSubROrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberSSubROrderForm" />
+		<property name="successView" value="redirect:jpoMemberSSubROrders.html" />
+	</bean>
+
+	<bean id="jpoMemberSSubROrderLCFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSSubROrderLCFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberSSubROrderLCForm" />
+		<property name="successView" value="redirect:jpoMemberSSubROrders.html" />
+	</bean>
+	<!--JpoMemberOrder-BEAN-END -->
+	<!--JpoMemberOrder-BEAN-START -->
+	<bean id="jpoMemberOrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberOrderForm" />
+		<property name="successView" value="redirect:jpoMemberOrderBatch.html" />
+	</bean>
+	<bean id="jpoMemberBathROrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberBathROrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberBathROrderForm" />
+		<property name="successView" value="redirect:jpoMemberOrderBatchROrder.html" />
+	</bean>
+	 
+	<bean id="jpoMemberUOrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberUOrderController"
+		autowire="byName" />
+	
+	<bean id="jpoMemberUOrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberUOrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberUOrderForm" />
+		<property name="successView" value="redirect:jpoMemberUOrders.html" />
+	</bean>
+
+	<bean id="jpoMemberUOrderLCFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberUOrderLCFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberUOrderLCForm" />
+		<property name="successView" value="redirect:jpoMemberUOrders.html" />
+	</bean>
+	<!--JpoMemberOrder-BEAN-END -->
+	<!--JpoMemberOrder-BEAN-START -->
+	<bean id="jpoMemberSpecialUOrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSpecialUOrderController"
+		autowire="byName" />
+
+	<bean id="jpoMemberSpecialUOrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSpecialUOrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberSpecialUOrderForm" />
+		<property name="successView" value="redirect:jpoMemberSpecialUOrders.html" />
+	</bean>
+	<!--JpoMemberOrder-BEAN-END -->
+	<!--JpoMemberOrder-BEAN-START -->
+	<bean id="jpoMemberAOrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberAOrderController"
+		autowire="byName" />
+
+	<bean id="jpoMemberAOrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberAOrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberAOrderForm" />
+		<property name="successView" value="redirect:jpoMemberAOrders.html" />
+	</bean>
+	<!--JpoMemberOrder-BEAN-END -->
+	<!--JpoMemberOrder-BEAN-START -->
+	<bean id="jpoMemberRSOrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberRSOrderController"
+		autowire="byName" />
+
+	<bean id="jpoMemberRSOrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberRSOrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberRSOrderForm" />
+		<property name="successView" value="redirect:jpoMemberRSOrders.html" />
+	</bean>
+	<bean id="jpoMemberRSOrderLCFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberRSOrderLCFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberRSOrderLCForm" />
+		<property name="successView" value="redirect:jpoMemberRSOrders.html" />
+	</bean>
+	<!--JpoMemberOrder-BEAN-END -->
+	<bean id="jpoMemberMROrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberMROrderController"
+		autowire="byName" />
+
+	<bean id="jpoMemberMROrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberMROrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberMROrderForm" />
+		<property name="successView" value="redirect:jpoMemberMROrders.html" />
+	</bean>
+	<bean id="jpoMemberMFOrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberMFOrderController"
+		autowire="byName" />
+
+	<bean id="jpoMemberMFOrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberMFOrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberMFOrderForm" />
+		<property name="successView" value="redirect:jpoMemberMFOrders.html" />
+	</bean>
+	<!--JpoMemberOrder-BEAN-START -->
+	<bean id="jpoMemberROrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberROrderController"
+		autowire="byName" />
+
+	<bean id="jpoMemberROrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberROrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberROrderForm" />
+		<property name="successView" value="redirect:jpoMemberROrders.html" />
+	</bean>
+
+	<bean id="jpoMemberROrderLCFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberROrderLCFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberROrderLCForm" />
+		<property name="successView" value="redirect:jpoMemberROrders.html" />
+	</bean>
+	<!--JpoMemberOrder-BEAN-END -->
+	  
+	
+	<!--JpoMemberOrder-BEAN-START -->
+	<bean id="jpoMemberSROrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSROrderController"
+		autowire="byName" />
+
+	<bean id="jpoMemberSROrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSROrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberSROrderForm" />
+		<property name="successView" value="redirect:jpoMemberSROrders.html" />
+	</bean>
+
+	<bean id="jpoMemberSROrderLCFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberSROrderLCFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberSROrderLCForm" />
+		<property name="successView" value="redirect:jpoMemberSROrders.html" />
+	</bean>
+	<!--JpoMemberOrder-BEAN-END -->
+	<!--JpoMemberOrderFee-BEAN-START -->
+	<bean id="jpoMemberOrderFeeController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderFeeController"
+		autowire="byName" />
+
+	<bean id="jpoMemberOrderFeeFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderFeeFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberOrderFeeForm" />
+		<property name="successView" value="redirect:jpoMemberOrderFees.html" />
+	</bean>
+	<!--JpoMemberOrderFee-BEAN-END -->
+	<!--JpoMemberOrderList-BEAN-START -->
+	<bean id="jpoMemberOrderListController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderListController"
+		autowire="byName" />
+
+	<bean id="jpoMemberOrderListFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderListFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberOrderListForm" />
+		<property name="successView" value="redirect:jpoMemberOrderLists.html" />
+	</bean>
+	<!--JpoMemberOrderList-BEAN-END -->
+	<!--JpoCounterOrderDetail-BEAN-START -->
+	<bean id="jpoCounterOrderDetailController"
+		class="com.joymain.jecs.po.webapp.action.JpoCounterOrderDetailController"
+		autowire="byName" />
+
+	<bean id="jpoCounterOrderDetailFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoCounterOrderDetailFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoCounterOrderDetailForm" />
+		<property name="successView" value="redirect:jpoCounterOrderDetails.html" />
+	</bean>
+	<!--JpoCounterOrderDetail-BEAN-END -->
+	<bean id="jpoMemberOrderPHInvoiceController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderPHInvoiceController"
+		autowire="byName" />
+	<bean id="jpoRecommendPHInvoiceController"
+		class="com.joymain.jecs.po.webapp.action.JpoRecommendPHInvoiceController"
+		autowire="byName" />
+
+	<bean id="jpoMemberOrderPayOtherFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderPayOtherFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberOrderPayOtherForm" />
+		<property name="successView" value="redirect:editJpoMemberOrderPayOther.htmll" />
+	</bean>
+
+	<!--JpoMemberOrderTask-BEAN-START -->
+	<bean id="jpoMemberOrderTaskController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderTaskController"
+		autowire="byName" />
+
+	<bean id="jpoMemberOrderTaskFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderTaskFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberOrderTaskForm" />
+		<property name="successView" value="redirect:jpoMemberOrderTasks.html" />
+	</bean>
+	<!--JpoMemberOrderTask-BEAN-END -->
+	<!--JpoMemberOrderListTask-BEAN-START -->
+	<bean id="jpoMemberOrderListTaskController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderListTaskController"
+		autowire="byName" />
+
+	<bean id="jpoMemberOrderListTaskFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderListTaskFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberOrderListTaskForm" />
+		<property name="successView" value="redirect:jpoMemberOrderListTasks.html" />
+	</bean>
+	<!--JpoMemberOrderListTask-BEAN-END -->
+	<!--JpoAutoShip-BEAN-START -->
+	<bean id="jpoAutoShipController" class="com.joymain.jecs.po.webapp.action.JpoAutoShipController"
+		autowire="byName" />
+
+	<bean id="jpoAutoShipFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoAutoShipFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoAutoShipForm" />
+		<property name="successView" value="redirect:jpoAutoShips.html" />
+	</bean>
+	<!--JpoAutoShip-BEAN-END -->
+
+	<bean id="jpoMemberOrderManageController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberOrderManageController"
+		autowire="byName" />
+	<bean id="jpoMemberShipmentsOrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberShipmentsOrderController"
+		autowire="byName" />
+		
+	<bean id="jpoOrderUnLockController"
+		class="com.joymain.jecs.po.webapp.action.JpoOrderUnLockController"
+		autowire="byName">
+		<property name="formView" value="po/jpoOrderUnlock"/>
+		<property name="successView" value="redirect:unLockOrder.html" />
+		<property name="commandClass"><value>java.lang.String</value></property>
+	</bean>
+	
+	<bean id="jpoEcoPackageStatisticsController"
+		class="com.joymain.jecs.po.webapp.action.JpoEcoPackageStatisticsController"
+		autowire="byName">
+	</bean>
+	
+	<bean id="JpoProductNumLimitController"
+		class="com.joymain.jecs.po.webapp.action.JpoProductNumLimitController"
+		autowire="byName">
+	</bean>
+	<bean id="JpoProductNumLimitFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoProductNumLimitFormController"
+		autowire="byName">
+		<property name="formView" value="po/jpoProductNumLimitForm"/>
+		<property name="successView" value="redirect:jpoProductNumLimits.html" />
+	</bean>
+	
+	<bean id="jpoMemberBOrderController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberBOrderController"
+		autowire="byName" />
+		
+	<bean id="jpoMemberBOrderFormController"
+		class="com.joymain.jecs.po.webapp.action.JpoMemberBOrderFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/ -->
+		<property name="formView" value="po/jpoMemberBOrderForm" />
+		<property name="successView" value="redirect:jpoMemberBOrders.html" />
+	</bean>
+
+	<bean id="batchUpdateMemberOrderController" class="com.joymain.jecs.po.webapp.action.BatchUpdateMemberOrderController" autowire="byName">
+        <property name="formView" value="po/batchUpdateMemberOrder"/>
+        <property name="successView" value="redirect:batchUpdateMemberOrder.html"/>
+    </bean>
+    
+    <bean id="jpoMemberBatchCheckController" class="com.joymain.jecs.po.webapp.action.JpoMemberBatchCheckController" autowire="byName">
+        <property name="validator" ref="beanValidator"/>
+        <property name="cancelView" value="redirect:jpoMemberBatchCheck.html"/>
+        <property name="formView" value="po/jpoMemberOrderBatchQueryList"/>
+        <property name="successView" value="po/jpoMemberOrderBatchQueryList"/>
+     </bean>
+
+	<bean id="batchCompareOrderPrcController" class="com.joymain.jecs.po.webapp.action.BatchCompareOrderController" autowire="byName">
+        <property name="formView" value="po/batchCompareOrder"/>
+        <property name="successView" value="redirect:/batchCompareOrderPrc.html"/>
+    </bean>
+	
+	<bean id="ydOrderstatic" class="com.joymain.jecs.po.webapp.action.YDorderstatistic" autowire="byName">
+        
+    </bean>
+	
+	<bean id="PoUrlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<!--JpoAutoShip-URL-START -->
+				<prop key="/jpoMemberShipmentsOrders.html">jpoMemberShipmentsOrderController</prop>
+				<prop key="/jpoMemberOrderBatch.html">jpoMemberOrderFormController</prop>
+
+				
+				<prop key="/jpoMemberBathROrderForm.html">jpoMemberBathROrderFormController</prop>
+				<prop key="/jpoMemberOrderPHStatistic.html">jpoMemberOrderPHStatisticController</prop>
+				<prop key="/jpoRecommendStatistic.html">jpoRecommendStatisticController</prop>
+				<prop key="/jpoAutoShips.html">jpoAutoShipController</prop>
+				<prop key="/editJpoAutoShip.html">jpoAutoShipFormController</prop>
+				<!--JpoAutoShip-URL-END -->
+				<!--JpoMemberOrderTask-URL-START -->
+				<prop key="/jpoMemberOrderTasks.html">jpoMemberOrderTaskController</prop>
+				<prop key="/editJpoMemberOrderTask.html">jpoMemberOrderTaskFormController</prop>
+				<!--JpoMemberOrderTask-URL-END -->
+				<!--JpoMemberOrderListTask-URL-START -->
+				<prop key="/jpoMemberOrderListTasks.html">jpoMemberOrderListTaskController</prop>
+				<prop key="/editJpoMemberOrderListTask.html">jpoMemberOrderListTaskFormController</prop>
+				<!--JpoMemberOrderListTask-URL-END -->
+				<prop key="/jpoMemberOrderPHInvoice.html">jpoMemberOrderPHInvoiceController</prop>
+				<prop key="/jpoMemberOrderTeamReport.html">jpoMemberOrderTeamReportController</prop>
+
+				<prop key="/jpoOrderFMonthReport.html">jpoOrderFMonthReportController</prop>
+				<prop key="/jpoProductFMonthReport.html">jpoProductFMonthReportController</prop>
+
+				<prop key="/jpoMemberOrderStatisticAll.html">jpoMemberOrderStatisticAllController</prop>
+				<prop key="/jpoMemberOrderStatisticSTJ.html">jpoMemberOrderStatisticSTJReportController</prop>
+
+				<prop key="/jpoMemberOrderTeamMyCoolReport.html">jpoMemberOrderTeamMyCoolReportController</prop>
+				<prop key="/jpoMemberOrderProductWeekStatistic.html">jpoMemberOrderProductWeekStatisticController</prop>
+				<prop key="/jpoMemberOrderAreaWeekStatistic.html">jpoMemberOrderAreaWeekStatisticController</prop>
+				<!-- add by lihao -->
+				<prop key="/jpoMemberOrderClearingPerformanceStatistic.html">jpoMemberOrderClearingPerformanceStatisticController</prop>
+				<prop key="/jpoMemberOrderChangeDateStatistic.html">jpoMemberOrderChangeDateStatisticController</prop>
+				<prop key="/jpoMemberOrderAreaStatistic.html">jpoMemberOrderAreaStatisticController</prop>
+				<prop key="/jpoMemberOrderStatistic.html">jpoMemberOrderStatisticController</prop>
+				<prop key="/jpoMemberOrderReportStatistic.html">jpoMemberOrderReportStatisticController</prop>
+				<prop key="/jpoMemberOrdersBatchChangeDate.html">jpoMemberOrderBatchChangeDateController</prop>
+				<prop key="/jpoMemberOrdersChangeDate.html">jpoMemberOrderChangeDateController</prop>
+				<prop key="/jpoMemberOrderView.html">jpoMemberOrderViewController</prop>
+				<prop key="/jpoMemberOrdersCheck.html">jpoMemberOrderCheckController</prop>
+				<!--JpoMemberOrder-URL-START -->
+				<prop key="/jpoMemberSFOrders.html">jpoMemberSFOrderController</prop>
+				<prop key="/editJpoMemberSFOrder.html">jpoMemberSFOrderFormController</prop>
+				<prop key="/editJpoMemberSFOrderLC.html">jpoMemberSFOrderLCFormController</prop>
+				<!--JpoMemberOrder-URL-END -->
+				<!--JpoMemberOrder-URL-START -->
+				<prop key="/jpoMemberSSubFOrders.html">jpoMemberSSubFOrderController</prop>
+				<prop key="/editJpoMemberSSubFOrder.html">jpoMemberSSubFOrderFormController</prop>
+				<prop key="/editJpoMemberSSubFOrderLC.html">jpoMemberSSubFOrderLCFormController</prop>
+				<!--JpoMemberOrder-URL-END -->
+				<!--JpoMemberOrder-URL-START -->
+				<prop key="/jpoMemberSSubUOrders.html">jpoMemberSSubUOrderController</prop>
+				<prop key="/editJpoMemberSSubUOrder.html">jpoMemberSSubUOrderFormController</prop>
+				<prop key="/editJpoMemberSSubUOrderLC.html">jpoMemberSSubUOrderLCFormController</prop>
+				<!--JpoMemberOrder-URL-END -->
+				<!--JpoMemberOrder-URL-START -->
+				<prop key="/jpoMemberSSubROrders.html">jpoMemberSSubROrderController</prop>
+				<prop key="/editJpoMemberSSubROrder.html">jpoMemberSSubROrderFormController</prop>
+				<prop key="/editJpoMemberSSubROrderLC.html">jpoMemberSSubROrderLCFormController</prop>
+				<!--JpoMemberOrder-URL-END -->
+				<prop key="/jpoMemberOrderCityStatistic.html">jpoMemberOrderCityStatisticController</prop>
+				<!--JpoMemberOrder-URL-START -->
+				<prop key="/jpoMemberFOrders.html">jpoMemberFOrderController</prop>
+				<prop key="/editJpoMemberFOrder.html">jpoMemberFOrderFormController</prop>
+
+				<prop key="/mobile/editJpoMemberFOrder.html">jpoMemberFOrderFormController</prop>
+	    
+	       <prop key="/jpoInviteLists.html">jpoInviteListController</prop>
+	       <!-- <prop key="/batchJpoInviteList.html">batchJpoInviteListController</prop> -->
+				<prop key="/batchJpoInviteList.html">jpoInviteListBatchController</prop>
+				
+				<prop key="/jpoMemberFOrdereLevel.html">jpoMemberFOrdereLevelController</prop>
+				<prop key="/editJpoMemberFOrderLC.html">jpoMemberFOrderLCFormController</prop>
+				<!--JpoMemberOrder-URL-END -->
+				<!--JpoMemberOrder-URL-START -->
+				<prop key="/jpoMemberUOrders.html">jpoMemberUOrderController</prop>
+				
+				<prop key="/editJpoMemberUOrder.html">jpoMemberUOrderFormController</prop>
+				<prop key="/editJpoMemberUOrderLC.html">jpoMemberUOrderLCFormController</prop>
+				<!--JpoMemberOrder-URL-END -->
+				<!--JpoMemberOrder-URL-START -->
+				<prop key="/jpoMemberSpecialUOrders.html">jpoMemberSpecialUOrderController</prop>
+				<prop key="/editJpoMemberSpecialUOrder.html">jpoMemberSpecialUOrderFormController</prop>
+				<!--JpoMemberOrder-URL-END -->
+				<!--JpoShippingFee-URL-START -->
+				<prop key="/jpoShippingFees.html">jpoShippingFeeController</prop>
+				<prop key="/editJpoShippingFee.html">jpoShippingFeeFormController</prop>
+				<!--JpoShippingFee-URL-END -->
+				<!--JpoMemberOrder-URL-START -->
+				<prop key="/jpoMemberAOrders.html">jpoMemberAOrderController</prop>
+				<prop key="/editJpoMemberAOrder.html">jpoMemberAOrderFormController</prop>
+				<!--JpoMemberOrder-URL-END -->
+				<!--JpoMemberOrder-URL-START -->
+				<prop key="/jpoMemberRSOrders.html">jpoMemberRSOrderController</prop>
+				<prop key="/editJpoMemberRSOrder.html">jpoMemberRSOrderFormController</prop>
+				<prop key="/editJpoMemberRSOrderLC.html">jpoMemberRSOrderLCFormController</prop>
+				<prop key="/editJpoMemberROrderLC.html">jpoMemberROrderLCFormController</prop>
+				<!--JpoMemberOrder-URL-END -->
+				<prop key="/jpoMemberMROrders.html">jpoMemberMROrderController</prop>
+				<prop key="/editJpoMemberMROrder.html">jpoMemberMROrderFormController</prop>
+				<prop key="/jpoMemberMFOrders.html">jpoMemberMFOrderController</prop>
+				<prop key="/editJpoMemberMFOrder.html">jpoMemberMFOrderFormController</prop>
+				<!--JpoMemberOrder-URL-START -->
+				<prop key="/jpoMemberROrders.html">jpoMemberROrderController</prop>
+				<prop key="/editJpoMemberROrder.html">jpoMemberROrderFormController</prop>
+				<!--JpoMemberOrder-URL-END -->
+				<!--JpoMemberOrder-URL-START -->
+				<prop key="/jpoMemberSROrders.html">jpoMemberSROrderController</prop>
+				<prop key="/editJpoMemberSROrder.html">jpoMemberSROrderFormController</prop>
+				<prop key="/editJpoMemberSROrderLC.html">jpoMemberSROrderLCFormController</prop>
+				<!--JpoMemberOrder-URL-END -->
+				<!--JpoMemberOrderFee-URL-START -->
+				<prop key="/jpoMemberOrderFees.html">jpoMemberOrderFeeController</prop>
+				<prop key="/editJpoMemberOrderFee.html">jpoMemberOrderFeeFormController</prop>
+				<!--JpoMemberOrderFee-URL-END -->
+				<!--JpoMemberOrderList-URL-START -->
+				<prop key="/jpoMemberOrderLists.html">jpoMemberOrderListController</prop>
+				<prop key="/editJpoMemberOrderList.html">jpoMemberOrderListFormController</prop>
+				<!--JpoMemberOrderList-URL-END -->
+				<!--JpoCounterOrder-URL-START -->
+				<prop key="/jpoCounterOrders.html">jpoCounterOrderController</prop>
+				<prop key="/editJpoCounterOrder.html">jpoCounterOrderFormController</prop>
+				<!--JpoCounterOrder-URL-END -->
+				<!--JpoCounterOrderDetail-URL-START -->
+				<prop key="/jpoCounterOrderDetails.html">jpoCounterOrderDetailController</prop>
+				<prop key="/editJpoCounterOrderDetail.html">jpoCounterOrderDetailFormController</prop>
+				<!--JpoCounterOrderDetail-URL-END -->
+				<prop key="/jpoRecommendPHInvoice.html">jpoRecommendPHInvoiceController</prop>
+				<prop key="/editJpoMemberOrderPayOther.html">jpoMemberOrderPayOtherFormController</prop>
+
+				<prop key="/editJpoMemberIROrder.html">jpoMemberIROrderFormController</prop>
+				<prop key="/jpoMemberIROrders.html">jpoMemberIROrderController</prop>
+
+				<prop key="/jpoMemberOrderManages.html">jpoMemberOrderManageController</prop>
+				<prop key="/jpoMemberPraiseMeeting.html">jpoMemberPraiseMeetingController</prop>
+				<prop key="/jpoMemberOrderTypeReport.html">jpoMemberOrderTypeReportController</prop>
+				<prop key="/jpoMemberOrderTypeCylindricalReport.html">jpoMemberOrderTypeCylindricalReportController</prop>
+				<prop key="/jpoMemberOrderRenewalReport.html">jpoMemberOrderRenewalReportController</prop>
+				<prop key="/jpoMemberOrderWeekReport.html">jpoMemberOrderWeekReportController</prop>
+				<prop key="/jpoMemberOrderRepeatReport.html">jpoMemberOrderRepeatReportController</prop>
+				<prop key="/jpoMemberOrderShopR.html">jpoMemberOrderShopRController</prop>
+				<prop key="/jpoMemberOrderShopSellReport.html">jpoMemberOrderShopSellReportController</prop>
+				<prop key="/unLockOrder.html">jpoOrderUnLockController</prop>
+				<prop key="/jpoMemberOrderSTJStatistic.html">jpoMemberOrderSTJStatisticController</prop>
+				<!-- 生态套餐统计 -->
+				<prop key="/jpoEcoPackageStatistics.html">jpoEcoPackageStatisticsController</prop>
+				
+				<!-- 限制库存 -->
+				<prop key="/jpoProductNumLimits.html">JpoProductNumLimitController</prop>
+				<prop key="/editJpoProductNumLimit.html">JpoProductNumLimitFormController</prop>
+				
+				<!-- 补单 -->
+				<prop key="/jpoMemberBOrders.html">jpoMemberBOrderController</prop>
+				<prop key="/editJpoMemberBOrder.html">jpoMemberBOrderFormController</prop>
+
+				<prop key="/batchUpdateMemberOrder.html">batchUpdateMemberOrderController</prop>
+                <!-- 批量查询订单 -->
+				<prop key="/jpoMemberBatchCheck.html">jpoMemberBatchCheckController</prop>
+				
+				<prop key="/batchCompareOrderPrc.html">batchCompareOrderPrcController</prop>
+				<prop key="/ydOrdersatic.html">ydOrderstatic</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

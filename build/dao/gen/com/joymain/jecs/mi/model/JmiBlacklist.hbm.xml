@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.mi.model.JmiBlacklist"
+            table="JMI_BLACKLIST"
+    >
+
+    <id
+        name="blId"
+            column="BL_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_MI]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="status"
+                    column="STATUS"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+        >
+
+        </property>
+
+        <property
+            name="userName"
+                    column="USER_NAME"
+        >
+
+        </property>
+
+        <property
+            name="phone"
+                    column="PHONE"
+        >
+
+        </property>
+
+        <property
+            name="papertype"
+                    column="PAPERTYPE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="papernumber"
+                    column="PAPERNUMBER"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="blackType"
+                    column="BLACK_TYPE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="createNo"
+                    column="CREATE_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="500"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

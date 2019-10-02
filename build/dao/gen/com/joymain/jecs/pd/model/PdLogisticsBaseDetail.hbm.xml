@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pd.model.PdLogisticsBaseDetail"
+            table="PD_LOGISTICS_BASE_DETAIL"
+    >
+
+    <id
+        name="detailId"
+            column="DETAIL_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <many-to-one
+            name="pdLogisticsBaseNum"
+                    class="com.joymain.jecs.pd.model.PdLogisticsBaseNum"
+        >
+
+            <column
+                name="NUM_ID" 
+                not-null="true"
+            />
+
+        </many-to-one>
+
+        <property
+            name="erp_goods_bn"
+                    column="ERP_GOODS_BN"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="product_no"
+                    column="PRODUCT_NO"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="qty"
+                    column="QTY"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="otherOne"
+                    column="OTHER_ONE"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="otherTwo"
+                    column="OTHER_TWO"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="combination_product_no"
+                    column="COMBINATION_PRODUCT_NO"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="price"
+                    column="PRICE"
+                length="18"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

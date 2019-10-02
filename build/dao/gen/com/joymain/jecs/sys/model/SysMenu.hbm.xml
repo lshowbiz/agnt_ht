@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sys.model.SysMenu"
+            table="JSYS_MENU"
+    >
+
+    <id
+        name="menuId"
+            column="MENU_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_SYS]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="parentId"
+                    column="PARENT_ID"
+                length="22"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="menuName"
+                    column="MENU_NAME"
+                length="100"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="menuDes"
+                    column="MENU_DES"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="leaf"
+                    column="LEAF"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="type"
+                    column="TYPE"
+                length="10"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="address"
+                    column="ADDRESS"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="title"
+                    column="TITLE"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="menuOrder"
+                    column="MENU_ORDER"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="60"
+        >
+
+        </property>
+
+        <property
+            name="isA"
+                    column="is_a"
+        >
+
+        </property>
+
+        <property
+            name="isC"
+                    column="is_c"
+        >
+
+        </property>
+
+        <property
+            name="isM"
+                    column="is_m"
+        >
+
+        </property>
+
+        <property
+            name="isQ"
+                    column="is_q"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.FiBankbookBalance"
+            table="FI_BANKBOOK_BALANCE"
+    >
+
+    <id
+        name="fbbId"
+            column="FBB_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_FI]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="200"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="balance"
+                    column="BALANCE"
+                length="18"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="bankbookType"
+                    column="BANKBOOK_TYPE"
+                length="10"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

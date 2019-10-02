@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+    <!--AlCharacterType-BEAN-START-->
+    
+    <!--JmiMember-BEAN-START-->
+    <bean id="jmiMemberCheckStatisticController" class="com.joymain.jecs.mi.webapp.action.JmiMemberCheckStatisticController" autowire="byName"/>
+    <bean id="jmiMemberController" class="com.joymain.jecs.mi.webapp.action.JmiMemberController" autowire="byName"/>
+	<bean id="jmiMemberCheckMyCoolReportController" class="com.joymain.jecs.mi.webapp.action.JmiMemberCheckMyCoolReportController" autowire="byName"/>
+    <bean id="jmiMemberMController" class="com.joymain.jecs.mi.webapp.action.JmiMemberMController" autowire="byName"/>
+    <bean id="jmiMemberFormController" class="com.joymain.jecs.mi.webapp.action.JmiMemberFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiMemberForm"/>
+        <property name="successView" value="redirect:jmiMembers.html"/>
+    </bean>
+    <bean id="jmiMemberProfileFormController" class="com.joymain.jecs.mi.webapp.action.JmiMemberProfileFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiMemberProfileForm"/>
+    </bean>
+    <bean id="memberCreateFormController" class="com.joymain.jecs.mi.webapp.action.MemberCreateFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/memberCreateForm"/>
+        <property name="successView" value="redirect:jmiMembers.html"/>
+    </bean>
+    <bean id="memberCreateOutFormController" class="com.joymain.jecs.mi.webapp.action.MemberCreateOutFormController" autowire="byName">
+        <property name="formView" value="mi/memberCreateOutForm"/>
+    </bean>
+    <!--JmiMember-BEAN-END-->
+    <!--JmiMemberUpgradeNote-BEAN-START-->
+    <bean id="jmiMemberUpgradeNoteController" class="com.joymain.jecs.mi.webapp.action.JmiMemberUpgradeNoteController" autowire="byName"/>
+    <bean id="jmiMemberUpgradeNoteMController" class="com.joymain.jecs.mi.webapp.action.JmiMemberUpgradeNoteMController" autowire="byName"/>
+
+    <bean id="jmiMemberUpgradeNoteFormController" class="com.joymain.jecs.mi.webapp.action.JmiMemberUpgradeNoteFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiMemberUpgradeNoteForm"/>
+        <property name="successView" value="redirect:jmiMemberUpgradeNotes.html"/>
+    </bean>
+    <!--JmiMemberUpgradeNote-BEAN-END-->
+    <!--JmiAddrBook-BEAN-START-->
+    <bean id="jmiAddrBookController" class="com.joymain.jecs.mi.webapp.action.JmiAddrBookController" autowire="byName"/>
+
+    <bean id="jmiAddrBookFormController" class="com.joymain.jecs.mi.webapp.action.JmiAddrBookFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiAddrBookForm"/>
+        <property name="successView" value="redirect:jmiAddrBooks.html"/>
+    </bean>
+    <!--JmiAddrBook-BEAN-END-->
+    <!--  会员免重消 開始 -->
+    <bean id="jmiRemitSaleImportController" class="com.joymain.jecs.mi.webapp.action.JmiRemitSaleImportController" autowire="byName">
+       	<!-- <property name="validator" ref="beanValidator"/> -->
+        <property name="formView" value="mi/jmiRemitSaleImport"/>
+        <property name="successView" value="redirect:jmiRemitSale.html"/>
+    </bean>
+    <bean id="jmiRemitSaleController" class="com.joymain.jecs.mi.webapp.action.JmiRemitSaleController" autowire="byName" ></bean>
+    <bean id="jmiRemitSaleFormController" class="com.joymain.jecs.mi.webapp.action.JmiRemitSaleFormController" autowire="byName" >
+        <property name="formView" value="mi/jmiRemitSaleForm"/>
+        <property name="successView" value="redirect:jmiRemitSale.html" />
+    </bean>
+  <bean id="jmiRemitSaleAjaxController" class="com.joymain.jecs.mi.webapp.action.JmiRemitSaleAjaxController" autowire="byName" ></bean>
+  <!--  会员免重消結束  -->
+    <!--JmiLinkRef-BEAN-START-->
+    <bean id="jmiLinkRefController" class="com.joymain.jecs.mi.webapp.action.JmiLinkRefController" autowire="byName"/>
+
+    <bean id="jmiLinkRefFormController" class="com.joymain.jecs.mi.webapp.action.JmiLinkRefFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiLinkRefForm"/>
+        <property name="successView" value="redirect:jmiLinkRefs.html"/>
+    </bean>
+    <!--JmiLinkRef-BEAN-END-->
+    <!--JmiRecommendRef-BEAN-START-->
+    <bean id="jmiRecommendRefController" class="com.joymain.jecs.mi.webapp.action.JmiRecommendRefController" autowire="byName"/>
+
+    <bean id="jmiRecommendRefFormController" class="com.joymain.jecs.mi.webapp.action.JmiRecommendRefFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiRecommendRefForm"/>
+        <property name="successView" value="redirect:jmiRecommendRefs.html"/>
+    </bean>
+    <!--JmiRecommendRef-BEAN-END-->
+
+    <bean id="miSelectRecommendRefController" class="com.joymain.jecs.mi.webapp.action.MiSelectRecommendRefController" autowire="byName" />
+	<bean id="miLinkRefController" class="com.joymain.jecs.mi.webapp.action.MiLinkRefController" autowire="byName" />
+	<bean id="miLinkRefMController" class="com.joymain.jecs.mi.webapp.action.MiLinkRefMController" autowire="byName" />
+
+	<bean id="miRecommendRefController" class="com.joymain.jecs.mi.webapp.action.MiRecommendRefController" autowire="byName" />
+	<bean id="miRecommendRefMController" class="com.joymain.jecs.mi.webapp.action.MiRecommendRefMController" autowire="byName" />
+    
+	<bean id="miMemberBankManageListController" class="com.joymain.jecs.mi.webapp.action.MiMemberBankManageListController" autowire="byName" />
+	<bean id="miMemberBankManageForm" class="com.joymain.jecs.mi.webapp.action.MiMemberBankManageFormController" autowire="byName">
+		<property name="formView" value="mi/miMemberBankManageForm" />
+	</bean>
+	<bean id="miLinkRefReverseController" class="com.joymain.jecs.mi.webapp.action.MiLinkRefReverseController" autowire="byName" />
+	<bean id="miRecommendRefReverseController" class="com.joymain.jecs.mi.webapp.action.MiRecommendRefReverseController" autowire="byName" />
+	
+	<bean id="miMemberChangeLinkRefController" class="com.joymain.jecs.mi.webapp.action.MiMemberChangeLinkRefController" autowire="byName" />
+	<bean id="miMemberChangeRecommendRefController" class="com.joymain.jecs.mi.webapp.action.MiMemberChangeRecommendRefController" autowire="byName" />
+	
+	<bean id="miMemberCheckRefController" class="com.joymain.jecs.mi.webapp.action.MiMemberCheckRefController" autowire="byName" />
+	<bean id="miRecommendRefCountController" class="com.joymain.jecs.mi.webapp.action.MiRecommendRefCountController" autowire="byName" />
+	<bean id="miMemberDetailViewController" class="com.joymain.jecs.mi.webapp.action.MiMemberDetailViewController" autowire="byName"/>
+	<bean id="miMemberDetailViewMController" class="com.joymain.jecs.mi.webapp.action.MiMemberDetailViewMController" autowire="byName"/>
+	
+	<bean id="miBonusKpvChangeController" class="com.joymain.jecs.mi.webapp.action.MiBonusKpvChangeController" autowire="byName" />
+	<bean id="miBonusKpvChangeFormController" class="com.joymain.jecs.mi.webapp.action.MiBonusKpvChangeFormController" autowire="byName">
+        <property name="formView" value="mi/miBonusKpvChangeForm"/>
+    </bean>
+	<bean id="miMemberCreatedController" class="com.joymain.jecs.mi.webapp.action.MiMemberCreatedController" autowire="byName"/>
+<bean id="miUpKpvController" class="com.joymain.jecs.mi.webapp.action.MiUpKpvController" autowire="byName"/>
+<!-- 
+<bean id="jmiRecommendRefStateController" class="com.joymain.jecs.mi.webapp.action.JmiRecommendRefStateController" autowire="byName"/>
+<bean id="jmiLinkRefStateController" class="com.joymain.jecs.mi.webapp.action.JmiLinkRefStateController" autowire="byName"/>
+ -->
+ <bean id="jmiRefStateController" class="com.joymain.jecs.mi.webapp.action.JmiRefStateController" autowire="byName"/>
+<bean id="memberRegisterController" class="com.joymain.jecs.mi.webapp.action.MemberRegisterController" autowire="byName">
+		<property name="pages">
+			<list>
+				<value>mi/memberRegister1</value>
+				<value>mi/memberRegister2</value>
+				<value>mi/memberRegister3</value>
+			</list>
+		</property>
+</bean>
+<bean id="miMemberChangeCardTypeController" class="com.joymain.jecs.mi.webapp.action.MiMemberChangeCardTypeController" autowire="byName"/>
+
+    <bean id="jmiMemberJoinReportController" class="com.joymain.jecs.mi.webapp.action.JmiMemberJoinReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiMemberJoinReport"/>
+        <property name="successView" value="redirect:jmiMemberJoinReport.html"/>
+    </bean>
+    <bean id="jmiMemberRecommendReportController" class="com.joymain.jecs.mi.webapp.action.JmiMemberRecommendReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiMemberRecommendReport"/>
+        <property name="successView" value="redirect:jmiMemberRecommendReport.html"/>
+    </bean>
+    <bean id="jmiMemberActiveReportController" class="com.joymain.jecs.mi.webapp.action.JmiMemberActiveReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiMemberActiveReport"/>
+        <property name="successView" value="redirect:jmiMemberActiveReport"/>
+    </bean>
+    <!--JmiMemberCompanyNote-BEAN-START-->
+    <bean id="jmiMemberCompanyNoteController" class="com.joymain.jecs.mi.webapp.action.JmiMemberCompanyNoteController" autowire="byName"/>
+
+    <bean id="jmiMemberCompanyNoteFormController" class="com.joymain.jecs.mi.webapp.action.JmiMemberCompanyNoteFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiMemberCompanyNoteForm"/>
+        <property name="successView" value="redirect:jmiMemberCompanyNotes.html"/>
+    </bean>
+    <!--JmiMemberCompanyNote-BEAN-END-->
+    <bean id="jmiMemberActivationFormController" class="com.joymain.jecs.mi.webapp.action.JmiMemberActivationFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiMemberActivationForm"/>
+        <property name="successView" value=""/>
+    </bean>
+    <!--JmiTaiwanTravel-BEAN-START-->
+    <bean id="jmiTaiwanTravelController" class="com.joymain.jecs.mi.webapp.action.JmiTaiwanTravelController" autowire="byName"/>
+
+    <bean id="jmiTaiwanTravelFormController" class="com.joymain.jecs.mi.webapp.action.JmiTaiwanTravelFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiTaiwanTravelForm"/>
+        <property name="successView" value="redirect:jmiTaiwanTravels.html"/>
+    </bean>
+    <!--JmiTaiwanTravel-BEAN-END-->
+    <!--JmiSubStore-BEAN-START-->
+    <bean id="jmiSubStoreController" class="com.joymain.jecs.mi.webapp.action.JmiSubStoreController" autowire="byName"/>
+
+    <bean id="jmiSubStoreFormController" class="com.joymain.jecs.mi.webapp.action.JmiSubStoreFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiSubStoreForm"/>
+        <property name="successView" value="redirect:jmiSubStores.html"/>
+    </bean>
+    <bean id="jmiSubStoreAddrController" class="com.joymain.jecs.mi.webapp.action.JmiSubStoreAddrController" autowire="byName"/>
+
+    <bean id="jmiSubStoreAddrFormController" class="com.joymain.jecs.mi.webapp.action.JmiSubStoreAddrFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiSubStoreAddrForm"/>
+        <property name="successView" value="redirect:jmiSubStoreAddrs.html"/>
+    </bean>
+    <!--JmiSubStore-BEAN-END-->
+    <bean id="jmiRecommendRefTeamReportController" class="com.joymain.jecs.mi.webapp.action.JmiRecommendRefTeamReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiRecommendRefTeamReport"/>
+        <property name="successView" value="redirect:jmiRecommendRefTeamReport.html"/>
+    </bean>
+    <bean id="jmiMemberCheckController" class="com.joymain.jecs.mi.webapp.action.JmiMemberCheckController" autowire="byName"/>
+    <!--JmiStore-BEAN-START-->
+    <bean id="jmiStoreController" class="com.joymain.jecs.mi.webapp.action.JmiStoreController" autowire="byName"/>
+
+    <bean id="jmiStoreFormController" class="com.joymain.jecs.mi.webapp.action.JmiStoreFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiStoreForm"/>
+        <property name="successView" value="redirect:jmiStores.html"/>
+    </bean>
+    <!--JmiStore-BEAN-END-->
+    <bean id="jmiRecommendRefPointController" class="com.joymain.jecs.mi.webapp.action.JmiRecommendRefPointController" autowire="byName"/>
+    
+    <!--JmiBlacklist-BEAN-START-->
+    <bean id="jmiBlacklistController" class="com.joymain.jecs.mi.webapp.action.JmiBlacklistController" autowire="byName"/>
+
+    <bean id="jmiBlacklistFormController" class="com.joymain.jecs.mi.webapp.action.JmiBlacklistFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiBlacklistForm"/>
+        <property name="successView" value="redirect:jmiBlacklists.html"/>
+    </bean>
+    <!--JmiBlacklist-BEAN-END-->
+    <bean id="jmiMemberReSendController" class="com.joymain.jecs.mi.webapp.action.JmiMemberReSendController" autowire="byName"/>
+    <bean id="jmiMemberDataReportController" class="com.joymain.jecs.mi.webapp.action.JmiMemberDataReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiMemberDataReport"/>
+        <property name="successView" value="redirect:jmiMemberDataReport.html"/>
+    </bean>
+    <bean id="jmiChangeCardTypeImportController" class="com.joymain.jecs.mi.webapp.action.JmiChangeCardTypeImportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmi_cardtype_change_import"/>
+        <property name="successView" value="redirect:jmiChangeCardTypeImport.html"/>
+    </bean>
+    <!--JmiCustomerLevelNote-BEAN-START-->
+    <bean id="jmiCustomerLevelNoteController" class="com.joymain.jecs.mi.webapp.action.JmiCustomerLevelNoteController" autowire="byName"/>
+
+    <bean id="jmiCustomerLevelNoteFormController" class="com.joymain.jecs.mi.webapp.action.JmiCustomerLevelNoteFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiCustomerLevelNoteForm"/>
+        <property name="successView" value="redirect:jmiCustomerLevelNotes.html"/>
+    </bean>
+    <!--JmiCustomerLevelNote-BEAN-END-->
+<bean id="miChangeInfoController" class="com.joymain.jecs.mi.webapp.action.MiChangeInfoController" autowire="byName">
+		<property name="pages">
+			<list>
+				<value>mi/miChangeInfoForm1</value>
+				<value>mi/miChangeInfoForm2</value>
+			</list>
+		</property>
+</bean>
+    <bean id="jmiMemberTwPromotionsController" class="com.joymain.jecs.mi.webapp.action.JmiMemberTwPromotionsController" autowire="byName"/>
+    <bean id="jmiMemberUSPromotionsReportController" class="com.joymain.jecs.mi.webapp.action.JmiMemberUSPromotionsReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiMemberUSPromotionsReport"/>
+        <property name="successView" value="redirect:jmiMemberUSPromotionsReport.html"/>
+    </bean>
+    <bean id="jmiMemberKpvTotalReportController" class="com.joymain.jecs.mi.webapp.action.JmiMemberKpvTotalReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiMemberKpvTotalReport"/>
+        <property name="successView" value="redirect:jmiMemberKpvTotalReport.html"/>
+    </bean>
+    <bean id="memberCreateQuickFormController" class="com.joymain.jecs.mi.webapp.action.MemberCreateQuickFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/memberCreateQuickForm"/>
+    </bean>
+    <bean id="miMemberCreatedQuickController" class="com.joymain.jecs.mi.webapp.action.MiMemberCreatedQuickController" autowire="byName"/>
+    
+    
+    <bean id="jmiMemberDataSelectReportController" class="com.joymain.jecs.mi.webapp.action.JmiMemberDataSelectReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiMemberDataSelectReport"/>
+        <property name="successView" value="redirect:jmiMemberDataSelectReport.html"/>
+    </bean>
+    <bean id="jmiJoinNumReportController" class="com.joymain.jecs.mi.webapp.action.JmiJoinNumReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiJoinNumReport"/>
+        <property name="successView" value="redirect:jmiJoinNumReport.html"/>
+    </bean>
+    <bean id="jmiStoreNumReportController" class="com.joymain.jecs.mi.webapp.action.JmiStoreNumReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiStoreNumReport"/>
+        <property name="successView" value="redirect:jmiStoreNumReport.html"/>
+    </bean>
+    <bean id="jmiStoreRepeatOrderReportController" class="com.joymain.jecs.mi.webapp.action.JmiStoreRepeatOrderReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiStoreRepeatOrderReport"/>
+        <property name="successView" value="redirect:jmiStoreRepeatOrderReport.html"/>
+    </bean>
+    
+    <!--MiCoinLog-BEAN-START-->
+    <bean id="miCoinLogController" class="com.joymain.jecs.mi.webapp.action.MiCoinLogController" autowire="byName"/>
+
+    <bean id="miCoinLogFormController" class="com.joymain.jecs.mi.webapp.action.MiCoinLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/miCoinLogForm"/>
+        <property name="successView" value="redirect:miCoinLogs.html"/>
+    </bean>
+    <!--MiCoinLog-BEAN-END-->
+    <!--JmiEcmallNote-BEAN-START-->
+    <bean id="jmiEcmallNoteController" class="com.joymain.jecs.mi.webapp.action.JmiEcmallNoteController" autowire="byName"/>
+
+    <bean id="jmiEcmallNoteFormController" class="com.joymain.jecs.mi.webapp.action.JmiEcmallNoteFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiEcmallNoteForm"/>
+        <property name="successView" value="redirect:jmiEcmallNotes.html"/>
+    </bean>
+    <!--JmiEcmallNote-BEAN-END-->
+    <bean id="jmiMemberFreezeController" class="com.joymain.jecs.mi.webapp.action.JmiMemberFreezeController" autowire="byName"/>
+    
+     <bean id="jmiClubController" class="com.joymain.jecs.mi.webapp.action.JmiClubController" autowire="byName"/>
+        <!--JmiTicket-BEAN-START-->
+    <bean id="jmiTicketController" class="com.joymain.jecs.mi.webapp.action.JmiTicketController" autowire="byName"/>
+
+    <bean id="jmiTicketFormController" class="com.joymain.jecs.mi.webapp.action.JmiTicketFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiTicketForm"/>
+        <property name="successView" value="redirect:jmiTickets.html"/>
+    </bean>
+    <bean id="jmiTicketImportController" class="com.joymain.jecs.mi.webapp.action.JmiTicketImportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiTicketImportForm"/>
+        <property name="successView" value="redirect:jmiTicketImport.html"/>
+    </bean>
+    <!--JmiTicket-BEAN-END-->
+    
+    <!-- 批量修改奖衔备注 -->
+    <bean id="batchUpdateStarRemarkController" class="com.joymain.jecs.mi.webapp.action.BatchUpdateStarRemarkController" autowire="byName">
+        <property name="formView" value="mi/batchUpdateStarRemark"/>
+        <property name="successView" value="redirect:batchUpdateStarRemark.html"/>
+    </bean>
+    
+    <!-- 批量修改银行资料 -->
+    <bean id="batchUpdateBankController" class="com.joymain.jecs.mi.webapp.action.BatchUpdateBankController" autowire="byName">
+        <property name="formView" value="mi/batchUpdateBank"/>
+        <property name="successView" value="redirect:batchUpdateBank.html"/>
+    </bean>
+    
+    <!--JmiGradeLock-BEAN-START-->
+    <bean id="jmiGradeLockController" class="com.joymain.jecs.mi.webapp.action.JmiGradeLockController" autowire="byName"/>
+
+    <bean id="jmiGradeLockFormController" class="com.joymain.jecs.mi.webapp.action.JmiGradeLockFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiGradeLockForm"/>
+        <property name="successView" value="redirect:jmiGradeLocks.html"/>
+    </bean>
+    
+    <bean id="batchUpdateJmiGradeLockController" class="com.joymain.jecs.mi.webapp.action.BatchUpdateJmiGradeLockController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/batchUpdateJmiGradeLock"/>
+        <property name="successView" value="redirect:batchUpdateJmiGradeLock.html"/>
+    </bean>
+    <!--JmiGradeLock-BEAN-END-->
+    
+    
+    <bean id="jmiLevelImportController" class="com.joymain.jecs.mi.webapp.action.JmiLevelImportController" autowire="byName">
+        <property name="formView" value="mi/jmiLevelImport"/>
+        <property name="successView" value="redirect:jmiLevelImport.html"/>
+    </bean>
+    
+    
+    <bean id="jmiMemberActiveController" class="com.joymain.jecs.mi.webapp.action.JmiMemberActiveController" autowire="byName"/>
+    
+    <bean id="jmiUpdateMemberController" class="com.joymain.jecs.mi.webapp.action.JmiUpdateMemberController" autowire="byName">
+        <property name="formView" value="mi/jmiUpdateMember"/>
+        <property name="successView" value="redirect:jmiUpdateMember.html"/>
+    </bean>
+    
+    <!--JmiSpecialList-BEAN-START-->
+    <bean id="jmiSpecialListController" class="com.joymain.jecs.mi.webapp.action.JmiSpecialListController" autowire="byName"/>
+
+    <bean id="jmiSpecialListFormController" class="com.joymain.jecs.mi.webapp.action.JmiSpecialListFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiSpecialListForm"/>
+        <property name="successView" value="redirect:jmiSpecialLists.html"/>
+    </bean>
+    <!--JmiSpecialList-BEAN-END-->
+    
+    <bean id="jmiSpecialListImportController" class="com.joymain.jecs.mi.webapp.action.JmiSpecialListImportController" autowire="byName">
+        <property name="formView" value="mi/jmiSpecialListImport"/>
+        <property name="successView" value="redirect:jmiSpecialListImport.html"/>
+    </bean>
+    
+    <!--jmiMemberRecordController-BEAN-START-->
+    <bean id="jmiMemberRecordController" class="com.joymain.jecs.memberrecord.webapp.action.JmiMemberRecordController" autowire="byName"/>
+    <!--jmiMemberRecordController-BEAN-END-->
+    
+	<bean id="batchParentCodeResultController" class="com.joymain.jecs.mi.webapp.action.BatchParentCodeResultController" autowire="byName">
+		<property name="formView" value="mi/batchParentCodeResult"/>
+		<property name="successView" value="redirect:batchParentCodeResult.html"/>
+	</bean>
+		
+
+    <bean id="jmiTeamManagerController" class="com.joymain.jecs.mi.webapp.action.JmiTeamManagerController" autowire="byName"/>
+
+	<!-- 云店手机号码修改 -->
+	<bean id="cloudshopController" class="com.joymain.jecs.mi.webapp.action.CloudshopController" autowire="byName">
+		<property name="formView" value="mi/cloudshop"/>
+	</bean>
+	
+    <bean id="MiUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <!--JmiMember-URL-START-->
+                <prop key="/jmiMemberCheckStatistic.html">jmiMemberCheckStatisticController</prop>
+                <prop key="/jmiMembers.html">jmiMemberController</prop>
+                <prop key="/jmiMemberCheckMyCoolReport.html">jmiMemberCheckMyCoolReportController</prop>
+                <prop key="/jmiMemberMs.html">jmiMemberMController</prop>
+                <prop key="/editJmiMember.html">jmiMemberFormController</prop>
+                <prop key="/editJmiMemberProfile.html">jmiMemberProfileFormController</prop>
+                <prop key="/memberCreate.html">memberCreateFormController</prop>
+                <prop key="/memberCreateOut.html">memberCreateOutFormController</prop>
+				<prop key="/miSelectRecommendRef.html">miSelectRecommendRefController</prop>
+                <!--JmiMember-URL-END-->
+                <!--JmiLinkRef-URL-START-->
+                <prop key="/jmiLinkRefs.html">jmiLinkRefController</prop>
+                <prop key="/editJmiLinkRef.html">jmiLinkRefFormController</prop>
+                <!--JmiLinkRef-URL-END-->
+                <!--JmiRecommendRef-URL-START-->
+                <prop key="/jmiRecommendRefs.html">jmiRecommendRefController</prop>
+                <prop key="/editJmiRecommendRef.html">jmiRecommendRefFormController</prop>
+                <!--JmiRecommendRef-URL-END-->
+                <!--JmiMemberUpgradeNote-URL-START-->
+                <prop key="/jmiMemberUpgradeNotes.html">jmiMemberUpgradeNoteController</prop>
+                <prop key="/jmiMemberUpgradeNoteMs.html">jmiMemberUpgradeNoteMController</prop>
+                <prop key="/editJmiMemberUpgradeNote.html">jmiMemberUpgradeNoteFormController</prop>
+                <!--JmiMemberUpgradeNote-URL-END-->
+                <!--JmiAddrBook-URL-START-->
+                <prop key="/jmiAddrBooks.html">jmiAddrBookController</prop>
+                <prop key="/editJmiAddrBook.html">jmiAddrBookFormController</prop>
+                <!--JmiAddrBook-URL-END-->
+				<prop key="/miLinkRefs.html">miLinkRefController</prop>
+				<prop key="/miLinkRefMs.html">miLinkRefMController</prop>
+				<prop key="/miRecommendRefs.html">miRecommendRefController</prop>
+				<prop key="/miRecommendRefMs.html">miRecommendRefMController</prop>
+				<prop key="/miMemberBankManageForm.html">miMemberBankManageForm</prop>
+				<prop key="/miMemberBankManageList.html">miMemberBankManageListController</prop>
+				
+				<prop key="/miLinkRefReverse.html">miLinkRefReverseController</prop>
+				<prop key="/miRecommendRefReverse.html">miRecommendRefReverseController</prop>
+				
+				<prop key="/memberChangeLinkRef.html">miMemberChangeLinkRefController</prop>
+				<prop key="/memberChangeRecommendRef.html">miMemberChangeRecommendRefController</prop>
+				
+				<prop key="/memberCheckRef.html">miMemberCheckRefController</prop>
+				<prop key="/miRecommendRefCount.html">miRecommendRefCountController</prop>
+				<prop key="/miMemberDetailView.html">miMemberDetailViewController</prop>
+				<prop key="/miMemberDetailViewM.html">miMemberDetailViewMController</prop>
+				<prop key="/miBonusKpvChanges.html">miBonusKpvChangeController</prop>
+				<prop key="/editMiBonusKpvChange.html">miBonusKpvChangeFormController</prop>
+				<prop key="/miMemberCreated.html">miMemberCreatedController</prop>
+				<prop key="/miUpKpv.html">miUpKpvController</prop>
+				<!-- 
+				<prop key="/jmiRecommendRefState.html">jmiRecommendRefStateController</prop>
+				<prop key="/jmiLinkRefState.html">jmiLinkRefStateController</prop> -->
+				<!-- 批量修改权限 综合推荐网+安置网-->
+				<prop key="/jmiRefState.html">jmiRefStateController</prop>
+				<prop key="/memberRegister.html">memberCreateOutFormController</prop>
+				<prop key="/mi/memberHelp.html">forwardJspController</prop>
+				<prop key="/miMemberChangeCardType.html">miMemberChangeCardTypeController</prop>
+				<prop key="/jmiMemberJoinReport.html">jmiMemberJoinReportController</prop>
+				<prop key="/jmiMemberRecommendReport.html">jmiMemberRecommendReportController</prop>
+				<prop key="/jmiMemberActiveReport.html">jmiMemberActiveReportController</prop>
+                <!--JmiMemberCompanyNote-URL-START-->
+                <prop key="/jmiMemberCompanyNotes.html">jmiMemberCompanyNoteController</prop>
+                <prop key="/editJmiMemberCompanyNote.html">jmiMemberCompanyNoteFormController</prop>
+                <!--JmiMemberCompanyNote-URL-END-->
+                <prop key="/editJmiMemberActivation.html">jmiMemberActivationFormController</prop>
+                <!--JmiTaiwanTravel-URL-START-->
+                <prop key="/jmiTaiwanTravels.html">jmiTaiwanTravelController</prop>
+                <prop key="/editJmiTaiwanTravel.html">jmiTaiwanTravelFormController</prop>
+                <!--JmiTaiwanTravel-URL-END-->
+                <!--SmsSendLog-URL-START-->
+                <prop key="/smsSendLogs.html">smsSendLogController</prop>
+                <prop key="/editSmsSendLog.html">smsSendLogFormController</prop>
+                <!--SmsSendLog-URL-END-->
+				<!-- jmiRemitSale  start -->
+          		<prop key="/jmiRemitSale.html">jmiRemitSaleController</prop>
+          		<prop key="/editjmiRemitSale.html">jmiRemitSaleFormController</prop>
+          		<prop key="/ajaxjmiRemitSale.html">jmiRemitSaleAjaxController</prop>
+          		<prop key="/jmiRemitSaleImport.html">jmiRemitSaleImportController</prop>
+				<!--  jmiRemitSale.html  end  -->
+                
+                <!--JmiSubStore-URL-START-->
+                <prop key="/jmiSubStores.html">jmiSubStoreController</prop>
+                <prop key="/editJmiSubStore.html">jmiSubStoreFormController</prop>
+                <prop key="/jmiSubStoreAddrs.html">jmiSubStoreAddrController</prop>
+                <prop key="/editJmiSubStoreAddr.html">jmiSubStoreAddrFormController</prop>
+                <!--JmiSubStore-URL-END-->
+            	<prop key="/jmiRecommendRefTeamReport.html">jmiRecommendRefTeamReportController</prop>
+            	<prop key="/jmiMemberChecks.html">jmiMemberCheckController</prop>
+                <!--JmiStore-URL-START-->
+                <prop key="/jmiStores.html">jmiStoreController</prop>
+                <prop key="/editJmiStore.html">jmiStoreFormController</prop>
+                <!--JmiStore-URL-END-->
+                <prop key="/jmiRecommendRefPoint.html">jmiRecommendRefPointController</prop>
+                <!--JmiBlacklist-URL-START-->
+                <prop key="/jmiBlacklists.html">jmiBlacklistController</prop>
+                <prop key="/editJmiBlacklist.html">jmiBlacklistFormController</prop>
+                <!--JmiBlacklist-URL-END-->
+                <prop key="/jmiMemberReSend.html">jmiMemberReSendController</prop>
+                <prop key="/jmiMemberDataReport.html">jmiMemberDataReportController</prop>
+                <prop key="/jmiChangeCardTypeImport.html">jmiChangeCardTypeImportController</prop>
+				<prop key="/mi/miWangChuange.html">forwardJspController</prop>
+                <!--JmiCustomerLevelNote-URL-START-->
+                <prop key="/jmiCustomerLevelNotes.html">jmiCustomerLevelNoteController</prop>
+                <prop key="/editJmiCustomerLevelNote.html">jmiCustomerLevelNoteFormController</prop>
+                <!--JmiCustomerLevelNote-URL-END-->
+                <prop key="/miChangeInfo.html">miChangeInfoController</prop>
+                <prop key="/jmiMemberTwPromotions.html">jmiMemberTwPromotionsController</prop>
+                <prop key="/jmiMemberUSPromotionsReport.html">jmiMemberUSPromotionsReportController</prop>
+                <prop key="/jmiMemberKpvTotalReport.html">jmiMemberKpvTotalReportController</prop>
+                <prop key="/memberCreateQuick.html">memberCreateQuickFormController</prop>
+				<prop key="/miMemberCreatedQuick.html">miMemberCreatedQuickController</prop>
+				<prop key="/jmiMemberDataSelectReport.html">jmiMemberDataSelectReportController</prop>
+				<prop key="/jmiJoinNumReport.html">jmiJoinNumReportController</prop>
+				<prop key="/jmiStoreNumReport.html">jmiStoreNumReportController</prop>
+				<prop key="/jmiStoreRepeatOrderReport.html">jmiStoreRepeatOrderReportController</prop>
+                <!--MiCoinLog-URL-START-->
+                <prop key="/miCoinLogs.html">miCoinLogController</prop>
+                <prop key="/editMiCoinLog.html">miCoinLogFormController</prop>
+                <!--MiCoinLog-URL-END-->
+                <!--JmiEcmallNote-URL-START-->
+                <prop key="/jmiEcmallNotes.html">jmiEcmallNoteController</prop>
+                <prop key="/editJmiEcmallNote.html">jmiEcmallNoteFormController</prop>
+                <!--JmiEcmallNote-URL-END-->
+                <prop key="/jmiMemberFreeze.html">jmiMemberFreezeController</prop>
+                <prop key="/jmiClubs.html">jmiClubController</prop>    
+                 <!--JmiTicket-URL-START-->
+                <prop key="/jmiTickets.html">jmiTicketController</prop>
+                <prop key="/editJmiTicket.html">jmiTicketFormController</prop>
+                <prop key="/jmiTicketImport.html">jmiTicketImportController</prop>
+                <!--JmiTicket-URL-END-->
+                
+                <prop key="/batchUpdateStarRemark.html">batchUpdateStarRemarkController</prop>
+                <prop key="/batchUpdateBank.html">batchUpdateBankController</prop>
+                
+                <!--JmiGradeLock-URL-START-->
+                <prop key="/jmiGradeLocks.html">jmiGradeLockController</prop>
+                <prop key="/editJmiGradeLock.html">jmiGradeLockFormController</prop>
+                <prop key="/batchUpdateJmiGradeLock.html">batchUpdateJmiGradeLockController</prop>
+                <!--JmiGradeLock-URL-END-->
+                <prop key="/jmiLevelImport.html">jmiLevelImportController</prop>
+                <prop key="/jmiMemberActive.html">jmiMemberActiveController</prop>
+                <prop key="/jmiUpdateMember.html">jmiUpdateMemberController</prop>
+                <!--JmiSpecialList-URL-START-->
+                <prop key="/jmiSpecialLists.html">jmiSpecialListController</prop>
+                <prop key="/editJmiSpecialList.html">jmiSpecialListFormController</prop>
+                <!--JmiSpecialList-URL-END-->
+                
+                <prop key="/jmiSpecialListImport.html">jmiSpecialListImportController</prop>
+                
+                <prop key="/jmiMemberRecord.html">jmiMemberRecordController</prop>                
+				<prop key="/batchParentCodeResult.html">batchParentCodeResultController</prop>
+				<prop key="/jmiTeamManager.html">jmiTeamManagerController</prop>
+				<!-- 云店手机号码修改 -->
+				<prop key="/cloudshop.html">cloudshopController</prop>
+            </props>
+           </property>
+    </bean>
+</beans>

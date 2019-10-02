@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+
+	<!--AmAnnounce-BEAN-START-->
+    <bean id="amAnnounceController" class="com.joymain.jecs.am.webapp.action.AmAnnounceController" autowire="byName"/>
+
+    <bean id="amAnnounceFormController" class="com.joymain.jecs.am.webapp.action.AmAnnounceFormController" autowire="byName">
+        <property name="validator" ref="beanValidator"/>
+        <property name="formView" value="am/amAnnounceForm"/>
+        <property name="successView" value="redirect:amAnnounces.html"/>
+    </bean>
+    <!--AmAnnounce-BEAN-END-->
+    <!--AmMessage-BEAN-START-->
+    <bean id="amMessageController" class="com.joymain.jecs.am.webapp.action.AmMessageController" autowire="byName"/>
+
+    <bean id="amMessageFormController" class="com.joymain.jecs.am.webapp.action.AmMessageFormController" autowire="byName">
+		<property name="validator" ref="beanValidator"/>
+        <property name="formView" value="am/amMessageForm"/>
+        <property name="successView" value="redirect:amMessages.html"/>
+    </bean>
+    <!--AmMessage-BEAN-END-->
+	<!--AmRegularMsg-BEAN-START-->
+    <bean id="amRegularMsgController" class="com.joymain.jecs.am.webapp.action.AmRegularMsgController" autowire="byName"/>
+
+    <bean id="amRegularMsgFormController" class="com.joymain.jecs.am.webapp.action.AmRegularMsgFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/amRegularMsgForm"/>
+        <property name="successView" value="redirect:amRegularMsgs.html"/>
+    </bean>
+    <!--AmRegularMsg-BEAN-END-->
+    <!--AmMessagePermit-BEAN-START-->
+    <bean id="amMessagePermitController" class="com.joymain.jecs.am.webapp.action.AmMessagePermitController" autowire="byName"/>
+
+    <bean id="amMessagePermitFormController" class="com.joymain.jecs.am.webapp.action.AmMessagePermitFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/amMessagePermitForm"/>
+        <property name="successView" value="redirect:amMessagePermits.html"/>
+    </bean>
+    <!--AmMessagePermit-BEAN-END-->
+    
+    <!--JamMsnType-BEAN-START-->
+    <bean id="jamMsnTypeController" class="com.joymain.jecs.am.webapp.action.JamMsnTypeController" autowire="byName"/>
+
+    <bean id="jamMsnTypeFormController" class="com.joymain.jecs.am.webapp.action.JamMsnTypeFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/jamMsnTypeForm"/>
+        <property name="successView" value="redirect:jamMsnTypes.html"/>
+    </bean>
+    <!--JamMsnType-BEAN-END-->
+    <!--JamMsnDetail-BEAN-START-->
+    <bean id="jamMsnDetailController" class="com.joymain.jecs.am.webapp.action.JamMsnDetailController" autowire="byName"/>
+
+    <bean id="jamMsnDetailFormController" class="com.joymain.jecs.am.webapp.action.JamMsnDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/jamMsnDetailForm"/>
+        <property name="successView" value="redirect:jamMsnDetails.html"/>
+    </bean>
+    <!--JamMsnDetail-BEAN-END-->
+
+    <bean id="amMessageDiscussFormController" class="com.joymain.jecs.am.webapp.action.AmMessageDiscussFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/amMessageDiscussForm"/>
+        <property name="successView" value=""/>
+    </bean>
+    <!--JamMsnModule-BEAN-START-->
+    <bean id="jamMsnModuleController" class="com.joymain.jecs.am.webapp.action.JamMsnModuleController" autowire="byName"/>
+
+    <bean id="jamMsnModuleFormController" class="com.joymain.jecs.am.webapp.action.JamMsnModuleFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/jamMsnModuleForm"/>
+        <property name="successView" value="redirect:jamMsnModules.html"/>
+    </bean>
+    <!--JamMsnModule-BEAN-END-->
+    <bean id="jamMsnModuleTreeController" class="com.joymain.jecs.am.webapp.action.JamMsnModuleTreeController" autowire="byName"/>
+    
+    <!--JamDownload-BEAN-START-->
+    <bean id="jamDownloadController" class="com.joymain.jecs.am.webapp.action.JamDownloadController" autowire="byName"/>
+
+    <bean id="jamDownloadFormController" class="com.joymain.jecs.am.webapp.action.JamDownloadFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/jamDownloadForm"/>
+        <property name="successView" value="redirect:jamDownloads.html"/>
+    </bean>
+    <!--JamDownload-BEAN-END-->
+    <!--JamPromotion-BEAN-START-->
+    <bean id="jamPromotionController" class="com.joymain.jecs.am.webapp.action.JamPromotionController" autowire="byName"/>
+
+    <bean id="jamPromotionFormController" class="com.joymain.jecs.am.webapp.action.JamPromotionFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/jamPromotionForm"/>
+        <property name="successView" value="redirect:jamPromotions.html"/>
+    </bean>
+    <!--JamPromotion-BEAN-END-->
+    
+     <!--AmNew-BEAN-START-->
+    <bean id="amNewController" class="com.joymain.jecs.am.webapp.action.AmNewController" autowire="byName"/>
+
+    <bean id="amNewFormController" class="com.joymain.jecs.am.webapp.action.AmNewFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/amNewForm"/>
+        <property name="successView" value="redirect:amNews.html"/>
+    </bean>
+    <!--AmNew-BEAN-END-->
+    
+    <!--ScheduleManage-BEAN-START-->
+    <bean id="scheduleManageController" class="com.joymain.jecs.am.webapp.action.ScheduleManageController" autowire="byName"/>
+
+    <bean id="scheduleManageFormController" class="com.joymain.jecs.am.webapp.action.ScheduleManageFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/scheduleManageForm"/>
+        <property name="successView" value="redirect:scheduleManages.html"/>
+    </bean>
+    <!--ScheduleManage-BEAN-END-->
+    
+    <!--PublicSchedule-BEAN-START-->
+    <bean id="publicScheduleController" class="com.joymain.jecs.am.webapp.action.PublicScheduleController" autowire="byName"/>
+
+    <bean id="publicScheduleFormController" class="com.joymain.jecs.am.webapp.action.PublicScheduleFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/publicScheduleForm"/>
+        <property name="successView" value="redirect:publicSchedules.html"/>
+    </bean>
+    <!--PublicSchedule-BEAN-END-->
+    <!--InwDemand-BEAN-START-->
+    <bean id="inwDemandController" class="com.joymain.jecs.am.webapp.action.InwDemandController" autowire="byName"/>
+
+    <bean id="inwDemandFormController" class="com.joymain.jecs.am.webapp.action.InwDemandFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwDemandForm"/>
+        <property name="successView" value="redirect:inwDemands.html"/>
+    </bean>
+    <!--InwDemand-BEAN-END-->
+     <!--InwDemandActivity-BEAN-START-->
+    <bean id="inwDemandActivityController" class="com.joymain.jecs.am.webapp.action.InwDemandActivityController" autowire="byName"/>
+
+    <bean id="inwDemandActivityFormController" class="com.joymain.jecs.am.webapp.action.InwDemandActivityFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwDemandActivityForm"/>
+        <property name="successView" value="redirect:inwDemandsActivity.html"/>
+    </bean>
+    <!--InwDemandActivity-BEAN-END-->    
+    <!--InwProblem-BEAN-START-->
+    <bean id="inwProblemController" class="com.joymain.jecs.am.webapp.action.InwProblemController" autowire="byName"/>
+
+    <bean id="inwProblemFormController" class="com.joymain.jecs.am.webapp.action.InwProblemFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwProblemForm"/>
+        <property name="successView" value="redirect:inwProblems.html"/>
+    </bean>
+    <!--InwProblem-BEAN-END-->
+    <!--InwSuggestion-BEAN-START-->
+    <bean id="inwSuggestionController" class="com.joymain.jecs.am.webapp.action.InwSuggestionController" autowire="byName"/>
+
+    <bean id="inwSuggestionFormController" class="com.joymain.jecs.am.webapp.action.InwSuggestionFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwSuggestionUpdate"/>
+        <property name="successView" value="redirect:inwSuggestions.html"/>
+    </bean>
+    <!--InwSuggestion-BEAN-END-->
+    
+      <!--InwSuggestionDepart-BEAN-START-->
+    <bean id="inwSuggestionDepartController" class="com.joymain.jecs.am.webapp.action.InwSuggestionDepartController" autowire="byName"/>
+    <bean id="inwSuggestionDepartFormController" class="com.joymain.jecs.am.webapp.action.InwSuggestionDepartFormController" autowire="byName">
+        <property name="formView" value="am/inwSuggestionUpdateDepart"/>
+        <property name="successView" value="redirect:inwSuggestionsDepart.html"/>
+    </bean>   
+    <!--InwSuggestionDepart-BEAN-END-->
+    
+    <!--InwViewpeople-BEAN-START-->
+    <bean id="inwViewpeopleController" class="com.joymain.jecs.am.webapp.action.InwViewpeopleController" autowire="byName"/>
+
+    <bean id="inwViewpeopleFormController" class="com.joymain.jecs.am.webapp.action.InwViewpeopleFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwViewpeopleForm"/>
+        <property name="successView" value="redirect:inwViewpeoples.html"/>
+    </bean>
+    <!--InwViewpeople-BEAN-END-->
+    
+    <!--InwIntegration-BEAN-START-->
+    <bean id="inwIntegrationController" class="com.joymain.jecs.am.webapp.action.InwIntegrationController" autowire="byName"/>
+
+    <bean id="inwIntegrationFormController" class="com.joymain.jecs.am.webapp.action.InwIntegrationFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwIntegrationForm"/>
+        <property name="successView" value="redirect:inwIntegrations.html"/>
+    </bean>
+    <!--InwIntegration-BEAN-END-->
+    
+     <!--InwDemandsort-BEAN-START-->
+    <bean id="inwDemandsortController" class="com.joymain.jecs.am.webapp.action.InwDemandsortController" autowire="byName"/>
+
+    <bean id="inwDemandsortFormController" class="com.joymain.jecs.am.webapp.action.InwDemandsortFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwDemandsortForm"/>
+        <property name="successView" value="redirect:inwDemandsorts.html"/>
+    </bean>
+    <!--InwDemandsort-BEAN-END-->
+    
+    <!-- InwDepartment-BEAN-STRAT -->
+    <bean id="inwDepartmentController" class="com.joymain.jecs.am.webapp.action.InwDepartmentController" autowire="byName"/>
+    <bean id="inwDepartmentFormController" class="com.joymain.jecs.am.webapp.action.InwDepartmentFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwDepartmentForm"/>
+        <property name="successView" value="redirect:inwDepartments.html"/>
+    </bean>
+    <!-- InwDepartment-BEAN-END -->
+    
+    <!-- InwDepartCompetence-BEAN-STRAT -->
+    <bean id="inwDepartCompetenceController" class="com.joymain.jecs.am.webapp.action.InwDepartCompetenceController" autowire="byName"/>
+    <bean id="inwDepartCompetenceFormController" class="com.joymain.jecs.am.webapp.action.InwDepartCompetenceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwDepartCompetenceForm"/>
+        <property name="successView" value="redirect:inwDepartCompetences.html"/>
+    </bean>
+    <!-- InwDepartCompetence-BEAN-END -->
+    
+     <!--InwIntegrationTotal-BEAN-START-->
+    <bean id="inwIntegrationTotalController" class="com.joymain.jecs.am.webapp.action.InwIntegrationTotalController" autowire="byName"/>
+
+    <bean id="inwIntegrationTotalFormController" class="com.joymain.jecs.am.webapp.action.InwIntegrationTotalFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwIntegrationTotalForm"/>
+        <property name="successView" value="redirect:inwIntegrationTotals.html"/>
+    </bean>
+    <!--InwIntegrationTotal-BEAN-END-->
+    
+      <!--InwDepartPerson-BEAN-START-->
+    <bean id="inwDepartPersonController" class="com.joymain.jecs.am.webapp.action.InwDepartPersonController" autowire="byName"/>
+
+    <bean id="inwDepartPersonFormController" class="com.joymain.jecs.am.webapp.action.InwDepartPersonFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwDepartPersonForm"/>
+        <property name="successView" value="redirect:inwDepartPersons.html"/>
+    </bean>
+    <!--InwDepartPerson-BEAN-END-->
+    
+    
+	<!-- Add additional controller beans here -->
+	<bean id="amUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				 <!--AmAnnounce-URL-START-->
+                <prop key="/amAnnounces.html">amAnnounceController</prop>
+                <prop key="/editAmAnnounce.html">amAnnounceFormController</prop>
+                <!--AmAnnounce-URL-END-->
+                <!--AmMessage-URL-START-->
+                <prop key="/amMessages.html">amMessageController</prop>
+                <prop key="/editAmMessage.html">amMessageFormController</prop>
+                <!--AmMessage-URL-END-->
+                <!--AmRegularMsg-URL-START-->
+                <prop key="/amRegularMsgs.html">amRegularMsgController</prop>
+                <prop key="/editAmRegularMsg.html">amRegularMsgFormController</prop>
+                <!--AmRegularMsg-URL-END-->
+                <!--AmMessagePermit-URL-START-->
+                <prop key="/amMessagePermits.html">amMessagePermitController</prop>
+                <prop key="/editAmMessagePermit.html">amMessagePermitFormController</prop>
+                <!--AmMessagePermit-URL-END-->
+                
+                <!--JamMsnType-URL-START-->
+                <prop key="/jamMsnTypes.html">jamMsnTypeController</prop>
+                <prop key="/editJamMsnType.html">jamMsnTypeFormController</prop>
+                <!--JamMsnType-URL-END-->
+                <!--JamMsnDetail-URL-START-->
+                <prop key="/jamMsnDetails.html">jamMsnDetailController</prop>
+                <prop key="/editJamMsnDetail.html">jamMsnDetailFormController</prop>
+                <!--JamMsnDetail-URL-END-->
+                <prop key="/editAmMessageDiscuss.html">amMessageDiscussFormController</prop>
+                <!--JamMsnModule-URL-START-->
+                <prop key="/am/jam_msn_module_tree.html">jamMsnModuleTreeController</prop>
+                <prop key="/am/jamMsnModules.html">jamMsnModuleController</prop>
+                <prop key="/am/editJamMsnModule.html">jamMsnModuleFormController</prop>
+                <!--JamMsnModule-URL-END-->
+                <prop key="/am/jam_msn_module_frm.html">forwardJspController</prop>
+                <!--JamDownload-URL-START-->
+                <prop key="/jamDownloads.html">jamDownloadController</prop>
+                <prop key="/editJamDownload.html">jamDownloadFormController</prop>
+                <!--JamDownload-URL-END-->
+                <!--JamPromotion-URL-START-->
+                <prop key="/jamPromotions.html">jamPromotionController</prop>
+                <prop key="/editJamPromotion.html">jamPromotionFormController</prop>
+                <!--JamPromotion-URL-END-->
+                
+                <!--AmNew-URL-START-->
+                <prop key="/amNews.html">amNewController</prop>
+                <prop key="/editAmNew.html">amNewFormController</prop>
+                <!--AmNew-URL-END-->
+                <prop key="/scheduleManages.html">scheduleManageController</prop>
+                <prop key="/editScheduleManage.html">scheduleManageFormController</prop>
+                <!--PublicSchedule-URL-START-->
+                <prop key="/publicSchedules.html">publicScheduleController</prop>
+                <prop key="/editPublicSchedule.html">publicScheduleFormController</prop>
+                <!--PublicSchedule-URL-END-->
+                 <!--InwDemand-URL-START-->
+                <prop key="/inwDemands.html">inwDemandController</prop>
+                <prop key="/editInwDemand.html">inwDemandFormController</prop>
+                <!--InwDemand-URL-END-->
+                 <!--InwDemandActivity-URL-START-->
+                <prop key="/inwDemandsActivity.html">inwDemandActivityController</prop>
+                <prop key="/editInwDemandActivity.html">inwDemandActivityFormController</prop>
+                <!--InwDemandActivity-URL-END-->                
+                               
+                <!--InwProblem-URL-START-->
+                <prop key="/inwProblems.html">inwProblemController</prop>
+                <prop key="/editInwProblem.html">inwProblemFormController</prop>
+                <!--InwProblem-URL-END-->
+                <!--InwSuggestion-URL-START-->
+                <prop key="/inwSuggestions.html">inwSuggestionController</prop>
+                <prop key="/editInwSuggestion.html">inwSuggestionFormController</prop>
+                <!--InwSuggestion-URL-END-->
+                
+                <!--InwSuggestionDepart-URL-START-->
+                <prop key="/inwSuggestionsDepart.html">inwSuggestionDepartController</prop>
+                <prop key="/editInwSuggestionDepart.html">inwSuggestionDepartFormController</prop>               
+                <!--InwSuggestionDepart-URL-END-->
+                
+                 <!--InwViewpeople-URL-START-->
+                <prop key="/inwViewpeoples.html">inwViewpeopleController</prop>
+                <prop key="/editInwViewpeople.html">inwViewpeopleFormController</prop>
+                <!--InwViewpeople-URL-END-->
+                <!--InwIntegration-URL-START-->
+                <prop key="/inwIntegrations.html">inwIntegrationController</prop>
+                <prop key="/editInwIntegration.html">inwIntegrationFormController</prop>
+                <!--InwIntegration-URL-END-->
+                
+                <!--InwDemandsort-URL-START-->
+                <prop key="/inwDemandsorts.html">inwDemandsortController</prop>
+                <prop key="/editInwDemandsort.html">inwDemandsortFormController</prop>
+                <!--InwDemandsort-URL-END-->
+                
+                <!-- InwDepartment-URL-STRAT -->
+                <prop key="/inwDepartments.html">inwDepartmentController</prop>
+                <prop key="/editInwDepartment.html">inwDepartmentFormController</prop>
+                <!-- InwDepartment-URL-END -->
+                
+                 <!-- InwDepartCompetence-URL-STRAT -->
+                <prop key="/inwDepartCompetences.html">inwDepartCompetenceController</prop>
+                <prop key="/editInwDepartCompetence.html">inwDepartCompetenceFormController</prop>
+                <!-- InwDepartCompetence-URL-END -->
+                
+                <!--InwIntegrationTotal-URL-START-->
+                <prop key="/inwIntegrationTotals.html">inwIntegrationTotalController</prop>
+                <prop key="/editInwIntegrationTotal.html">inwIntegrationTotalFormController</prop>
+                <!--InwIntegrationTotal-URL-END-->
+                
+                 <!--InwDepartPerson-URL-START-->
+                <prop key="/inwDepartPersons.html">inwDepartPersonController</prop>
+                <prop key="/editInwDepartPerson.html">inwDepartPersonFormController</prop>
+                <!--InwDepartPerson-URL-END-->
+                
+			</props>
+		</property>
+	</bean>
+</beans>

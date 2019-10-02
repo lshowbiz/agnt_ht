@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pd.model.PdWarehouseFrozenBatch"
+            table="PD_WAREHOUSE_FROZEN_BATCH"
+    >
+
+    <id
+        name="batchId"
+            column="BATCH_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PD]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <set
+            name="pdWarehouseFrozenDetails"
+            lazy="true"
+            inverse="true"
+            cascade="all-delete-orphan"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="batch_Id"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.pd.model.PdWarehouseFrozenDetail"
+            />
+
+        </set>
+
+        <property
+            name="batchCode"
+                    column="BATCH_CODE"
+                length="10"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

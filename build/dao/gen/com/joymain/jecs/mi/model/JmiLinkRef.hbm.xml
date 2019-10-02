@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.mi.model.JmiLinkRef"
+            table="JMI_LINK_REF"
+    >
+
+    <id
+        name="userCode"
+            column="USER_CODE"
+                type="java.lang.String"
+    >
+
+    </id>
+
+        <property
+            name="num"
+                    column="NUM"
+        >
+
+        </property>
+
+        <property
+            name="layerId"
+                    column="LAYER_ID"
+                length="12"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="treeNo"
+                    column="TREE_NO"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="treeIndex"
+                    column="TREE_INDEX"
+                length="4000"
+                not-null="true"
+        >
+
+        </property>
+
+        <one-to-one
+            name="jmiMember"
+            constrained="true"
+        >
+
+        </one-to-one>
+
+        <many-to-one
+            name="linkJmiMember"
+                not-null="true"
+        >
+
+            <column
+                name="LINK_NO" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="departmentPv"
+                    column="DEPARTMENT_PV"
+                length="12"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

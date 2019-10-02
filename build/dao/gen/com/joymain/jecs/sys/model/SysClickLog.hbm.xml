@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sys.model.SysClickLog"
+            table="JSYS_CLICK_LOG"
+    >
+
+    <id
+        name="logId"
+            column="LOG_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_LOG]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="logType"
+                    column="LOG_TYPE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="remoteUser"
+                    column="REMOTE_USER"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="runDate"
+                    column="RUN_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="ipAddress"
+                    column="IP_ADDRESS"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="hostName"
+                    column="HOST_NAME"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="clickUri"
+                    column="CLICK_URI"
+                length="250"
+        >
+
+        </property>
+
+        <property
+            name="content"
+                    column="CONTENT"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="isValid"
+                    column="IS_VALID"
+                length="4"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

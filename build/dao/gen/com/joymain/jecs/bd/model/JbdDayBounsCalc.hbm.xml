@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.JbdDayBounsCalc"
+            table="JBD_DAY_BOUNS_CALC"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="wyear"
+                    column="W_YEAR"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="wmonth"
+                    column="W_MONTH"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="wweek"
+                    column="W_WEEK"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="recommendNo"
+                    column="RECOMMEND_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="linkNo"
+                    column="LINK_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="name"
+                    column="NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="petName"
+                    column="PET_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="cardType"
+                    column="CARD_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="isstore"
+                    column="ISSTORE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="bank"
+                    column="BANK"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="bankaddress"
+                    column="BANKADDRESS"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="bankbook"
+                    column="BANKBOOK"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="bankcard"
+                    column="BANKCARD"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="exitDate"
+                    column="EXIT_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="firstMonth"
+                    column="FIRST_MONTH"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="linkNum"
+                    column="LINK_NUM"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="pendingLinkNum"
+                    column="PENDING_LINK_NUM"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="recommendNum"
+                    column="RECOMMEND_NUM"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="pendingRecommendNum"
+                    column="PENDING_RECOMMEND_NUM"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="monthConsumerPv"
+                    column="MONTH_CONSUMER_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="pendingPv"
+                    column="PENDING_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="monthAreaTotalPv"
+                    column="MONTH_AREA_TOTAL_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="weekGroupPv"
+                    column="WEEK_GROUP_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="monthGroupPv"
+                    column="MONTH_GROUP_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="pendingGroupPv"
+                    column="PENDING_GROUP_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="monthRecommendPv"
+                    column="MONTH_RECOMMEND_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="pendingRecommendPv"
+                    column="PENDING_RECOMMEND_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="passStar"
+                    column="PASS_STAR"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="passGrade"
+                    column="PASS_GRADE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="consumerAmount"
+                    column="CONSUMER_AMOUNT"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="pendingConsumerAmount"
+                    column="PENDING_CONSUMER_AMOUNT"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="franchisePv"
+                    column="FRANCHISE_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="pendingFranchisePv"
+                    column="PENDING_FRANCHISE_PV"
+                length="22"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

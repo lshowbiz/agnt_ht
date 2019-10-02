@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.po.model.JpoMemberOrderListTask"
+            table="JPO_MEMBER_ORDER_LIST_TASK"
+    >
+
+    <id
+        name="moltId"
+            column="MOLT_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PO]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <many-to-one
+            name="jpoMemberOrderTask"
+                not-null="true"
+        >
+
+            <column
+                name="MOT_ID" 
+            />
+
+        </many-to-one>
+
+        <many-to-one
+            name="jpmProductSaleTeamType"
+                not-null="true"
+        >
+
+            <column
+                name="PRODUCT_ID" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="price"
+                    column="PRICE"
+                length="22"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="pv"
+                    column="PV"
+                length="22"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="qty"
+                    column="QTY"
+                length="5"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="weight"
+                    column="WEIGHT"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="volume"
+                    column="VOLUME"
+                length="10"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.JbdYkJiandianList"
+            table="JBD_YK_JIANDIAN_LIST"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="wweek"
+                    column="W_WEEK"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="petName"
+                    column="PET_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="userType"
+                    column="USER_TYPE"
+                length="4"
+        >
+
+        </property>
+
+        <property
+            name="memberLevel"
+                    column="MEMBER_LEVEL"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="ykRefMoney"
+                    column="YK_REF_MONEY"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="comTime"
+                    column="COM_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="reuserCode"
+                    column="REUSER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="nlevel"
+                    column="NLEVEL"
+                length="22"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

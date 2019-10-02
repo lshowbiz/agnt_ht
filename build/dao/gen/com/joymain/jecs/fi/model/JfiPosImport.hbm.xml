@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.JfiPosImport"
+            table="JFI_POS_IMPORT"
+    >
+
+    <id
+        name="jpiId"
+            column="JPI_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_BANKBOOK]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="posNo"
+                    column="POS_NO"
+                length="200"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="isBack"
+                    column="isBack"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="tel"
+                    column="TEL"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="pid"
+                    column="P_ID"
+                length="200"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="amount"
+                    column="AMOUNT"
+                length="22"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="checkTime"
+                    column="CHECK_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="checkUser"
+                    column="CHECK_USER"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="inc"
+                    column="INC"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="incTime"
+                    column="INC_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="messageTime"
+                    column="MESSAGE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="messageCode"
+                    column="MESSAGE_CODE"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="createUser"
+                    column="CREATE_USER"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="moneyType"
+                    column="MONEY_TYPE"
+                length="4"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

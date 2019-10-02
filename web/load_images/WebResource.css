@@ -1,0 +1,6 @@
+.Peer_JTip {
+	BORDER-RIGHT: #cccccc 2px solid; BORDER-TOP: #cccccc 2px solid; Z-INDEX: 100; BORDER-LEFT: #cccccc 2px solid; BORDER-BOTTOM: #cccccc 2px solid; POSITION: absolute; BACKGROUND-COLOR: #fff
+}
+.Peer_JT_loader {
+	BACKGROUND-POSITION: center center; BACKGROUND-IMAGE: url("WebResource.gif"); WIDTH: 100%; BACKGROUND-REPEAT: no-repeat; HEIGHT: 12px
+}

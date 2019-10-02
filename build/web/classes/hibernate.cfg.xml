@@ -1,0 +1,410 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+  <session-factory>
+
+     <mapping resource="com/joymain/jecs/model/Role.hbm.xml" />
+		<mapping resource="com/joymain/jecs/model/User.hbm.xml" />
+		
+		
+		<mapping resource="com/joymain/jecs/al/model/AlBranch.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/AlCharacterCoding.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/AlCharacterKey.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/AlCharacterValue.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/AlCompany.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/AlCountry.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/AlCurrency.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/AlRegion.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/AlCompanyArea.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/AlStateProvince.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/AlCharacterType.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/AlDistrict.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/AlCity.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/JalTown.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/JalPostalcode.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdDayCustRecommendKb.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdDayCustRecommend.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdDayCustRecommendOrder.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/al/model/JalLibraryColumn.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/JalLibraryFile.hbm.xml" />
+		<mapping resource="com/joymain/jecs/al/model/JalLibraryPlate.hbm.xml" />
+		
+		
+		
+		<mapping resource="com/joymain/jecs/sys/model/SysDepartment.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysUser.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysMenu.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysRole.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysRoleMenu.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysRoleUser.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysRolePower.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysManager.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysPowerCategory.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/sys/model/SysModule.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysUsrTypePow.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysCompanyPow.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysManagerModlPow.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysManagerUser.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysUserRole.hbm.xml" />		
+		<mapping resource="com/joymain/jecs/sys/model/SysVisitLog.hbm.xml" />
+		
+		
+		<mapping resource="com/joymain/jecs/sys/model/SysConfigKey.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysConfigValue.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysListKey.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysListValue.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysId.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysClickLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysDataLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysBank.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysUserIp.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysReportLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/JsysResource.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/JsysResRole.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/sys/model/SysLoginLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysOperationLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/SysBackServiceInfo.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sys/model/UpsInteractiveLog.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/mi/model/JmiAddrBook.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiMember.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiMemberUpgradeNote.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiRecommendRef.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiLinkRef.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiMemberCompanyNote.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiTaiwanTravel.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiSubStore.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiStore.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiBlacklist.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiCustomerLevelNote.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/MiCoinLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiEcmallNote.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiTicket.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiLevelNote.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiValidLevelList.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiLevelLock.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiGradeLock.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiDealList.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiStateLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiSpecialList.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/JmiRemitSale.hbm.xml" />
+		<mapping resource="com/joymain/jecs/mi/model/VjmiUsercodePapernumber.hbm.xml" />
+		
+		
+		<mapping resource="com/joymain/jecs/fi/model/JfiBankbookBalance.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiBankbookJournal.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiBankbookTemp.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiPayAdvice.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiPayBank.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiPayData.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/Jfi99billLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiTenpayLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/BillAccount.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/Jfi99billPosLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/Jfi99billPosSendLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiSunConfigKey.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiSunDistribution.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiSunMemberOrder.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiSunMemberOrderFee.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiSunMemberOrderList.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiUmbpayLog.hbm.xml"/>
+		<mapping resource="com/joymain/jecs/fi/model/JfiChinapnrLog.hbm.xml"/>
+		<mapping resource="com/joymain/jecs/fi/model/FiChannelLog.hbm.xml"/>
+
+		<mapping resource="com/joymain/jecs/fi/model/FiBcoinJournal.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiBcoinBalance.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiCcoinJournal.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiCcoinBalance.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiBankbookBalance.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiBankbookJournal.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiBankbookTemp.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiBillAccount.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiBillAccountWarning.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiBillAccountRelation.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiGetbillaccountLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiPayLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiInvoiceChange.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiInvoiceBalance.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/fi/model/FiCoinLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiAlipayLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiHiTrustLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiUsCreditCardLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiSunOrder.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiSunOrderList.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiSunJmiMember.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiCreditCardLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/Jfi99billmsLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiPosImport.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiTransferAccount.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FoundationItem.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FoundationOrder.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiLovecoinJournal.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiLovecoinBalance.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JmiZcwMember.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiSecurityDeposit.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiSecurityDepositJournal.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiCoinConfig.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiCommonAddr.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiFundbookJournal.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiFundbookBalance.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiFundbookTemp.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiTransferFundbook.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiBcoinPayconfig.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/FiBcoinPayconfigDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiChinapayPosLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiDepositMoney.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiDepositBalance.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiDepositJournal.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiDepositTemp.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiDepositSend.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiInvoice.hbm.xml" />
+		<mapping resource="com/joymain/jecs/fi/model/JfiBusinessNum.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/am/model/AmAnnounce.hbm.xml" />
+		<mapping resource="com/joymain/jecs/am/model/AmPermit.hbm.xml" />
+		<mapping resource="com/joymain/jecs/am/model/AmAnnounceRecord.hbm.xml" />
+		<mapping resource="com/joymain/jecs/am/model/AmMessage.hbm.xml" />
+		<mapping resource="com/joymain/jecs/am/model/AmNew.hbm.xml" />
+		<mapping resource="com/joymain/jecs/am/model/AmRegularMsg.hbm.xml" />
+		<mapping resource="com/joymain/jecs/am/model/AmMessagePermit.hbm.xml" />
+		<mapping resource="com/joymain/jecs/am/model/JamMsnType.hbm.xml" />
+		<mapping resource="com/joymain/jecs/am/model/JamMsnDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/am/model/JamMsnModule.hbm.xml" />
+		<mapping resource="com/joymain/jecs/am/model/JamDownload.hbm.xml" />
+		<mapping resource="com/joymain/jecs/am/model/JamPromotion.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/pm/model/JpmProductCombination.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pm/model/JpmProduct.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pm/model/JpmProductSaleLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pm/model/JpmCardSeq.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pm/model/JmiMemberTeam.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pm/model/JpmProductSaleNew.hbm.xml" />   <!-- Add By WuCF 20130609 -->
+		<mapping resource="com/joymain/jecs/pm/model/JpmProductSaleImage.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pm/model/JpmProductSaleRelated.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pm/model/JpmProductSaleTeamType.hbm.xml" /> 
+		<mapping resource="com/joymain/jecs/pm/model/JpmSalePromoter.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pm/model/JpmSalepromoterPro.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pm/model/JpmSmssendInfo.hbm.xml" />
+        <!-- add by soul start -->
+		<mapping resource="com/joymain/jecs/pm/model/JpmProductWineTemplate.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pm/model/JpmProductWineTemplateSub.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pm/model/JpmWineTemplatePicture.hbm.xml" />
+        <mapping resource="com/joymain/jecs/pm/model/JpmCombinationRelated.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pm/model/JpmWineOrderInterface.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pm/model/JpmWineOrderListInterface.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pm/model/JpmWineSettingInf.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pm/model/JpmWineSettingListInf.hbm.xml" />
+		<!-- add by soul end -->
+		<mapping resource="com/joymain/jecs/pd/model/PdWarehouse.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdWarehouseStockTrace.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdWarehouseStock.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdSendInfo.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdSendInfoDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdShipmentsDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdWarehouseUser.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdWarehouseArea.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/pd/model/PdEnterWarehouse.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdEnterWarehouseDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdOutWarehouse.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdOutWarehouseDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdFlitWarehouse.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdFlitWarehouseDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdReturnPurchase.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdReturnPurchaseDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdAdjustStock.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdAdjustStockDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdStatusExcStock.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdStatusExcStockDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdCombinationOrder.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdCombinationDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdCheckstockOrder.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdCheckstockOrderDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdExchangeOrder.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdExchangeOrderBack.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdExchangeOrderDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdSendExtra.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdShipStrategy.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdShipStrategyDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdShipFee.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdWarehouseFrozenBatch.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdWarehouseFrozenDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdExportLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pd/model/PdShipStrategyMain.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/po/model/JpoMemberOrder.hbm.xml" />
+		<mapping resource="com/joymain/jecs/po/model/JpoMemberOrderList.hbm.xml" />
+		<mapping resource="com/joymain/jecs/po/model/JpoMemberOrderFee.hbm.xml" />
+		<mapping resource="com/joymain/jecs/po/model/JpoShippingFee.hbm.xml" />
+		<mapping resource="com/joymain/jecs/po/model/JpoCounterOrder.hbm.xml" />
+		<mapping resource="com/joymain/jecs/po/model/JpoCounterOrderDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/po/model/JpoAutoShip.hbm.xml" />
+		<mapping resource="com/joymain/jecs/po/model/JpoMemberOrderTask.hbm.xml" />
+		<mapping resource="com/joymain/jecs/po/model/JpoMemberOrderListTask.hbm.xml" />
+		<mapping resource="com/joymain/jecs/po/model/JpoMovie.hbm.xml" />
+		<mapping resource="com/joymain/jecs/po/model/JpoProductNumLimit.hbm.xml" />
+		<mapping resource="com/joymain/jecs/po/model/JpoCheckedFailed.hbm.xml" />
+		<mapping resource="com/joymain/jecs/po/model/JpoBankBookPayList.hbm.xml" />
+		<mapping resource="com/joymain/jecs/po/model/YDOrder.hbm.xml" />
+		<mapping resource="com/joymain/jecs/po/model/YDOrderItem.hbm.xml" />
+		<mapping resource="com/joymain/jecs/po/model/JpoInviteList.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/po/model/JpoMemberNyc.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/po/model/JpoMemberNycLog.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/po/model/JpoMemberNycQualify.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pr/model/JprRefund.hbm.xml" />
+		<mapping resource="com/joymain/jecs/pr/model/JprRefundList.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/bd/model/BdOutwardBank.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdBonusBalance.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdSendRecord.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdSendRecordHist.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/BdPeriod.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/BdBounsDeduct.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdMemberLinkCalcHist.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdSellCalcSubHist.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdUserCardList.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdUserValidList.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdTravelPoint.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdTravelPointDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdTravelPointLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdSummaryList.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdVentureFundList.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/bd/model/JbdDayBounsCalc.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdDayBounsCalcHist.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdManuallyAdjustStar.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/VJbdSendRecord.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/VJbdMemberLinkCalc.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/VJbdSellCalcSub.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/VJbdVentureLeaderSub.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/VJbdSellCalcSubDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdUserCompanyCode.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdTaiwanTravelPoint.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdManuallyAdjustAlgebra.hbm.xml" />
+		
+		
+		<mapping resource="com/joymain/jecs/bd/model/JbdYd399RecommendList.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdYd399RecommendHist.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/VJbdYd399RecommendList.hbm.xml" />
+		
+		
+		
+		<mapping resource="com/joymain/jecs/bd/model/JbdVentureLeaderSubHist.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdSellCalcSubDetailHist.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/bd/model/JbdCaculateLog.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdSendNote.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdNetworkList.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdGradeNote.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/bd/model/JbdTravelPoint2012.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdTravelPointDetail2012.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdTravelPointLog2012.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/bd/model/JbdTravelPoint2013.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdTravelPointDetail2013.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdTravelPointLog2013.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdSpecialStar.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdSendRecordNote.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdManualCon.hbm.xml" />
+		
+		
+		<mapping resource="com/joymain/jecs/bd/model/JbdTravelPoint2014.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdTravelPointDetail2014.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdTravelPointLog2014.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/bd/model/JbdTravelPoint2015.hbm.xml" />
+		<mapping resource="com/joymain/jecs/bd/model/JbdTravelPointLog2015.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/sms/model/SmsSendLog.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/vt/model/VtVote.hbm.xml" />
+		<mapping resource="com/joymain/jecs/vt/model/VtVoteDetail.hbm.xml" />
+		<mapping resource="com/joymain/jecs/vt/model/VtVoteNote.hbm.xml" />
+		<mapping resource="com/joymain/jecs/vt/model/VtVotePow.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/sun/model/SunDistShip.hbm.xml" />
+		<mapping resource="com/joymain/jecs/sun/model/SunProductInfo.hbm.xml" />
+		
+		<mapping resource="com/joymain/jecs/am/model/ScheduleManage.hbm.xml" />
+		<mapping resource="com/joymain/jecs/am/model/PublicSchedule.hbm.xml" />
+		<mapping resource="com/joymain/jecs/am/model/InwDemand.hbm.xml"/>
+		<mapping resource="com/joymain/jecs/am/model/InwProblem.hbm.xml"/>
+		<mapping resource="com/joymain/jecs/am/model/InwSuggestion.hbm.xml"/>
+		<mapping resource="com/joymain/jecs/am/model/InwViewpeople.hbm.xml"/>
+		<mapping resource="com/joymain/jecs/am/model/InwIntegration.hbm.xml"/>
+		<mapping resource="com/joymain/jecs/am/model/InwDemandsort.hbm.xml"/>
+		<mapping resource="com/joymain/jecs/am/model/InwDepartment.hbm.xml"/>
+	  	<mapping resource="com/joymain/jecs/am/model/InwDepartCompetence.hbm.xml"/>
+	  	<mapping resource="com/joymain/jecs/am/model/InwIntegrationTotal.hbm.xml" />
+	  	<mapping resource="com/joymain/jecs/am/model/InwDepartPerson.hbm.xml" />	  	
+		<!-- add hibernate mapping here-->
+	  <mapping resource="com/joymain/jecs/pm/model/JpmMemberConfig.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/pm/model/JpmConfigSpecDetailed.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/pm/model/JpmConfigDetailed.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/pm/model/JpmSendConsignment.hbm.xml" />
+	  
+	  <mapping resource="com/joymain/jecs/bd/model/JbdMemberStarRewards.hbm.xml" />		
+	  <mapping resource="com/joymain/jecs/bd/model/JbdMemberCongrations.hbm.xml" />	
+	  
+	  <mapping resource="com/joymain/jecs/pd/model/PdShUrl.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/pd/model/PdNotChangeProduct.hbm.xml" />
+	  	
+	  
+	  <mapping resource="com/joymain/jecs/mi/model/JmiRefStateLog.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/fi/model/JfiChanjetLog.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/fi/model/FiMovieOrder.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/fi/model/JfiReapalLog.hbm.xml" />
+	  
+	  <mapping resource="com/joymain/jecs/pd/model/Items.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/pd/model/MailStatus.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/pd/model/PdMailReceipt.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/pd/model/PdLogisticsBase.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/pd/model/PdLogisticsBaseNum.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/pd/model/PdLogisticsBaseDetail.hbm.xml" />
+	  
+	  <mapping resource="com/joymain/jecs/sys/model/JocsInterfaceLog.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/pm/model/JocsInterfaceRetransmission.hbm.xml" />
+	   <mapping resource="com/joymain/jecs/fi/model/JfiYeepayLog.hbm.xml" />
+	   <mapping resource="com/joymain/jecs/fi/model/FiAvailableInvoice.hbm.xml" />
+	   
+	   <mapping resource="com/joymain/jecs/mi/model/JmiMemberLog.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/mi/model/JmiPrizeTourism.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/bd/model/JbdTravelPointAll.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/bd/model/JbdTravelPointLogAll.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/fi/model/JfiQuota.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/fi/model/JfiAmountDetail.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/bd/model/JbdSubBonusList.hbm.xml" />
+	  
+	  <mapping resource="com/joymain/jecs/mi/model/JmiAssure.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/bd/model/JbdMemberFrozen.hbm.xml" />
+	  
+	  <mapping resource="com/joymain/jecs/fi/model/FiProductPointBalance.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/fi/model/FiProductPointJournal.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/fi/model/FiProductPointTemp.hbm.xml" />
+	  
+	  <mapping resource="com/joymain/jecs/pm/model/JpmCouponInfo.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/pm/model/JpmCouponRelationship.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/po/model/JpoCouponRelationship.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/po/model/JpoUserCoupon.hbm.xml" />
+	  
+	  <mapping resource="com/joymain/jecs/bd/model/JbdCalcDayFb.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/bd/model/JbdCalcDayKbList.hbm.xml" />
+	  
+	  <mapping resource="com/joymain/jecs/bd/model/JbdYkJiandianList.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/bd/model/JbdJdSendRecord.hbm.xml" />
+	  
+	  <mapping resource="com/joymain/jecs/bd/model/JbdYdRebateList.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/bd/model/JbdYdRebateHist.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/bd/model/VJbdYdRebateList.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/mi/model/JmiSmsNote.hbm.xml" />
+	  <mapping resource="com/joymain/jecs/mi/model/JmiYdSendList.hbm.xml" />
+  </session-factory>
+</hibernate-configuration>

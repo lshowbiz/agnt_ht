@@ -1,0 +1,208 @@
+.eXtremeTable {
+	margin: -1px;
+	padding: 0;
+	vertical-align: top;
+	width:100%;
+	color:#5b5b5b;
+}
+
+.eXtremeTable select {
+	font-family:"Microsoft YaHei";
+	font-size: 13px;
+	border: solid 1px #EEE;
+	width: 75px;
+}
+
+.eXtremeTable .tableRegion {
+	border:1px solid #ddd; margin:1px; padding:1px; border-collapse:collapse;
+}
+
+.eXtremeTable .filter {
+	background-color: #f1f1f7;
+}
+
+.eXtremeTable .filter input {
+	font-family:"Microsoft YaHei";
+	font-size: 13px;
+	width: 100%;
+}
+
+.eXtremeTable .filter select {
+	font-family:"Microsoft YaHei";
+	font-size: 13px;
+	border: solid 1px #EEE;
+	width: 100%;
+}
+
+.eXtremeTable .tableHeader {
+	color: #5b5b5b;
+	text-align: center;
+	background: #f8f8f8;
+	white-space: nowrap;
+	height:24px;
+}
+
+.eXtremeTable .tableHeaderSort {
+
+	text-align: center;
+	background: #f8f8f8;
+	white-space: nowrap;
+	height:24px;
+}
+
+/*****************mouse over*******************/
+.eXtremeTable .odd a, .even a {
+	color: #5b5b5b;
+	font-size: 13px;
+}
+
+.eXtremeTable .odd td, .eXtremeTable .even td {
+	vertical-align: top;	
+	padding: 8px;
+    vertical-align: top;
+    border: 1px solid #ddd;
+	font-size: 13px;
+	
+}
+
+.eXtremeTable .odd {	
+	font-size: 13px;
+	vertical-align: top;
+}
+
+.eXtremeTable .even {
+  	background-color: #f9f9f9;
+	font-size: 13px;
+	vertical-align: top;
+}
+
+.eXtremeTable .highlight td {
+	padding: 8px;
+	color: #5b5b5b;
+	vertical-align: top;
+	border:1px solid #ddd;
+	background-color: #dfeefe;
+		font-size: 13px;
+}
+
+.eXtremeTable .highlight a, .highlight a {
+	color: #5b5b5b;
+	background-color: #dfeefe;
+	
+}
+
+
+
+
+
+.eXtremeTable .footer {
+	border: 1px solid #dbdbdb;
+	color: #5b5b5b;
+	text-align: center;
+	background: #dbdbdb;	
+	white-space: nowrap;
+	text-align: right;
+}
+
+.eXtremeTable .toolbar {
+	background-color: #F4F4F4;
+	font-family:"Microsoft YaHei";
+	font-size: 13px;
+	margin-right: 1px;
+	border-right: 1px solid silver;
+	border-left: 1px solid silver;
+	border-top: 1px solid silver;
+	border-bottom: 1px solid silver;
+}
+
+.eXtremeTable .toolbar td {
+	color: #444444;
+	padding: 0px 3px 0px 3px;
+	text-align:center;
+}
+
+.eXtremeTable .separator {
+	width: 7px;
+}
+
+.eXtremeTable .statusBar {
+	background-color: #FFFFFF;
+	font-family:"Microsoft YaHei";
+	font-size: 13px;
+}
+
+.eXtremeTable .compactToolbar {
+ 	background-color: #FFFFFF;
+}
+
+.eXtremeTable .filterButtons {
+	background-color: #f1f1f7;
+	text-align: right;
+}
+
+.eXtremeTable .title {
+	color: #444444;
+	font-weight: bold;
+	font-family:"Microsoft YaHei";
+	font-size: 15px;
+	vertical-align: middle;
+}
+
+.eXtremeTable .title span {
+	margin-left: 7px;
+}
+
+.eXtremeTable .formButtons {
+	display: block;
+	margin-top: 13px;
+	margin-left: 5px;
+}
+
+.eXtremeTable .formButton {
+	cursor: pointer;
+	font-family:"Microsoft YaHei";
+	font-size:13px;
+	font-weight: bold;
+	background-color: #308dbb;
+	color: white;
+	margin-top: 5px;
+	border: outset 1px #333;
+	vertical-align: middle;
+}
+
+.eXtremeTable .tableTotal {
+	background-color: #FFFFFF;
+	border-top: solid 1px Silver;	
+}
+
+.eXtremeTable .tableTotalEmpty {
+	background-color: #FFFFFF;	
+}
+
+.eXtremeTable .numberColumn {
+	text-align: right;
+}
+
+.eXtremeTable .centerColumn {
+	text-align: center;
+}
+
+.eXtremeTable .calcRow td {
+	border: 1px solid #dbdbdb;
+	color: #5b5b5b;
+	text-align: center;
+	background: #dbdbdb;
+	
+	white-space: nowrap;
+	text-align: right;
+}
+
+.eXtremeTable .odddetail {
+	background-color:#FEFDE9;
+}
+
+.eXtremeTable .evendetail {
+	background-color:#FEFDE9;
+}
+
+

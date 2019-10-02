@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.JfiDepositSend"
+            table="JFI_DEPOSIT_SEND"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_FI]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="userName"
+                    column="USER_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="wyear"
+                    column="W_YEAR"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="wweek"
+                    column="W_WEEK"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="depositMoney"
+                    column="DEPOSIT_MONEY"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="2000"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="createNo"
+                    column="CREATE_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="checkNo"
+                    column="CHECK_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="checkTime"
+                    column="CHECK_TIME"
+                length="7"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

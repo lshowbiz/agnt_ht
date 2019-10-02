@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pd.model.PdSendInfoDetail"
+            table="PD_SEND_INFO_DETAIL"
+    >
+
+    <id
+        name="uniNo"
+            column="UNI_NO"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PD]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="acceptQty"
+                    column="ACCEPT_QTY"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="siNo"
+                    column="SI_NO"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="labelCode"
+                    column="LABEL_CODE"
+        >
+
+        </property>
+
+        <property
+            name="productNo"
+                    column="PRODUCT_NO"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="price"
+                    column="PRICE"
+                length="18"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="qty"
+                    column="QTY"
+                length="10"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="weight"
+                    column="weight"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="trackingNo"
+                    column="TRACKING_NO"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="erpProductNo"
+                    column="ERP_PRODUCT_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="erpPrice"
+                    column="ERP_PRICE"
+        >
+
+        </property>
+
+        <property
+            name="combinationProductNo"
+                    column="COMBINATION_PRODUCT_NO"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="confirmReceipt"
+                    column="CONFIRM_RECEIPT"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="receiptQty"
+                    column="RECEIPT_QTY"
+                length="10"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

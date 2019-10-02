@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+   
+  
+  
+    <!--VtVote-BEAN-START-->
+    <bean id="vtVoteController" class="com.joymain.jecs.vt.webapp.action.VtVoteController" autowire="byName"/>
+
+    <bean id="vtVoteFormController" class="com.joymain.jecs.vt.webapp.action.VtVoteFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="vt/vtVoteForm"/>
+        <property name="successView" value="redirect:vtVotes.html"/>
+    </bean>
+    <!--VtVote-BEAN-END-->
+    <!--VtVoteDetail-BEAN-START-->
+    <bean id="vtVoteDetailController" class="com.joymain.jecs.vt.webapp.action.VtVoteDetailController" autowire="byName"/>
+
+    <bean id="vtVoteDetailFormController" class="com.joymain.jecs.vt.webapp.action.VtVoteDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="vt/vtVoteDetailForm"/>
+        <property name="successView" value="redirect:vtVoteDetails.html"/>
+    </bean>
+    <!--VtVoteDetail-BEAN-END-->
+    <!--VtVoteNote-BEAN-START-->
+    <bean id="vtVoteNoteController" class="com.joymain.jecs.vt.webapp.action.VtVoteNoteController" autowire="byName"/>
+
+    <bean id="vtVoteNoteFormController" class="com.joymain.jecs.vt.webapp.action.VtVoteNoteFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="vt/vtVoteNoteForm"/>
+        <property name="successView" value="redirect:vtVoteNotes.html"/>
+    </bean>
+    <!--VtVoteNote-BEAN-END-->
+    <!--VtVotePow-BEAN-START-->
+    <bean id="vtVotePowController" class="com.joymain.jecs.vt.webapp.action.VtVotePowController" autowire="byName"/>
+
+    <bean id="vtVotePowFormController" class="com.joymain.jecs.vt.webapp.action.VtVotePowFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="vt/vtVotePowForm"/>
+        <property name="successView" value="redirect:vtVotePows.html"/>
+    </bean>
+    <!--VtVotePow-BEAN-END-->
+    <bean id="vtVotePollController" class="com.joymain.jecs.vt.webapp.action.VtVotePollController" autowire="byName"/>
+  
+    <bean id="vtVotePollFormController" class="com.joymain.jecs.vt.webapp.action.VtVotePollFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="vt/vtVotePollForm"/>
+        <property name="successView" value=""/>
+    </bean>
+  
+  
+    <bean id="vtUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                
+                <!--VtVote-URL-START-->
+                <prop key="/vtVotes.html">vtVoteController</prop>
+                <prop key="/editVtVote.html">vtVoteFormController</prop>
+                <!--VtVote-URL-END-->
+                <!--VtVoteDetail-URL-START-->
+                <prop key="/vtVoteDetails.html">vtVoteDetailController</prop>
+                <prop key="/editVtVoteDetail.html">vtVoteDetailFormController</prop>
+                <!--VtVoteDetail-URL-END-->
+                <!--VtVoteNote-URL-START-->
+                <prop key="/vtVoteNotes.html">vtVoteNoteController</prop>
+                <prop key="/editVtVoteNote.html">vtVoteNoteFormController</prop>
+                <!--VtVoteNote-URL-END-->
+                <!--VtVotePow-URL-START-->
+                <prop key="/vtVotePows.html">vtVotePowController</prop>
+                <prop key="/editVtVotePow.html">vtVotePowFormController</prop>
+                <!--VtVotePow-URL-END-->
+                <prop key="/vtVotePolls.html">vtVotePollController</prop>
+                <prop key="/editVtVotePoll.html">vtVotePollFormController</prop>
+              	
+            </props>
+           </property>
+    </bean>
+</beans>

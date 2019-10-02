@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pd.model.PdWarehouse"
+            table="PD_WAREHOUSE"
+    >
+
+    <id
+        name="warehouseNo"
+            column="WAREHOUSE_NO"
+                type="java.lang.String"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="shNo"
+                    column="SH_NO"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="warehouseName"
+                    column="WAREHOUSE_NAME"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="stateCode"
+                    column="STATE_CODE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="city"
+                    column="CITY"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="warehouseAddr"
+                    column="WAREHOUSE_ADDR"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="warehouseZip"
+                    column="WAREHOUSE_ZIP"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="warehouseLevel"
+                    column="WAREHOUSE_LEVEL"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="lockFlag"
+                    column="LOCK_FLAG"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

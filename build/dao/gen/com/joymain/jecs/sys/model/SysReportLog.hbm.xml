@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sys.model.SysReportLog"
+            table="JSYS_REPORT_LOG"
+    >
+
+    <id
+        name="reportId"
+            column="REPORT_ID"
+                type="java.lang.String"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="reportName"
+                    column="REPORT_NAME"
+                length="150"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="30"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="fileName"
+                    column="FILE_NAME"
+                length="250"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="usedTime"
+                    column="USED_TIME"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="recordsCount"
+                    column="RECORDS_COUNT"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="4"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

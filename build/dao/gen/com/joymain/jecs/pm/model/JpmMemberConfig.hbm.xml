@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmMemberConfig"
+            table="JPM_MEMBER_CONFIG"
+    >
+
+    <id
+        name="configNo"
+            column="CONFIG_NO"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <many-to-one
+            name="jpmProductSaleTeamType"
+                not-null="true"
+        >
+
+            <column
+                name="PRODUCT_ID" 
+            />
+
+        </many-to-one>
+
+        <set
+            name="jpmConfigSpecDetailed"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="CONFIG_NO"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.pm.model.JpmConfigSpecDetailed"
+            />
+
+        </set>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="molId"
+                    column="MOL_ID"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="moId"
+                    column="MO_ID"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="productName"
+                    column="PRODUCT_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="amount"
+                    column="AMOUNT"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="completeamount"
+                    column="COMPLETEAMOUNT"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="createtime"
+                    column="CREATETIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="sysNo"
+                    column="SYS_NO"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="weight"
+                    column="WEIGHT"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="price"
+                    column="PRICE"
+                length="10"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

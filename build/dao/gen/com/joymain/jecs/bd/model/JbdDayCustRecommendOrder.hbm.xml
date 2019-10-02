@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.JbdDayCustRecommendOrder"
+            table="JBD_DAY_CUST_RECOMMEND_ORDER"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="wweek"
+                    column="W_WEEK"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+        >
+
+        </property>
+
+        <property
+            name="reuserCode"
+                    column="REUSER_CODE"
+        >
+
+        </property>
+
+        <property
+            name="recommendLvl"
+                    column="RECOMMEND_LVL"
+        >
+
+        </property>
+
+        <property
+            name="memberOrderNo"
+                    column="MEMBER_ORDER_NO"
+        >
+
+        </property>
+
+        <property
+            name="orderType"
+                    column="ORDER_TYPE"
+        >
+
+        </property>
+
+        <property
+            name="orderMoney"
+                    column="ORDER_MONEY"
+        >
+
+        </property>
+
+        <property
+            name="recommendPv"
+                    column="RECOMMEND_PV"
+        >
+
+        </property>
+
+        <property
+            name="comRate"
+                    column="COM_RATE"
+        >
+
+        </property>
+
+        <property
+            name="sendFlag"
+                    column="SEND_FLAG"
+        >
+
+        </property>
+
+        <property
+            name="comDate"
+                    column="COM_DATE"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

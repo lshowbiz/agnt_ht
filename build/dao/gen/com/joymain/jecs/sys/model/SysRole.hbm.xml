@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sys.model.SysRole"
+            table="JSYS_ROLE"
+    >
+
+    <id
+        name="roleId"
+            column="ROLE_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_SYS]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="roleName"
+                    column="ROLE_NAME"
+                length="100"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="roleDes"
+                    column="ROLE_DES"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="available"
+                    column="AVAILABLE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="userType"
+                    column="USER_TYPE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="roleCode"
+                    column="ROLE_CODE"
+                length="30"
+                not-null="true"
+        >
+
+        </property>
+
+        <set
+            name="sysUsers"
+            table="JSYS_USER_ROLE"
+            lazy="true"
+            cascade="save-update"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="ROLE_ID"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-many-to-many tag is deprecated, use @hibernate.many-to-many instead -->
+            <many-to-many
+                class="com.joymain.jecs.sys.model.SysUser"
+                column="USER_CODE"
+                outer-join="auto"
+             />
+
+        </set>
+
+    </class>    
+
+</hibernate-mapping>
+

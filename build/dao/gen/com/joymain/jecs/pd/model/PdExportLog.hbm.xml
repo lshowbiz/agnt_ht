@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pd.model.PdExportLog"
+            table="PD_EXPORT_LOG"
+    >
+
+    <id
+        name="logId"
+            column="LOG_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PD]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="logName"
+                    column="LOG_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="logType"
+                    column="LOG_TYPE"
+                length="3"
+        >
+
+        </property>
+
+        <property
+            name="logStatus"
+                    column="LOG_STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="logUserCode"
+                    column="LOG_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="logStartTime"
+                    column="LOG_START_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="logEndTime"
+                    column="LOG_END_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="logDesc"
+                    column="LOG_DESC"
+                length="200"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

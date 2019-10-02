@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sys.model.JocsInterfaceLog"
+            table="JOCS_INTERFACE_LOG"
+    >
+
+    <id
+        name="logId"
+            column="LOG_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_LOG]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="logType"
+                    column="LOG_TYPE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="flag"
+                    column="FLAG"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="method"
+                    column="METHOD"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="type"
+                    column="TYPE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="charset"
+                    column="CHARSET"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="ver"
+                    column="VER"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="content"
+                    column="CONTENT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="sign"
+                    column="SIGN"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="returnResult"
+                    column="RETURN_RESULT"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="returnDesc"
+                    column="RETURN_DESC"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="sendTime"
+                    column="SEND_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="reciverTime"
+                    column="RECIVER_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="editTime"
+                    column="EDIT_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+            name="sender"
+                    column="SENDER"
+                length="20"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

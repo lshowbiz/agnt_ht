@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.mi.model.JmiTaiwanTravel"
+            table="JMI_TAIWAN_TRAVEL"
+    >
+
+    <id
+        name="userCode"
+            column="USER_CODE"
+                type="java.lang.String"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="filingDate"
+                    column="FILING_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="userName"
+                    column="USER_NAME"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="petName"
+                    column="PET_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="sex"
+                    column="SEX"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="idNo"
+                    column="ID_NO"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="idProvince"
+                    column="ID_PROVINCE"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="idCity"
+                    column="ID_CITY"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="phone"
+                    column="PHONE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="applyType"
+                    column="APPLY_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="commonProvince"
+                    column="COMMON_PROVINCE"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="commonCity"
+                    column="COMMON_CITY"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="commonFromCity"
+                    column="COMMON_FROM_CITY"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="specialFromCity"
+                    column="SPECIAL_FROM_CITY"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="address"
+                    column="ADDRESS"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="postalcode"
+                    column="POSTALCODE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="remittanceTime"
+                    column="REMITTANCE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="remittanceName"
+                    column="REMITTANCE_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="remittanceCard"
+                    column="REMITTANCE_CARD"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="remittanceBank"
+                    column="REMITTANCE_BANK"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="spouseName"
+                    column="SPOUSE_NAME"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="spousePetName"
+                    column="SPOUSE_PET_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="spouseSex"
+                    column="SPOUSE_SEX"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="spouseIdNo"
+                    column="SPOUSE_ID_NO"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="spouseUserCode"
+                    column="SPOUSE_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="spouseIdProvince"
+                    column="SPOUSE_ID_PROVINCE"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="spouseIdCity"
+                    column="SPOUSE_ID_CITY"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="spousePhone"
+                    column="SPOUSE_PHONE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="spouseApplyType"
+                    column="SPOUSE_APPLY_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="createUser"
+                    column="CREATE_USER"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

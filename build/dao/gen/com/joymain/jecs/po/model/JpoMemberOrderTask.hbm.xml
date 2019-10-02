@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.po.model.JpoMemberOrderTask"
+            table="JPO_MEMBER_ORDER_TASK"
+    >
+
+    <id
+        name="motId"
+            column="MOT_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PO]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="countryCode"
+                    column="COUNTRY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="taskType"
+                    column="TASK_TYPE"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="retMsg"
+                    column="RET_MSG"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="firstName"
+                    column="FIRST_NAME"
+                length="100"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="lastName"
+                    column="LAST_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="province"
+                    column="PROVINCE"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="city"
+                    column="CITY"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="district"
+                    column="DISTRICT"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="town"
+                    column="TOWN"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="address"
+                    column="ADDRESS"
+                length="500"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="postalcode"
+                    column="POSTALCODE"
+                length="10"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="phone"
+                    column="PHONE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="email"
+                    column="EMAIL"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="mobiletele"
+                    column="MOBILETELE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="actionTime"
+                    column="ACTION_TIME"
+                length="8"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createUser"
+                    column="CREATE_USER"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="actionDate"
+                    column="ACTION_DATE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <set
+            name="jpoMemberOrderListTask"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="MOT_ID"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.po.model.JpoMemberOrderListTask"
+            />
+
+        </set>
+
+        <property
+            name="actionWeek"
+                    column="ACTION_WEEK"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="cardAddress"
+                    column="CARD_ADDRESS"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="cardCcExp"
+                    column="CARD_CC_EXP"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="cardCcNumber"
+                    column="CARD_CC_NUMBER"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="cardCity"
+                    column="CARD_CITY"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="cardCvv"
+                    column="CARD_CVV"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="cardFirstName"
+                    column="CARD_FIRST_NAME"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="cardLastName"
+                    column="CARD_LAST_NAME"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="cardState"
+                    column="CARD_STATE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="cardZip"
+                    column="CARD_ZIP"
+                length="4000"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

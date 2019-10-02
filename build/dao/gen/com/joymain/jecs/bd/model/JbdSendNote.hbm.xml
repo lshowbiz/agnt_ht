@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.JbdSendNote"
+            table="JBD_SEND_NOTE"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_BD]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="remittanceBNum"
+                    column="REMITTANCE_B_NUM"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="operaterCode"
+                    column="OPERATER_CODE"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="operaterTime"
+                    column="OPERATER_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="sendDate"
+                    column="SEND_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="registerStatus"
+                    column="REGISTER_STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="reissueStatus"
+                    column="REISSUE_STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="supplyTime"
+                    column="SUPPLY_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="sendRemark"
+                    column="SEND_REMARK"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="createNo"
+                    column="CREATE_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="remittanceMoney"
+                    column="REMITTANCE_MONEY"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="fee"
+                    column="FEE"
+                length="22"
+        >
+
+        </property>
+
+        <many-to-one
+            name="jmiMember"
+                not-null="true"
+        >
+
+            <column
+                name="USER_CODE" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="sendLateCause"
+                    column="SEND_LATE_CAUSE"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="sendLateRemark"
+                    column="SEND_LATE_REMARK"
+                length="500"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

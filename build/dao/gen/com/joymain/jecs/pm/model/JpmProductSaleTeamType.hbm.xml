@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmProductSaleTeamType"
+            table="JPM_PRODUCT_SALE_TEAM_TYPE"
+    >
+
+    <id
+        name="pttId"
+            column="PTT_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PM]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="uniNo"
+                    column="UNI_NO"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="teamCode"
+                    column="TEAM_CODE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="orderType"
+                    column="ORDER_TYPE"
+                length="3"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="price"
+                    column="PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="pv"
+                    column="PV"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="state"
+                    column="STATE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="province"
+                    column="PROVINCE"
+                length="6"
+        >
+
+        </property>
+
+        <many-to-one
+            name="jpmProductSaleNew"
+                not-null="true"
+                insert="false"
+                update="false"
+                lazy="false"
+        >
+
+            <column
+                name="UNI_NO" 
+            />
+
+        </many-to-one>
+
+        <many-to-one
+            name="jmiMemberTeam"
+                not-null="true"
+                insert="false"
+                update="false"
+        >
+
+            <column
+                name="TEAM_CODE" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="isHidden"
+                    column="IS_HIDDEN"
+                length="1"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

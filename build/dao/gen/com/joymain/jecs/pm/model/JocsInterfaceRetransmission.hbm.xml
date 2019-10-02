@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JocsInterfaceRetransmission"
+            table="JOCS_INTERFACE_RETRANSMISSION"
+    >
+
+    <id
+        name="logId"
+            column="LOG_ID"
+                type="java.math.BigDecimal"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="logType"
+                    column="LOG_TYPE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="flag"
+                    column="FLAG"
+                length="10"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="method"
+                    column="METHOD"
+                length="100"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="type"
+                    column="TYPE"
+                length="10"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="charset"
+                    column="CHARSET"
+                length="10"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="ver"
+                    column="VER"
+                length="10"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="content"
+                    column="CONTENT"
+                length="4000"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="sign"
+                    column="SIGN"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="returnResult"
+                    column="RETURN_RESULT"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="returnDesc"
+                    column="RETURN_DESC"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="sendTime"
+                    column="SEND_TIME"
+                length="7"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="reciverTime"
+                    column="RECIVER_TIME"
+                length="7"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="editTime"
+                    column="EDIT_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+            name="retranType"
+                    column="RETRAN_TYPE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="retranStatus"
+                    column="RETRAN_STATUS"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="retranTime"
+                    column="RETRAN_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="retranCode"
+                    column="RETRAN_CODE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="retranReason"
+                    column="RETRAN_REASON"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="remark1"
+                    column="REMARK1"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="remark2"
+                    column="REMARK2"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="sender"
+                    column="SENDER"
+                length="20"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

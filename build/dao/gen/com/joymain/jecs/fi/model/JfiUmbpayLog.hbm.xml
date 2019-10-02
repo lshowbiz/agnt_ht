@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.JfiUmbpayLog"
+            table="JFI_UMBPAY_LOG"
+    >
+
+    <id
+        name="logId"
+            column="LOG_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="signType"
+                    column="SIGN_TYPE"
+                length="255"
+        >
+
+        </property>
+
+        <property
+            name="payType"
+                    column="PAY_TYPE"
+                length="255"
+        >
+
+        </property>
+
+        <property
+            name="payorderid"
+                    column="PAYORDERID"
+                length="255"
+        >
+
+        </property>
+
+        <property
+            name="merchantid"
+                    column="MERCHANTID"
+                length="255"
+        >
+
+        </property>
+
+        <property
+            name="merorderid"
+                    column="MERORDERID"
+                length="255"
+        >
+
+        </property>
+
+        <property
+            name="amountsum"
+                    column="AMOUNTSUM"
+                length="255"
+        >
+
+        </property>
+
+        <property
+            name="currencytype"
+                    column="CURRENCYTYPE"
+                length="255"
+        >
+
+        </property>
+
+        <property
+            name="subject"
+                    column="SUBJECT"
+                length="255"
+        >
+
+        </property>
+
+        <property
+            name="returnState"
+                    column="RETURN_STATE"
+                length="255"
+        >
+
+        </property>
+
+        <property
+            name="paybank"
+                    column="PAYBANK"
+                length="255"
+        >
+
+        </property>
+
+        <property
+            name="banksendtime"
+                    column="BANKSENDTIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="merrecvtime"
+                    column="MERRECVTIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="version"
+                    column="VERSION"
+                length="255"
+        >
+
+        </property>
+
+        <property
+            name="merkey"
+                    column="MERKEY"
+                length="255"
+        >
+
+        </property>
+
+        <property
+            name="mac"
+                    column="MAC"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="url"
+                    column="URL"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="inc"
+                    column="INC"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="ip"
+                    column="IP"
+                length="35"
+        >
+
+        </property>
+
+        <property
+            name="dataType"
+                    column="DATA_TYPE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="returnMsg"
+                    column="RETURN_MSG"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="30"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

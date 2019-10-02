@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+    <bean id="quartzJob" class="com.joymain.jecs.util.quartz.AutoShipQuartz" autowire="byName"/>
+    <bean id="jobtask"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="quartzJob" />
+        </property>
+        <property name="targetMethod">
+            <value>work</value>
+        </property>
+    </bean>
+    <bean id="doTime"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="jobtask" />
+        </property>
+        <property name="cronExpression">
+            <value>0/30 * * * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="sunTrigger"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="sunTask" />
+        </property>
+        <property name="cronExpression">
+            <value>0 0 1 * * ?</value>
+        </property>
+    </bean>
+    <bean id="sunTask"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="sunDistShipManager" />
+        </property>
+        <property name="targetMethod">
+            <value>autoCreateSunShipDate</value>
+        </property>
+    </bean>
+    
+    <bean id="productTask"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="jpmProductSaleManager" />
+        </property>
+        <property name="targetMethod">
+            <value>batchUpdateStatusNew</value>
+        </property>
+    </bean>
+    <bean id="productTrigger"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="productTask" />
+        </property>
+        <property name="cronExpression">
+            <value>1 0 0 * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="frozeTask"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="pdWarehouseFrozenBatchManager" />
+        </property>
+        <property name="targetMethod">
+            <value>excuteFrozen</value>
+        </property>
+    </bean>
+    <bean id="frozeTrigger"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="frozeTask" />
+        </property>
+        <property name="cronExpression">
+            <value>1 0 0 ? * 6</value>
+        </property>
+    </bean>
+    
+    <bean id="frozeTrigger2"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="frozeTask" />
+        </property>
+        <property name="cronExpression">
+            <value>1 0 0 1 * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="transferTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="fiTransferAccountManager" />
+        </property>
+        <property name="targetMethod">
+            <value>checkTransferTask</value>
+        </property>
+    </bean>
+    <bean id="transferTrigger"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="transferTask" />
+        </property>
+        <property name="cronExpression">
+        	<value>0 50 23 * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="startQuertz" lazy-init="false" autowire="no"
+        class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="transferTrigger" />
+                <!-- 订单推送 -->
+                <ref bean="transferTriggerOrder" />
+                <!-- 商户号限额配置定时 -->
+                <ref bean="transferTriggerBillCount" />
+		<ref bean="jbdPassStarReSaleTrigger1" />
+                <ref bean="jbdPassStarReSaleTrigger2" />
+                <ref bean="jbdPassStarReSaleTrigger3" />
+                <ref bean="jdbValidAndFreezeTrigger" />
+                <ref bean="miInfoSendTrigger" />
+                
+                <ref bean="nycStatusUpdateTrigger" />
+                <!-- 审单异常推送短信 -->
+                <ref bean="transferTriggerOrderCheck" />
+            </list>
+        </property>
+    </bean>
+
+      
+    
+    <bean id="transferTriggerOrder"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="transferTaskOrder" />
+        </property>
+        <property name="cronExpression">
+        	<value>0 0/2 * * * ?</value> <!-- 0 */1 * * * ?    0 * 14 * * ?    0 0/5 14 * * ?-->
+        </property>
+    </bean>
+    
+    
+    
+   <bean id="quartzJob1" class="com.joymain.jecs.po.webapp.action.JpozAutoShipQuartz" autowire="byName"/>
+    <bean id="transferTaskOrder" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="quartzJob1" />   
+        </property>
+        <property name="targetMethod">
+            <value>getSendOrdersTransferTask</value>  
+        </property>
+    </bean> 
+    
+    <!-- 商户号限额配置定时 -->
+    <bean id="transferTriggerBillCount"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="transferTaskBillCount" />
+        </property>
+        <property name="cronExpression">
+        	<value>00 00 05 L * ?</value> <!-- 0 */1 * * * ?    0 * 14 * * ?    0 0/5 14 * * ?-->
+        </property>
+    </bean>
+    
+    <bean id="quartzJob2" class="com.joymain.jecs.po.webapp.action.JpozAutoShipQuartz" autowire="byName"/>
+    <bean id="transferTaskBillCount" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="quartzJob2" />   
+        </property>
+        <property name="targetMethod">
+            <value>quartJfiQuota</value>  
+        </property>
+    </bean> 
+    
+    <!-- 外部消息重发定时器   add by jfoy 2015-01-15 begin -->
+    <bean id="msgResendTask"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="jocsInterfaceRetransmissionManager" />
+        </property>
+        <property name="targetMethod">
+            <value>resendMsg</value>
+        </property>
+        <property name="concurrent" value="false" />   
+    </bean>
+    
+    <bean id="msgResendTrigger"
+        class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+        <property name="jobDetail">
+            <ref bean="msgResendTask" />
+        </property>
+        <property name="startDelay">   
+			<value>60000</value><!-- 服务启动一分钟后执行 -->   
+		</property>   
+		<property name="repeatInterval">   
+			<value>300000</value><!-- 每隔1分钟执行一次 -->   
+		</property> 
+    </bean>
+    
+    <!-- 外部消息重发定时器   add by jfoy 2015-01-15 end -->
+    <bean id="startQuertz2" lazy-init="false" autowire="no"
+        class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="transferTrigger2" />
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="transferTrigger2"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="transferTask2" />
+        </property>
+        <property name="cronExpression">
+        	<value>0 0/2 * * * ?</value>
+        </property>
+    </bean>
+    
+    <bean id="transferTask2" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="pdSendInfoManager" />
+        </property>
+        <property name="targetMethod">
+            <value>reJocsInterfaceTransmission</value>
+        </property>
+    </bean>
+     
+     
+    <bean id="jbdPassStarReSaleTrigger1"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="jbdPassStarReSaleTask" />
+        </property>
+        <property name="cronExpression">
+        	<value>0 0 10 25 * ?</value>
+        </property>
+    </bean>
+    <bean id="jbdPassStarReSaleTrigger2"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="jbdPassStarReSaleTask" />
+        </property>
+        <property name="cronExpression">
+        	<value>0 0 10 28 * ?</value>
+        </property>
+    </bean>
+    <bean id="jbdPassStarReSaleTrigger3"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="jbdPassStarReSaleTask" />
+        </property>
+        <property name="cronExpression">
+        	<value>0 0 13 L * ?</value>
+        </property>
+    </bean>
+    
+    
+    
+    <bean id="jdbValidAndFreezeTrigger"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="jdbValidAndFreezeTask" />
+        </property>
+        <property name="cronExpression">
+        	<value>0 0 10 15 * ?</value>
+        </property>
+    </bean>
+    
+   <bean id="jbdPassStarReSaleQuartz" class="com.joymain.jecs.bd.webapp.action.JbdPassStarReSaleQuartzController" autowire="byName"/> 
+   <bean id="jbdPassStarReSaleTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="jbdPassStarReSaleQuartz" />   
+        </property>
+        <property name="targetMethod">
+            <value>getSendSms</value>  
+        </property>
+    </bean>
+    
+   <bean id="jdbValidAndFreezeTask" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="jbdPassStarReSaleQuartz" />   
+        </property>
+        <property name="targetMethod">
+            <value>getValidAndFreezeSendSms</value>  
+        </property>
+    </bean>
+    
+   
+   <bean id="miInfoSendTask"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="jbdPassStarReSaleQuartz" />
+        </property>
+        <property name="targetMethod">
+            <value>postJmiMember</value>
+        </property>
+        <property name="concurrent" value="false" />   
+    </bean>
+    
+    <bean id="miInfoSendTrigger"
+        class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+        <property name="jobDetail">
+            <ref bean="miInfoSendTask" />
+        </property>
+        <property name="startDelay">   
+			<value>60000</value><!-- 服务启动一分钟后执行 -->   
+		</property>   
+		<property name="repeatInterval">   
+			<value>60000</value><!-- 每隔1分钟执行一次 -->   
+		</property> 
+    </bean>
+
+
+    <bean id="nycBacthUpdateBean" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="jpoMemberNycManager" />
+        </property>
+        <property name="targetMethod">
+            <value>work</value>
+        </property>
+    </bean>
+
+    <bean id="nycStatusUpdateTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="nycBacthUpdateBean" />
+        </property>
+        <property name="cronExpression">
+            <!-- 每天2点到21点每2个小时执行一次 -->
+            <value>0 */5 * * * ?</value><!-- 0 0 8-23/2 * * ? --><!-- 0 */5 * * * ? --><!-- 0 0 2-21/2 * * ? --><!-- 0 0/5 * * * ? -->
+        </property>
+    </bean>
+
+
+	<!-- 审单问题自动发送短信 -->
+	<bean id="transferTriggerOrderCheck"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="transferTaskOrderCheck" />
+        </property>
+        <property name="cronExpression">
+        	<value>0 0/5 * * * ?</value> <!-- 0 */1 * * * ?    0 * 14 * * ?    0 0/5 14 * * ?-->
+        </property>
+    </bean>
+    
+    
+    
+   <bean id="quartzJobCheck" class="com.joymain.jecs.po.webapp.action.JpozAutoShipQuartz" autowire="byName"/>
+    <bean id="transferTaskOrderCheck" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="quartzJobCheck" />   
+        </property>
+        <property name="targetMethod">
+            <value>getCheckOrder</value>  
+        </property>
+    </bean> 
+</beans>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:amq="http://activemq.apache.org/schema/core"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+	   http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core-5.2.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.0.xsd"
+	default-lazy-init="true">
+	
+	<!-- ActiveMQ connectionFactory to use -->
+	<amq:connectionFactory id="jmsActiveMQFactory" brokerURL="tcp://192.168.20.221:61616" />
+	
+	<!-- ActiveMQ destinations to use -->
+	<amq:queue name="ecCoin" physicalName="ecCoin" />
+	<amq:queue name="ecRegister" physicalName="ecRegister" />
+
+	
+	<!--for sms beging-->
+	<amq:queue name="destination" physicalName="pams.amq" />
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory">
+			<bean class="org.springframework.jms.connection.SingleConnectionFactory">
+				<property name="targetConnectionFactory" ref="jmsActiveMQFactory" />
+			</bean>
+		</property>
+		<property name="messageConverter" ref="resourceMessageConverter" />
+	</bean>
+
+	<bean id="resourceMessageConverter" class="com.smsgate.server.jms.queue.ResourceMessageConverter" />
+
+	<bean id="resourceMessageProducer" class="com.smsgate.server.jms.queue.ResourceMessageProducer">
+		<property name="template" ref="jmsTemplate" />
+		<property name="destination" ref="destination" />
+	</bean>
+	<!--for sms end-->
+
+	<amq:topic  name="reloadNotice" physicalName="reloadNotice" />
+
+	<!-- ActiveMQMessage converter -->
+	<bean id="activeMQMessageConverter" class="com.ecap.activemq.ActiveMQMessageConverter" />
+	
+	<!-- Spring JmsTemplate config -->
+	<bean id="jmsActiveMQTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory">
+			<!-- lets wrap in a pool to avoid creating a connection per send -->
+			<bean class="org.springframework.jms.connection.SingleConnectionFactory">
+				<property name="targetConnectionFactory" ref="jmsActiveMQFactory" />
+			</bean>
+		</property>
+		<!-- custom MessageConverter define -->
+		<property name="messageConverter" ref="activeMQMessageConverter" />
+	</bean>
+	
+	<!-- POJO which send Message uses Spring JmsTemplate，bind JMSTemplate and Queue -->
+	<bean id="ecCoinSender" class="com.ecap.activemq.EcCoinSender">
+		<property name="jmsTemplate" ref="jmsActiveMQTemplate" />
+		<property name="destination" ref="ecCoin" />
+		<property name="testMode" value="true"  />
+	</bean>
+	
+	<bean id="ecRegisterSender" class="com.ecap.activemq.EcRegisterSender">
+		<property name="jmsTemplate" ref="jmsActiveMQTemplate" />
+		<property name="destination" ref="ecRegister" />
+		<property name="testMode" value="true"  />
+	</bean>
+</beans>

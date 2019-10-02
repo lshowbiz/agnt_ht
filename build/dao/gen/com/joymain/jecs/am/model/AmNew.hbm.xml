@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.am.model.AmNew"
+            table="AM_NEW"
+    >
+
+    <id
+        name="newId"
+            column="NEW_ID"
+                type="java.lang.String"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="category"
+                    column="CATEGORY"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="subject"
+                    column="SUBJECT"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="url"
+                    column="URL"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="newOrder"
+                    column="NEW_ORDER"
+                length="22"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

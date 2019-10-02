@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sys.model.SysConfigKey"
+            table="JSYS_CONFIG_KEY"
+    >
+
+    <id
+        name="keyId"
+            column="KEY_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_SYS]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="configCode"
+                    column="CONFIG_CODE"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="keyDesc"
+                    column="KEY_DESC"
+                length="250"
+        >
+
+        </property>
+
+        <property
+            name="defaultValue"
+                    column="DEFAULT_VALUE"
+                length="100"
+        >
+
+        </property>
+
+        <set
+            name="sysConfigValues"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="KEY_ID"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.sys.model.SysConfigValue"
+            />
+
+        </set>
+
+    </class>    
+
+</hibernate-mapping>
+

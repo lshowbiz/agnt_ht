@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmProductSaleNew"
+            table="JPM_PRODUCT_SALE_NEW"
+    >
+
+    <id
+        name="uniNo"
+            column="UNI_NO"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PM]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="isRecommend"
+                    column="IS_RECOMMEND"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="productName"
+                    column="PRODUCT_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="whoPrice"
+                    column="WHO_PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="discountPrice"
+                    column="DISCOUNT_PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="weight"
+                    column="WEIGHT"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="volume"
+                    column="VOLUME"
+                length="15"
+        >
+
+        </property>
+
+        <property
+            name="length"
+                    column="LENGTH"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="width"
+                    column="WIDTH"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="height"
+                    column="HEIGHT"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="confirm"
+                    column="CONFIRM"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="productDesc"
+                    column="PRODUCT_DESC"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="changeabledFlag"
+                    column="CHANGEABLED_FLAG"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="storageCordon"
+                    column="STORAGE_CORDON"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="startOnSale"
+                    column="START_ON_SALE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="endOnSale"
+                    column="END_ON_SALE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="shipStrategy"
+                    column="SHIP_STRATEGY"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="hotFlag"
+                    column="HOT_FLAG"
+                length="5"
+        >
+
+        </property>
+
+        <property
+            name="sortFlag"
+                    column="SORT_FLAG"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="isHidden"
+                    column="IS_HIDDEN"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="logisticsStrategy"
+                    column="LOGISTICS_STRATEGY"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="productNo"
+                    column="PRODUCT_NO"
+                length="20"
+                update="false"
+                insert="false"
+        >
+
+        </property>
+
+        <many-to-one
+            name="jpmProduct"
+                not-null="true"
+                lazy="false"
+        >
+
+            <column
+                name="PRODUCT_NO" 
+            />
+
+        </many-to-one>
+
+        <set
+            name="jpmProductSaleImages"
+            lazy="true"
+            inverse="true"
+            cascade="all-delete-orphan"
+            order-by="uni_No"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="uni_no"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.pm.model.JpmProductSaleImage"
+            />
+
+        </set>
+
+        <set
+            name="jpmProductSaleRelateds"
+            lazy="true"
+            inverse="true"
+            cascade="all-delete-orphan"
+            order-by="uni_No"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="uni_no"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.pm.model.JpmProductSaleRelated"
+            />
+
+        </set>
+
+        <set
+            name="jpmProductSaleTeamTypes"
+            lazy="true"
+            inverse="true"
+            cascade="all-delete-orphan"
+            order-by="uni_No"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="uni_no"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.pm.model.JpmProductSaleTeamType"
+            />
+
+        </set>
+
+        <property
+            name="createUserCode"
+                    column="CREATE_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+        >
+
+        </property>
+
+        <property
+            name="updateUserCode"
+                    column="UPDATE_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="updateTime"
+                    column="UPDATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="briefIntroduction"
+                    column="BRIEF_INTRODUCTION"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="healthKnowledge"
+                    column="HEALTH_KNOWLEDGE"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="productSpecification"
+                    column="PRODUCT_SPECIFICATION"
+                length="50"
+        >
+
+        </property>
+
+        <set
+            name="jpmCouponRelationships"
+            lazy="true"
+            inverse="true"
+            cascade="all-delete-orphan"
+            order-by="uni_No"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="uni_no"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.pm.model.JpmCouponRelationship"
+            />
+
+        </set>
+
+    </class>    
+
+</hibernate-mapping>
+

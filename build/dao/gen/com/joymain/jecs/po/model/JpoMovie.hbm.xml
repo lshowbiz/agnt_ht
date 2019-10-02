@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.po.model.JpoMovie"
+            table="jpo_movie"
+    >
+
+    <id
+        name="mId"
+            column="M_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PO]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="mname"
+                    column="M_NAME"
+        >
+
+        </property>
+
+        <property
+            name="maccount"
+                    column="M_ACCOUNT"
+        >
+
+        </property>
+
+        <property
+            name="mpwd"
+                    column="M_PWD"
+        >
+
+        </property>
+
+        <property
+            name="museTime"
+                    column="M_USETIME"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="M_STATUS"
+        >
+
+        </property>
+
+        <property
+            name="orderNo"
+                    column="M_ORDERNO"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

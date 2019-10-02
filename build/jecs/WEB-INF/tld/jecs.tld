@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+
+   <tlib-version>1.0</tlib-version>
+   <jsp-version>1.2</jsp-version>
+   <short-name>jecs</short-name>
+
+   <description><![CDATA[Custom tag library for this application]]></description>
+
+   <tag>
+
+      <name>writeTree</name>
+      <tag-class>com.joymain.jecs.webapp.taglib.WriteTreeTag</tag-class>
+
+      <attribute>
+         <name>branchs</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>curLeafs</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>leafs</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>type</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+
+   </tag>
+   <tag>
+
+      <name>locale</name>
+      <tag-class>com.joymain.jecs.webapp.taglib.LocaleTag</tag-class>
+
+     <attribute>
+         <name>key</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>args</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+			<attribute>
+         <name>argTransFlag</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+
+   </tag>
+   <tag>
+
+      <name>country</name>
+      <tag-class>com.joymain.jecs.webapp.taglib.CountryTag</tag-class>
+
+      <attribute>
+         <name>name</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>prompt</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>default</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>toScope</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+
+   </tag>
+   <tag>
+
+      <name>power</name>
+      <tag-class>com.joymain.jecs.webapp.taglib.PowerTag</tag-class>
+
+      <attribute>
+         <name>powerCode</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+			<attribute>
+         <name>authority</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+   </tag>
+   <tag>
+
+      <name>constants</name>
+      <tag-class>com.joymain.jecs.webapp.taglib.ConstantsTag</tag-class>
+      <tei-class>com.joymain.jecs.webapp.taglib.ConstantsTei</tei-class>
+
+      <attribute>
+         <name>className</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>scope</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>var</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+
+   </tag>
+   <tag>
+
+      <name>code</name>
+      <tag-class>com.joymain.jecs.webapp.taglib.CodeTag</tag-class>
+
+      <attribute>
+         <name>listCode</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[List Code]]></description>
+
+      </attribute>
+      <attribute>
+         <name>value</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[Current value]]></description>
+
+      </attribute>
+
+   </tag>
+   <tag>
+
+      <name>list</name>
+      <tag-class>com.joymain.jecs.webapp.taglib.ListTag</tag-class>
+      <description><![CDATA[通过List值显示下拉列表框]]></description>
+
+      <attribute>
+         <name>listCode</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[List编码]]></description>
+
+      </attribute>
+      <attribute>
+         <name>value</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[当前值]]></description>
+
+      </attribute>
+      <attribute>
+         <name>defaultValue</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[默认值]]></description>
+
+      </attribute>
+      <attribute>
+         <name>disabled</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[是否disabled]]></description>
+
+      </attribute>
+      <attribute>
+         <name>showBlankLine</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[是否显示空白]]></description>
+
+      </attribute>
+      <attribute>
+         <name>onchange</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[选择变更时触发的事件]]></description>
+
+      </attribute>
+      <attribute>
+         <name>multiple</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[是否显示为多选的样式]]></description>
+
+      </attribute>
+      <attribute>
+         <name>name</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[List名称]]></description>
+
+      </attribute>
+      <attribute>
+         <name>id</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[List ID]]></description>
+
+      </attribute>
+      <attribute>
+         <name>size</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>style</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[List对应的HTML的样式]]></description>
+
+      </attribute>
+      <attribute>
+         <name>styleClass</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[List对应的CSS样式]]></description>
+
+      </attribute>
+      <attribute>
+         <name>onclick</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[List点击触发的事件]]></description>
+
+      </attribute>
+
+   </tag>
+   <tag>
+
+      <name>company</name>
+      <tag-class>com.joymain.jecs.webapp.taglib.CompanyTag</tag-class>
+
+			<attribute>
+         <name>label</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[是否显示成label,默认为false]]></description>
+
+      </attribute>
+      <attribute>
+         <name>prompt</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[选择框的首行]]></description>
+
+      </attribute>
+      <attribute>
+         <name>name</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[选择框的名称]]></description>
+
+      </attribute>
+      <attribute>
+         <name>scope</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>selected</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[默认选择项]]></description>
+
+      </attribute>
+      <attribute>
+         <name>withAA</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+	  <attribute>
+         <name>styleClass</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+           <description><![CDATA[company对应的CSS样式]]></description>
+
+      </attribute>
+   </tag>
+   <tag>
+
+      <name>label</name>
+      <tag-class>com.joymain.jecs.webapp.taglib.LabelTag</tag-class>
+
+      <attribute>
+         <name>key</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>colon</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>required</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>styleClass</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>errorClass</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+
+   </tag>
+   <tag>
+
+      <name>period</name>
+      <tag-class>com.joymain.jecs.webapp.taglib.PeriodTag</tag-class>
+
+      <attribute>
+         <name>dateStr</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+
+   </tag>
+   
+   <tag>
+
+      <name>weekFormat</name>
+      <tag-class>com.joymain.jecs.webapp.taglib.WeekFormatTag</tag-class>
+
+      <attribute>
+         <name>weekType</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+      </attribute>
+
+      <attribute>
+         <name>week</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+      </attribute>
+   </tag>
+   
+   <tag>
+
+      <name>monthFormat</name>
+      <tag-class>com.joymain.jecs.webapp.taglib.MonthFormatTag</tag-class>
+
+      <attribute>
+         <name>monthType</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+      </attribute>
+
+      <attribute>
+         <name>month</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+      </attribute>
+   </tag>
+   
+   <tag>
+
+      <name>region</name>
+      <tag-class>com.joymain.jecs.webapp.taglib.RegionTag</tag-class>
+
+      <attribute>
+         <name>regionId</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+      </attribute>
+
+      <attribute>
+         <name>regionType</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+      </attribute>
+   </tag>
+   
+<tag>
+
+      <name>title</name>
+      <tag-class>com.joymain.jecs.webapp.taglib.TitleTag</tag-class>
+
+      <attribute>
+         <name>key</name>
+         <required>true</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>colon</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>styleClass</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+      <attribute>
+         <name>errorClass</name>
+         <required>false</required>
+         <rtexprvalue>true</rtexprvalue>
+
+      </attribute>
+
+   </tag>
+   
+   <tag>
+		<name>substr</name>
+		<tag-class>com.joymain.jecs.webapp.taglib.SubStrTag</tag-class>
+	
+		<attribute>
+			<name>key</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+	
+		</attribute>
+		<attribute>
+			<name>length</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+	
+		</attribute>
+		<attribute>
+			<name>colon</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+	
+		</attribute>
+		<attribute>
+			<name>styleClass</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+	
+		</attribute>
+		<attribute>
+			<name>errorClass</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+	
+		</attribute>
+	
+	</tag>
+</taglib>

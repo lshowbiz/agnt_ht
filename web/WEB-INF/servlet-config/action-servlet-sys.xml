@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="jSysRoleResourceFormController"
+		class="com.joymain.jecs.sys.webapp.action.JSysRoleResourceFormController"
+		autowire="byName" >
+		<property name="formView" value="sys/jsysRoleResourceForm" />
+		<property name="successView" value="redirect:sysRoles.html" />
+	</bean>
+	
+	<bean id="jSysRoleResourcesController"
+		class="com.joymain.jecs.sys.webapp.action.JSysRoleResourcesController"
+		autowire="byName" >
+
+	</bean>
+		
+	<!--JsysResource-BEAN-START-->
+	<bean id="jsysResourceController"
+		class="com.joymain.jecs.sys.webapp.action.JsysResourceController"
+		autowire="byName" />
+
+	<bean id="jsysResourceFormController"
+		class="com.joymain.jecs.sys.webapp.action.JsysResourceFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/jsysResourceForm" />
+		<property name="successView" value="redirect:jsysResources.html" />
+	</bean>
+	
+	<bean id="jsysResourceTreeController"
+		class="com.joymain.jecs.sys.webapp.action.JsysResourceTreeController"
+		autowire="byName" />
+		
+	<bean id="jsysSelectResourceController"
+		class="com.joymain.jecs.sys.webapp.action.JsysSelectResourceController"
+		autowire="byName" />
+	<!--JsysResource-BEAN-END-->
+
+	<!--SysBackServiceInfo-BEAN-START-->
+	<bean id="sysBackServiceInfoController"
+		class="com.joymain.jecs.sys.webapp.action.SysBackServiceInfoController"
+		autowire="byName" />
+
+	<bean id="sysBackServiceInfoFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysBackServiceInfoFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysBackServiceInfoForm" />
+		<property name="successView" value="redirect:sysBackServiceInfos.html" />
+	</bean>
+	<!--SysBackServiceInfo-BEAN-END-->
+	<!--SysLoginLog-BEAN-START-->
+	<bean id="sysLoginLogController"
+		class="com.joymain.jecs.sys.webapp.action.SysLoginLogController"
+		autowire="byName" />
+
+	<bean id="sysLoginLogFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysLoginLogFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysLoginLogForm" />
+		<property name="successView" value="redirect:sysLoginLogs.html" />
+	</bean>
+	<!--SysLoginLog-BEAN-END-->
+
+	<!--SysVisitLog-BEAN-START-->
+	<bean id="sysVisitLogController"
+		class="com.joymain.jecs.sys.webapp.action.SysVisitLogController"
+		autowire="byName" />
+
+	<bean id="sysBackServerController"
+		class="com.joymain.jecs.sys.webapp.action.SysBackServerController"
+		autowire="byName" />
+	<bean id="sysVisitLogFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysVisitLogFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysVisitLogForm" />
+		<property name="successView" value="redirect:sysVisitLogs.html" />
+	</bean>
+	<!--SysVisitLog-BEAN-END-->
+	<!--SysUserIp-BEAN-START-->
+	<bean id="sysUserIpController" class="com.joymain.jecs.sys.webapp.action.SysUserIpController"
+		autowire="byName" />
+
+	<bean id="sysUserIpFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysUserIpFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysUserIpForm" />
+		<property name="successView" value="redirect:sysUserIps.html" />
+	</bean>
+	<!--SysUserIp-BEAN-END-->
+	<!--SysBank-BEAN-START-->
+	<bean id="sysBankController" class="com.joymain.jecs.sys.webapp.action.SysBankController"
+		autowire="byName" />
+
+	<bean id="sysBankFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysBankFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysBankForm" />
+		<property name="successView" value="redirect:sysBanks.html" />
+	</bean>
+	<!--SysBank-BEAN-END-->
+
+	<bean id="sysLoginToolController"
+		class="com.joymain.jecs.sys.webapp.action.SysLoginToolController"
+		autowire="byName" />
+	<bean id="sysUserController" class="com.joymain.jecs.sys.webapp.action.SysUserController"
+		autowire="byName" />
+
+	<!--SysModule-BEAN-START-->
+	<bean id="sysModuleController" class="com.joymain.jecs.sys.webapp.action.SysModuleController"
+		autowire="byName" />
+
+	<bean id="sysModuleFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysModuleFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysModuleForm" />
+		<property name="successView" value="redirect:sysModules.html" />
+	</bean>
+
+	<bean id="sysModuleTreeController"
+		class="com.joymain.jecs.sys.webapp.action.SysModuleTreeController"
+		autowire="byName" />
+	<bean id="sysSelectModuleController"
+		class="com.joymain.jecs.sys.webapp.action.SysSelectModuleController"
+		autowire="byName" />
+	<bean id="sysPowerFrameController"
+		class="com.joymain.jecs.sys.webapp.action.SysPowerFrameController"
+		autowire="byName" />
+	<bean id="sysMyModTreeController"
+		class="com.joymain.jecs.sys.webapp.action.SysMyModTreeController"
+		autowire="byName" />
+	<bean id="sysMyManTreeController"
+		class="com.joymain.jecs.sys.webapp.action.SysMyManTreeController"
+		autowire="byName" />
+	<bean id="sysMyMansManTreeController"
+		class="com.joymain.jecs.sys.webapp.action.SysMyMansManTreeController"
+		autowire="byName" />
+
+	<bean id="sysPowerMFrameController"
+		class="com.joymain.jecs.sys.webapp.action.SysPowerMFrameController"
+		autowire="byName" />
+	<bean id="sysMyModMTreeController"
+		class="com.joymain.jecs.sys.webapp.action.SysMyModMTreeController"
+		autowire="byName" />
+	<bean id="sysMyManMTreeController"
+		class="com.joymain.jecs.sys.webapp.action.SysMyManMTreeController"
+		autowire="byName" />
+
+	<bean id="sysPowerCloneFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysPowerCloneFormController"
+		autowire="byName">
+		<property name="formView" value="sys/sys_power_clone_form" />
+		<property name="successView" value="redirect:clone_sys_power.html" />
+	</bean>
+	<!--SysModule-BEAN-END-->
+	<!--SysUsrTypePow-BEAN-START-->
+	<bean id="sysUsrTypePowController"
+		class="com.joymain.jecs.sys.webapp.action.SysUsrTypePowController"
+		autowire="byName" />
+
+	<bean id="sysUsrTypePowFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysUsrTypePowFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysUsrTypePowForm" />
+		<property name="successView" value="redirect:sysUsrTypePows.html" />
+	</bean>
+	<!--SysUsrTypePow-BEAN-END-->
+	<!--SysManagerModlPow-BEAN-START-->
+	<bean id="sysManagerModlPowController"
+		class="com.joymain.jecs.sys.webapp.action.SysManagerModlPowController"
+		autowire="byName" />
+
+	<bean id="sysManagerModlPowFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysManagerModlPowFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysManagerModlPowForm" />
+		<property name="successView" value="redirect:sysManagerModlPows.html" />
+	</bean>
+	<!--SysManagerModlPow-BEAN-END-->
+	<!--SysClickLog-BEAN-START-->
+	<bean id="sysClickLogController"
+		class="com.joymain.jecs.sys.webapp.action.SysClickLogController"
+		autowire="byName" />
+	<bean id="sysClickLogFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysClickLogFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysClickLogForm" />
+		<property name="successView" value="redirect:sysClickLogs.html" />
+	</bean>
+	<!--SysClickLog-BEAN-END-->
+
+	<!--SysDataLog-BEAN-START-->
+	<bean id="sysDataLogController" class="com.joymain.jecs.sys.webapp.action.SysDataLogController"
+		autowire="byName" />
+	<bean id="sysDataLogFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysDataLogFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysDataLogForm" />
+		<property name="successView" value="redirect:sysDataLogs.html" />
+	</bean>
+	<!--SysDataLog-BEAN-END-->
+	<!--SysMenu-BEAN-START-->
+	<bean id="sysMenuController" class="com.joymain.jecs.sys.webapp.action.SysMenuController"
+		autowire="byName" />
+	<!--SysMenu-BEAN-END-->
+
+	<!--SysListKey-BEAN-START-->
+	<bean id="sysListKeyController" class="com.joymain.jecs.sys.webapp.action.SysListKeyController"
+		autowire="byName" />
+	<bean id="sysListKeyFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysListKeyFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysListKeyForm" />
+		<property name="successView" value="redirect:sysListKeys.html" />
+	</bean>
+	<!--SysListKey-BEAN-END-->
+
+	<!--SysListValue-BEAN-START-->
+	<bean id="sysListValueController"
+		class="com.joymain.jecs.sys.webapp.action.SysListValueController"
+		autowire="byName" />
+	<bean id="sysListValueFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysListValueFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysListValueForm" />
+		<property name="successView" value="redirect:sysListValues.html" />
+	</bean>
+	<!--SysListValue-BEAN-END-->
+
+	<!--SysConfigKey-BEAN-START-->
+	<bean id="sysConfigKeyController"
+		class="com.joymain.jecs.sys.webapp.action.SysConfigKeyController"
+		autowire="byName" />
+	<bean id="sysConfigKeyFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysConfigKeyFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysConfigKeyForm" />
+		<property name="successView" value="redirect:sysConfigKeys.html" />
+	</bean>
+
+	<!--SysConfigKey-BEAN-END-->
+
+	<!--SysConfigValue-BEAN-START-->
+	<bean id="sysConfigValueController"
+		class="com.joymain.jecs.sys.webapp.action.SysConfigValueController"
+		autowire="byName" />
+	<bean id="sysConfigValueFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysConfigValueFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysConfigValueForm" />
+		<property name="successView" value="redirect:sysConfigValues.html" />
+	</bean>
+
+	<bean id="sysConfigValueByKeyFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysConfigValueByKeyFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysConfigValueByKeyForm" />
+		<property name="successView" value="redirect:editSysConfigValueByKey.html" />
+	</bean>
+	<!--SysConfigValue-BEAN-END-->
+
+	<!--SysId-BEAN-START-->
+	<bean id="sysIdController" class="com.joymain.jecs.sys.webapp.action.SysIdController"
+		autowire="byName" />
+	<bean id="sysIdFormController" class="com.joymain.jecs.sys.webapp.action.SysIdFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysIdForm" />
+		<property name="successView" value="redirect:sysIds.html" />
+	</bean>
+	<!--SysId-BEAN-END-->
+	<bean id="userOperationLogController"
+		class="com.joymain.jecs.sys.webapp.action.UserOperationLogController"
+		autowire="byName" />
+	<!--BdOperationLog-BEAN-START-->
+	<bean id="sysOperationLogController"
+		class="com.joymain.jecs.sys.webapp.action.SysOperationLogController"
+		autowire="byName" />
+
+	<bean id="sysOperationLogFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysOperationLogFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysOperationLogForm" />
+		<property name="successView" value="redirect:sysOperationLogs.html" />
+	</bean>
+
+	<bean id="sysOperationLogViewController"
+		class="com.joymain.jecs.sys.webapp.action.SysOperationLogViewController"
+		autowire="byName" />
+	<!--BdOperationLog-BEAN-END-->
+	<bean id="sysServiceViewController"
+		class="com.joymain.jecs.sys.webapp.action.SysServiceViewController"
+		autowire="byName" />
+	<!--SysCompanyPow-BEAN-START-->
+	<bean id="sysCompanyPowController"
+		class="com.joymain.jecs.sys.webapp.action.SysCompanyPowController"
+		autowire="byName" />
+
+	<bean id="sysCompanyPowFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysCompanyPowFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysCompanyPowForm" />
+		<property name="successView" value="redirect:sysCompanyPows.html" />
+	</bean>
+	<!--SysCompanyPow-BEAN-END-->
+	<!--SysDepartment-BEAN-START-->
+	<bean id="sysDepartmentController"
+		class="com.joymain.jecs.sys.webapp.action.SysDepartmentController"
+		autowire="byName" />
+	<bean id="sysDepartmentTreeController"
+		class="com.joymain.jecs.sys.webapp.action.SysDepartmentTreeController"
+		autowire="byName" />
+	<bean id="sysSelectDepartmentController"
+		class="com.joymain.jecs.sys.webapp.action.SysSelectDepartmentController"
+		autowire="byName" />
+
+	<bean id="sysDepartmentFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysDepartmentFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysDepartmentForm" />
+		<property name="successView" value="redirect:sysDepartments.html" />
+	</bean>
+	<!--SysDepartment-BEAN-END-->
+	<!--SysManager-BEAN-START-->
+	<bean id="sysManagerController" class="com.joymain.jecs.sys.webapp.action.SysManagerController"
+		autowire="byName" />
+
+	<bean id="sysManagerFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysManagerFormController"
+		autowire="byName">
+		<property name="formView" value="sys/sysManagerForm" />
+		<property name="successView" value="redirect:sysManagers.html" />
+	</bean>
+
+	<bean id="sysModifyPwdFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysModifyPwdFormController"
+		autowire="byName">
+		<property name="formView" value="sys/sys_modify_pwd_form" />
+		<property name="successView" value="redirect:sysManagers.html" />
+	</bean>
+	<!--SysManager-BEAN-END-->
+	<!--SysManagerUser-BEAN-START-->
+	<bean id="sysManagerUserController"
+		class="com.joymain.jecs.sys.webapp.action.SysManagerUserController"
+		autowire="byName" />
+
+	<bean id="sysManagerUserFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysManagerUserFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysManagerUserForm" />
+		<property name="successView" value="redirect:sysManagerUsers.html" />
+	</bean>
+	<!--SysManagerUser-BEAN-END-->
+	<!--SysRole-BEAN-START-->
+	<bean id="sysRoleController" class="com.joymain.jecs.sys.webapp.action.SysRoleController"
+		autowire="byName" />
+
+	<bean id="sysRoleFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysRoleFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysRoleForm" />
+		<property name="successView" value="redirect:sysRoles.html" />
+	</bean>
+
+	<bean id="sysRoleCompanyUserController"
+		class="com.joymain.jecs.sys.webapp.action.SysRoleCompanyUserController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sys_role_company_user" />
+		<property name="successView" value="redirect:sysRoles.html" />
+	</bean>
+	<!--SysRole-BEAN-END-->
+	<!--SysUserRole-BEAN-START-->
+	<bean id="sysUserRoleController"
+		class="com.joymain.jecs.sys.webapp.action.SysUserRoleController"
+		autowire="byName" />
+
+	<bean id="sysUserRoleFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysUserRoleFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysUserRoleForm" />
+		<property name="successView" value="redirect:sysUserRoles.html" />
+	</bean>
+	<!--SysUserRole-BEAN-END-->
+	<!--SysRolePower-BEAN-START-->
+	<bean id="sysRolePowerController"
+		class="com.joymain.jecs.sys.webapp.action.SysRolePowerController"
+		autowire="byName" />
+
+	<bean id="sysRolePowerFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysRolePowerFormController"
+		autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="sys/sysRolePowerForm" />
+		<property name="successView" value="redirect:sysRolePowers.html" />
+	</bean>
+	<!--SysRolePower-BEAN-END-->
+	<bean id="sysListValueByKeyController"
+		class="com.joymain.jecs.sys.webapp.action.SysListValueByKeyController"
+		autowire="byName" />
+	<bean id="sysListValueByKeyFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysListValueByKeyFormController"
+		autowire="byName">
+		<property name="formView" value="sys/sysListValueByKeyForm" />
+		<property name="successView" value="" />
+	</bean>
+
+	<!-- 进度条开始 -->
+	<bean id="sysProgressBarController"
+		class="com.joymain.jecs.sys.webapp.action.SysProgressBarController"
+		autowire="byName" />
+	<!-- 进度条结束 -->
+	<bean id="sysDownloadController" class="com.joymain.jecs.webapp.action.SysDownloadController"
+		autowire="byName" />
+	<bean id="sysAccountController" class="com.joymain.jecs.sys.webapp.action.SysAccountController"
+		autowire="byName" />
+	<bean id="sysPowerSimpleFormController"
+		class="com.joymain.jecs.sys.webapp.action.SysPowerSimpleFormController"
+		autowire="byName">
+		<property name="formView" value="sys/sys_power_simple_form" />
+		<property name="successView" value="redirect:sysAccounts.html" />
+	</bean>
+	
+	<bean id="jsysStockAccountController" class="com.joymain.jecs.sys.webapp.action.JsysStockAccountController" autowire="byName" />
+
+	<bean id="sysUrlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+							
+				<!--JsysResource-URL-START-->
+				
+				<prop key="/sysRoleResources.html">jSysRoleResourcesController</prop>
+				<prop key="/editSysRoleResource.html">jSysRoleResourceFormController</prop>
+				<prop key="/jsysResource_tree.html">jsysResourceTreeController</prop>
+				<prop key="/jsysResource_select.html">jsysSelectResourceController</prop>
+				<prop key="/sys/jsysResource_frm.html">forwardJspController</prop>
+				<prop key="/jsysResources.html">jsysResourceController</prop>
+				<prop key="/editJsysResource.html">jsysResourceFormController</prop>
+				<!--JsysResource-URL-END-->
+				<prop key="/sysBackServers.html">sysBackServerController</prop>
+				<!--SysDepartment-URL-START-->
+				<prop key="/sys/sys_department_frm.html">forwardJspController</prop>
+				<prop key="/sys_department_tree.html">sysDepartmentTreeController</prop>
+				<prop key="/sys_select_department.html">sysSelectDepartmentController</prop>
+				<!--SysDepartment-URL-END-->
+
+				<!--SysMenu-URL-START-->
+				<prop key="/sys_menu.html">sysMenuController</prop>
+				<!--SysMenu-URL-END-->
+
+				<!--SysListKey-URL-START-->
+				<prop key="/sysListKeys.html">sysListKeyController</prop>
+				<prop key="/editSysListKey.html">sysListKeyFormController</prop>
+				<!--SysListKey-URL-END-->
+
+				<!--SysListValue-URL-START-->
+				<prop key="/sysListValues.html">sysListValueController</prop>
+				<prop key="/editSysListValue.html">sysListValueFormController</prop>
+				<!--SysListValue-URL-END-->
+
+				<!--SysConfigKey-URL-START-->
+				<prop key="/sysConfigKeys.html">sysConfigKeyController</prop>
+				<prop key="/editSysConfigKey.html">sysConfigKeyFormController</prop>
+				<!--SysConfigKey-URL-END-->
+
+				<!--SysConfigValue-URL-START-->
+				<prop key="/sysConfigValues.html">sysConfigValueController</prop>
+				<prop key="/editSysConfigValue.html">sysConfigValueFormController</prop>
+				<prop key="/editSysConfigValueByKey.html">sysConfigValueByKeyFormController</prop>
+
+				<!--SysConfigValue-URL-END-->
+
+				<prop key="/sys/sys_list_frm.html">forwardJspController</prop>
+				<prop key="/sys/sys_config_frm.html">forwardJspController</prop>
+				<!--SysId-URL-START-->
+
+				<prop key="/sysIds.html">sysIdController</prop>
+				<prop key="/editSysId.html">sysIdFormController</prop>
+				<!--SysId-URL-END-->
+
+				<!--SysClickLog-URL-START-->
+				<prop key="/sysClickLogs.html">sysClickLogController</prop>
+				<prop key="/editSysClickLog.html">sysClickLogFormController</prop>
+				<!--SysClickLog-URL-END-->
+
+				<!--SysDataLog-URL-START-->
+				<prop key="/sysDataLogs.html">sysDataLogController</prop>
+				<prop key="/editSysDataLog.html">sysDataLogFormController</prop>
+				<!--SysDataLog-URL-END-->
+				<!--BdOperationLog-URL-START-->
+				<prop key="/sysOperationLogs.html">sysOperationLogController</prop>
+				<prop key="/editSysOperationLog.html">sysOperationLogFormController</prop>
+				<prop key="/viewSysOperationLog.html">sysOperationLogViewController</prop>
+				<!--BdOperationLog-URL-END-->
+				<prop key="/sys_service_view.html">sysServiceViewController</prop>
+				<!--SysModule-URL-START-->
+				<prop key="/sysModules.html">sysModuleController</prop>
+				<prop key="/editSysModule.html">sysModuleFormController</prop>
+				<prop key="/sys/sys_module_frm.html">forwardJspController</prop>
+				<prop key="/sys_module_tree.html">sysModuleTreeController</prop>
+				<prop key="/sys_select_module.html">sysSelectModuleController</prop>
+				<prop key="/sys_power_frm.html">sysPowerFrameController</prop>
+				<prop key="/sys_my_mod_tree.html">sysMyModTreeController</prop>
+				<prop key="/sys_my_man_tree.html">sysMyManTreeController</prop>
+				<prop key="/sys_my_mans_man_tree.html">sysMyMansManTreeController</prop>
+
+				<prop key="/sys_power_m_frm.html">sysPowerMFrameController</prop>
+				<prop key="/sys_my_mod_m_tree.html">sysMyModMTreeController</prop>
+				<prop key="/sys_my_man_m_tree.html">sysMyManMTreeController</prop>
+				<prop key="/clone_sys_power.html">sysPowerCloneFormController</prop>
+				<!--SysModule-URL-END-->
+				<!--SysUsrTypePow-URL-START-->
+				<prop key="/sysUsrTypePows.html">sysUsrTypePowController</prop>
+				<prop key="/editSysUsrTypePow.html">sysUsrTypePowFormController</prop>
+				<!--SysUsrTypePow-URL-END-->
+				<!--SysManagerModlPow-URL-START-->
+				<prop key="/sysManagerModlPows.html">sysManagerModlPowController</prop>
+				<prop key="/editSysManagerModlPow.html">sysManagerModlPowFormController</prop>
+				<!--SysManagerModlPow-URL-END-->
+				<!--SysCompanyPow-URL-START-->
+				<prop key="/sysCompanyPows.html">sysCompanyPowController</prop>
+				<prop key="/editSysCompanyPow.html">sysCompanyPowFormController</prop>
+				<!--SysCompanyPow-URL-END-->
+				<!--SysDepartment-URL-START-->
+				<prop key="/sysDepartments.html">sysDepartmentController</prop>
+				<prop key="/editSysDepartment.html">sysDepartmentFormController</prop>
+				<!--SysDepartment-URL-END-->
+				<!--SysManager-URL-START-->
+				<prop key="/sysManagers.html">sysManagerController</prop>
+				<prop key="/editSysManager.html">sysManagerFormController</prop>
+				<prop key="/sys_modify_pwd.html">sysModifyPwdFormController</prop>
+				<!--SysManager-URL-END-->
+				<!--SysManagerUser-URL-START-->
+				<prop key="/sysManagerUsers.html">sysManagerUserController</prop>
+				<prop key="/editSysManagerUser.html">sysManagerUserFormController</prop>
+				<!--SysManagerUser-URL-END-->
+				<!--SysRole-URL-START-->
+				<prop key="/sysRoles.html">sysRoleController</prop>
+				<prop key="/editSysRole.html">sysRoleFormController</prop>
+				<prop key="/sys_role_company_user.html">sysRoleCompanyUserController</prop>
+				<!--SysRole-URL-END-->
+				<!--SysUserRole-URL-START-->
+				<prop key="/sysUserRoles.html">sysUserRoleController</prop>
+				<prop key="/editSysUserRole.html">sysUserRoleFormController</prop>
+				<!--SysUserRole-URL-END-->
+				<!--SysRolePower-URL-START-->
+				<prop key="/sysRolePowers.html">sysRolePowerController</prop>
+				<prop key="/editSysRolePower.html">sysRolePowerFormController</prop>
+				<!--SysRolePower-URL-END-->
+				<prop key="/sysListValuesByKey.html">sysListValueByKeyController</prop>
+				<prop key="/editSysListValueByKey.html">sysListValueByKeyFormController</prop>
+
+				<prop key="/userOperationLogs.html">userOperationLogController</prop>
+				<prop key="/sysUsers.html">sysUserController</prop>
+				<prop key="/sysLoginTool.html">sysLoginToolController</prop>
+				<!--SysBank-URL-START-->
+				<prop key="/sys/sysBanks.html">sysBankController</prop>
+				<prop key="/sys/editSysBank.html">sysBankFormController</prop>
+				<!--SysBank-URL-END-->
+
+				<prop key="/sys/sys_bank_frm.html">forwardJspController</prop>
+				<prop key="/sys/sysBankCompanyList.html">forwardJspController</prop>
+
+				<!-- 进度条开始 -->
+				<prop key="/sys_progress_bar.html">sysProgressBarController</prop>
+				<prop key="/sys_download.html">sysDownloadController</prop>
+				<!-- 进度条结束 -->
+
+				<!--SysVisitLog-URL-START-->
+				<prop key="/sysVisitLogs.html">sysVisitLogController</prop>
+				<prop key="/editSysVisitLog.html">sysVisitLogFormController</prop>
+				<!--SysVisitLog-URL-END-->
+				<!--SysUserIp-URL-START-->
+				<prop key="/sysUserIps.html">sysUserIpController</prop>
+				<prop key="/editSysUserIp.html">sysUserIpFormController</prop>
+				<!--SysUserIp-URL-END-->
+				<prop key="/sysAccounts.html">sysAccountController</prop>
+				<prop key="/sys_power_simple.html">sysPowerSimpleFormController</prop>
+
+				<!--SysBackServiceInfo-URL-START-->
+				<prop key="/sysBackServiceInfos.html">sysBackServiceInfoController</prop>
+				<prop key="/editSysBackServiceInfo.html">sysBackServiceInfoFormController</prop>
+				<!--SysBackServiceInfo-URL-END-->
+
+
+				<!--SysLoginLog-URL-START-->
+				<prop key="/sysLoginLogs.html">sysLoginLogController</prop>
+				<prop key="/editSysLoginLog.html">sysLoginLogFormController</prop>
+				<!--SysLoginLog-URL-END-->
+				
+				<prop key="/jsysStockAccountList.html">jsysStockAccountController</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

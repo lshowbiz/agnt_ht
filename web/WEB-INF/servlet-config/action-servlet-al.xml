@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+    <!--AlCharacterType-BEAN-START-->
+    <bean id="alCharacterTypeController" class="com.joymain.jecs.al.webapp.action.AlCharacterTypeController" autowire="byName"/>
+    <bean id="alSelectCharacterTypeController" class="com.joymain.jecs.al.webapp.action.AlSelectCharacterTypeController" autowire="byName"/>
+
+    <bean id="alCharacterTypeFormController" class="com.joymain.jecs.al.webapp.action.AlCharacterTypeFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="al/alCharacterTypeForm"/>
+        <property name="successView" value="redirect:alCharacterTypes.html"/>
+    </bean>
+    <!--AlCharacterType-BEAN-END-->
+    <!--AlBranch-BEAN-START-->
+    <bean id="alBranchController" class="com.joymain.jecs.al.webapp.action.AlBranchController" autowire="byName"/>
+
+    <bean id="alBranchFormController" class="com.joymain.jecs.al.webapp.action.AlBranchFormController" autowire="byName">
+        
+        <property name="formView" value="al/alBranchForm"/>
+        <property name="successView" value="redirect:alBranchs.html"/>
+    </bean>
+    <!--AlBranch-BEAN-END-->
+    <!--AlCharacterCoding-BEAN-START-->
+    <bean id="alCharacterCodingController" class="com.joymain.jecs.al.webapp.action.AlCharacterCodingController" autowire="byName"/>
+
+    <bean id="alCharacterCodingFormController" class="com.joymain.jecs.al.webapp.action.AlCharacterCodingFormController" autowire="byName">
+        
+        <property name="formView" value="al/alCharacterCodingForm"/>
+        <property name="successView" value="redirect:alCharacterCodings.html"/>
+    </bean>
+    <!--AlCharacterCoding-BEAN-END-->
+    <!--AlCharacterKey-BEAN-START-->
+    <bean id="alCharacterKeyController" class="com.joymain.jecs.al.webapp.action.AlCharacterKeyController" autowire="byName"/>
+
+    <bean id="alCharacterKeyFormController" class="com.joymain.jecs.al.webapp.action.AlCharacterKeyFormController" autowire="byName">
+        
+        <property name="formView" value="al/alCharacterKeyForm"/>
+        <property name="successView" value="redirect:alCharacterKeys.html"/>
+    </bean>
+    <!--AlCharacterKey-BEAN-END-->
+    <!--AlCharacterValue-BEAN-START-->
+    <bean id="alCharacterValueController" class="com.joymain.jecs.al.webapp.action.AlCharacterValueController" autowire="byName"/>
+
+    <bean id="alCharacterValueFormController" class="com.joymain.jecs.al.webapp.action.AlCharacterValueFormController" autowire="byName">
+        
+        <property name="formView" value="al/alCharacterValueForm"/>
+        <property name="successView" value="redirect:alCharacterValues.html"/>
+    </bean>
+    <!--AlCharacterValue-BEAN-END-->
+    <!--AlCompany-BEAN-START-->
+    <bean id="alCompanyController" class="com.joymain.jecs.al.webapp.action.AlCompanyController" autowire="byName"/>
+
+    <bean id="alCompanyFormController" class="com.joymain.jecs.al.webapp.action.AlCompanyFormController" autowire="byName">
+        
+        <property name="formView" value="al/alCompanyForm"/>
+        <property name="successView" value="redirect:alCompanys.html"/>
+    </bean>
+    <!--AlCompany-BEAN-END-->
+    <!--AlCountry-BEAN-START-->
+    <bean id="alCountryController" class="com.joymain.jecs.al.webapp.action.AlCountryController" autowire="byName"/>
+    <bean id="alCountryTreeController" class="com.joymain.jecs.al.webapp.action.AlCountryTreeController" autowire="byName"/>
+
+    <bean id="alCountryFormController" class="com.joymain.jecs.al.webapp.action.AlCountryFormController" autowire="byName">
+        
+        <property name="formView" value="al/alCountryForm"/>
+        <property name="successView" value="redirect:alCountrys.html"/>
+    </bean>
+    <!--AlCountry-BEAN-END-->
+    <!--AlCurrency-BEAN-START-->
+    <bean id="alCurrencyController" class="com.joymain.jecs.al.webapp.action.AlCurrencyController" autowire="byName"/>
+
+    <bean id="alCurrencyFormController" class="com.joymain.jecs.al.webapp.action.AlCurrencyFormController" autowire="byName">
+        
+        <property name="formView" value="al/alCurrencyForm"/>
+        <property name="successView" value="redirect:alCurrencys.html"/>
+    </bean>
+    <!--AlCurrency-BEAN-END-->
+    <!--AlRegion-BEAN-START-->
+    <bean id="alRegionController" class="com.joymain.jecs.al.webapp.action.AlRegionController" autowire="byName"/>
+
+    <bean id="alRegionFormController" class="com.joymain.jecs.al.webapp.action.AlRegionFormController" autowire="byName">
+        
+        <property name="formView" value="al/alRegionForm"/>
+        <property name="successView" value="redirect:alRegions.html"/>
+    </bean>
+    <!--AlRegion-BEAN-END-->
+    <!--AlStateProvince-BEAN-START-->
+    <bean id="alStateProvinceController" class="com.joymain.jecs.al.webapp.action.AlStateProvinceController" autowire="byName"/>
+
+    <bean id="alStateProvinceFormController" class="com.joymain.jecs.al.webapp.action.AlStateProvinceFormController" autowire="byName">
+        
+        <property name="formView" value="al/alStateProvinceForm"/>
+        <property name="successView" value="redirect:alStateProvinces.html"/>
+    </bean>
+    <!--AlStateProvince-BEAN-END-->
+    <bean id="alLanguageUpdateController" class="com.joymain.jecs.al.webapp.action.AlLanguageUpdateController" autowire="byName">
+        <property name="formView" value="al/al_language_update"/>
+        <property name="successView" value="redirect:al_language_update.html"/>
+    </bean>
+    <!--AlCompanyArea-BEAN-START-->
+    <!-- <bean id="alCompanyAreaController" class="com.joymain.jecs.al.webapp.action.AlCompanyAreaController" autowire="byName"/> -->
+
+    <bean id="alCompanyAreaFormController" class="com.joymain.jecs.al.webapp.action.AlCompanyAreaFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="al/alCompanyAreaForm"/>
+        <property name="successView" value="redirect:alCompanys.html"/>
+    </bean>
+    <!--AlCompanyArea-BEAN-END-->
+    <!--AlDistrict-BEAN-START-->
+    <bean id="alDistrictController" class="com.joymain.jecs.al.webapp.action.AlDistrictController" autowire="byName"/>
+
+    <bean id="alDistrictFormController" class="com.joymain.jecs.al.webapp.action.AlDistrictFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="al/alDistrictForm"/>
+        <property name="successView" value="redirect:alDistricts.html"/>
+    </bean>
+    <!--AlDistrict-BEAN-END-->
+    <!--AlCity-BEAN-START-->
+    <bean id="alCityController" class="com.joymain.jecs.al.webapp.action.AlCityController" autowire="byName"/>
+
+    <bean id="alCityFormController" class="com.joymain.jecs.al.webapp.action.AlCityFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="al/alCityForm"/>
+        <property name="successView" value="redirect:alCitys.html"/>
+    </bean>
+    <!--AlCity-BEAN-END-->
+    <bean id="alLanguageTreeController" class="com.joymain.jecs.al.webapp.action.AlLanguageTreeController" autowire="byName"/>
+    <bean id="alCharacterValueChangeController" class="com.joymain.jecs.al.webapp.action.AlCharacterValueChangeController" autowire="byName"/>
+
+    <!--JalTown-BEAN-START-->
+    <bean id="jalTownController" class="com.joymain.jecs.al.webapp.action.JalTownController" autowire="byName"/>
+
+    <bean id="jalTownFormController" class="com.joymain.jecs.al.webapp.action.JalTownFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="al/jalTownForm"/>
+        <property name="successView" value="redirect:jalTowns.html"/>
+    </bean>
+    <!--JalTown-BEAN-END-->
+    
+    <!--JalLibraryPlate-BEAN-START-->
+    <bean id="jalLibraryPlateController" class="com.joymain.jecs.al.webapp.action.JalLibraryPlateController" autowire="byName"/>
+
+    <bean id="jalLibraryPlateFormController" class="com.joymain.jecs.al.webapp.action.JalLibraryPlateFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="al/jalLibraryPlateForm"/>
+        <property name="successView" value="redirect:jalLibraryPlates.html"/>
+    </bean>
+    <!--JalLibraryPlate-BEAN-END-->
+    <!--JalLibraryColumn-BEAN-START-->
+    <bean id="jalLibraryColumnController" class="com.joymain.jecs.al.webapp.action.JalLibraryColumnController" autowire="byName"/>
+
+    <bean id="jalLibraryColumnFormController" class="com.joymain.jecs.al.webapp.action.JalLibraryColumnFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="al/jalLibraryColumnForm"/>
+        <property name="successView" value="redirect:jalLibraryColumns.html"/>
+    </bean>
+    <!--JalLibraryColumn-BEAN-END-->
+    <!--JalLibraryFile-BEAN-START-->
+    <bean id="jalLibraryFileController" class="com.joymain.jecs.al.webapp.action.JalLibraryFileController" autowire="byName"/>
+
+    <bean id="jalLibraryFileFormController" class="com.joymain.jecs.al.webapp.action.JalLibraryFileFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="al/jalLibraryFileForm"/>
+        <property name="successView" value="redirect:jalLibraryFiles.html"/>
+    </bean>
+    <!--JalLibraryFile-BEAN-END-->
+    <bean id="alUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+            	<!--JalLibraryPlate-URL-START-->
+                <prop key="/jalLibraryPlates.html">jalLibraryPlateController</prop>
+                <prop key="/editJalLibraryPlate.html">jalLibraryPlateFormController</prop>
+                <!--JalLibraryPlate-URL-END-->
+                <!--JalLibraryColumn-URL-START-->
+                <prop key="/jalLibraryColumns.html">jalLibraryColumnController</prop>
+                <prop key="/editJalLibraryColumn.html">jalLibraryColumnFormController</prop>
+                <!--JalLibraryColumn-URL-END-->
+                <!--JalLibraryFile-URL-START-->
+                <prop key="/jalLibraryFiles.html">jalLibraryFileController</prop>
+                <prop key="/editJalLibraryFile.html">jalLibraryFileFormController</prop>
+                <!--JalLibraryFile-URL-END-->
+            	
+               <!--AlBranch-URL-START-->
+                <prop key="/alBranchs.html">alBranchController</prop>
+                <prop key="/editAlBranch.html">alBranchFormController</prop>
+                <!--AlBranch-URL-END-->
+                <!--AlCharacterCoding-URL-START-->
+                <prop key="/alCharacterCodings.html">alCharacterCodingController</prop>
+                <prop key="/editAlCharacterCoding.html">alCharacterCodingFormController</prop>
+                <!--AlCharacterCoding-URL-END-->
+                <!--AlCharacterKey-URL-START-->
+                <prop key="/alCharacterKeys.html">alCharacterKeyController</prop>
+                <prop key="/editAlCharacterKey.html">alCharacterKeyFormController</prop>
+                <!--AlCharacterKey-URL-END-->
+                <!--AlCharacterValue-URL-START-->
+                <prop key="/alCharacterValues.html">alCharacterValueController</prop>
+                <prop key="/editAlCharacterValue.html">alCharacterValueFormController</prop>
+                <!--AlCharacterValue-URL-END-->
+                <!--AlCompany-URL-START-->
+                <prop key="/alCompanys.html">alCompanyController</prop>
+                <prop key="/editAlCompany.html">alCompanyFormController</prop>
+                <!--AlCompany-URL-END-->
+                <!--AlCountry-URL-START-->
+                <prop key="/alCountrys.html">alCountryController</prop>
+                <prop key="/editAlCountry.html">alCountryFormController</prop>
+                <!--AlCountry-URL-END-->
+                <!--AlCurrency-URL-START-->
+                <prop key="/alCurrencys.html">alCurrencyController</prop>
+                <prop key="/editAlCurrency.html">alCurrencyFormController</prop>
+                <!--AlCurrency-URL-END-->
+                <!--AlRegion-URL-START-->
+                <prop key="/alRegions.html">alRegionController</prop>
+                <prop key="/editAlRegion.html">alRegionFormController</prop>
+                <!--AlRegion-URL-END-->
+                <!--AlStateProvince-URL-START-->
+                <prop key="/alStateProvinces.html">alStateProvinceController</prop>
+                <prop key="/editAlStateProvince.html">alStateProvinceFormController</prop>
+                <!--AlStateProvince-URL-END-->
+                <prop key="/al/al_character_frm.html">forwardJspController</prop>
+                <prop key="/test.html">forwardJspController</prop>
+
+ 				<!--AlCharacterType-URL-START-->
+                <prop key="/alCharacterTypes.html">alCharacterTypeController</prop>
+                <prop key="/al_select_character_type.html">alSelectCharacterTypeController</prop>                
+                <prop key="/editAlCharacterType.html">alCharacterTypeFormController</prop>
+                <!--AlCharacterType-URL-END-->
+                <prop key="/al/al_country_frm.html">forwardJspController</prop>
+                <prop key="/al_country_tree.html">alCountryTreeController</prop>
+
+				<prop key="/al_language_update.html">alLanguageUpdateController</prop>
+				<!--AlCompanyArea-URL-START-->
+                <!-- <prop key="/alCompanyAreas.html">alCompanyAreaController</prop>-->
+                <prop key="/editAlCompanyArea.html">alCompanyAreaFormController</prop>
+                <!--AlCompanyArea-URL-END-->
+                <!--AlDistrict-URL-START-->
+                <prop key="/alDistricts.html">alDistrictController</prop>
+                <prop key="/editAlDistrict.html">alDistrictFormController</prop>
+                <!--AlDistrict-URL-END-->
+                <!--AlCity-URL-START-->
+                <prop key="/alCitys.html">alCityController</prop>
+                <prop key="/editAlCity.html">alCityFormController</prop>
+                <!--AlCity-URL-END-->
+                <prop key="/al/al_language_frm.html">forwardJspController</prop>
+                <prop key="/al/al_language_tree.html">alLanguageTreeController</prop>
+                <prop key="/al/alCharacterValuesChange.html">alCharacterValueChangeController</prop>
+
+                <!--JalTown-URL-START-->
+                <prop key="/jalTowns.html">jalTownController</prop>
+                <prop key="/editJalTown.html">jalTownFormController</prop>
+                <!--JalTown-URL-END-->
+
+
+            </props>
+        </property>
+    </bean>
+</beans>

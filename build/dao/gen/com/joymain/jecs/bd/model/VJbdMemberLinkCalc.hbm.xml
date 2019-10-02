@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.VJbdMemberLinkCalc"
+            table="V_JBD_MEMBER_LINK_CALC"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="gradeType"
+                    column="GRADE_TYPE"
+        >
+
+        </property>
+
+        <property
+            name="zyType"
+                    column="ZY_TYPE"
+        >
+
+        </property>
+
+        <property
+            name="cioType"
+                    column="CIO_TYPE"
+        >
+
+        </property>
+
+        <property
+            name="firstPv"
+                    column="FIRST_PV"
+        >
+
+        </property>
+
+        <property
+            name="totalGroup"
+                    column="TOTAL_GROUP"
+        >
+
+        </property>
+
+        <property
+            name="memberLevel"
+                    column="MEMBER_LEVEL"
+        >
+
+        </property>
+
+        <property
+            name="retainLevel"
+                    column="RETAIN_LEVEL"
+        >
+
+        </property>
+
+        <property
+            name="retainGroup"
+                    column="RETAIN_GROUP"
+        >
+
+        </property>
+
+        <property
+            name="monthOwnPv"
+                    column="MONTH_OWN_PV"
+        >
+
+        </property>
+
+        <property
+            name="monthMaxPv"
+                    column="MONTH_MAX_PV"
+        >
+
+        </property>
+
+        <property
+            name="areaConsumption"
+                    column="AREA_CONSUMPTION"
+        >
+
+        </property>
+
+        <property
+            name="freezeStatus"
+                    column="FREEZE_STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="ventureFund"
+                    column="VENTURE_FUND"
+        >
+
+        </property>
+
+        <property
+            name="wyear"
+                    column="W_YEAR"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="wmonth"
+                    column="W_MONTH"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="wweek"
+                    column="W_WEEK"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="recommendNo"
+                    column="RECOMMEND_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="linkNo"
+                    column="LINK_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="name"
+                    column="NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="petName"
+                    column="PET_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="isstore"
+                    column="ISSTORE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="cardType"
+                    column="CARD_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="bank"
+                    column="BANK"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="bankaddress"
+                    column="BANKADDRESS"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="bankbook"
+                    column="BANKBOOK"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="bankcard"
+                    column="BANKCARD"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="exitDate"
+                    column="EXIT_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="passStatus"
+                    column="PASS_STATUS"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="honorStar"
+                    column="HONOR_STAR"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="passStar"
+                    column="PASS_STAR"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="honorGrade"
+                    column="HONOR_GRADE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="passGrade"
+                    column="PASS_GRADE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="honorPosition"
+                    column="HONOR_POSITION"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="monthConsumerPv"
+                    column="MONTH_CONSUMER_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="monthAreaTotalPv"
+                    column="MONTH_AREA_TOTAL_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="weekGroupPv"
+                    column="WEEK_GROUP_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="monthGroupPv"
+                    column="MONTH_GROUP_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="successSalesRate"
+                    column="SUCCESS_SALES_RATE"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="monthRecommendGroupPv"
+                    column="MONTH_RECOMMEND_GROUP_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="franchisePv"
+                    column="FRANCHISE_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="franchiseMoney"
+                    column="FRANCHISE_MONEY"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="consumerAmount"
+                    column="CONSUMER_AMOUNT"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="ventureSalesPv"
+                    column="VENTURE_SALES_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="ventureLeaderPv"
+                    column="VENTURE_LEADER_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="successSalesPv"
+                    column="SUCCESS_SALES_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="successLeaderPv"
+                    column="SUCCESS_LEADER_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="deductMoney"
+                    column="DEDUCT_MONEY"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="deductTax"
+                    column="DEDUCT_TAX"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="exchangeRate"
+                    column="EXCHANGE_RATE"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="keepPv"
+                    column="KEEP_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="keepUserCode"
+                    column="KEEP_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="lastKeepPv"
+                    column="LAST_KEEP_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="lastKeepUserCode"
+                    column="LAST_KEEP_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="departmenKeepPv"
+                    column="DEPARTMEN_KEEP_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="passStarGroupPv"
+                    column="PASS_STAR_GROUP_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="passGradeGroupPv"
+                    column="PASS_GRADE_GROUP_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="firstMonth"
+                    column="FIRST_MONTH"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="bounsPv"
+                    column="BOUNS_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="bounsMoney"
+                    column="BOUNS_MONEY"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="sendMoney"
+                    column="SEND_MONEY"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="active"
+                    column="ACTIVE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="recommendBonusPv"
+                    column="RECOMMEND_BONUS_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="storeExpandPv"
+                    column="STORE_EXPAND_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="storeRecommendPv"
+                    column="STORE_RECOMMEND_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="storeServePv"
+                    column="STORE_SERVE_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="networkMoney"
+                    column="NETWORK_MONEY"
+        >
+
+        </property>
+
+        <property
+            name="currentDev"
+                    column="CURRENT_DEV"
+        >
+
+        </property>
+
+        <property
+            name="deductedDev"
+                    column="DEDUCTED_DEV"
+        >
+
+        </property>
+
+        <property
+            name="totalDev"
+                    column="TOTAL_DEV"
+        >
+
+        </property>
+
+        <property
+            name="qualifyStar"
+                    column="QUALIFY_STAR"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="qualifyRemark"
+                    column="QUALIFY_REMARK"
+                length="4000"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.JbdYd399RecommendHist"
+            table="JBD_YD_399_RECOMMEND_HIST"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <many-to-one
+            name="jmiMember"
+        >
+
+            <column
+                name="USER_CODE" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="miUserName"
+                    column="MI_USER_NAME"
+        >
+
+        </property>
+
+        <property
+            name="ydStoreLevel"
+                    column="YD_STORE_LEVEL"
+        >
+
+        </property>
+
+        <property
+            name="memberLevel"
+                    column="MEMBER_LEVEL"
+        >
+
+        </property>
+
+        <property
+            name="calcTime"
+                    column="CALC_TIME"
+        >
+
+        </property>
+
+        <property
+            name="recommendNo"
+                    column="RECOMMEND_NO"
+        >
+
+        </property>
+
+        <property
+            name="recommendAmount"
+                    column="RECOMMEND_AMOUNT"
+        >
+
+        </property>
+
+        <property
+            name="sendAmount"
+                    column="SEND_AMOUNT"
+        >
+
+        </property>
+
+        <property
+            name="memberType"
+                    column="MEMBER_TYPE"
+        >
+
+        </property>
+
+        <property
+            name="freezeStatus"
+                    column="FREEZE_STATUS"
+        >
+
+        </property>
+
+        <property
+            name="sendStatus"
+                    column="SEND_STATUS"
+        >
+
+        </property>
+
+        <property
+            name="sendDate"
+                    column="SEND_DATE"
+        >
+
+        </property>
+
+        <property
+            name="sendOperator"
+                    column="SEND_OPERATOR"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

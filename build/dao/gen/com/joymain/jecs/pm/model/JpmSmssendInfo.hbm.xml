@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmSmssendInfo"
+            table="JPM_SMSSEND_INFO"
+    >
+
+    <id
+        name="smsId"
+            column="SMS_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_SMS]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="smsType"
+                    column="SMS_TYPE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="smsRecipient"
+                    column="SMS_RECIPIENT"
+                length="15"
+        >
+
+        </property>
+
+        <property
+            name="smsMessage"
+                    column="SMS_MESSAGE"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="smsTime"
+                    column="SMS_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="smsOperator"
+                    column="SMS_OPERATOR"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="smsStatus"
+                    column="SMS_STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="remark2"
+                    column="REMARK2"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="phoneNum"
+                    column="PHONE_NUM"
+                length="100"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.JfiSunMemberOrder"
+            table="JFI_SUN_MEMBER_ORDER"
+    >
+
+    <id
+        name="moId"
+            column="MO_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="countryCode"
+                    column="COUNTRY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="memberOrderNo"
+                    column="MEMBER_ORDER_NO"
+                length="20"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="orderType"
+                    column="ORDER_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="userName"
+                    column="USER_NAME"
+                length="300"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="agentNo"
+                    column="AGENT_NO"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="agentName"
+                    column="AGENT_NAME"
+                length="300"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="userSpCode"
+                    column="USER_SP_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="amount"
+                    column="AMOUNT"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="pvAmt"
+                    column="PV_AMT"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="consumerAmount"
+                    column="CONSUMER_AMOUNT"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="payMode"
+                    column="PAY_MODE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="orderUserCode"
+                    column="ORDER_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="orderTime"
+                    column="ORDER_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="checkTime"
+                    column="CHECK_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="checkUserCode"
+                    column="CHECK_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="checkDate"
+                    column="CHECK_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="pickup"
+                    column="PICKUP"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="submitTime"
+                    column="SUBMIT_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="submitUserCode"
+                    column="SUBMIT_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="submitStatus"
+                    column="SUBMIT_STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="firstName"
+                    column="FIRST_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="lastName"
+                    column="LAST_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="province"
+                    column="PROVINCE"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="city"
+                    column="CITY"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="address"
+                    column="ADDRESS"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="postalcode"
+                    column="POSTALCODE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="phone"
+                    column="PHONE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="email"
+                    column="EMAIL"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="mobiletele"
+                    column="MOBILETELE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="district"
+                    column="DISTRICT"
+                length="20"
+        >
+
+        </property>
+
+        <set
+            name="jfiSunMemberOrderList"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="MO_ID"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.fi.model.JfiSunMemberOrderList"
+            />
+
+        </set>
+
+        <set
+            name="jfiSunMemberOrderFee"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="MO_ID"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.fi.model.JfiSunMemberOrderFee"
+            />
+
+        </set>
+
+    </class>    
+
+</hibernate-mapping>
+

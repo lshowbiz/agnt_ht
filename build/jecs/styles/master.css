@@ -1,0 +1,134 @@
+span#load img {
+	position: absolute;
+	top: 27px;
+	left: 28px;
+}
+
+label {
+	color: #888;
+	font-weight:bold;
+}
+label.more_on_same_row
+{
+	color: #888;
+	font-weight: normal;
+	width: 120px;
+	float: left;
+}
+input {
+	padding: 0 0 0 4px;
+	vertical-align: middle;
+}
+input, select, textarea {
+	font-size: 12px;
+}
+
+body.login {
+	background: #d7d7d7;
+}
+
+div#login {
+	margin: 108px auto 0;
+	width: 546px;
+}
+div#cap-top {
+	background: transparent url(cap-top.png) no-repeat;
+	height: 8px;
+	width: 546px;
+}
+* html #cap-top {
+	margin-bottom: -8px;
+}
+* html div#cap-top {
+	background-image: none;
+	filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(src="cap-top.png",sizingMethod="crop");
+}
+div#cap-body {
+	padding-left: 40px;
+	padding-right: 40px;
+	background: transparent url(cap-bg.png) repeat-y;
+}
+* html div#cap-body {
+	background-image: none;
+	filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(src='cap-bg.png',sizingMethod='scale');
+}
+div#cap-bottom {
+	background: transparent url(cap-bottom.png) no-repeat;
+	height: 15px;
+	width: 546px;
+}
+* html div#cap-bottom {
+	background-image: none;
+	filter: progid: DXImageTransform.Microsoft.AlphaImageLoader(src="cap-bottom.png",sizingMethod="crop");
+}
+div#login div#panelLogin div, div#login div#panelResetPass div, div#login div#panelChangePass div {
+	margin: 0 auto;
+	padding-bottom: 18px;
+	width: 456px;
+}
+div#login div#branding {
+	padding-top: 20px;
+}
+div#login div#branding img {
+	display: block;
+	margin: 0 0 10px 0px;
+}
+div#login label {
+	color: #888;
+	display: block;
+	font-size: 16px;
+}
+div#login span.checkBoxListStyle label {
+	display: inline;
+}
+div#login input#txtLogin, div#login input#txtPassword, div#login input#txtEmailAddressResetPass, div#login input.textbox340 {
+	background: #fafafa;
+	border: 1px solid #eee;
+	font-size: 18px;
+	line-height: 20px;
+	margin: 0;
+	padding: 3px;
+	width: 440px;
+}
+* html div#login input#txtLogin, * html div#login input#txtPassword, * html div#login input#txtEmailAddressResetPass, * html div#login input.textbox340 {
+	background: #eee;
+	border: 1px solid #ddd;
+	font-size: 18px;
+	line-height: 20px;
+	margin: 0;
+	padding: 3px;
+	width: 440px;
+}
+div#login input#txtLogin:focus, div#login input#txtPassword:focus, div#login input.textbox340:focus {
+	background: #fcfcfc;
+	border: 1px solid #ccc;
+}
+div#login div.submit p {
+	float: left;
+	margin: 0;
+}
+div#login input#btnLogin, div#login input#btnRetrieve, div#login input#btnUpdate {
+	float: right;
+	margin-bottom: 10px;
+}
+div#login a:link, div#login a:visited {
+	color: #aaa;
+}
+div#login a:hover, div#login a:active {
+	color: #fff;
+}
+p.lostpassword {
+	margin: 0;
+	position: relative;
+	top: -50px;
+	width: 260px;
+}
+div#login p.lostpassword a {
+	color: #0066bc!important;
+}
+body.login div#panelErrorMsg {
+	color: #000;
+	margin: 30px auto -85px;
+	padding: 18px 18px 18px 54px;
+	width: 450px;
+}

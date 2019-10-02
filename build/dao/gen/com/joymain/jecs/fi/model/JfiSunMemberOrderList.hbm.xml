@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.JfiSunMemberOrderList"
+            table="JFI_SUN_MEMBER_ORDER_LIST"
+    >
+
+    <id
+        name="molId"
+            column="MOL_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="price"
+                    column="PRICE"
+                length="18"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="pv"
+                    column="PV"
+                length="18"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="qty"
+                    column="QTY"
+                length="5"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="weight"
+                    column="WEIGHT"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="volume"
+                    column="VOLUME"
+                length="10"
+        >
+
+        </property>
+
+        <many-to-one
+            name="jfiSunMemberOrder"
+                not-null="true"
+        >
+
+            <column
+                name="MO_ID" 
+            />
+
+        </many-to-one>
+
+        <many-to-one
+            name="jpmProductSaleNew"
+                not-null="true"
+        >
+
+            <column
+                name="PRODUCT_ID" 
+            />
+
+        </many-to-one>
+
+    </class>    
+
+</hibernate-mapping>
+

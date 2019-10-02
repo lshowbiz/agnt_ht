@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.am.model.InwSuggestion"
+            table="INW_SUGGESTION"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_AM]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="demandId"
+                    column="DEMAND_ID"
+                length="13"
+        >
+
+        </property>
+
+        <property
+            name="subject"
+                    column="SUBJECT"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="content"
+                    column="CONTENT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="replyTime"
+                    column="REPLY_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="replyTontent"
+                    column="REPLY_TONTENT"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="replyUserCode"
+                    column="REPLY_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="proposedAdoption"
+                    column="PROPOSED_ADOPTION"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="suggestionAccept"
+                    column="SUGGESTION_ACCEPT"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="suggestionSort"
+                    column="SUGGESTION_SORT"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="initialAudit"
+                    column="INITIAL_AUDIT"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="feasibilityAudit"
+                    column="FEASIBILITY_AUDIT"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="phone"
+                    column="PHONE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="address"
+                    column="ADDRESS"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="demandsortId"
+                    column="DEMANDSORT_ID"
+                length="32"
+        >
+
+        </property>
+
+        <property
+            name="integration"
+                    column="INTEGRATION"
+                length="5"
+        >
+
+        </property>
+
+        <property
+            name="microMessage"
+                    column="MICRO_MESSAGE"
+                length="80"
+        >
+
+        </property>
+
+        <property
+            name="qq"
+                    column="QQ"
+                length="11"
+        >
+
+        </property>
+
+        <property
+            name="replyContentSecond"
+                    column="REPLY_CONTENT_SECOND"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+            name="replyContentThird"
+                    column="REPLY_CONTENT_THIRD"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+            name="replyUserCodeSecond"
+                    column="REPLY_USER_CODE_SECOND"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="replyTimeSecond"
+                    column="REPLY_TIME_SECOND"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="replyUserCodeThird"
+                    column="REPLY_USER_CODE_THIRD"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="replyTimeThird"
+                    column="REPLY_TIME_THIRD"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="replyYesNo"
+                    column="REPLY_YES_NO"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="firstReplyAudit"
+                    column="FIRST_REPLY_AUDIT"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="firseReplyPerson"
+                    column="FIRST_REPLY_PERSON"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="firstReplyTime"
+                    column="FIRST_REPLY_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="secondReplyAudit"
+                    column="SECOND_REPLY_AUDIT"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="secondReplyPerson"
+                    column="SECOND_REPLY_PERSON"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="secondReplyTime"
+                    column="SECOND_REPLY_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="thirdReplyAudit"
+                    column="THIRD_REPLY_AUDIT"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="thirdReplyPerson"
+                    column="THIRD_REPLY_PERSON"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="thirdReplyTime"
+                    column="THIRD_REPLY_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="updateFlag"
+                    column="UPDATE_FLAG"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="initialAuditTime"
+                    column="INITIAL_AUDIT_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="initialAuditUser"
+                    column="INITIAL_AUDIT_USER"
+                length="30"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

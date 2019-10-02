@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.mi.model.JmiTicket"
+            table="JMI_TICKET"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_MI]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="ticketType"
+                    column="TICKET_TYPE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="applyUserCode"
+                    column="APPLY_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="userName"
+                    column="USER_NAME"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="papernumber"
+                    column="PAPERNUMBER"
+                length="70"
+        >
+
+        </property>
+
+        <property
+            name="censusProvince"
+                    column="CENSUS_PROVINCE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="censusCity"
+                    column="CENSUS_CITY"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="censusDistrict"
+                    column="CENSUS_DISTRICT"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="censusAddress"
+                    column="CENSUS_ADDRESS"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="province"
+                    column="PROVINCE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="city"
+                    column="CITY"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="district"
+                    column="DISTRICT"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="address"
+                    column="ADDRESS"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="mobiletele"
+                    column="MOBILETELE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="500"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

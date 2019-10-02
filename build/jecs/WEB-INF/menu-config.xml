@@ -1,0 +1,741 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MenuConfig>
+    <Displayers>
+        <Displayer name="Velocity" type="net.sf.navigator.displayer.VelocityMenuDisplayer"/>
+    </Displayers>
+    <Menus>
+        <Menu name="MainMenu" title="mainMenu.title" page="/mainMenu.html"/>
+        <Menu name="UserMenu" title="menu.user" description="User Menu" page="/editProfile.html" roles="admin,user"/>
+        <Menu name="FileUpload" title="menu.selectFile" description="File Upload" width="100" page="/selectFile.html" roles="admin,user"/>
+        <Menu name="AdminMenu" title="menu.admin" description="Admin Menu" roles="admin" width="120" page="/users.html">
+            <Item name="ViewUsers" title="menu.admin.users" page="/users.html"/>
+            <Item name="ActiveUsers" title="mainMenu.activeUsers" page="/activeUsers.html"/>
+            <Item name="ReloadContext" title="menu.admin.reload" page="/reload.html"/>
+            <Item name="FlushCache" title="menu.flushCache" page="/flushCache.html"/>
+            <Item name="Clickstream" title="menu.clickstream" page="/clickstreams.jsp"/>
+        </Menu>
+        <Menu name="Logout" title="user.logout" page="/logout.jsp" roles="admin,user"/>
+        
+        <!--JmiMember-START-->
+        <Menu name="JmiMemberMenu" title="jmiMemberList.title" page="/jmiMembers.html"/>
+        <!--JmiMember-END-->
+        <!--JmiMemberUpgradeNote-START-->
+        <Menu name="JmiMemberUpgradeNoteMenu" title="jmiMemberUpgradeNoteList.title" page="/jmiMemberUpgradeNotes.html"/>
+        <!--JmiMemberUpgradeNote-END-->
+        <!--JfiBankbookBalance-START-->
+        <Menu name="JfiBankbookBalanceMenu" title="jfiBankbookBalanceList.title" page="/jfiBankbookBalances.html"/>
+        <!--JfiBankbookBalance-END-->
+        <!--JfiBankbookJournal-START-->
+        <Menu name="JfiBankbookJournalMenu" title="jfiBankbookJournalList.title" page="/jfiBankbookJournals.html"/>
+        <!--JfiBankbookJournal-END-->
+        <!--JfiBankbookTemp-START-->
+        <Menu name="JfiBankbookTempMenu" title="jfiBankbookTempList.title" page="/jfiBankbookTemps.html"/>
+        <!--JfiBankbookTemp-END-->
+        <!--JfiPayAdvice-START-->
+        <Menu name="JfiPayAdviceMenu" title="jfiPayAdviceList.title" page="/jfiPayAdvices.html"/>
+        <!--JfiPayAdvice-END-->
+        <!--JfiPayBank-START-->
+        <Menu name="JfiPayBankMenu" title="jfiPayBankList.title" page="/jfiPayBanks.html"/>
+        <!--JfiPayBank-END-->
+        <!--JfiPayData-START-->
+        <Menu name="JfiPayDataMenu" title="jfiPayDataList.title" page="/jfiPayDatas.html"/>
+        <!--JfiPayData-END-->
+        <!--JmiAddrBook-START-->
+        <Menu name="JmiAddrBookMenu" title="jmiAddrBookList.title" page="/jmiAddrBooks.html"/>
+        <!--JmiAddrBook-END-->
+        <!--JmiTreeIndex-START-->
+        <Menu name="JmiTreeIndexMenu" title="jmiTreeIndexList.title" page="/jmiTreeIndexs.html"/>
+        <!--JmiTreeIndex-END-->
+        <!--JpmProduct-START-->
+        <Menu name="JpmProductMenu" title="jpmProductList.title" page="/jpmProducts.html"/>
+        <!--JpmProduct-END-->
+        <!--JpmProductSale-START-->
+        <Menu name="JpmProductSaleMenu" title="jpmProductSaleList.title" page="/jpmProductSales.html"/>
+        <!--JpmProductSale-END-->
+        <!--JmiLinkRef-START-->
+        <Menu name="JmiLinkRefMenu" title="jmiLinkRefList.title" page="/jmiLinkRefs.html"/>
+        <!--JmiLinkRef-END-->
+        <!--JmiRecommendRef-START-->
+        <Menu name="JmiRecommendRefMenu" title="jmiRecommendRefList.title" page="/jmiRecommendRefs.html"/>
+        <!--JmiRecommendRef-END-->
+        <!--Jfi99billLog-START-->
+        <Menu name="Jfi99billLogMenu" title="jfi99billLogList.title" page="/jfi99billLogs.html"/>
+        <!--Jfi99billLog-END-->
+        <!--Jfi99billTemp-START-->
+        <Menu name="Jfi99billTempMenu" title="jfi99billTempList.title" page="/jfi99billTemps.html"/>
+        <!--Jfi99billTemp-END-->
+        <!--PdWarehouse-START-->
+        <Menu name="PdWarehouseMenu" title="pdWarehouseList.title" page="/pdWarehouses.html"/>
+        <!--PdWarehouse-END-->
+        <!--PdWarehouseStockTrace-START-->
+        <Menu name="PdWarehouseStockTraceMenu" title="pdWarehouseStockTraceList.title" page="/pdWarehouseStockTraces.html"/>
+        <!--PdWarehouseStockTrace-END-->
+        <!--PdWarehouseStock-START-->
+        <Menu name="PdWarehouseStockMenu" title="pdWarehouseStockList.title" page="/pdWarehouseStocks.html"/>
+        <!--PdWarehouseStock-END-->
+        <!--PdSendInfo-START-->
+        <Menu name="PdSendInfoMenu" title="pdSendInfoList.title" page="/pdSendInfos.html"/>
+        <!--PdSendInfo-END-->
+        <!--PdSendInfoDetail-START-->
+        <Menu name="PdSendInfoDetailMenu" title="pdSendInfoDetailList.title" page="/pdSendInfoDetails.html"/>
+        <!--PdSendInfoDetail-END-->
+        <!--PdShipmentsDetail-START-->
+        <Menu name="PdShipmentsDetailMenu" title="pdShipmentsDetailList.title" page="/pdShipmentsDetails.html"/>
+        <!--PdShipmentsDetail-END-->
+        <!--PdWarehouseUser-START-->
+        <Menu name="PdWarehouseUserMenu" title="pdWarehouseUserList.title" page="/pdWarehouseUsers.html"/>
+        <!--PdWarehouseUser-END-->
+        <!--PdWarehouseArea-START-->
+        <Menu name="PdWarehouseAreaMenu" title="pdWarehouseAreaList.title" page="/pdWarehouseAreas.html"/>
+        <!--PdWarehouseArea-END-->
+        <!--JpoMemberOrder-START-->
+        <Menu name="JpoMemberOrderMenu" title="jpoMemberOrderList.title" page="/jpoMemberOrders.html"/>
+        <!--JpoMemberOrder-END-->
+        <!--JpoMemberOrderFee-START-->
+        <Menu name="JpoMemberOrderFeeMenu" title="jpoMemberOrderFeeList.title" page="/jpoMemberOrderFees.html"/>
+        <!--JpoMemberOrderFee-END-->
+        <!--JpoMemberOrderList-START-->
+        <Menu name="JpoMemberOrderListMenu" title="jpoMemberOrderListList.title" page="/jpoMemberOrderLists.html"/>
+        <!--JpoMemberOrderList-END-->
+        <!--JprRefund-START-->
+        <Menu name="JprRefundMenu" title="jprRefundList.title" page="/jprRefunds.html"/>
+        <!--JprRefund-END-->
+         <!--jmiRemitSale BEGIN-->
+        <Menu name="jmiRemitSale" title="jmiRemitSale.title" page="/jmiRemitSale.html"/>
+        <Menu name="editjmiRemitSale" title="editjmiRemitSale.title" page="/editjmiRemitSale.html"/>
+       <!--jmiRemitSale END-->
+        <!--JprRefundList-START-->
+        <Menu name="JprRefundListMenu" title="jprRefundListList.title" page="/jprRefundLists.html"/>
+        <!--JprRefundList-END-->
+        <!--BdOutwardBank-START-->
+        <Menu name="BdOutwardBankMenu" title="bdOutwardBankList.title" page="/bdOutwardBanks.html"/>
+        <!--BdOutwardBank-END-->
+        <!--JbdSendRecord-START-->
+        <Menu name="JbdSendRecordMenu" title="jbdSendRecordList.title" page="/jbdSendRecords.html"/>
+        <!--JbdSendRecord-END-->
+        <!--JbdSendRecordHist-START-->
+        <Menu name="JbdSendRecordHistMenu" title="jbdSendRecordHistList.title" page="/jbdSendRecordHists.html"/>
+        <!--JbdSendRecordHist-END-->
+        <!--JbdBonusBalance-START-->
+        <Menu name="JbdBonusBalanceMenu" title="jbdBonusBalanceList.title" page="/jbdBonusBalances.html"/>
+        <!--JbdBonusBalance-END-->
+        <!--PdEnterWarehouse-START-->
+        <Menu name="PdEnterWarehouseMenu" title="pdEnterWarehouseList.title" page="/pdEnterWarehouses.html"/>
+        <!--PdEnterWarehouse-END-->
+        <!--PdEnterWarehouseDetail-START-->
+        <Menu name="PdEnterWarehouseDetailMenu" title="pdEnterWarehouseDetailList.title" page="/pdEnterWarehouseDetails.html"/>
+        <!--PdEnterWarehouseDetail-END-->
+        <!--PdOutWarehouse-START-->
+        <Menu name="PdOutWarehouseMenu" title="pdOutWarehouseList.title" page="/pdOutWarehouses.html"/>
+        <!--PdOutWarehouse-END-->
+        <!--PdOutWarehouseDetail-START-->
+        <Menu name="PdOutWarehouseDetailMenu" title="pdOutWarehouseDetailList.title" page="/pdOutWarehouseDetails.html"/>
+        <!--PdOutWarehouseDetail-END-->
+        
+        <!--PdReturnPurchase-START-->
+        <Menu name="PdReturnPurchaseMenu" title="pdReturnPurchaseList.title" page="/pdReturnPurchases.html"/>
+        <!--PdReturnPurchase-END-->
+        <!--PdReturnPurchaseDetail-START-->
+        <Menu name="PdReturnPurchaseDetailMenu" title="pdReturnPurchaseDetailList.title" page="/pdReturnPurchaseDetails.html"/>
+        <!--PdReturnPurchaseDetail-END-->
+        <!--PdAdjustStock-START-->
+        <Menu name="PdAdjustStockMenu" title="pdAdjustStockList.title" page="/pdAdjustStocks.html"/>
+        <!--PdAdjustStock-END-->
+        <!--PdAdjustStockDetail-START-->
+        <Menu name="PdAdjustStockDetailMenu" title="pdAdjustStockDetailList.title" page="/pdAdjustStockDetails.html"/>
+        <!--PdAdjustStockDetail-END-->
+        <!--PdFlitWarehouse-START-->
+        <Menu name="PdFlitWarehouseMenu" title="pdFlitWarehouseList.title" page="/pdFlitWarehouses.html"/>
+        <!--PdFlitWarehouse-END-->
+        <!--PdFlitWarehouseDetail-START-->
+        <Menu name="PdFlitWarehouseDetailMenu" title="pdFlitWarehouseDetailList.title" page="/pdFlitWarehouseDetails.html"/>
+        <!--PdFlitWarehouseDetail-END-->
+        <!--PdStatusExcStock-START-->
+        <Menu name="PdStatusExcStockMenu" title="pdStatusExcStockList.title" page="/pdStatusExcStocks.html"/>
+        <!--PdStatusExcStock-END-->
+        <!--PdStatusExcStockDetail-START-->
+        <Menu name="PdStatusExcStockDetailMenu" title="pdStatusExcStockDetailList.title" page="/pdStatusExcStockDetails.html"/>
+        <!--PdStatusExcStockDetail-END-->
+        <!--BdPeriod-START-->
+        <Menu name="BdPeriodMenu" title="bdPeriodList.title" page="/bdPeriods.html"/>
+        <!--BdPeriod-END-->
+        <!--JbdSellCalcSubHist-START-->
+        <Menu name="JbdSellCalcSubHistMenu" title="jbdSellCalcSubHistList.title" page="/jbdSellCalcSubHists.html"/>
+        <!--JbdSellCalcSubHist-END-->
+        <!--JbdMemberLinkCalcHist-START-->
+        <Menu name="JbdMemberLinkCalcHistMenu" title="jbdMemberLinkCalcHistList.title" page="/jbdMemberLinkCalcHists.html"/>
+        <!--JbdMemberLinkCalcHist-END-->
+        <!--AlDistrict-START-->
+        <Menu name="AlDistrictMenu" title="alDistrictList.title" page="/alDistricts.html"/>
+        <!--AlDistrict-END-->
+        <!--AlCity-START-->
+        <Menu name="AlCityMenu" title="alCityList.title" page="/alCitys.html"/>
+        <!--AlCity-END-->
+        <!--JbdUserCardList-START-->
+        <Menu name="JbdUserCardListMenu" title="jbdUserCardListList.title" page="/jbdUserCardLists.html"/>
+        <!--JbdUserCardList-END-->
+        <!--JpoShippingFee-START-->
+        <Menu name="JpoShippingFeeMenu" title="jpoShippingFeeList.title" page="/jpoShippingFees.html"/>
+        <!--JpoShippingFee-END-->
+        <!--JbdDayBounsCalc-START-->
+        <Menu name="JbdDayBounsCalcMenu" title="jbdDayBounsCalcList.title" page="/jbdDayBounsCalcs.html"/>
+        <!--JbdDayBounsCalc-END-->
+        <!--JbdDayBounsCalcHist-START-->
+        <Menu name="JbdDayBounsCalcHistMenu" title="jbdDayBounsCalcHistList.title" page="/jbdDayBounsCalcHists.html"/>
+        <!--JbdDayBounsCalcHist-END-->
+        
+        <!--JbdManuallyAdjustStar-START-->
+        <Menu name="JbdManuallyAdjustStarMenu" title="jbdManuallyAdjustStarList.title" page="/jbdManuallyAdjustStars.html"/>
+        <!--JbdManuallyAdjustStar-END-->
+        <!--JbdVentureLeaderSubHist-START-->
+        <Menu name="JbdVentureLeaderSubHistMenu" title="jbdVentureLeaderSubHistList.title" page="/jbdVentureLeaderSubHists.html"/>
+        <!--JbdVentureLeaderSubHist-END-->
+        <!--JbdSellCalcSubDetailHist-START-->
+        <Menu name="JbdSellCalcSubDetailHistMenu" title="jbdSellCalcSubDetailHistList.title" page="/jbdSellCalcSubDetailHists.html"/>
+        <!--JbdSellCalcSubDetailHist-END-->
+        <!--AmMessagePermit-START-->
+        <Menu name="AmMessagePermitMenu" title="amMessagePermitList.title" page="/amMessagePermits.html"/>
+        <!--AmMessagePermit-END-->
+        <!--BillAccount-START-->
+        <Menu name="BillAccountMenu" title="billAccountList.title" page="/billAccounts.html"/>
+        <!--BillAccount-END-->
+        <!--JpoCounterOrder-START-->
+        <Menu name="JpoCounterOrderMenu" title="jpoCounterOrderList.title" page="/jpoCounterOrders.html"/>
+        <!--JpoCounterOrder-END-->
+        <!--JpoCounterOrderDetail-START-->
+        <Menu name="JpoCounterOrderDetailMenu" title="jpoCounterOrderDetailList.title" page="/jpoCounterOrderDetails.html"/>
+        <!--JpoCounterOrderDetail-END-->
+        <!--JamMsnType-START-->
+        <Menu name="JamMsnTypeMenu" title="jamMsnTypeList.title" page="/jamMsnTypes.html"/>
+        <!--JamMsnType-END-->
+        <!--JamMsnDetail-START-->
+        <Menu name="JamMsnDetailMenu" title="jamMsnDetailList.title" page="/jamMsnDetails.html"/>
+        <!--JamMsnDetail-END-->
+        <!--SysLoginLog-START-->
+        <Menu name="SysLoginLogMenu" title="sysLoginLogList.title" page="/sysLoginLogs.html"/>
+        <!--SysLoginLog-END-->
+        <!--PdCombinationOrder-START-->
+        <Menu name="PdCombinationOrderMenu" title="pdCombinationOrderList.title" page="/pdCombinationOrders.html"/>
+        <!--PdCombinationOrder-END-->
+        <!--PdCombinationDetail-START-->
+        <Menu name="PdCombinationDetailMenu" title="pdCombinationDetailList.title" page="/pdCombinationDetails.html"/>
+        <!--PdCombinationDetail-END-->
+        <!--JbdCaculateLog-START-->
+        <Menu name="JbdCaculateLogMenu" title="jbdCaculateLogList.title" page="/jbdCaculateLogs.html"/>
+        <!--JbdCaculateLog-END-->
+
+        <!--SmsSendLog-START-->
+        <Menu name="SmsSendLogMenu" title="smsSendLogList.title" page="/smsSendLogs.html"/>
+        <!--SmsSendLog-END-->
+
+        <!--PdCheckstockOrder-START-->
+        <Menu name="PdCheckstockOrderMenu" title="pdCheckstockOrderList.title" page="/pdCheckstockOrders.html"/>
+        <!--PdCheckstockOrder-END-->
+        <!--PdCheckstockOrderDetail-START-->
+        <Menu name="PdCheckstockOrderDetailMenu" title="pdCheckstockOrderDetailList.title" page="/pdCheckstockOrderDetails.html"/>
+        <!--PdCheckstockOrderDetail-END-->
+
+        <!--JamMsnModule-START-->
+        <Menu name="JamMsnModuleMenu" title="jamMsnModuleList.title" page="/jamMsnModules.html"/>
+        <!--JamMsnModule-END-->
+        <!--VtVote-START-->
+        <Menu name="VtVoteMenu" title="vtVoteList.title" page="/vtVotes.html"/>
+        <!--VtVote-END-->
+        <!--VtVoteDetail-START-->
+        <Menu name="VtVoteDetailMenu" title="vtVoteDetailList.title" page="/vtVoteDetails.html"/>
+        <!--VtVoteDetail-END-->
+        <!--VtVoteNote-START-->
+        <Menu name="VtVoteNoteMenu" title="vtVoteNoteList.title" page="/vtVoteNotes.html"/>
+        <!--VtVoteNote-END-->
+        <!--VtVotePow-START-->
+        <Menu name="VtVotePowMenu" title="vtVotePowList.title" page="/vtVotePows.html"/>
+        <!--VtVotePow-END-->
+        <!--JbdUserCompanyCode-START-->
+        <Menu name="JbdUserCompanyCodeMenu" title="jbdUserCompanyCodeList.title" page="/jbdUserCompanyCodes.html"/>
+        <!--JbdUserCompanyCode-END-->
+        
+        
+        
+        <!--JmiMemberCompanyNote-START-->
+        <Menu name="JmiMemberCompanyNoteMenu" title="jmiMemberCompanyNoteList.title" page="/jmiMemberCompanyNotes.html"/>
+        <!--JmiMemberCompanyNote-END-->
+        
+        <!--Jfi99billPosLog-START-->
+        <Menu name="Jfi99billPosLogMenu" title="jfi99billPosLogList.title" page="/jfi99billPosLogs.html"/>
+        <!--Jfi99billPosLog-END-->
+        <!--Jfi99billPosSendLog-START-->
+        <Menu name="Jfi99billPosSendLogMenu" title="jfi99billPosSendLogList.title" page="/jfi99billPosSendLogs.html"/>
+        <!--Jfi99billPosSendLog-END-->
+        
+        <!--JpmCardSeq-START-->
+        <Menu name="JpmCardSeqMenu" title="jpmCardSeqList.title" page="/jpmCardSeqs.html"/>
+        <!--JpmCardSeq-END-->
+        <!--JfiSunMemberOrderList-START-->
+        <Menu name="JfiSunMemberOrderListMenu" title="jfiSunMemberOrderListList.title" page="/jfiSunMemberOrderLists.html"/>
+        <!--JfiSunMemberOrderList-END-->
+        <!--JfiSunMemberOrderFee-START-->
+        <Menu name="JfiSunMemberOrderFeeMenu" title="jfiSunMemberOrderFeeList.title" page="/jfiSunMemberOrderFees.html"/>
+        <!--JfiSunMemberOrderFee-END-->
+        <!--JfiSunMemberOrder-START-->
+        <Menu name="JfiSunMemberOrderMenu" title="jfiSunMemberOrderList.title" page="/jfiSunMemberOrders.html"/>
+        <!--JfiSunMemberOrder-END-->
+        <!--JfiSunDistribution-START-->
+        <Menu name="JfiSunDistributionMenu" title="jfiSunDistributionList.title" page="/jfiSunDistributions.html"/>
+        <!--JfiSunDistribution-END-->
+        <!--JfiSunConfigKey-START-->
+        <Menu name="JfiSunConfigKeyMenu" title="jfiSunConfigKeyList.title" page="/jfiSunConfigKeys.html"/>
+        <!--JfiSunConfigKey-END-->
+        <!--JbdTaiwanTravelPoint-START-->
+        <Menu name="JbdTaiwanTravelPointMenu" title="jbdTaiwanTravelPointList.title" page="/jbdTaiwanTravelPoints.html"/>
+        <!--JbdTaiwanTravelPoint-END-->
+        <!--JmiTaiwanTravel-START-->
+        <Menu name="JmiTaiwanTravelMenu" title="jmiTaiwanTravelList.title" page="/jmiTaiwanTravels.html"/>
+        <!--JmiTaiwanTravel-END-->
+        <!--PdExchangeOrder-START-->
+        <Menu name="PdExchangeOrderMenu" title="pdExchangeOrderList.title" page="/pdExchangeOrders.html"/>
+        <!--PdExchangeOrder-END-->
+        <!--PdExchangeOrderBack-START-->
+        <Menu name="PdExchangeOrderBackMenu" title="pdExchangeOrderBackList.title" page="/pdExchangeOrderBacks.html"/>
+        <!--PdExchangeOrderBack-END-->
+        <!--PdExchangeOrderDetail-START-->
+        <Menu name="PdExchangeOrderDetailMenu" title="pdExchangeOrderDetailList.title" page="/pdExchangeOrderDetails.html"/>
+        <!--PdExchangeOrderDetail-END-->
+        <!--JmiSubStore-START-->
+        <Menu name="JmiSubStoreMenu" title="jmiSubStoreList.title" page="/jmiSubStores.html"/>
+        <!--JmiSubStore-END-->
+        <!--JpoAutoShip-START-->
+        <Menu name="JpoAutoShipMenu" title="jpoAutoShipList.title" page="/jpoAutoShips.html"/>
+        <!--JpoAutoShip-END-->
+        <!--JbdUserValidList-START-->
+        <Menu name="JbdUserValidListMenu" title="jbdUserValidListList.title" page="/jbdUserValidLists.html"/>
+        <!--JbdUserValidList-END-->
+        <!--JalTown-START-->
+        <Menu name="JalTownMenu" title="jalTownList.title" page="/jalTowns.html"/>
+        <!--JalTown-END-->
+        <!--JmiStore-START-->
+        <Menu name="JmiStoreMenu" title="jmiStoreList.title" page="/jmiStores.html"/>
+        <!--JmiStore-END-->
+        <!--FiCoinLog-START-->
+        <Menu name="FiCoinLogMenu" title="fiCoinLogList.title" page="/fiCoinLogs.html"/>
+        <!--FiCoinLog-END-->
+        <!--JfiAlipayLog-START-->
+        <Menu name="JfiAlipayLogMenu" title="jfiAlipayLogList.title" page="/jfiAlipayLogs.html"/>
+        <!--JfiAlipayLog-END-->
+        <!--JamDownload-START-->
+        <Menu name="JamDownloadMenu" title="jamDownloadList.title" page="/jamDownloads.html"/>
+        <!--JamDownload-END-->
+        <!--JmiBlacklist-START-->
+        <Menu name="JmiBlacklistMenu" title="jmiBlacklistList.title" page="/jmiBlacklists.html"/>
+        <!--JmiBlacklist-END-->
+        <!--JfiHiTrustLog-START-->
+        <Menu name="JfiHiTrustLogMenu" title="jfiHiTrustLogList.title" page="/jfiHiTrustLogs.html"/>
+        <!--JfiHiTrustLog-END-->
+        
+        <!--JbdManuallyAdjustAlgebra-START-->
+        <Menu name="JbdManuallyAdjustAlgebraMenu" title="jbdManuallyAdjustAlgebraList.title" page="/jbdManuallyAdjustAlgebras.html"/>
+        <!--JbdManuallyAdjustAlgebra-END-->
+
+        <!--JpoMemberOrderTask-START-->
+        <Menu name="JpoMemberOrderTaskMenu" title="jpoMemberOrderTaskList.title" page="/jpoMemberOrderTasks.html"/>
+        <!--JpoMemberOrderTask-END-->
+        <!--JpoMemberOrderListTask-START-->
+        <Menu name="JpoMemberOrderListTaskMenu" title="jpoMemberOrderListTaskList.title" page="/jpoMemberOrderListTasks.html"/>
+        <!--JpoMemberOrderListTask-END-->
+        <!--JamPromotion-START-->
+        <Menu name="JamPromotionMenu" title="jamPromotionList.title" page="/jamPromotions.html"/>
+        <!--JamPromotion-END-->
+        <!--JbdTravelPoint-START-->
+        <Menu name="JbdTravelPointMenu" title="jbdTravelPointList.title" page="/jbdTravelPoints.html"/>
+        <!--JbdTravelPoint-END-->
+        <!--JbdTravelPointDetail-START-->
+        <Menu name="JbdTravelPointDetailMenu" title="jbdTravelPointDetailList.title" page="/jbdTravelPointDetails.html"/>
+        <!--JbdTravelPointDetail-END-->
+        <!--JbdTravelPointLog-START-->
+        <Menu name="JbdTravelPointLogMenu" title="jbdTravelPointLogList.title" page="/jbdTravelPointLogs.html"/>
+        <!--JbdTravelPointLog-END-->
+        <!--JbdSummaryList-START-->
+        <Menu name="JbdSummaryListMenu" title="jbdSummaryListList.title" page="/jbdSummaryLists.html"/>
+        <!--JbdSummaryList-END-->
+        <!--JbdVentureFundList-START-->
+        <Menu name="JbdVentureFundListMenu" title="jbdVentureFundListList.title" page="/jbdVentureFundLists.html"/>
+        <!--JbdVentureFundList-END-->
+        <!--JfiUsCreditCardLog-START-->
+        <Menu name="JfiUsCreditCardLogMenu" title="jfiUsCreditCardLogList.title" page="/jfiUsCreditCardLogs.html"/>
+        <!--JfiUsCreditCardLog-END-->
+        
+        
+        
+        <!--JfiSunOrderList-START-->
+        <Menu name="JfiSunOrderListMenu" title="jfiSunOrderListList.title" page="/jfiSunOrderLists.html"/>
+        <!--JfiSunOrderList-END-->
+        <!--JfiSunOrder-START-->
+        <Menu name="JfiSunOrderMenu" title="jfiSunOrderList.title" page="/jfiSunOrders.html"/>
+        <!--JfiSunOrder-END-->
+        <!--JfiSunJmiMember-START-->
+        <Menu name="JfiSunJmiMemberMenu" title="jfiSunJmiMemberList.title" page="/jfiSunJmiMembers.html"/>
+        <!--JfiSunJmiMember-END-->
+        <!--JalPostalcode-START-->
+        <Menu name="JalPostalcodeMenu" title="jalPostalcodeList.title" page="/jalPostalcodes.html"/>
+        <!--JalPostalcode-END-->
+
+        <!--SunDistShip-START-->
+        <Menu name="SunDistShipMenu" title="sunDistShipList.title" page="/sunDistShips.html"/>
+        <!--SunDistShip-END-->
+        <!--SunProductInfo-START-->
+        <Menu name="SunProductInfoMenu" title="sunProductInfoList.title" page="/sunProductInfos.html"/>
+        <!--SunProductInfo-END-->6
+        <!--JbdSendNote-START-->
+        <Menu name="JbdSendNoteMenu" title="jbdSendNoteList.title" page="/jbdSendNotes.html"/>
+        <!--JbdSendNote-END-->
+        <!--JbdNetworkList-START-->
+        <Menu name="JbdNetworkListMenu" title="jbdNetworkListList.title" page="/jbdNetworkLists.html"/>
+        <!--JbdNetworkList-END-->
+        <!--JmiCustomerLevelNote-START-->
+        <Menu name="JmiCustomerLevelNoteMenu" title="jmiCustomerLevelNoteList.title" page="/jmiCustomerLevelNotes.html"/>
+        <!--JmiCustomerLevelNote-END-->
+        <!--JfiCreditCardLog-START-->
+        <Menu name="JfiCreditCardLogMenu" title="jfiCreditCardLogList.title" page="/jfiCreditCardLogs.html"/>
+        <!--JfiCreditCardLog-END-->
+        <!--FiBcoinJournal-START-->
+        <Menu name="FiBcoinJournalMenu" title="fiBcoinJournalList.title" page="/fiBcoinJournals.html"/>
+        <!--FiBcoinJournal-END-->
+        <!--FiBcoinBalance-START-->
+        <Menu name="FiBcoinBalanceMenu" title="fiBcoinBalanceList.title" page="/fiBcoinBalances.html"/>
+        <!--FiBcoinBalance-END-->
+        <!--FiCcoinJournal-START-->
+        <Menu name="FiCcoinJournalMenu" title="fiCcoinJournalList.title" page="/fiCcoinJournals.html"/>
+        <!--FiCcoinJournal-END-->
+        <!--FiCcoinBalance-START-->
+        <Menu name="FiCcoinBalanceMenu" title="fiCcoinBalanceList.title" page="/fiCcoinBalances.html"/>
+        <!--FiCcoinBalance-END-->
+        <!--PdShipStrategy-START-->
+        <Menu name="PdShipStrategyMenu" title="pdShipStrategyList.title" page="/pdShipStrategys.html"/>
+        <!--PdShipStrategy-END-->
+        <!--PdShipStrategyDetail-START-->
+        <Menu name="PdShipStrategyDetailMenu" title="pdShipStrategyDetailList.title" page="/pdShipStrategyDetails.html"/>
+        <!--PdShipStrategyDetail-END-->
+        <!--FiBankbookBalance-START-->
+        <Menu name="FiBankbookBalanceMenu" title="fiBankbookBalanceList.title" page="/fiBankbookBalances.html"/>
+        <!--FiBankbookBalance-END-->
+        <!--FiBankbookJournal-START-->
+        <Menu name="FiBankbookJournalMenu" title="fiBankbookJournalList.title" page="/fiBankbookJournals.html"/>
+        <!--FiBankbookJournal-END-->
+        <!--FiBankbookTemp-START-->
+        <Menu name="FiBankbookTempMenu" title="fiBankbookTempList.title" page="/fiBankbookTemps.html"/>
+        <!--FiBankbookTemp-END-->
+        <!--JbdTravelPoint2012-START-->
+        <Menu name="JbdTravelPoint2012Menu" title="jbdTravelPoint2012List.title" page="/jbdTravelPoint2012s.html"/>
+        <!--JbdTravelPoint2012-END-->
+        <!--JbdTravelPointDetail2012-START-->
+        <Menu name="JbdTravelPointDetail2012Menu" title="jbdTravelPointDetail2012List.title" page="/jbdTravelPointDetail2012s.html"/>
+        <!--JbdTravelPointDetail2012-END-->
+        <!--JbdTravelPointLog2012-START-->
+        <Menu name="JbdTravelPointLog2012Menu" title="jbdTravelPointLog2012List.title" page="/jbdTravelPointLog2012s.html"/>
+        <!--JbdTravelPointLog2012-END-->
+        <!--JfiTenpayLog-START-->
+        <Menu name="JfiTenpayLogMenu" title="jfiTenpayLogList.title" page="/jfiTenpayLogs.html"/>
+        <!--JfiTenpayLog-END-->
+        <!--PdShipFee-START-->
+        <Menu name="PdShipFeeMenu" title="pdShipFeeList.title" page="/pdShipFees.html"/>
+        <!--PdShipFee-END-->
+        <!--Jfi99billmsLog-START-->
+        <Menu name="Jfi99billmsLogMenu" title="jfi99billmsLogList.title" page="/jfi99billmsLogs.html"/>
+        <!--Jfi99billmsLog-END-->
+        <!--PdWarehouseFrozenBatch-START-->
+        <Menu name="PdWarehouseFrozenBatchMenu" title="pdWarehouseFrozenBatchList.title" page="/pdWarehouseFrozenBatchs.html"/>
+        <!--PdWarehouseFrozenBatch-END-->
+        <!--PdWarehouseFrozenDetail-START-->
+        <Menu name="PdWarehouseFrozenDetailMenu" title="pdWarehouseFrozenDetailList.title" page="/pdWarehouseFrozenDetails.html"/>
+        <!--PdWarehouseFrozenDetail-END-->
+        <!--AmNew-START-->
+        <Menu name="AmNewMenu" title="amNewList.title" page="/amNews.html"/>
+        <!--AmNew-END-->
+        <!--JbdGradeNote-START-->
+        <Menu name="JbdGradeNoteMenu" title="jbdGradeNoteList.title" page="/jbdGradeNotes.html"/>
+        <!--JbdGradeNote-END-->
+        <!--JfiPosImport-START-->
+        <Menu name="JfiPosImportMenu" title="jfiPosImportList.title" page="/jfiPosImports.html"/>
+        <!--JfiPosImport-END-->
+        <!--JbdTravelPoint2013-START-->
+        <Menu name="JbdTravelPoint2013Menu" title="jbdTravelPoint2013List.title" page="/jbdTravelPoint2013s.html"/>
+        <!--JbdTravelPoint2013-END-->
+        <!--JbdTravelPointLog2013-START-->
+        <Menu name="JbdTravelPointLog2013Menu" title="jbdTravelPointLog2013List.title" page="/jbdTravelPointLog2013s.html"/>
+        <!--JbdTravelPointLog2013-END-->
+        <!--JbdTravelPointDetail2013-START-->
+        <Menu name="JbdTravelPointDetail2013Menu" title="jbdTravelPointDetail2013List.title" page="/jbdTravelPointDetail2013s.html"/>
+        <!--JbdTravelPointDetail2013-END-->
+        <!--JbdSpecialStar-START-->
+        <Menu name="JbdSpecialStarMenu" title="jbdSpecialStarList.title" page="/jbdSpecialStars.html"/>
+        <!--JbdSpecialStar-END-->
+        <!--JsysResource-START-->
+        <Menu name="JsysResourceMenu" title="jsysResourceList.title" page="/jsysResources.html"/>
+        <!--JsysResource-END-->
+        
+        
+        <!--JsysResRole-START-->
+        <Menu name="JsysResRoleMenu" title="jsysResRoleList.title" page="/jsysResRoles.html"/>
+        <!--JsysResRole-END-->
+        <!--FiTransferAccount-START-->
+        <Menu name="FiTransferAccountMenu" title="fiTransferAccountList.title" page="/fiTransferAccounts.html"/>
+        <!--FiTransferAccount-END-->
+
+		 
+        
+        <!--JmiMemberTeam-START-->
+        <Menu name="JmiMemberTeamMenu" title="jmiMemberTeamList.title" page="/jmiMemberTeams.html"/>
+        <!--JmiMemberTeam-END-->
+        <!--JpmProductSaleNew-START-->
+        <Menu name="JpmProductSaleNewMenu" title="jpmProductSaleNewList.title" page="/jpmProductSaleNews.html"/>
+        <!--JpmProductSaleNew-END-->
+        <!--JpmProductSaleImage-START-->
+        <Menu name="JpmProductSaleImageMenu" title="jpmProductSaleImageList.title" page="/jpmProductSaleImages.html"/>
+        <!--JpmProductSaleImage-END-->
+        <!--JpmProductSaleTeamType-START-->
+        <Menu name="JpmProductSaleTeamTypeMenu" title="jpmProductSaleTeamTypeList.title" page="/jpmProductSaleTeamTypes.html"/>
+        <!--JpmProductSaleTeamType-END-->
+        <!--JpmProductSaleRelated-START-->
+        <Menu name="JpmProductSaleRelatedMenu" title="jpmProductSaleRelatedList.title" page="/jpmProductSaleRelateds.html"/>
+        <!--JpmProductSaleRelated-END-->
+        <!--JpmSalePromoter-START-->
+        <Menu name="JpmSalePromoterMenu" title="jpmSalePromoterList.title" page="/jpmSalePromoters.html"/>
+        <!--JpmSalePromoter-END-->
+        <!--JpmSalepromoterPro-START-->
+        <Menu name="JpmSalepromoterProMenu" title="jpmSalepromoterProList.title" page="/jpmSalepromoterPros.html"/>
+        <!--JpmSalepromoterPro-END-->
+        <!--JalLibraryPlate-START-->
+        <Menu name="JalLibraryPlateMenu" title="jalLibraryPlateList.title" page="/jalLibraryPlates.html"/>
+        <!--JalLibraryPlate-END-->
+        <!--JalLibraryColumn-START-->
+        <Menu name="JalLibraryColumnMenu" title="jalLibraryColumnList.title" page="/jalLibraryColumns.html"/>
+        <!--JalLibraryColumn-END-->
+        <!--JalLibraryFile-START-->
+        <Menu name="JalLibraryFileMenu" title="jalLibraryFileList.title" page="/jalLibraryFiles.html"/>
+        <!--JalLibraryFile-END-->
+        
+        <!--JpmProductWineTemplate-START-->
+        <Menu name="JpmProductWineTemplateMenu" title="jpmProductWineTemplateList.title" page="/jpmProductWineTemplates.html"/>
+        <!--JpmProductWineTemplate-END-->
+        <!--JpmProductWineTemplateSub-START-->
+        <Menu name="JpmProductWineTemplateSubMenu" title="jpmProductWineTemplateSubList.title" page="/jpmProductWineTemplateSubs.html"/>
+        <!--JpmProductWineTemplateSub-END-->
+        <!--JpmWineTemplatePicture-START-->
+        <Menu name="JpmWineTemplatePictureMenu" title="jpmWineTemplatePictureList.title" page="/jpmWineTemplatePictures.html"/>
+        <!--JpmWineTemplatePicture-END-->
+        
+        
+        
+        
+        
+        <!--FoundationOrder-START-->
+        <Menu name="FoundationOrderMenu" title="foundationOrderList.title" page="/foundationOrders.html"/>
+        <!--FoundationOrder-END-->
+        <!--FoundationItem-START-->
+        <Menu name="FoundationItemMenu" title="foundationItemList.title" page="/foundationItems.html"/>
+        <!--FoundationItem-END-->
+        <!--JpmWineOrderInterface-START-->
+        <Menu name="JpmWineOrderInterfaceMenu" title="jpmWineOrderInterfaceList.title" page="/jpmWineOrderInterfaces.html"/>
+        <!--JpmWineOrderInterface-END-->
+        
+        <!--JpmWineSettingInf-START-->
+        <Menu name="JpmWineSettingInfMenu" title="jpmWineSettingInfList.title" page="/jpmWineSettingInfs.html"/>
+        <!--JpmWineSettingInf-END-->
+
+        
+        <!--JmiZcwMember-START-->
+        <Menu name="JmiZcwMemberMenu" title="jmiZcwMemberList.title" page="/jmiZcwMembers.html"/>
+        <!--JmiZcwMember-END-->
+        <!--FiSecurityDeposit-START-->
+        <Menu name="FiSecurityDepositMenu" title="fiSecurityDepositList.title" page="/fiSecurityDeposits.html"/>
+        <!--FiSecurityDeposit-END-->
+        <!--FiSecurityDepositJournal-START-->
+        <Menu name="FiSecurityDepositJournalMenu" title="fiSecurityDepositJournalList.title" page="/fiSecurityDepositJournals.html"/>
+        <!--FiSecurityDepositJournal-END-->
+        <!--JpmConfigDetailed-START-->
+        <Menu name="JpmConfigDetailedMenu" title="jpmConfigDetailedList.title" page="/jpmConfigDetaileds.html"/>
+        <!--JpmConfigDetailed-END-->
+        <!--JpmMemberConfig-START-->
+        <Menu name="JpmMemberConfigMenu" title="jpmMemberConfigList.title" page="/jpmMemberConfigs.html"/>
+        <!--JpmMemberConfig-END-->
+        <!--JpmConfigSpecDetailed-START-->
+        <Menu name="JpmConfigSpecDetailedMenu" title="jpmConfigSpecDetailedList.title" page="/jpmConfigSpecDetaileds.html"/>
+        <!--JpmConfigSpecDetailed-END-->
+        <!--JpmWineMemberOrder-START-->
+        <Menu name="JpmWineMemberOrderMenu" title="jpmWineMemberOrderList.title" page="/jpmWineMemberOrders.html"/>
+        <!--JpmWineMemberOrder-END-->
+        <!--JpmSendConsignment-START-->
+        <Menu name="JpmSendConsignmentMenu" title="jpmSendConsignmentList.title" page="/jpmSendConsignments.html"/>
+        <!--JpmSendConsignment-END-->
+        <!--JpoWineMemberOrder-START-->
+        <Menu name="JpoWineMemberOrderMenu" title="jpoWineMemberOrders.title" page="/jpoWineMemberOrders.html"/>
+        <!--JpoWineMemberOrder-END-->
+        
+        <!--FiCoinConfig-START-->
+        <Menu name="FiCoinConfigMenu" title="fiCoinConfigList.title" page="/fiCoinConfigs.html"/>
+        <!--FiCoinConfig-END-->
+        
+        <!--FiBillAccountRelation-START-->
+        <Menu name="FiBillAccountRelationMenu" title="fiBillAccountRelationList.title" page="/fiBillAccountRelations.html"/>
+        <!--FiBillAccountRelation-END-->
+        
+        
+        
+        <!--FiGetbillaccountLog-START-->
+        <Menu name="FiGetbillaccountLogMenu" title="fiGetbillaccountLogList.title" page="/fiGetbillaccountLogs.html"/>
+        <!--FiGetbillaccountLog-END-->
+        
+        
+        
+        
+        <!--FiCommonAddr-START-->
+        <Menu name="FiCommonAddrMenu" title="fiCommonAddrList.title" page="/fiCommonAddrs.html"/>
+        <!--FiCommonAddr-END-->
+        <!--FiFundbookBalance-START-->
+        <Menu name="FiFundbookBalanceMenu" title="fiFundbookBalanceList.title" page="/fiFundbookBalances.html"/>
+        <!--FiFundbookBalance-END-->
+        <!--FiFundbookJournal-START-->
+        <Menu name="FiFundbookJournalMenu" title="fiFundbookJournalList.title" page="/fiFundbookJournals.html"/>
+        <!--FiFundbookJournal-END-->
+        <!--FiFundbookTemp-START-->
+        <Menu name="FiFundbookTempMenu" title="fiFundbookTempList.title" page="/fiFundbookTemps.html"/>
+        <!--FiFundbookTemp-END-->
+        <!--FiTransferFundbook-START-->
+        <Menu name="FiTransferFundbookMenu" title="fiTransferFundbookList.title" page="/fiTransferFundbooks.html"/>
+        <!--FiTransferFundbook-END-->
+        <!--InwDepartment-START-->
+        <Menu name="InwDepartmentMenu" title="inwDepartmentList.title" page="/inwDepartments.html"/>
+        <!--InwDepartment-END-->
+        <!--InwDepartCompetence-START-->
+        <Menu name="InwDepartCompetenceMenu" title="inwDepartCompetenceList.title" page="/inwDepartCompetences.html"/>
+        <!--InwDepartCompetence-END-->
+        <!--InwIntegrationTotal-START-->
+        <Menu name="InwIntegrationTotalMenu" title="inwIntegrationTotalList.title" page="/inwIntegrationTotals.html"/>
+        <!--InwIntegrationTotal-END-->
+        <!--FiBillAccount-START-->
+        <Menu name="FiBillAccountMenu" title="fiBillAccountList.title" page="/fiBillAccounts.html"/>
+        <!--FiBillAccount-END-->
+        <!--FiBillAccountWarning-START-->
+        <Menu name="FiBillAccountWarningMenu" title="fiBillAccountWarningList.title" page="/fiBillAccountWarnings.html"/>
+        <!--FiBillAccountWarning-END-->
+        <!--FiMovieOrder-START-->
+        <Menu name="FiMovieOrderMenu" title="fiMovieOrderList.title" page="/fiMovieOrders.html"/>
+        <!--FiMovieOrder-END-->
+        
+        <!--JpoProductNumLimit-START-->
+        <Menu name="JpoProductNumLimitMenu" title="jpoProductNumLimitList.title" page="/jpoProductNumLimits.html"/>
+        <!--JpoProductNumLimit-END-->
+        
+        <!--JocsInterfaceRetransmission-START-->
+        <Menu name="JocsInterfaceRetransmissionMenu" title="jocsInterfaceRetransmissionList.title" page="/jocsInterfaceRetransmissions.html"/>
+        <!--JocsInterfaceRetransmission-END-->
+        <!--JfiPayLog-START-->
+        <Menu name="JfiPayLogMenu" title="jfiPayLogList.title" page="/jfiPayLogs.html"/>
+        <!--JfiPayLog-END-->
+        <!--FiAvailableInvoice-START-->
+        <Menu name="FiAvailableInvoiceMenu" title="fiAvailableInvoiceList.title" page="/fiAvailableInvoices.html"/>
+        <!--FiAvailableInvoice-END-->
+        
+        <!--FiInvoiceBalance-START-->
+        <Menu name="FiInvoiceBalanceMenu" title="fiInvoiceBalanceList.title" page="/fiInvoiceBalances.html"/>
+        <!--FiInvoiceBalance-END-->
+        <!--FiInvoiceChange-START-->
+        <Menu name="FiInvoiceChangeMenu" title="fiInvoiceChangeList.title" page="/fiInvoiceChanges.html"/>
+        <!--FiInvoiceChange-END-->
+        <!--JmiMemberLog-START-->
+        <Menu name="JmiMemberLogMenu" title="jmiMemberLogList.title" page="/jmiMemberLogs.html"/>
+        <!--JmiMemberLog-END-->
+        <!--JmiPrizeTourism-START-->
+        <Menu name="JmiPrizeTourismMenu" title="jmiPrizeTourismList.title" page="/jmiPrizeTourisms.html"/>
+        <!--JmiPrizeTourism-END-->
+        <!--JbdTravelPointAll-START-->
+        <Menu name="JbdTravelPointAllMenu" title="jbdTravelPointAllList.title" page="/jbdTravelPointAlls.html"/>
+        <!--JbdTravelPointAll-END-->
+        <!--JbdTravelPointLogAll-START-->
+        <Menu name="JbdTravelPointLogAllMenu" title="jbdTravelPointLogAllList.title" page="/jbdTravelPointLogAlls.html"/>
+        <!--JbdTravelPointLogAll-END-->
+        <!--JfiBusinessNum-START-->
+        <Menu name="JfiBusinessNumMenu" title="jfiBusinessNumList.title" page="/jfiBusinessNums.html"/>
+        <!--JfiBusinessNum-END-->
+        <!--JfiQuota-START-->
+        <Menu name="JfiQuotaMenu" title="jfiQuotaList.title" page="/jfiQuotas.html"/>
+        <!--JfiQuota-END-->
+        <!--JfiAmountDetail-START-->
+        <Menu name="JfiAmountDetailMenu" title="jfiAmountDetailList.title" page="/jfiAmountDetails.html"/>
+        <!--JfiAmountDetail-END-->
+        <!--JpmCombinationRelated-START-->
+        <Menu name="JpmCombinationRelatedMenu" title="jpmCombinationRelatedList.title" page="/jpmCombinationRelateds.html"/>
+        <!--JpmCombinationRelated-END-->
+          <!--PdNotChangeProduct-START-->
+        <Menu name="PdNotChangeProductMenu" title="pdNotChangeProductList.title" page="/pdNotChangeProducts.html"/>
+        <!--PdNotChangeProduct-END-->
+        <!--JmiAssure-START-->
+        <Menu name="JmiAssureMenu" title="jmiAssureList.title" page="/jmiAssures.html"/>
+        <!--JmiAssure-END-->
+        <!--JpoMemberNyc-START-->
+        <Menu name="JpoMemberNycMenu" title="jpoMemberNycList.title" page="/jpoMemberNycs.html"/>
+        <!--JpoMemberNyc-END-->
+        <!--JpoMemberNycLog-START-->
+        <Menu name="JpoMemberNycLogMenu" title="jpoMemberNycLogList.title" page="/jpoMemberNycLogs.html"/>
+        <!--JpoMemberNycLog-END-->
+        <Menu name="JpmCouponInfoMenu" title="jpmCouponInfoList.title" page="/jpmCouponInfos.html"/>
+        <!--JpmCouponInfo-END-->
+        <!--JpmCouponRelationship-START-->
+        <Menu name="JpmCouponRelationshipMenu" title="jpmCouponRelationshipList.title" page="/jpmCouponRelationships.html"/>
+        <!--JpmCouponRelationship-END-->
+        <!--JpoUserCoupon-START-->
+        <Menu name="JpoUserCouponMenu" title="jpoUserCouponList.title" page="/jpoUserCoupons.html"/>
+        <!--JpoUserCoupon-END-->
+        <!--JpoCouponRelationship-START-->
+        <Menu name="JpoCouponRelationshipMenu" title="jpoCouponRelationshipList.title" page="/jpoCouponRelationships.html"/>
+        <!--JpoCouponRelationship-END-->
+        <!--JpoMemberNycQualify-START-->
+        <Menu name="JpoMemberNycQualifyMenu" title="jpoMemberNycQualifyList.title" page="/jpoMemberNycQualifys.html"/>
+        <!--JpoMemberNycQualify-END-->
+    </Menus>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</MenuConfig>

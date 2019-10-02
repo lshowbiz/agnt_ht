@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.JfiSunJmiMember"
+            table="JFI_SUN_JMI_MEMBER"
+    >
+
+    <id
+        name="userCode"
+            column="USER_CODE"
+                type="java.lang.String"
+    >
+
+    </id>
+
+        <property
+            name="linkNo"
+                    column="LINK_NO"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="recommendNo"
+                    column="RECOMMEND_NO"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="cardType"
+                    column="CARD_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="firstName"
+                    column="FIRST_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="lastName"
+                    column="LAST_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="petName"
+                    column="PET_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="sex"
+                    column="SEX"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="birthday"
+                    column="BIRTHDAY"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="email"
+                    column="EMAIL"
+                length="40"
+        >
+
+        </property>
+
+        <property
+            name="papertype"
+                    column="PAPERTYPE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="papernumber"
+                    column="PAPERNUMBER"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="bank"
+                    column="BANK"
+                length="80"
+        >
+
+        </property>
+
+        <property
+            name="bankaddress"
+                    column="BANKADDRESS"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="bankcard"
+                    column="BANKCARD"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="bankbook"
+                    column="BANKBOOK"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="phone"
+                    column="PHONE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="faxtele"
+                    column="FAXTELE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="mobiletele"
+                    column="MOBILETELE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="officetele"
+                    column="OFFICETELE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="countryCode"
+                    column="COUNTRY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="province"
+                    column="PROVINCE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="city"
+                    column="CITY"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="address"
+                    column="ADDRESS"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="postalcode"
+                    column="POSTALCODE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="exitDate"
+                    column="EXIT_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+            name="isstore"
+                    column="ISSTORE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="checkNo"
+                    column="CHECK_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="checkDate"
+                    column="CHECK_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="createNo"
+                    column="CREATE_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="deadlineDate"
+                    column="DEADLINE_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="pbNo"
+                    column="PB_NO"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="pbNo1"
+                    column="PB_NO1"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="pbNo2"
+                    column="PB_NO2"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="active"
+                    column="ACTIVE"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="miUserName"
+                    column="MI_USER_NAME"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="spouseName"
+                    column="SPOUSE_NAME"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="spouseIdno"
+                    column="SPOUSE_IDNO"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="bankCity"
+                    column="BANK_CITY"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="bankProvince"
+                    column="BANK_PROVINCE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="district"
+                    column="DISTRICT"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="linkNum"
+                    column="LINK_NUM"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="pendingLinkNum"
+                    column="PENDING_LINK_NUM"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="recommendNum"
+                    column="RECOMMEND_NUM"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="pendingRecommendNum"
+                    column="PENDING_RECOMMEND_NUM"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="activeTime"
+                    column="ACTIVE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="memberType"
+                    column="MEMBER_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="oriCard"
+                    column="ORI_CARD"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="flag"
+                    column="FLAG"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="oriPv"
+                    column="ORI_PV"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="changeStatus"
+                    column="CHANGE_STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="subStoreStatus"
+                    column="SUB_STORE_STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="subRecommendStore"
+                    column="SUB_RECOMMEND_STORE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="subStoreCheckDate"
+                    column="SUB_STORE_CHECK_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="identityType"
+                    column="IDENTITY_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="townAddr"
+                    column="TOWN_ADDR"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="commPostalcode"
+                    column="COMM_POSTALCODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="commProvince"
+                    column="COMM_PROVINCE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="commCity"
+                    column="COMM_CITY"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="commAddr"
+                    column="COMM_ADDR"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="villageAddr"
+                    column="VILLAGE_ADDR"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="companyName"
+                    column="COMPANY_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="personCharge"
+                    column="PERSON_CHARGE"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="companyAddr"
+                    column="COMPANY_ADDR"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="uniteNumber"
+                    column="UNITE_NUMBER"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="startWeek"
+                    column="START_WEEK"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="validWeek"
+                    column="VALID_WEEK"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="freezeStatus"
+                    column="FREEZE_STATUS"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="beforeFreezeStatus"
+                    column="BEFORE_FREEZE_STATUS"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="commDistrict"
+                    column="COMM_DISTRICT"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="town"
+                    column="TOWN"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="isDiscount"
+                    column="IS_DISCOUNT"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="isSubStore"
+                    column="IS_SUB_STORE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="activeStatus"
+                    column="ACTIVE_STATUS"
+                length="1"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

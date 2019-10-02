@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.FiTransferFundbook"
+            table="FI_TRANSFER_FUNDBOOK"
+    >
+
+    <id
+        name="taId"
+            column="TA_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_FI]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="transferUserCode"
+                    column="TRANSFER_USER_CODE"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="destinationUserCode"
+                    column="DESTINATION_USER_CODE"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="money"
+                    column="MONEY"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="notes"
+                    column="NOTES"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="createrCode"
+                    column="CREATER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="createrName"
+                    column="CREATER_NAME"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="checkerCode"
+                    column="CHECKER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="checkerName"
+                    column="CHECKER_NAME"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="checkeTime"
+                    column="CHECKE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="dealDate"
+                    column="DEAL_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="bankbookType"
+                    column="BANKBOOK_TYPE"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="transferType"
+                    column="TRANSFER_TYPE"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

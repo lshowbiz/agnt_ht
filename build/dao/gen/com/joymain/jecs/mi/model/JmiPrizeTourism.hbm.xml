@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.mi.model.JmiPrizeTourism"
+            table="JMI_PRIZE_TOURISM"
+    >
+
+    <id
+        name="prizeTouismId"
+            column="PRIZETOUISMID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_MI]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="cardname"
+                    column="CARDNAME"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="cardid"
+                    column="CARDID"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="phone"
+                    column="PHONE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="province"
+                    column="PROVINCE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="city"
+                    column="CITY"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="area"
+                    column="AREA"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="address"
+                    column="ADDRESS"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="beforeyearpoints"
+                    column="BEFOREYEARPOINTS"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="height"
+                    column="HEIGHT"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="weight"
+                    column="WEIGHT"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="clothessize"
+                    column="CLOTHESSIZE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="avoidcertainfood"
+                    column="AVOIDCERTAINFOOD"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="acceptanceaddress"
+                    column="ACCEPTANCEADDRESS"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="passStar"
+                    column="PASS_STAR"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="peertype"
+                    column="PEERTYPE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="peersex"
+                    column="PEERSEX"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="peercardname"
+                    column="PEERCARDNAME"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="peercardid"
+                    column="PEERCARDID"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="peerphone"
+                    column="PEERPHONE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="peerprovince"
+                    column="PEERPROVINCE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="peercity"
+                    column="PEERCITY"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="peerarea"
+                    column="PEERAREA"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="peeraddress"
+                    column="PEERADDRESS"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="peerheight"
+                    column="PEERHEIGHT"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="peerweight"
+                    column="PEERWEIGHT"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="peerclothessize"
+                    column="PEERCLOTHESSIZE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="peeravoidcertainfood"
+                    column="PEERAVOIDCERTAINFOOD"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="isPeer"
+                    column="ISPEER"
+                length="2"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

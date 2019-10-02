@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmWineOrderInterface"
+            table="JPM_WINE_ORDER_INTERFACE"
+    >
+
+    <id
+        name="moId"
+            column="MO_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="memberOrderNo"
+                    column="MEMBER_ORDER_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    type="java.lang.Integer"
+                    column="STATUS"
+        >
+
+        </property>
+
+        <property
+            name="resultCode"
+                    type="java.lang.Integer"
+                    column="RESULT_CODE"
+        >
+
+        </property>
+
+        <property
+            name="resultDescription"
+                    column="RESULT_DESCRIPTION"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="billCode"
+                    column="BILL_CODE"
+                length="40"
+        >
+
+        </property>
+
+        <property
+            name="dbillDate"
+                    column="DBILL_DATE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="coperatorid"
+                    column="COPERATOR_ID"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="membername"
+                    column="MEMBER_NAME"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="memberphone"
+                    column="MEMBER_PHONE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="memberid"
+                    column="MEMBER_ID"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="cusprovince"
+                    column="CUSPROVINCE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="cuscity"
+                    column="CUSCITY"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="areaclCode"
+                    column="AREACL_CODE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="memberaddress"
+                    column="MEMBER_ADDRESS"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="postalcode"
+                    column="POSTAL_CODE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="membersex"
+                    column="MEMBER_SEX"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="receiverAreaclcode"
+                    column="RECEIVER_AREACL_CODE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="receiverCusCity"
+                    column="RECEIVER_CUS_CITY"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="receiverCusProvince"
+                    column="RECEIVER_CUS_PROVINCE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="receiverPostalCode"
+                    column="RECEIVER_POSTAL_CODE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="receiverAddress"
+                    column="RECEIVER_ADDRESS"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="receiverCode"
+                    column="RECEIVER_CODE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="receiverId"
+                    column="RECEIVER_ID"
+                length="40"
+        >
+
+        </property>
+
+        <property
+            name="receiverName"
+                    column="RECEIVER_NAME"
+                length="40"
+        >
+
+        </property>
+
+        <property
+            name="receiverPhone"
+                    column="RECEIVER_PHONE"
+                length="40"
+        >
+
+        </property>
+
+        <property
+            name="receiverSex"
+                    column="RECEIVER_SEX"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="10"
+        >
+
+        </property>
+
+        <set
+            name="jpmWineOrderListInterfaceSet"
+            lazy="true"
+            cascade="all"
+        >
+
+            <key
+                column="MO_ID"
+            >
+
+            </key>          
+
+            <one-to-many
+                class="com.joymain.jecs.pm.model.JpmWineOrderListInterface"
+            />
+
+        </set>
+
+    </class>    
+
+</hibernate-mapping>
+

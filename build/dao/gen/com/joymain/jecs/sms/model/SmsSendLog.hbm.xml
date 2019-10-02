@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sms.model.SmsSendLog"
+            table="SMS_SEND_LOG"
+    >
+
+    <id
+        name="sslId"
+            column="SSL_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PO]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="mobile"
+                    column="MOBILE"
+                length="4000"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="sendMsg"
+                    column="SEND_MSG"
+                length="4000"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="sendNum"
+                    column="SEND_NUM"
+                length="4000"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

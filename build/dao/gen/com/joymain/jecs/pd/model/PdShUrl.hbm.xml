@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pd.model.PdShUrl"
+            table="PD_SH_URL"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PD]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="valueCode"
+                    column="VALUE_CODE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="valueTitle"
+                    column="VALUE_TITLE"
+                length="150"
+        >
+
+        </property>
+
+        <property
+            name="exCompanyCode"
+                    column="EX_COMPANY_CODE"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="createUserCode"
+                    column="CREATE_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="shUrl"
+                    column="SH_URL"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="other"
+                    column="OTHER"
+                length="100"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

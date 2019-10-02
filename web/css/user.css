@@ -1,0 +1,385 @@
+#wrap {
+    background: none repeat scroll 0 0 #FFFFFF;
+    margin: 0 auto;
+    width: 90%;
+}
+
+
+a, a:link, a:visited, a:active {
+    color: #499DE6;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+.newFont {
+    font-family: "����",Tahoma,Helvetica,Arial,sans-serif;
+}
+.clear {
+    clear: both;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+}
+#body {
+    margin: 10px 0;
+}
+
+.tab {
+    margin-top: 10px;
+}
+.tabContainer {
+  /**  background: url("../images/tab/tab.gif") repeat-x scroll center bottom transparent;**/
+    overflow: hidden;
+	
+}
+.tabContainer li {
+   /**  background: url("../images/tab/tabOff_right.gif") no-repeat scroll right top transparent;**/
+   background:#fff5e9;
+    float: left;
+    margin-right: 5px;
+}
+.tabContainer li a {
+   /**  background: url("../images/tab/tabOff_left.gif") no-repeat scroll left top transparent;**/
+    display: block !important;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 15px;
+}
+#body .tabContainer li a {
+    color: #696969;
+    font-size: 14px;
+
+}
+.tabContainer li.currentBtn {
+    background: url("../images/tab/tabOn_right.gif") no-repeat scroll right top transparent;
+}
+#body .tabContainer li.currentBtn a {
+    background: url("../images/tab/tabOn_left.gif") no-repeat scroll left top transparent;
+    color: #434142;
+    height: 28px;
+}
+#body .tabContainer li a:hover {
+    color: #FF6600;
+    text-decoration: none;
+}
+#body .tabContainer li.currentBtn a:hover {
+    color: #434142;
+}
+.tab a.backTop {
+    background: url("https://secure.newegg.com.cn/WebUI/WebResources/2009/Default/Nest/icon/back.gif") no-repeat scroll left 3px transparent;
+    float: right;
+    font-size: 12px;
+    font-weight: normal;
+    margin: -23px 15px 0 0;
+    padding-left: 13px;
+}
+.tab .tabCot {
+   
+   margin-top:10px;
+   background:#efefef;
+}
+.tab .tabCotB {
+    border-left: 1px solid #D6D6D6;
+    border-right: 1px solid #D6D6D6;
+}
+.tabCot ul {
+    line-height: 20px;
+}
+.tabCot em {
+    font-style: normal;
+}
+.tabCot .alignCenter {
+    text-align: center;
+}
+.tabCot .alignRight {
+    text-align: right;
+}
+.tabCot table {
+    border: 1px solid #D6D6D6;
+    width: 100%;
+}
+.tabCot th, .tabCot td {
+
+    line-height: 27px;
+    padding-left: 15px;
+    padding-right: 7px;
+}
+
+.tabCot th {
+    background: none repeat scroll 0 0 #FFFEE3;
+    border-bottom: 1px solid #DDDDDD;
+    color: #7C4600;
+    font-size: 14px;
+    text-align: left;
+    width: 13%;
+}
+.tabCot td[scope] {
+    color: #484848;
+    font-weight: bolder;
+}
+.tabCot .headline {
+    padding-right: 5px;
+    width: 18%;
+}
+.tabCot .detailIntro {
+    width: 82%;
+}
+.tabCot .statement {
+    color: #FF0000;
+}
+.tabCot .clause {
+    color: #5EA420;
+}
+
+
+
+
+.tabCotF ul {
+    line-height: 20px;
+}
+.tabCotF em {
+    font-style: normal;
+}
+.tabCotF .alignCenter {
+    text-align: center;
+}
+.tabCotF .alignRight {
+    text-align: right;
+}
+.tabCotF table {
+    border: 1px solid #D6D6D6;
+    width: 100%;
+}
+.tabCotF th, .tabCotF td {
+    border: 1px solid #DBDBDB;
+    line-height: 27px;
+    padding-left: 15px;
+    padding-right: 7px;
+}
+
+.tabCotF th {
+    background: none repeat scroll 0 0 #FFFEE3;
+    border-bottom: 1px solid #DDDDDD;
+    color: #7C4600;
+    font-size: 14px;
+    text-align: left;
+    width: 13%;
+}
+.tabCotF td[scope] {
+    color: #484848;
+    font-weight: bolder;
+}
+.tabCotF .headline {
+    padding-right: 5px;
+    width: 18%;
+}
+.tabCotF .detailIntro {
+    width: 82%;
+}
+.tabCotF .statement {
+    color: #FF0000;
+}
+.tabCotF .clause {
+    color: #5EA420;
+}
+
+
+
+
+#main .modBody li h4 a {
+    color: #484848;
+}
+#main .modBody li h4 a:hover {
+    color: #1E4C9A;
+}
+.description {
+    color: #FF6600;
+    line-height: 16px;
+}
+#sideBar .list3 h4 a {
+    color: #484848;
+}
+#sideBar .list3 h4 a:hover {
+    color: #1E4C9A;
+}
+
+
+span.vip {
+    background: url("../images/tab/vipcard1.gif") no-repeat scroll left top transparent;
+    color: #464646;
+    float: left;
+    height: 29px;
+    padding-left: 18px;
+    padding-top: 3px;
+    text-decoration: none;
+    width: 94px;
+}
+span.vip:hover {
+    background: url("../images/tab/vipcard2.gif") no-repeat scroll left top transparent;
+    color: #464646;
+    float: left;
+    height: 29px;
+    padding-left: 18px;
+    padding-top: 3px;
+    text-decoration: none;
+    width: 94px;
+}
+
+
+#body  .even {  background-color: #efefef;
+    font-size: 9pt;
+    vertical-align: top;
+    }
+#body  .add{
+     background-color: #FFFFFF;
+    font-size: 9pt;
+    vertical-align: top;
+    }
+    
+    
+    
+    
+    
+<----------------------------------------------------------------------->
+#wrapF {
+    background: none repeat scroll 0 0 #FFFFFF;
+    margin: 0 auto;
+    width: 980px;
+}
+
+
+.tabF {
+    margin-top: 10px;
+}
+.tabContainerF {
+    background: url("../images/tab/tab.gif") repeat-x scroll center bottom transparent;
+    overflow: hidden;
+    width: 100%;
+}
+.tabContainerF li {
+    background: url("../images/tab/tabOff_right.gif") no-repeat scroll right top transparent;
+    float: left;
+    margin-right: 2px;
+}
+.tabContainerF li a {
+    background: url("../images/tab/tabOff_left.gif") no-repeat scroll left top transparent;
+    display: block !important;
+    height: 27px;
+    line-height: 27px;
+    padding: 0 15px;
+}
+#body .tabContainerF li a {
+    color: #696969;
+    font-size: 14px;
+    font-weight: bolder;
+}
+.tabContainerF li.currentBtnF {
+    background: url("../images/tab/tabOn_right.gif") no-repeat scroll right top transparent;
+}
+#body .tabContainerF li.currentBtnF a {
+    background: url("../images/tab/tabOn_left.gif") no-repeat scroll left top transparent;
+    color: #434142;
+    height: 28px;
+}
+#body .tabContainerF li a:hover {
+    color: #FF6600;
+    text-decoration: none;
+}
+#body .tabContainerF li.currentBtnF a:hover {
+    color: #434142;
+}
+
+.tabF .tabCotF {
+    border-left: 1px solid #D6D6D6;
+    border-right: 1px solid #D6D6D6;
+   
+}
+
+.tabCotF ul {
+    line-height: 20px;
+}
+.tabCotF em {
+    font-style: normal;
+}
+
+.tabCotF table {
+    border: 1px solid #D6D6D6;
+    width: 100%;
+}
+.tabCotF th, .tabCotF td {
+    border: 1px solid #DBDBDB;
+    line-height: 27px;
+    padding-left: 15px;
+    padding-right: 7px;
+}
+
+.tabCotF th {
+    background: none repeat scroll 0 0 #FFFEE3;
+    border-bottom: 1px solid #DDDDDD;
+    color: #7C4600;
+    font-size: 14px;
+    text-align: left;
+    width: 13%;
+}
+.tabCotF td[scope] {
+    color: #484848;
+    font-weight: bolder;
+}
+
+
+
+
+
+.tabCotF ul {
+    line-height: 20px;
+}
+.tabCotF em {
+    font-style: normal;
+}
+.tabCotF .alignCenter {
+    text-align: center;
+}
+.tabCotF .alignRight {
+    text-align: right;
+}
+.tabCotF table {
+    border: 1px solid #D6D6D6;
+    width: 100%;
+}
+.tabCotF th, .tabCotF td {
+    border: 1px solid #DBDBDB;
+    line-height: 27px;
+    padding-left: 15px;
+    padding-right: 7px;
+}
+
+.tabCotF th {
+    background: none repeat scroll 0 0 #FFFEE3;
+    border-bottom: 1px solid #DDDDDD;
+    color: #7C4600;
+    font-size: 14px;
+    text-align: left;
+    width: 13%;
+}
+.tabCotF td[scope] {
+    color: #484848;
+    font-weight: bolder;
+}
+.tabCotF .headline {
+    padding-right: 5px;
+    width: 18%;
+}
+.tabCotF .detailIntro {
+    width: 82%;
+}
+.tabCotF .statement {
+    color: #FF0000;
+}
+.tabCotF .clause {
+    color: #5EA420;
+}
+
+
+
+

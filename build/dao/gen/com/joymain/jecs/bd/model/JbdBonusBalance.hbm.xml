@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.JbdBonusBalance"
+            table="JBD_BONUS_BALANCE"
+    >
+
+    <id
+        name="userCode"
+            column="USER_CODE"
+                type="java.lang.String"
+    >
+
+    </id>
+
+        <property
+            name="flagTime"
+                    column="FLAG_TIME"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="bonusBalance"
+                    column="BONUS_BALANCE"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="assignedBonus"
+                    column="ASSIGNED_BONUS"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="flag"
+                    column="FLAG"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="checkTime"
+                    column="CHECK_TIME"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="checkUser"
+                    column="CHECK_USER"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

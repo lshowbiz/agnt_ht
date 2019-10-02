@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.JbdTravelPointAll"
+            table="JBD_TRAVEL_POINT_ALL"
+    >
+
+        <!-- Use of @hibernate.id for composite IDs is deprecated, use @hibernate.composite-id instead -->
+        <composite-id
+            name="comp_id"
+            class="com.joymain.jecs.bd.model.JbdTravelPointAllPK"
+        >
+
+            	<!-- Defining the key-property element from @hibernate.property tags is deprecated, use @hibernate.key-property instead -->
+                <key-property
+                    name="fyear"
+                    type="java.math.BigDecimal"
+                        column="F_YEAR"
+                >
+
+                </key-property>
+
+            	<!-- Defining the key-property element from @hibernate.property tags is deprecated, use @hibernate.key-property instead -->
+                <key-property
+                    name="userCode"
+                    type="java.lang.String"
+                        column="USER_CODE"
+                >
+
+                </key-property>
+
+        </composite-id>
+
+        <property
+            name="passStar"
+                    column="PASS_STAR"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="total"
+                    column="TOTAL"
+                length="22"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

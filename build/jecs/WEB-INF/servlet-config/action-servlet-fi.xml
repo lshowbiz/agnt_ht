@@ -1,0 +1,1342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+    
+    <!--FiTransferAccount-BEAN-START-->
+    <bean id="fiTransferAccountController" class="com.joymain.jecs.fi.webapp.action.FiTransferAccountController" autowire="byName"/>
+    <bean id="fiTransferAccountChkController" class="com.joymain.jecs.fi.webapp.action.FiTransferAccountChkController" autowire="byName"/>
+
+    <bean id="fiTransferAccountFormController" class="com.joymain.jecs.fi.webapp.action.FiTransferAccountFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiTransferAccountForm"/>
+        <property name="successView" value="redirect:fiTransferAccounts.html"/>
+    </bean>
+    <!--FiTransferAccount-BEAN-END-->
+    
+    <!--JfiBankbookBalance-BEAN-START-->
+    <bean id="jfiBankbookBalanceController" class="com.joymain.jecs.fi.webapp.action.JfiBankbookBalanceController" autowire="byName"/>
+
+    <bean id="jfiBankbookBalanceFormController" class="com.joymain.jecs.fi.webapp.action.JfiBankbookBalanceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiBankbookBalanceForm"/>
+        <property name="successView" value="redirect:jfiBankbookBalances.html"/>
+    </bean>
+    <!--JfiBankbookBalance-BEAN-END-->
+    
+    <bean id="fiProductPointBalanceController" class="com.joymain.jecs.fi.webapp.action.FiProductPointBalanceController" autowire="byName"/>
+
+    <bean id="fiProductPointBalanceFormController" class="com.joymain.jecs.fi.webapp.action.FiProductPointBalanceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiProductPointBalanceForm"/>
+        <property name="successView" value="redirect:fiProductPointBalances.html"/>
+    </bean>
+
+	<bean id="jfiPayDataImportController" class="com.joymain.jecs.fi.webapp.action.JfiPayDataImportController" autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="fi/jfiPayDataImport" />
+		<property name="successView" value="redirect:jfiPayDatas.html" />
+	</bean>
+	
+	<bean id="jfiBankbookTempImportController" class="com.joymain.jecs.fi.webapp.action.JfiBankbookTempImportController" autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="fi/jfiBankbookTempImport" />
+		<property name="successView" value="redirect:jfiBankbookTemps.html" />
+	</bean>
+	
+	<bean id="fiBankbookTempImportController" class="com.joymain.jecs.fi.webapp.action.FiBankbookTempImportController" autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="fi/fiBankbookTempImport" />
+		<property name="successView" value="redirect:fiBankbookTemps.html" />
+	</bean>
+	
+	<bean id="fiProductPointTempImportController" class="com.joymain.jecs.fi.webapp.action.FiProductPointTempImportController" autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="fi/fiProductPointTempImport" />
+		<property name="successView" value="redirect:fiProductPointTemps.html" />
+	</bean>
+	
+    <bean id="fiBankbookTempChkController" class="com.joymain.jecs.fi.webapp.action.FiBankbookTempChkController" autowire="byName" />
+	
+	<bean id="fiProductPointTempChkController" class="com.joymain.jecs.fi.webapp.action.FiProductPointTempChkController" autowire="byName" />
+	
+	<bean id="jfiSunOrderPeriodStatisticController" class="com.joymain.jecs.fi.webapp.action.JfiSunOrderPeriodStatisticController" autowire="byName"/>
+	
+	<bean id="jfiSunOrderReturnController" class="com.joymain.jecs.fi.webapp.action.JfiSunOrderReturnController" autowire="byName"/>
+	
+	<bean id="jfiMoneyController" class="com.joymain.jecs.fi.webapp.action.JfiMoneyController" autowire="byName"/>
+	
+	<bean id="jfiSunOrderStatisticController" class="com.joymain.jecs.fi.webapp.action.JfiSunOrderStatisticController" autowire="byName"/>
+	
+	<bean id="jfiSunOrderViewController" class="com.joymain.jecs.fi.webapp.action.JfiSunOrderViewController" autowire="byName"/>
+	
+	<bean id="jfiSunMemberOrderViewController" class="com.joymain.jecs.fi.webapp.action.JfiSunMemberOrderViewController" autowire="byName"/>
+    
+	<bean id="jfiPayDataStatusReportController" class="com.joymain.jecs.fi.webapp.action.JfiPayDataStatusReportController" autowire="byName" />
+	<bean id="jfiPayDataVerifyController" class="com.joymain.jecs.fi.webapp.action.JfiPayDataVerifyController" autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="fi/jfiPayDataVerify" />
+		<property name="successView" value="redirect:jfiPayDatas.html" />
+	</bean>
+	<bean id="jfiBankbookDayReportController" class="com.joymain.jecs.fi.webapp.action.JfiBankbookDayReportController" autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="fi/jfi_bankbook_day_report" />
+		<property name="successView" value="redirect:jfiBankbookDayReport.html" />
+	</bean>
+	<bean id="jfiBankbookDayToDayReportController" class="com.joymain.jecs.fi.webapp.action.JfiBankbookDayToDayReportController" autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="fi/jfi_bankbook_dayToDay_report" />
+		<property name="successView" value="redirect:jfiBankbookDayToDayReport.html" />
+	</bean>
+	<bean id="fiBankbookDayReportController" class="com.joymain.jecs.fi.webapp.action.FiBankbookDayReportController" autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="fi/fi_bankbook_day_report" />
+		<property name="successView" value="redirect:fiBankbookDayReport.html" />
+	</bean>
+	<bean id="fiBankbookFMonthReportController" class="com.joymain.jecs.fi.webapp.action.FiBankbookFMonthReportController" autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="fi/fi_bankbook_fmonth_report" />
+		<property name="successView" value="redirect:fiBankbookFMonthReport.html" />
+	</bean>
+	<bean id="jfiPayDataUnVerifyController" class="com.joymain.jecs.fi.webapp.action.JfiPayDataUnVerifyController" autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="fi/jfiPayDataUnVerify" />
+		<property name="successView" value="redirect:jfiPayDatas.html" />
+	</bean>
+    <!--JfiUsCreditCardLog-BEAN-START-->
+    <bean id="jfiUsCreditCardLogController" class="com.joymain.jecs.fi.webapp.action.JfiUsCreditCardLogController" autowire="byName"/>
+
+    <bean id="jfiUsCreditCardLogFormController" class="com.joymain.jecs.fi.webapp.action.JfiUsCreditCardLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiUsCreditCardLogForm"/>
+        <property name="successView" value="redirect:jfiUsCreditCardLogs.html"/>
+    </bean>
+    <!--JfiUsCreditCardLog-BEAN-END-->
+   
+    <!--JfiPosImport-BEAN-START-->
+    <bean id="jfiPosImportExcelController" class="com.joymain.jecs.fi.webapp.action.JfiPosImportExcelController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiPosImportExcel"/>
+        <property name="successView" value="redirect:jfiPosImportExcel.html"/>
+    </bean>
+    
+    <!-- modify  fu 2015-11-29 -->
+    <bean id="fiAvailableImportController" class="com.joymain.jecs.fi.webapp.action.FiAvailableImportController" autowire="byName">
+        <property name="validator" ref="beanValidator"/>
+        <property name="formView" value="fi/fiAvailableInvoiceImport"/>
+        <property name="successView" value="pd/pdUploadDisplay"/>
+    </bean>
+    
+    <bean id="jfiPosImportController" class="com.joymain.jecs.fi.webapp.action.JfiPosImportController" autowire="byName"/>
+
+    <bean id="jfiPosImportFormController" class="com.joymain.jecs.fi.webapp.action.JfiPosImportFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiPosImportForm"/>
+        <property name="successView" value="redirect:jfiPosImports.html"/>
+    </bean>
+    <!--JfiPosImport-BEAN-END-->
+    <bean id="jfiUsPayRequestController" class="com.joymain.jecs.fi.webapp.action.JfiUsPayRequestController" autowire="byName"/>
+    <bean id="jfiHiTrustRequestController" class="com.joymain.jecs.fi.webapp.action.JfiHiTrustRequestController" autowire="byName"/>
+    <bean id="jfiHiTrustB2CUpdateController" class="com.joymain.jecs.fi.webapp.action.JfiHiTrustB2CUpdateController" autowire="byName"/>
+    <bean id="jfiHiTrustB2CReturnController" class="com.joymain.jecs.fi.webapp.action.JfiHiTrustB2CReturnController" autowire="byName"/>
+    <bean id="jfiPayAlipayReceiveController" class="com.joymain.jecs.fi.webapp.action.JfiPayAlipayReceiveController" autowire="byName"/>
+    <bean id="jfiPayTenpayReceiveController" class="com.joymain.jecs.fi.webapp.action.JfiPayTenpayReceiveController" autowire="byName"/>
+    <bean id="jfiPay99billReceiveController" class="com.joymain.jecs.fi.webapp.action.JfiPay99billReceiveController" autowire="byName"/>
+    <bean id="jfiPay99billmsReceiveController" class="com.joymain.jecs.fi.webapp.action.JfiPay99billmsReceiveController" autowire="byName"/>
+    <bean id="jfiPay99billController" class="com.joymain.jecs.fi.webapp.action.JfiPay99billController" autowire="byName"/>
+    <bean id="jfiPayByCoinController" class="com.joymain.jecs.fi.webapp.action.JfiPayByCoinController" autowire="byName"/>
+    <bean id="jfiPayByCoinAndBankbookController" class="com.joymain.jecs.fi.webapp.action.JfiPayByCoinAndBankbookController" autowire="byName"/>
+    <bean id="jfiPayByJJController" class="com.joymain.jecs.fi.webapp.action.JfiPayByJJController" autowire="byName"/>
+	<bean id="jfiPayDataStatusStatController" class="com.joymain.jecs.fi.webapp.action.JfiPayDataStatusStatController" autowire="byName" />
+	<bean id="jfiPayDataStatController" class="com.joymain.jecs.fi.webapp.action.JfiPayDataStatController" autowire="byName" />
+	<bean id="jfiViewPayAdviceController" class="com.joymain.jecs.fi.webapp.action.JfiViewPayAdviceController" autowire="byName" />
+    <bean id="jfiViewPayDataController" class="com.joymain.jecs.fi.webapp.action.JfiViewPayDataController" autowire="byName" />
+	<bean id="jfiBankOutReportController" class="com.joymain.jecs.fi.webapp.action.JfiBankOutReportController" autowire="byName" />
+    <bean id="jfiPayAdviceStatController" class="com.joymain.jecs.fi.webapp.action.JfiPayAdviceStatController" autowire="byName" />
+    <bean id="jfiSettleStatController" class="com.joymain.jecs.fi.webapp.action.JfiSettleStatController" autowire="byName" />
+    <bean id="jfiIncExpStatController" class="com.joymain.jecs.fi.webapp.action.JfiIncExpStatController" autowire="byName" />
+    <bean id="fiSettleStatController" class="com.joymain.jecs.fi.webapp.action.FiSettleStatController" autowire="byName" />
+    <bean id="fiIncExpStatController" class="com.joymain.jecs.fi.webapp.action.FiIncExpStatController" autowire="byName" />
+    <bean id="fiViewBankbookJournalController" class="com.joymain.jecs.fi.webapp.action.FiViewBankbookJournalController" autowire="byName" />
+    <bean id="jfiViewBankbookJournalController" class="com.joymain.jecs.fi.webapp.action.JfiViewBankbookJournalController" autowire="byName" />
+    <!--JfiBankbookJournal-BEAN-START-->
+    <bean id="jfiBankbookJournalController" class="com.joymain.jecs.fi.webapp.action.JfiBankbookJournalController" autowire="byName"/>
+
+    <bean id="jfiBankbookJournalFormController" class="com.joymain.jecs.fi.webapp.action.JfiBankbookJournalFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiBankbookJournalForm"/>
+        <property name="successView" value="redirect:jfiBankbookJournals.html"/>
+    </bean>
+    <!--JfiBankbookJournal-BEAN-END-->
+    <bean id="jfiPay99billmsShowController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+    
+    <!--FiCoinLog-BEAN-START-->
+    <bean id="fiCoinLogController" class="com.joymain.jecs.fi.webapp.action.FiCoinLogController" autowire="byName"/>
+
+    <bean id="fiCoinLogFormController" class="com.joymain.jecs.fi.webapp.action.FiCoinLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiCoinLogForm"/>
+        <property name="successView" value="redirect:fiCoinLogs.html"/>
+    </bean>
+    <!--FiCoinLog-BEAN-END-->
+    <!--Jfi99billLog-BEAN-START-->
+    <bean id="jfi99billLogController" class="com.joymain.jecs.fi.webapp.action.Jfi99billLogController" autowire="byName"/>
+
+    <bean id="jfi99billLogFormController" class="com.joymain.jecs.fi.webapp.action.Jfi99billLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfi99billLogForm"/>
+        <property name="successView" value="redirect:jfi99billLogs.html"/>
+    </bean>
+    <!--Jfi99billLog-BEAN-END-->
+    <!--JfiBankbookTemp-BEAN-START-->
+    <bean id="jfiBankbookTempController" class="com.joymain.jecs.fi.webapp.action.JfiBankbookTempController" autowire="byName"/>
+
+    <bean id="jfiBankbookTempFormController" class="com.joymain.jecs.fi.webapp.action.JfiBankbookTempFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiBankbookTempForm"/>
+        <property name="successView" value="redirect:jfiBankbookTemps.html"/>
+    </bean>
+    <!--JfiBankbookTemp-BEAN-END-->
+    <bean id="jfiBankbookTempChkController" class="com.joymain.jecs.fi.webapp.action.JfiBankbookTempChkController" autowire="byName" />
+    <!--JfiPayAdvice-BEAN-START-->
+    <bean id="jfiPayAdviceController" class="com.joymain.jecs.fi.webapp.action.JfiPayAdviceController" autowire="byName"/>
+
+    <bean id="jfiPayAdviceFormController" class="com.joymain.jecs.fi.webapp.action.JfiPayAdviceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiPayAdviceForm"/>
+        <property name="successView" value="redirect:jfiPayAdvices.html"/>
+    </bean>
+    <!--JfiPayAdvice-BEAN-END-->
+    <!--JfiPayBank-BEAN-START-->
+    <bean id="jfiPayBankController" class="com.joymain.jecs.fi.webapp.action.JfiPayBankController" autowire="byName"/>
+
+    <bean id="jfiPayBankFormController" class="com.joymain.jecs.fi.webapp.action.JfiPayBankFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiPayBankForm"/>
+        <property name="successView" value="redirect:jfiPayBanks.html"/>
+    </bean>
+    <!--JfiPayBank-BEAN-END-->
+    <!--JfiPayData-BEAN-START-->
+    <bean id="jfiPayDataController" class="com.joymain.jecs.fi.webapp.action.JfiPayDataController" autowire="byName"/>
+
+    <bean id="jfiPayDataFormController" class="com.joymain.jecs.fi.webapp.action.JfiPayDataFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiPayDataForm"/>
+        <property name="successView" value="redirect:jfiPayDatas.html"/>
+    </bean>
+    <!--JfiPayData-BEAN-END-->    
+    <!--BillAccount-BEAN-START-->
+    <bean id="billAccountController" class="com.joymain.jecs.fi.webapp.action.BillAccountController" autowire="byName"/>
+
+    <bean id="billAccountFormController" class="com.joymain.jecs.fi.webapp.action.BillAccountFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/billAccountForm"/>
+        <property name="successView" value="redirect:billAccounts.html"/>
+    </bean>
+    <!--BillAccount-BEAN-END-->
+    <!--Jfi99billPosLog-BEAN-START-->
+    <bean id="jfi99billPosLogController" class="com.joymain.jecs.fi.webapp.action.Jfi99billPosLogController" autowire="byName"/>
+    <bean id="jfi99billPosLogReceiveController" class="com.joymain.jecs.fi.webapp.action.Jfi99billPosLogReceiveController" autowire="byName"/>
+
+    <bean id="jfi99billPosLogFormController" class="com.joymain.jecs.fi.webapp.action.Jfi99billPosLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfi99billPosLogForm"/>
+        <property name="successView" value="redirect:jfi99billPosLogs.html"/>
+    </bean>
+    <!--Jfi99billPosLog-BEAN-END-->
+    <!--Jfi99billPosSendLog-BEAN-START-->
+    <bean id="jfi99billPosSendLogController" class="com.joymain.jecs.fi.webapp.action.Jfi99billPosSendLogController" autowire="byName"/>
+
+    <bean id="jfi99billPosSendLogFormController" class="com.joymain.jecs.fi.webapp.action.Jfi99billPosSendLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfi99billPosSendLogForm"/>
+        <property name="successView" value="redirect:jfi99billPosSendLogs.html"/>
+    </bean>
+    <!--Jfi99billPosSendLog-BEAN-END-->
+    <!--JfiSunMemberOrderList-BEAN-START-->
+    <bean id="jfiSunMemberOrderListController" class="com.joymain.jecs.fi.webapp.action.JfiSunMemberOrderListController" autowire="byName"/>
+
+    <bean id="jfiSunMemberOrderListFormController" class="com.joymain.jecs.fi.webapp.action.JfiSunMemberOrderListFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiSunMemberOrderListForm"/>
+        <property name="successView" value="redirect:jfiSunMemberOrderLists.html"/>
+    </bean>
+    <!--JfiSunMemberOrderList-BEAN-END-->
+    <!--JfiSunMemberOrderFee-BEAN-START-->
+    <bean id="jfiSunMemberOrderFeeController" class="com.joymain.jecs.fi.webapp.action.JfiSunMemberOrderFeeController" autowire="byName"/>
+
+    <bean id="jfiSunMemberOrderFeeFormController" class="com.joymain.jecs.fi.webapp.action.JfiSunMemberOrderFeeFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiSunMemberOrderFeeForm"/>
+        <property name="successView" value="redirect:jfiSunMemberOrderFees.html"/>
+    </bean>
+    <!--JfiSunMemberOrderFee-BEAN-END-->
+    <!--JfiSunMemberOrder-BEAN-START-->
+    <bean id="jfiSunMemberOrderReportController" class="com.joymain.jecs.fi.webapp.action.JfiSunMemberOrderReportController" autowire="byName"/>
+    <bean id="jfiSunMemberOrderController" class="com.joymain.jecs.fi.webapp.action.JfiSunMemberOrderController" autowire="byName"/>
+
+    <bean id="jfiSunMemberOrderFormController" class="com.joymain.jecs.fi.webapp.action.JfiSunMemberOrderFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiSunMemberOrderForm"/>
+        <property name="successView" value="redirect:jfiSunMemberOrders.html"/>
+    </bean>
+    <!--JfiSunMemberOrder-BEAN-END-->
+    <!--JfiAlipayLog-BEAN-START-->
+    <bean id="jfiAlipayLogController" class="com.joymain.jecs.fi.webapp.action.JfiAlipayLogController" autowire="byName"/>
+
+    <bean id="jfiAlipayLogFormController" class="com.joymain.jecs.fi.webapp.action.JfiAlipayLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiAlipayLogForm"/>
+        <property name="successView" value="redirect:jfiAlipayLogs.html"/>
+    </bean>
+    <!--JfiAlipayLog-BEAN-END-->
+    <!--JfiHiTrustLog-BEAN-START-->
+    <bean id="jfiHiTrustLogController" class="com.joymain.jecs.fi.webapp.action.JfiHiTrustLogController" autowire="byName"/>
+
+    <bean id="jfiHiTrustLogFormController" class="com.joymain.jecs.fi.webapp.action.JfiHiTrustLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiHiTrustLogForm"/>
+        <property name="successView" value="redirect:jfiHiTrustLogs.html"/>
+    </bean>
+    <!--JfiHiTrustLog-BEAN-END-->
+    <!--JfiSunDistribution-BEAN-START-->
+    <bean id="jfiSunDistributionController" class="com.joymain.jecs.fi.webapp.action.JfiSunDistributionController" autowire="byName"/>
+
+    <bean id="jfiSunDistributionFormController" class="com.joymain.jecs.fi.webapp.action.JfiSunDistributionFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiSunDistributionForm"/>
+        <property name="successView" value="redirect:jfiSunDistributions.html"/>
+    </bean>
+    <!--JfiSunDistribution-BEAN-END-->
+    <!--JfiSunConfigKey-BEAN-START-->
+    <bean id="jfiSunConfigKeyController" class="com.joymain.jecs.fi.webapp.action.JfiSunConfigKeyController" autowire="byName"/>
+
+    <bean id="jfiSunConfigKeyFormController" class="com.joymain.jecs.fi.webapp.action.JfiSunConfigKeyFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiSunConfigKeyForm"/>
+        <property name="successView" value="redirect:jfiSunConfigKeys.html"/>
+    </bean>
+    <!--JfiSunConfigKey-BEAN-END-->
+    <!--JfiSunOrderList-BEAN-START-->
+    <bean id="jfiSunOrderListController" class="com.joymain.jecs.fi.webapp.action.JfiSunOrderListController" autowire="byName"/>
+
+    <bean id="jfiSunOrderListFormController" class="com.joymain.jecs.fi.webapp.action.JfiSunOrderListFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiSunOrderListForm"/>
+        <property name="successView" value="redirect:jfiSunOrderLists.html"/>
+    </bean>
+    <!--JfiSunOrderList-BEAN-END-->
+    <!--JfiSunOrder-BEAN-START-->
+    <bean id="jfiSunOrderController" class="com.joymain.jecs.fi.webapp.action.JfiSunOrderController" autowire="byName"/>
+
+    <bean id="jfiSunOrderFormController" class="com.joymain.jecs.fi.webapp.action.JfiSunOrderFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiSunOrderForm"/>
+        <property name="successView" value="redirect:jfiSunOrders.html"/>
+    </bean>
+    <!--JfiSunOrder-BEAN-END-->
+    <!--JfiSunJmiMember-BEAN-START-->
+    <bean id="jfiSunJmiMemberController" class="com.joymain.jecs.fi.webapp.action.JfiSunJmiMemberController" autowire="byName"/>
+
+    <bean id="jfiSunJmiMemberFormController" class="com.joymain.jecs.fi.webapp.action.JfiSunJmiMemberFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiSunJmiMemberForm"/>
+        <property name="successView" value="redirect:jfiSunJmiMembers.html"/>
+    </bean>
+    <!--JfiSunJmiMember-BEAN-END-->
+    <!--JfiCreditCardLog-BEAN-START-->
+    <bean id="jfiCreditCardLogController" class="com.joymain.jecs.fi.webapp.action.JfiCreditCardLogController" autowire="byName"/>
+
+    <bean id="jfiCreditCardLogFormController" class="com.joymain.jecs.fi.webapp.action.JfiCreditCardLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiCreditCardLogForm"/>
+        <property name="successView" value="redirect:jfiCreditCardLogs.html"/>
+    </bean>
+    <!--JfiCreditCardLog-BEAN-END-->
+    <!--FiBcoinJournal-BEAN-START-->
+    <bean id="fiBcoinJournalController" class="com.joymain.jecs.fi.webapp.action.FiBcoinJournalController" autowire="byName"/>
+    <bean id="fiBcoinJournalPayController" class="com.joymain.jecs.fi.webapp.action.FiBcoinJournalPayController" autowire="byName"/>
+    <bean id="fiBcoinJournalFormController" class="com.joymain.jecs.fi.webapp.action.FiBcoinJournalFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiBcoinJournalForm"/>
+        <property name="successView" value="redirect:fiBcoinJournals.html"/>
+    </bean>
+    <!--FiBcoinJournal-BEAN-END-->
+    <!--FiBcoinBalance-BEAN-START-->
+    <bean id="fiBcoinBalanceController" class="com.joymain.jecs.fi.webapp.action.FiBcoinBalanceController" autowire="byName"/>
+
+    <bean id="fiBcoinBalanceFormController" class="com.joymain.jecs.fi.webapp.action.FiBcoinBalanceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiBcoinBalanceForm"/>
+        <property name="successView" value="redirect:fiBcoinBalances.html"/>
+    </bean>
+    <!--FiBcoinBalance-BEAN-END-->
+    <!--FiCcoinJournal-BEAN-START-->
+    <bean id="fiCcoinJournalController" class="com.joymain.jecs.fi.webapp.action.FiCcoinJournalController" autowire="byName"/>
+
+    <bean id="fiCcoinJournalFormController" class="com.joymain.jecs.fi.webapp.action.FiCcoinJournalFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiCcoinJournalForm"/>
+        <property name="successView" value="redirect:fiCcoinJournals.html"/>
+    </bean>
+    <!--FiCcoinJournal-BEAN-END-->
+    <!--FiCcoinBalance-BEAN-START-->
+    <bean id="fiCcoinBalanceController" class="com.joymain.jecs.fi.webapp.action.FiCcoinBalanceController" autowire="byName"/>
+
+    <bean id="fiCcoinBalanceFormController" class="com.joymain.jecs.fi.webapp.action.FiCcoinBalanceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiCcoinBalanceForm"/>
+        <property name="successView" value="redirect:fiCcoinBalances.html"/>
+    </bean>
+    <!--FiCcoinBalance-BEAN-END-->
+   
+    <!--FiBankbookBalance-BEAN-START-->
+    <bean id="fiBankbookBalanceController" class="com.joymain.jecs.fi.webapp.action.FiBankbookBalanceController" autowire="byName"/>
+
+    <bean id="fiBankbookBalanceFormController" class="com.joymain.jecs.fi.webapp.action.FiBankbookBalanceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiBankbookBalanceForm"/>
+        <property name="successView" value="redirect:fiBankbookBalances.html"/>
+    </bean>
+    <!--FiBankbookBalance-BEAN-END-->
+    <!--FiBankbookJournal-BEAN-START-->
+    <bean id="fiBankbookJournalController" class="com.joymain.jecs.fi.webapp.action.FiBankbookJournalController" autowire="byName"/>
+
+    <bean id="fiBankbookJournalFormController" class="com.joymain.jecs.fi.webapp.action.FiBankbookJournalFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiBankbookJournalForm"/>
+        <property name="successView" value="redirect:fiBankbookJournals.html"/>
+    </bean>
+    <!--FiBankbookJournal-BEAN-END-->
+    
+    <bean id="fiProductPointJournalController" class="com.joymain.jecs.fi.webapp.action.FiProductPointJournalController" autowire="byName"/>
+
+    <bean id="fiProductPointJournalFormController" class="com.joymain.jecs.fi.webapp.action.FiProductPointJournalFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiProductPointJournalForm"/>
+        <property name="successView" value="redirect:fiProductPointJournals.html"/>
+    </bean>
+    
+    <bean id="fiProductPointFMonthReportController" class="com.joymain.jecs.fi.webapp.action.FiProductPointFMonthReportController" autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="fi/fi_product_point_fmonth_report" />
+		<property name="successView" value="redirect:fiProductPointFMonthReport.html" />
+	</bean>
+	
+    <!--FiBankbookTemp-BEAN-START-->
+    <bean id="fiBankbookTempController" class="com.joymain.jecs.fi.webapp.action.FiBankbookTempController" autowire="byName"/>
+
+    <bean id="fiBankbookTempFormController" class="com.joymain.jecs.fi.webapp.action.FiBankbookTempFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiBankbookTempForm"/>
+        <property name="successView" value="redirect:fiBankbookTemps.html"/>
+    </bean>
+    <!--FiBankbookTemp-BEAN-END-->
+    <!--FiProductPointTemp-BEAN-START-->
+    <bean id="fiProductPointTempController" class="com.joymain.jecs.fi.webapp.action.FiProductPointTempController" autowire="byName"/>
+
+    <bean id="fiProductPointTempFormController" class="com.joymain.jecs.fi.webapp.action.FiProductPointTempFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiProductPointTempForm"/>
+        <property name="successView" value="redirect:fiProductPointTemps.html"/>
+    </bean>
+    <!--FiBankbookTemp-BEAN-END-->
+    <!--JfiTenpayLog-BEAN-START-->
+    <bean id="jfiTenpayLogController" class="com.joymain.jecs.fi.webapp.action.JfiTenpayLogController" autowire="byName"/>
+
+    <bean id="jfiTenpayLogFormController" class="com.joymain.jecs.fi.webapp.action.JfiTenpayLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiTenpayLogForm"/>
+        <property name="successView" value="redirect:jfiTenpayLogs.html"/>
+    </bean>
+    <!--JfiTenpayLog-BEAN-END-->
+    <!--PosNumCheckController-BEAN-START-->
+    <bean id="posNumCheckController" class="com.joymain.jecs.fi.webapp.action.PosNumCheckController" autowire="byName"/>
+    <!--PosNumCheckController-BEAN-END-->
+    
+    <bean id="jfiPayForMobileController" class="com.joymain.jecs.fi.webapp.action.JfiPayForMobileController" autowire="byName"/>
+    
+    <bean id="jfiPayFoundationController" class="com.joymain.jecs.fi.webapp.action.JfiPayFoundationController" autowire="byName"/>
+    <bean id="jfiPayFoundationReceiveController" class="com.joymain.jecs.fi.webapp.action.JfiPayFoundationReceiveController" autowire="byName"/>
+    
+    <!--FiLovecoinJournal-BEAN-START-->
+    <bean id="fiLovecoinJournalController" class="com.joymain.jecs.fi.webapp.action.FiLovecoinJournalController" autowire="byName"/>
+    <!--FiLovecoinJournal-BEAN-END-->
+    <!--FiLovecoinBalance-BEAN-START-->
+    <bean id="fiLovecoinBalanceController" class="com.joymain.jecs.fi.webapp.action.FiLovecoinBalanceController" autowire="byName"/>
+    <!--FiLovecoinBalance-BEAN-END-->
+    
+    <!--FoundationOrder-BEAN-START-->
+    <bean id="foundationOrderController" class="com.joymain.jecs.fi.webapp.action.FoundationOrderController" autowire="byName"/>
+
+    <bean id="foundationOrderFormController" class="com.joymain.jecs.fi.webapp.action.FoundationOrderFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/foundationOrderForm"/>
+        <property name="successView" value="redirect:foundationOrders.html"/>
+    </bean>
+    <!--FoundationOrder-BEAN-END-->
+    <!--FoundationItem-BEAN-START-->
+    <bean id="foundationItemController" class="com.joymain.jecs.fi.webapp.action.FoundationItemController" autowire="byName"/>
+
+    <bean id="foundationItemFormController" class="com.joymain.jecs.fi.webapp.action.FoundationItemFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/foundationItemForm"/>
+        <property name="successView" value="redirect:foundationItems.html"/>
+    </bean>
+    <!--FoundationItem-BEAN-END-->
+    <!--JmiZcwMember-BEAN-START-->
+    <bean id="jmiZcwMemberController" class="com.joymain.jecs.fi.webapp.action.JmiZcwMemberController" autowire="byName"/>
+
+    <bean id="jmiZcwMemberFormController" class="com.joymain.jecs.fi.webapp.action.JmiZcwMemberFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jmiZcwMemberForm"/>
+        <property name="successView" value="redirect:jmiZcwMembers.html"/>
+    </bean>
+    <!--JmiZcwMember-BEAN-END-->
+    
+    <!--FiSecurityDeposit-BEAN-START-->
+    <bean id="fiSecurityDepositController" class="com.joymain.jecs.fi.webapp.action.FiSecurityDepositController" autowire="byName"/>
+
+    <bean id="fiSecurityDepositFormController" class="com.joymain.jecs.fi.webapp.action.FiSecurityDepositFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiSecurityDepositForm"/>
+        <property name="successView" value="redirect:fiSecurityDeposits.html"/>
+    </bean>
+    
+    <bean id="fiSecurityDepositDownFormController" class="com.joymain.jecs.fi.webapp.action.FiSecurityDepositDownFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiSecurityDepositDownForm"/>
+        <property name="successView" value="redirect:fiSecurityDeposits.html"/>
+    </bean>
+    <!--FiSecurityDeposit-BEAN-END-->
+    <!--FiSecurityDepositJournal-BEAN-START-->
+    <bean id="fiSecurityDepositJournalController" class="com.joymain.jecs.fi.webapp.action.FiSecurityDepositJournalController" autowire="byName"/>
+
+    <bean id="fiSecurityDepositJournalFormController" class="com.joymain.jecs.fi.webapp.action.FiSecurityDepositJournalFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiSecurityDepositJournalForm"/>
+        <property name="successView" value="redirect:fiSecurityDepositJournals.html"/>
+    </bean>
+    <!--FiSecurityDepositJournal-BEAN-END-->
+    
+    <!--FiCoinConfig-BEAN-START-->
+    <bean id="fiCoinConfigController" class="com.joymain.jecs.fi.webapp.action.FiCoinConfigController" autowire="byName"/>
+
+    <bean id="fiCoinConfigFormController" class="com.joymain.jecs.fi.webapp.action.FiCoinConfigFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiCoinConfigForm"/>
+        <property name="successView" value="redirect:fiCoinConfigs.html"/>
+    </bean>
+    <!--FiCoinConfig-BEAN-END-->
+    
+    <!-- MobilPayReceive -->
+    <bean id="mobilPayReceiveController" class="com.joymain.jecs.fi.webapp.action.MobilPayReceiveController" autowire="byName"/>
+    <!-- MobilPayReceive -->
+    
+    <!--FiBillAccount-BEAN-START-->
+    <bean id="fiBillAccountController" class="com.joymain.jecs.fi.webapp.action.FiBillAccountController" autowire="byName"/>
+
+    <bean id="fiBillAccountFormController" class="com.joymain.jecs.fi.webapp.action.FiBillAccountFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiBillAccountForm"/>
+        <property name="successView" value="redirect:fiBillAccounts.html"/>
+    </bean>
+    
+    <bean id="businessController" class="com.joymain.jecs.fi.webapp.action.BusinessController" autowire="byName"/>
+    
+    <bean id="businessFromController" class="com.joymain.jecs.fi.webapp.action.BusinessFromController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiBillAccountForm2"/>
+        <property name="successView" value="redirect:businessList.html"/>
+    </bean>
+    
+    
+    <bean id="fiBillAccountImportController" class="com.joymain.jecs.fi.webapp.action.FiBillAccountImportController" autowire="byName">
+		<property name="formView" value="fi/fiBillAccountImport" />
+		<property name="successView" value="redirect:fiBillAccounts.html" />
+	</bean>
+    <!--FiBillAccount-BEAN-END-->
+    <!--FiBillAccountRelation-BEAN-START-->
+    <bean id="fiBillAccountRelationController" class="com.joymain.jecs.fi.webapp.action.FiBillAccountRelationController" autowire="byName"/>
+
+    <bean id="fiBillAccountRelationFormController" class="com.joymain.jecs.fi.webapp.action.FiBillAccountRelationFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiBillAccountRelationForm"/>
+        <property name="successView" value="redirect:fiBillAccounts.html"/>
+    </bean>
+    
+    <bean id="fiBillAccountCheckController" class="com.joymain.jecs.fi.webapp.action.FiBillAccountCheckController" autowire="byName"/>
+    <!--FiBillAccountRelation-BEAN-END-->
+    <!--FiGetbillaccountLog-BEAN-START-->
+    <bean id="fiGetbillaccountLogController" class="com.joymain.jecs.fi.webapp.action.FiGetbillaccountLogController" autowire="byName"/>
+
+    <bean id="fiGetbillaccountLogFormController" class="com.joymain.jecs.fi.webapp.action.FiGetbillaccountLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiGetbillaccountLogForm"/>
+        <property name="successView" value="redirect:fiGetbillaccountLogs.html"/>
+    </bean>
+    <!--FiGetbillaccountLog-BEAN-END-->
+    <!--FiCommonAddr-BEAN-START-->
+    <bean id="fiCommonAddrController" class="com.joymain.jecs.fi.webapp.action.FiCommonAddrController" autowire="byName"/>
+
+    <bean id="fiCommonAddrFormController" class="com.joymain.jecs.fi.webapp.action.FiCommonAddrFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiCommonAddrForm"/>
+        <property name="successView" value="redirect:fiCommonAddrs.html"/>
+    </bean>
+    <!--FiCommonAddr-BEAN-END-->
+    
+    <!--FiFundbookBalance-BEAN-START-->
+    <bean id="fiFundbookBalanceController" class="com.joymain.jecs.fi.webapp.action.FiFundbookBalanceController" autowire="byName"/>
+
+    <bean id="fiFundbookBalanceFormController" class="com.joymain.jecs.fi.webapp.action.FiFundbookBalanceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiFundbookBalanceForm"/>
+        <property name="successView" value="redirect:fiFundbookBalances.html"/>
+    </bean>
+    <!--FiFundbookBalance-BEAN-END-->
+    <!--FiFundbookJournal-BEAN-START-->
+    <bean id="fiFundbookJournalController" class="com.joymain.jecs.fi.webapp.action.FiFundbookJournalController" autowire="byName"/>
+
+    <bean id="fiFundbookJournalFormController" class="com.joymain.jecs.fi.webapp.action.FiFundbookJournalFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiFundbookJournalForm"/>
+        <property name="successView" value="redirect:fiFundbookJournals.html"/>
+    </bean>
+    <!--FiFundbookJournal-BEAN-END-->
+    <!--FiFundbookTemp-BEAN-START-->
+    <bean id="fiFundbookTempController" class="com.joymain.jecs.fi.webapp.action.FiFundbookTempController" autowire="byName"/>
+	<bean id="fiFundbookTempChkController" class="com.joymain.jecs.fi.webapp.action.FiFundbookTempChkController" autowire="byName"/>
+	<bean id="fiFundbookTempImportController" class="com.joymain.jecs.fi.webapp.action.FiFundbookTempImportController" autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="fi/fiFundbookTempImport" />
+		<property name="successView" value="redirect:fiFundbookTemps.html" />
+	</bean>
+	
+    <bean id="fiFundbookTempFormController" class="com.joymain.jecs.fi.webapp.action.FiFundbookTempFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiFundbookTempForm"/>
+        <property name="successView" value="redirect:fiFundbookTemps.html"/>
+    </bean>
+    <!--FiFundbookTemp-BEAN-END-->
+    <bean id="fiFundbookDayReportController" class="com.joymain.jecs.fi.webapp.action.FiFundbookDayReportController" autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="fi/fi_fundbook_day_report" />
+		<property name="successView" value="redirect:fiFundbookDayReport.html" />
+	</bean>
+	<bean id="fiFunkbookIncExpStatController" class="com.joymain.jecs.fi.webapp.action.FiFundbookIncExpStatController" autowire="byName" />
+	<!--FiTransferFundbook-BEAN-START-->
+    <bean id="fiTransferFundbookController" class="com.joymain.jecs.fi.webapp.action.FiTransferFundbookController" autowire="byName"/>
+	<bean id="fiTransferFundbookChkController" class="com.joymain.jecs.fi.webapp.action.FiTransferFundbookChkController" autowire="byName"/>
+    <bean id="fiTransferFundbookFormController" class="com.joymain.jecs.fi.webapp.action.FiTransferFundbookFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiTransferFundbookForm"/>
+        <property name="successView" value="redirect:fiTransferFundbooks.html"/>
+    </bean>
+    <!--FiTransferFundbook-BEAN-END-->
+    
+    <!--FiBcoinPayconfig-BEAN-START-->
+    <bean id="fiBcoinPayconfigController" class="com.joymain.jecs.fi.webapp.action.FiBcoinPayconfigController" autowire="byName"/>
+
+    <bean id="fiBcoinPayconfigFormController" class="com.joymain.jecs.fi.webapp.action.FiBcoinPayconfigFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiBcoinPayconfigForm"/>
+        <property name="successView" value="redirect:fiBcoinPayconfigs.html"/>
+    </bean>
+    <!--FiBcoinPayconfig-BEAN-END-->
+    <!--FiBcoinPayconfigDetail-BEAN-START-->
+    <bean id="fiBcoinPayconfigDetailController" class="com.joymain.jecs.fi.webapp.action.FiBcoinPayconfigDetailController" autowire="byName"/>
+
+    <bean id="fiBcoinPayconfigDetailFormController" class="com.joymain.jecs.fi.webapp.action.FiBcoinPayconfigDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiBcoinPayconfigDetailForm"/>
+        <property name="successView" value="redirect:fiBcoinPayconfigDetails.html"/>
+    </bean>
+    <!--FiBcoinPayconfigDetail-BEAN-END-->
+    
+    <!--FiBillAccountWarning-BEAN-START-->
+    <bean id="fiBillAccountWarningController" class="com.joymain.jecs.fi.webapp.action.FiBillAccountWarningController" autowire="byName"/>
+	<bean id="fiBillAccountWarningChkController" class="com.joymain.jecs.fi.webapp.action.FiBillAccountWarningChkController" autowire="byName"/>
+    <bean id="fiBillAccountWarningFormController" class="com.joymain.jecs.fi.webapp.action.FiBillAccountWarningFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiBillAccountWarningForm"/>
+        <property name="successView" value="redirect:fiBillAccountWarnings.html"/>
+    </bean>
+    <!--FiBillAccountWarning-BEAN-END-->
+    <!--JfiChanjetLog-BEAN-START-->
+    <bean id="jfiChanjetLogController" class="com.joymain.jecs.fi.webapp.action.JfiChanjetLogController" autowire="byName"/>
+
+    <bean id="jfiChanjetLogFormController" class="com.joymain.jecs.fi.webapp.action.JfiChanjetLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiChanjetLogForm"/>
+        <property name="successView" value="redirect:jfiChanjetLogs.html"/>
+    </bean>
+    <!--JfiChanjetLog-BEAN-END-->
+    <bean id="jfiPayChanjetReceiveController" class="com.joymain.jecs.fi.webapp.action.JfiPayChanjetReceiveController" autowire="byName"/>
+    <bean id="mobilWebPayReceiveController" class="com.joymain.jecs.fi.webapp.action.MobilWebPayReceiveController" autowire="byName"/>
+    
+    <bean id="chanjetCheckOrderStateController" class="com.joymain.jecs.fi.webapp.action.ChanjetCheckOrderStateController" autowire="byName"/>
+    <bean id="chanjetCheckOrderStateTwoController" class="com.joymain.jecs.fi.webapp.action.ChanjetCheckOrderStateTwoController" autowire="byName"/>
+    
+    <bean id="chanjetDownloadTransBillController" class="com.joymain.jecs.fi.webapp.action.ChanjetDownloadTransBillController" autowire="byName"/>
+    <bean id="chanjetDownloadTransBillTwoController" class="com.joymain.jecs.fi.webapp.action.ChanjetDownloadTransBillTwoController" autowire="byName"/>
+    
+    <!--FiMovieOrder-BEAN-START-->
+    <bean id="fiMovieOrderController" class="com.joymain.jecs.fi.webapp.action.FiMovieOrderController" autowire="byName"/>
+
+    <bean id="fiMovieOrderFormController" class="com.joymain.jecs.fi.webapp.action.FiMovieOrderFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiMovieOrderForm"/>
+        <property name="successView" value="redirect:fiMovieOrders.html"/>
+    </bean>
+    <!--FiMovieOrder-BEAN-END-->
+    
+    <bean id="fiChannelLogController" class="com.joymain.jecs.fi.webapp.action.FiChannelLogController" autowire="byName"/>
+    <bean id="jfiPayChannelReceiveController" class="com.joymain.jecs.fi.webapp.action.JfiPayChannelReceiveController" autowire="byName"/>
+    
+    <bean id="jfiUmbpayReceiveController" class="com.joymain.jecs.fi.webapp.action.JfiUmbpayReceiveController" autowire="byName"/>
+    <bean id="jfiUmbpayLogController" class="com.joymain.jecs.fi.webapp.action.JfiUmbpayLogController" autowire="byName"/>
+    <bean id="jfiUmbpayLogFormController" class="com.joymain.jecs.fi.webapp.action.JfiUmbpayLogFormController" autowire="byName"/>
+    
+    <bean id="jfiChinapnrReceiveController" class="com.joymain.jecs.fi.webapp.action.JfiChinapnrReceiveController" autowire="byName"/>
+    <bean id="jfiChinapnrLogController" class="com.joymain.jecs.fi.webapp.action.JfiChinapnrLogController" autowire="byName"/>
+    <bean id="jfiChinapnrLogFormController" class="com.joymain.jecs.fi.webapp.action.JfiChinapnrLogFormController" autowire="byName"/>
+    
+     <bean id="jfipayReceiveController" class="com.joymain.jecs.fi.webapp.action.JfipayReceiveController" autowire="byName"/>
+    
+    <!--JfiYeepayLog-BEAN-START-->
+    <bean id="jfiYeepayLogController" class="com.joymain.jecs.fi.webapp.action.JfiYeepayLogController" autowire="byName"/>
+
+    <bean id="jfiYeepayLogFormController" class="com.joymain.jecs.fi.webapp.action.JfiYeepayLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiYeepayLogForm"/>
+        <property name="successView" value="redirect:jfiYeepayLogs.html"/>
+    </bean>
+    <bean id="jfiYeePayReceiveController" class="com.joymain.jecs.fi.webapp.action.JfiYeePayReceiveController" autowire="byName"/>
+    
+    <bean id="jfiReapalPayReceiveController" class="com.joymain.jecs.fi.webapp.action.JfiReapalPayReceiveController" autowire="byName"/>
+    
+    <!--JfiYeepayLog-BEAN-END-->
+    <!--FiPayAccount-BEAN-START-->
+    <bean id="fiPayAccountController" class="com.joymain.jecs.fi.webapp.action.FiPayAccountController" autowire="byName"/>
+
+    <bean id="fiPayAccountFormController" class="com.joymain.jecs.fi.webapp.action.FiPayAccountFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiPayAccountForm"/>
+        <property name="successView" value="redirect:fiPayAccounts.html"/>
+    </bean>
+    <!--FiPayAccount-BEAN-END-->
+    
+    <!--FiPayAccountConfig-BEAN-START-->
+    <bean id="fiPayAccountConfigController" class="com.joymain.jecs.fi.webapp.action.FiPayAccountConfigController" autowire="byName"/>
+
+    <bean id="fiPayAccountConfigFormController" class="com.joymain.jecs.fi.webapp.action.FiPayAccountConfigFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiPayAccountConfigForm"/>
+        <property name="successView" value="redirect:fiPayAccountConfigs.html"/>
+    </bean>
+    <!--FiPayAccountConfig-BEAN-END-->
+    <!--JfiReapalLog-BEAN-START-->
+    <bean id="jfiReapalLogController" class="com.joymain.jecs.fi.webapp.action.JfiReapalLogController" autowire="byName"/>
+
+    <bean id="jfiReapalLogFormController" class="com.joymain.jecs.fi.webapp.action.JfiReapalLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiReapalLogForm"/>
+        <property name="successView" value="redirect:jfiReapalLogs.html"/>
+    </bean>
+    <!--JfiReapalLog-BEAN-END-->
+
+    
+    
+    <!--JfiInvoiceDeposit-BEAN-START-->
+    <bean id="jfiInvoiceDepositController" class="com.joymain.jecs.fi.webapp.action.JfiInvoiceDepositController" autowire="byName"/>
+
+    <bean id="jfiInvoiceDepositFormController" class="com.joymain.jecs.fi.webapp.action.JfiInvoiceDepositFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiInvoiceDepositForm"/>
+        <property name="successView" value="redirect:jfiInvoiceDeposits.html"/>
+    </bean>
+    <!--JfiInvoiceDeposit-BEAN-END-->
+    <!--JfiDepositList-BEAN-START-->
+    <bean id="jfiDepositListController" class="com.joymain.jecs.fi.webapp.action.JfiDepositListController" autowire="byName"/>
+
+    <bean id="jfiDepositListFormController" class="com.joymain.jecs.fi.webapp.action.JfiDepositListFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiDepositListForm"/>
+        <property name="successView" value="redirect:jfiDepositLists.html"/>
+    </bean>
+    <!--JfiDepositList-BEAN-END-->
+    
+    <!--JfiInvoice-BEAN-START-->
+    <bean id="jfiInvoiceController" class="com.joymain.jecs.fi.webapp.action.JfiInvoiceController" autowire="byName"/>
+
+    <bean id="jfiInvoiceFormController" class="com.joymain.jecs.fi.webapp.action.JfiInvoiceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiInvoiceForm"/>
+        <property name="successView" value="redirect:jfiInvoices.html"/>
+    </bean>
+    
+     <bean id="jfiInvoiceImportController" class="com.joymain.jecs.fi.webapp.action.JfiInvoiceImportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiInvoiceImport"/>
+        <property name="successView" value="redirect:jfiInvoices.html"/>
+    </bean>
+    
+    <bean id="jfiInvoiceDepositExportController" class="com.joymain.jecs.fi.webapp.action.JfiInvoiceDepositExportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+    </bean>
+    
+    <!--JfiInvoice-BEAN-END-->
+    
+    <!--JfiDepositJournal-BEAN-START-->
+    <bean id="jfiDepositJournalController" class="com.joymain.jecs.fi.webapp.action.JfiDepositJournalController" autowire="byName"/>
+
+    <bean id="jfiDepositJournalFormController" class="com.joymain.jecs.fi.webapp.action.JfiDepositJournalFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiDepositJournalForm"/>
+        <property name="successView" value="redirect:jfiDepositJournals.html"/>
+    </bean>
+    <!--JfiDepositJournal-BEAN-END-->
+    <!--JfiDepositMoney-BEAN-START-->
+    <bean id="jfiDepositMoneyController" class="com.joymain.jecs.fi.webapp.action.JfiDepositMoneyController" autowire="byName"/>
+
+    <bean id="jfiDepositMoneyFormController" class="com.joymain.jecs.fi.webapp.action.JfiDepositMoneyFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiDepositMoneyForm"/>
+        <property name="successView" value="redirect:jfiDepositMoneys.html"/>
+    </bean>
+    <!--JfiDepositMoney-BEAN-END-->
+    <!--JfiDepositSend-BEAN-START-->
+    <bean id="jfiDepositSendController" class="com.joymain.jecs.fi.webapp.action.JfiDepositSendController" autowire="byName"/>
+
+    <bean id="jfiDepositSendFormController" class="com.joymain.jecs.fi.webapp.action.JfiDepositSendFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiDepositSendForm"/>
+        <property name="successView" value="redirect:jfiDepositSends.html"/>
+    </bean>
+    <!--JfiDepositSend-BEAN-END-->
+    <!--JfiDepositBalance-BEAN-START-->
+    <bean id="jfiDepositBalanceController" class="com.joymain.jecs.fi.webapp.action.JfiDepositBalanceController" autowire="byName"/>
+
+    <bean id="jfiDepositBalanceFormController" class="com.joymain.jecs.fi.webapp.action.JfiDepositBalanceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiDepositBalanceForm"/>
+        <property name="successView" value="redirect:jfiDepositBalances.html"/>
+    </bean>
+    <!--JfiDepositBalance-BEAN-END-->
+    <!--JfiDepositTemp-BEAN-START-->
+    <bean id="jfiDepositTempController" class="com.joymain.jecs.fi.webapp.action.JfiDepositTempController" autowire="byName"/>
+
+    <bean id="jfiDepositTempFormController" class="com.joymain.jecs.fi.webapp.action.JfiDepositTempFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiDepositTempForm"/>
+        <property name="successView" value="redirect:jfiDepositTemps.html"/>
+    </bean>
+    <!--JfiDepositTemp-BEAN-END-->
+    
+    
+    
+    <bean id="jfiDepositImportController" class="com.joymain.jecs.fi.webapp.action.JfiDepositImportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiDepositImport"/>
+        <property name="successView" value="redirect:jfiDepositImport.html"/>
+    </bean>
+    
+     <!--FiInvoiceBalance-BEAN-START-->
+    <bean id="fiInvoiceBalanceController" class="com.joymain.jecs.fi.webapp.action.FiInvoiceBalanceController" autowire="byName"/>
+
+    <bean id="fiInvoiceBalanceFormController" class="com.joymain.jecs.fi.webapp.action.FiInvoiceBalanceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiInvoiceBalanceForm"/>
+        <property name="successView" value="redirect:fiInvoiceBalances.html"/>
+    </bean>
+    <!--FiInvoiceBalance-BEAN-END-->
+    <!--FiInvoiceChange-BEAN-START-->
+    <bean id="fiInvoiceChangeController" class="com.joymain.jecs.fi.webapp.action.FiInvoiceChangeController" autowire="byName"/>
+
+    <bean id="fiInvoiceChangeFormController" class="com.joymain.jecs.fi.webapp.action.FiInvoiceChangeFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiInvoiceChangeForm"/>
+        <property name="successView" value="redirect:fiInvoiceChanges.html"/>
+    </bean>
+    <!--FiInvoiceChange-BEAN-END-->
+    
+    <!--FiAvailableInvoice-BEAN-START-->
+    <bean id="fiAvailableInvoiceController" class="com.joymain.jecs.fi.webapp.action.FiAvailableInvoiceController" autowire="byName"/>
+
+    <bean id="fiAvailableInvoiceFormController" class="com.joymain.jecs.fi.webapp.action.FiAvailableInvoiceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/fiAvailableInvoiceForm"/>
+        <property name="successView" value="redirect:fiAvailableInvoices.html"/>
+    </bean>
+    <!--FiAvailableInvoice-BEAN-END-->
+    
+    <!--JfiQuota-BEAN-START-->
+    <bean id="jfiQuotaController" class="com.joymain.jecs.fi.webapp.action.JfiQuotaController" autowire="byName"/>
+
+    <bean id="jfiQuotaFormController" class="com.joymain.jecs.fi.webapp.action.JfiQuotaFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiQuotaForm"/>
+        <property name="successView" value="redirect:jfiQuotas.html"/>
+    </bean>
+    <!--JfiQuota-BEAN-END-->
+    <!--JfiAmountDetail-BEAN-START-->
+    <bean id="jfiAmountDetailController" class="com.joymain.jecs.fi.webapp.action.JfiAmountDetailController" autowire="byName"/>
+
+    <bean id="jfiAmountDetailFormController" class="com.joymain.jecs.fi.webapp.action.JfiAmountDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiAmountDetailForm"/>
+        <property name="successView" value="redirect:jfiAmountDetails.html"/>
+    </bean>
+    <!--JfiAmountDetail-BEAN-END-->
+    
+	<bean id="fiPpBankbookDayReportController" class="com.joymain.jecs.fi.webapp.action.FiPpBankbookDayReportController" autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="fi/fi_pp_bankbook_day_report" />
+		<property name="successView" value="redirect:fiPpBankbookDayReport.html" />
+	</bean>
+    <bean id="fiPpSettleStatController" class="com.joymain.jecs.fi.webapp.action.FiPpSettleStatController" autowire="byName" />
+    <bean id="fiPpIncExpStatController" class="com.joymain.jecs.fi.webapp.action.FiPpIncExpStatController" autowire="byName" />
+    <bean id="fiViewProductPointJournalController" class="com.joymain.jecs.fi.webapp.action.FiViewProductPointJournalController" autowire="byName" />
+	
+		<bean id="jpmCouponInfoDayReportController" class="com.joymain.jecs.fi.webapp.action.JpmCouponInfoDayReportController" autowire="byName">
+		<!--property name="validator" ref="beanValidator"/-->
+		<property name="formView" value="fi/jpm_couponinfo_day_report" />
+		<property name="successView" value="redirect:jpmCouponInfoDayReport.html" />
+	</bean>
+	
+    <bean id="FiUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+            	<!--JfiReapalLog-URL-START-->
+                <prop key="/jfiReapalLogs.html">jfiReapalLogController</prop>
+                <prop key="/editJfiReapalLog.html">jfiReapalLogFormController</prop>
+                <!--JfiReapalLog-URL-END-->
+            	<!--JfiYeepayLog-URL-START-->
+                <prop key="/jfiYeepayLogs.html">jfiYeepayLogController</prop>
+                <prop key="/editJfiYeepayLog.html">jfiYeepayLogFormController</prop>
+                <!--JfiYeepayLog-URL-END-->
+            	<prop key="/jfiYeePayReceive.html">jfiYeePayReceiveController</prop>
+            	
+            	<prop key="/jfiReapalPayReceive.html">jfiReapalPayReceiveController</prop>
+            	
+            	<!--FiPayAccountConfig-URL-START-->
+                <prop key="/fiPayAccountConfigs.html">fiPayAccountConfigController</prop>
+                <prop key="/editFiPayAccountConfig.html">fiPayAccountConfigFormController</prop>
+                <!--FiPayAccountConfig-URL-END-->
+            	<!--FiPayAccount-URL-START-->
+                <prop key="/fiPayAccounts.html">fiPayAccountController</prop>
+                <prop key="/editFiPayAccount.html">fiPayAccountFormController</prop>
+                <!--FiPayAccount-URL-END-->
+            	<!--FiMovieOrder-URL-START-->
+            	<prop key="/fiPayChannelReceive.html">jfiPayChannelReceiveController</prop>
+            	
+            	<!-- 最新优惠支付aciton -->
+            	<prop key="/jfipayReceiveController.html">jfipayReceiveController</prop>
+            	
+            	
+            	<prop key="/fiChannelLogs.html">fiChannelLogController</prop>
+                <prop key="/fiMovieOrders.html">fiMovieOrderController</prop>
+                <prop key="/editFiMovieOrder.html">fiMovieOrderFormController</prop>
+                <prop key="/jfiUmbpayLog.html">jfiUmbpayLogController</prop>
+                <prop key="/jfiUmbpayReceive.html">jfiUmbpayReceiveController</prop>
+                <prop key="/jfiChinapnrReceive.html">jfiChinapnrReceiveController</prop>
+                <prop key="/jfiChinapnrLog.html">jfiChinapnrLogController</prop>
+                <!--FiMovieOrder-URL-END-->
+                
+            	<prop key="/chanjetCheckOrderState.html">chanjetCheckOrderStateController</prop>
+            	<prop key="/chanjetCheckOrderStateTwo.html">chanjetCheckOrderStateTwoController</prop>
+            	<prop key="/chanjetDownloadTransBill.html">chanjetDownloadTransBillController</prop>
+            	<prop key="/chanjetDownloadTransBillTwo.html">chanjetDownloadTransBillTwoController</prop>
+            	
+            	<prop key="/mobilWebPayReceive.html">mobilWebPayReceiveController</prop>
+            	<prop key="/jfiPayChanjetReceive.html">jfiPayChanjetReceiveController</prop>
+            	<!--JfiChanjetLog-URL-START-->
+                <prop key="/jfiChanjetLogs.html">jfiChanjetLogController</prop>
+                <prop key="/editJfiChanjetLog.html">jfiChanjetLogFormController</prop>
+                <!--JfiChanjetLog-URL-END-->
+            	<!-- MobilPayReceive -->
+            	<prop key="/mobilPayReceive.html">mobilPayReceiveController</prop>
+            	<!-- MobilPayReceive -->
+            	
+            	<!--FiCoinConfig-URL-START-->
+                <prop key="/fiCoinConfigs.html">fiCoinConfigController</prop>
+                <prop key="/editFiCoinConfig.html">fiCoinConfigFormController</prop>
+                <!--FiCoinConfig-URL-END-->
+                
+            	<!--FiSecurityDepositJournal-URL-START-->
+                <prop key="/fiSecurityDepositJournals.html">fiSecurityDepositJournalController</prop>
+                <prop key="/editFiSecurityDepositJournal.html">fiSecurityDepositJournalFormController</prop>
+                <!--FiSecurityDepositJournal-URL-END-->
+            	<!--FiSecurityDeposit-URL-START-->
+                <prop key="/fiSecurityDeposits.html">fiSecurityDepositController</prop>
+                <prop key="/editFiSecurityDeposit.html">fiSecurityDepositFormController</prop>
+                <prop key="/downFiSecurityDeposit.html">fiSecurityDepositDownFormController</prop>
+                <!--FiSecurityDeposit-URL-END-->
+            	<!--JmiZcwMember-URL-START-->
+                <prop key="/jmiZcwMembers.html">jmiZcwMemberController</prop>
+                <prop key="/editJmiZcwMember.html">jmiZcwMemberFormController</prop>
+                <!--JmiZcwMember-URL-END-->
+            	<prop key="/mobile/pay.do">jfiPayForMobileController</prop>
+            	<!--PosNumCheckController-BEAN-START-->
+   				<prop key="/posNumCheckList.html">posNumCheckController</prop>
+    			<!--PosNumCheckController-BEAN-END-->
+            	<!--FiTransferAccount-BEAN-START-->
+            	<prop key="/fiTransferAccounts.html">fiTransferAccountController</prop>
+            	<prop key="/fiTransferAccountsChk.html">fiTransferAccountChkController</prop>
+            	<prop key="/editFiTransferAccount.html">fiTransferAccountFormController</prop>
+    			<!--FiTransferAccount-BEAN-END-->
+                <!--JfiPosImport-URL-START-->
+                <prop key="/jfiPosImports.html">jfiPosImportController</prop>
+                <prop key="/jfiPosImportExcel.html">jfiPosImportExcelController</prop>
+                <prop key="/editJfiPosImport.html">jfiPosImportFormController</prop>
+                <!--JfiPosImport-URL-END-->
+            	<prop key="/jfiMoney.html">jfiMoneyController</prop>
+                <!--JfiSunOrderList-URL-START-->
+                <prop key="/jfiSunOrderLists.html">jfiSunOrderListController</prop>
+                <prop key="/editJfiSunOrderList.html">jfiSunOrderListFormController</prop>
+                <!--JfiSunOrderList-URL-END-->
+                <!--JfiSunOrder-URL-START-->
+                <prop key="/jfiSunOrders.html">jfiSunOrderController</prop>
+                <prop key="/editJfiSunOrder.html">jfiSunOrderFormController</prop>
+                <!--JfiSunOrder-URL-END-->
+                <!--JfiSunJmiMember-URL-START-->
+                <prop key="/jfiSunJmiMembers.html">jfiSunJmiMemberController</prop>
+                <prop key="/editJfiSunJmiMember.html">jfiSunJmiMemberFormController</prop>
+                <!--JfiSunJmiMember-URL-END-->
+                <!--JfiUsCreditCardLog-URL-START-->
+                <prop key="/jfiUsCreditCardLogs.html">jfiUsCreditCardLogController</prop>
+                <prop key="/editJfiUsCreditCardLog.html">jfiUsCreditCardLogFormController</prop>
+                <!--JfiUsCreditCardLog-URL-END-->
+                <!--JfiAlipayLog-URL-START-->
+                <prop key="/jfiAlipayLogs.html">jfiAlipayLogController</prop>
+                <prop key="/editJfiAlipayLog.html">jfiAlipayLogFormController</prop>
+                <!--JfiAlipayLog-URL-END-->
+                <!--JfiHiTrustLog-URL-START-->
+                <prop key="/jfiHiTrustLogs.html">jfiHiTrustLogController</prop>
+                <prop key="/editJfiHiTrustLog.html">jfiHiTrustLogFormController</prop>
+                <prop key="/fiBcoinJournalPay.html">fiBcoinJournalPayController</prop>
+                <!--JfiHiTrustLog-URL-END-->
+            	<prop key="/jfiSunMemberOrderView.html">jfiSunMemberOrderViewController</prop>
+            	<prop key="/jfiSunOrderStatistic.html">jfiSunOrderStatisticController</prop>
+            	<prop key="/jfiSunOrderPeriodStatistic.html">jfiSunOrderPeriodStatisticController</prop>
+            	<prop key="/jfiSunOrderReturn.html">jfiSunOrderReturnController</prop>
+            	<prop key="/jfiSunOrderView.html">jfiSunOrderViewController</prop>
+            	<prop key="/importJfiBankbookTemp.html">jfiBankbookTempImportController</prop>
+				<prop key="/importJfiPayData.html">jfiPayDataImportController</prop>
+				<prop key="/jfiHiTrustRequest.html">jfiHiTrustRequestController</prop>
+				<prop key="/jfiUsPayRequest.html">jfiUsPayRequestController</prop>
+				<prop key="/jfiB2CUpdate.html">jfiHiTrustB2CUpdateController</prop>
+				<prop key="/jfiB2CReturn.html">jfiHiTrustB2CReturnController</prop>
+				<prop key="/jfiPayAlipayReceiveNotify.html">jfiPayAlipayReceiveController</prop>
+				<prop key="/jfiPayTenpayReceiveNotify.html">jfiPayTenpayReceiveController</prop>
+				<prop key="/jfiPayAlipayReceiveReturn.html">jfiPayAlipayReceiveController</prop>
+            	<prop key="/jfiPay99billReceive.html">jfiPay99billReceiveController</prop>
+            	<prop key="/jfiPay99billReceivePage.html">jfiPay99billReceiveController</prop>
+            	<prop key="/jfiPay99billmsReceive.html">jfiPay99billmsReceiveController</prop>
+            	<prop key="/jfiPay99billmsReceivePage.html">jfiPay99billmsReceiveController</prop>
+            	<prop key="/jfiPay99billmsShow.html">jfiPay99billmsShowController</prop>
+            	<prop key="/jfiPay99bill.html">jfiPay99billController</prop>
+            	<prop key="/jfiPayByCoin.html">jfiPayByCoinController</prop>
+            	<prop key="/jfiPayByCoinAndBankbook.html">jfiPayByCoinAndBankbookController</prop>
+            	<prop key="/jfiPayByJJ.html">jfiPayByJJController</prop>
+            	<prop key="/jfiBankbookDayReport.html">jfiBankbookDayReportController</prop>
+            	<prop key="/jfiBankbookDayToDayReport.html">jfiBankbookDayToDayReportController</prop>
+            	<prop key="/fiBankbookFMonthReport.html">fiBankbookFMonthReportController</prop>
+            	<prop key="/fiBankbookDayReport.html">fiBankbookDayReportController</prop>
+            	<prop key="/jfiPayDataStatusReport.html">jfiPayDataStatusReportController</prop>
+            	<prop key="/jfiPayDataStatusStat.html">jfiPayDataStatusStatController</prop>
+				<prop key="/jfiPayDataStat.html">jfiPayDataStatController</prop>
+				<prop key="/unVerifyJfiPayData.html">jfiPayDataUnVerifyController</prop>	
+				<prop key="/verifyJfiPayData.html">jfiPayDataVerifyController</prop>
+				<prop key="/jfiViewPayData.html">jfiViewPayDataController</prop>
+            	<prop key="/jfiViewPayAdvice.html">jfiViewPayAdviceController</prop>
+				<prop key="/jfiBankOutReport.html">jfiBankOutReportController</prop>
+            	<prop key="/jfiPayAdviceStat.html">jfiPayAdviceStatController</prop>
+            	<prop key="/jfiSettleStat.html">jfiSettleStatController</prop>
+				<prop key="/jfiIncExpStat.html">jfiIncExpStatController</prop>
+            	<prop key="/fiSettleStat.html">fiSettleStatController</prop>
+				<prop key="/fiIncExpStat.html">fiIncExpStatController</prop>
+				<prop key="/jfiViewBankbookJournal.html">jfiViewBankbookJournalController</prop>
+				<prop key="/fiViewBankbookJournal.html">fiViewBankbookJournalController</prop>
+                <!--JfiBankbookBalance-URL-START-->
+                <prop key="/jfiBankbookBalances.html">jfiBankbookBalanceController</prop>
+                <prop key="/editJfiBankbookBalance.html">jfiBankbookBalanceFormController</prop>
+                <!--JfiBankbookBalance-URL-END-->
+                
+                <!--JfiBankbookJournal-URL-START-->
+                <prop key="/jfiBankbookJournals.html">jfiBankbookJournalController</prop>
+                <prop key="/editJfiBankbookJournal.html">jfiBankbookJournalFormController</prop>
+                <!--JfiBankbookJournal-URL-END-->
+                <!--JfiBankbookTemp-URL-START-->
+                <prop key="/jfiBankbookTemps.html">jfiBankbookTempController</prop>
+                <prop key="/editJfiBankbookTemp.html">jfiBankbookTempFormController</prop>
+                <!--JfiBankbookTemp-URL-END-->
+				<prop key="/jfiBankbookTempsChk.html">jfiBankbookTempChkController</prop>
+                <!--JfiPayAdvice-URL-START-->
+                <prop key="/jfiPayAdvices.html">jfiPayAdviceController</prop>
+                <prop key="/editJfiPayAdvice.html">jfiPayAdviceFormController</prop>
+                <!--JfiPayAdvice-URL-END-->
+                <!--JfiPayBank-URL-START-->
+                <prop key="/jfiPayBanks.html">jfiPayBankController</prop>
+                <prop key="/editJfiPayBank.html">jfiPayBankFormController</prop>
+                <!--JfiPayBank-URL-END-->
+                <!--JfiPayData-URL-START-->
+                <prop key="/jfiPayDatas.html">jfiPayDataController</prop>
+                <prop key="/editJfiPayData.html">jfiPayDataFormController</prop>
+                <!--JfiPayData-URL-END-->
+                <!--FiCoinLog-URL-START-->
+                <prop key="/fiCoinLogs.html">fiCoinLogController</prop>
+                <prop key="/editFiCoinLog.html">fiCoinLogFormController</prop>
+                <!--FiCoinLog-URL-END-->
+                <!--Jfi99billLog-URL-START-->
+                <prop key="/jfi99billLogs.html">jfi99billLogController</prop>
+                <prop key="/editJfi99billLog.html">jfi99billLogFormController</prop>
+                <!--Jfi99billLog-URL-END-->  
+                <!--Jfi99billPosLog-URL-START-->
+                <prop key="/jfi99billPosLogs.html">jfi99billPosLogController</prop>
+                <prop key="/jfi99billPosReceiveLogs.html">jfi99billPosLogReceiveController</prop>
+                <prop key="/jfi99billPosReceiveBackLogs.html">jfi99billPosLogReceiveController</prop>
+                <prop key="/editJfi99billPosLog.html">jfi99billPosLogFormController</prop>
+                <!--Jfi99billPosLog-URL-END-->
+                <!--Jfi99billPosSendLog-URL-START-->
+                <prop key="/jfi99billPosSendLogs.html">jfi99billPosSendLogController</prop>
+                <prop key="/editJfi99billPosSendLog.html">jfi99billPosSendLogFormController</prop>
+                <!--Jfi99billPosSendLog-URL-END-->
+                <!--BillAccount-URL-START-->
+                <prop key="/billAccounts.html">billAccountController</prop>
+                <prop key="/editBillAccount.html">billAccountFormController</prop>
+                <!--BillAccount-URL-END-->
+                <!--JfiSunMemberOrderList-URL-START-->
+                <prop key="/jfiSunMemberOrderLists.html">jfiSunMemberOrderListController</prop>
+                <prop key="/editJfiSunMemberOrderList.html">jfiSunMemberOrderListFormController</prop>
+                <!--JfiSunMemberOrderList-URL-END-->
+                <!--JfiSunMemberOrderFee-URL-START-->
+                <prop key="/jfiSunMemberOrderFees.html">jfiSunMemberOrderFeeController</prop>
+                <prop key="/editJfiSunMemberOrderFee.html">jfiSunMemberOrderFeeFormController</prop>
+                <!--JfiSunMemberOrderFee-URL-END-->
+                <!--JfiSunMemberOrder-URL-START-->
+                <prop key="/jfiSunMemberOrderReport.html">jfiSunMemberOrderReportController</prop>
+                <prop key="/jfiSunMemberOrders.html">jfiSunMemberOrderController</prop>
+                <prop key="/editJfiSunMemberOrder.html">jfiSunMemberOrderFormController</prop>
+                <!--JfiSunMemberOrder-URL-END-->
+                <!--JfiSunDistribution-URL-START-->
+                <prop key="/jfiSunDistributions.html">jfiSunDistributionController</prop>
+                <prop key="/editJfiSunDistribution.html">jfiSunDistributionFormController</prop>
+                <!--JfiSunDistribution-URL-END-->
+                <!--JfiSunConfigKey-URL-START-->
+                <prop key="/jfiSunConfigKeys.html">jfiSunConfigKeyController</prop>
+                <prop key="/editJfiSunConfigKey.html">jfiSunConfigKeyFormController</prop>
+                <!--JfiSunConfigKey-URL-END-->
+                <!--JfiSunOrderList-URL-START-->
+                <prop key="/jfiSunOrderLists.html">jfiSunOrderListController</prop>
+                <prop key="/editJfiSunOrderList.html">jfiSunOrderListFormController</prop>
+                <!--JfiSunOrderList-URL-END-->
+                <!--JfiSunOrder-URL-START-->
+                <prop key="/jfiSunOrders.html">jfiSunOrderController</prop>
+                <prop key="/editJfiSunOrder.html">jfiSunOrderFormController</prop>
+                <!--JfiSunOrder-URL-END-->
+                <!--JfiSunJmiMember-URL-START-->
+                <prop key="/jfiSunJmiMembers.html">jfiSunJmiMemberController</prop>
+                <prop key="/editJfiSunJmiMember.html">jfiSunJmiMemberFormController</prop>
+                <!--JfiSunJmiMember-URL-END-->
+				<prop key="/fiBankbookTempsChk.html">fiBankbookTempChkController</prop>
+            	<prop key="/importFiBankbookTemp.html">fiBankbookTempImportController</prop>
+                <!--JfiCreditCardLog-URL-START-->
+                <prop key="/jfiCreditCardLogs.html">jfiCreditCardLogController</prop>
+                <prop key="/editJfiCreditCardLog.html">jfiCreditCardLogFormController</prop>
+                <!--JfiCreditCardLog-URL-END-->
+                <!--FiBcoinJournal-URL-START-->
+                <prop key="/fiBcoinJournals.html">fiBcoinJournalController</prop>
+                <prop key="/editFiBcoinJournal.html">fiBcoinJournalFormController</prop>
+                <!--FiBcoinJournal-URL-END-->
+                <!--FiBcoinBalance-URL-START-->
+                <prop key="/fiBcoinBalances.html">fiBcoinBalanceController</prop>
+                <prop key="/editFiBcoinBalance.html">fiBcoinBalanceFormController</prop>
+                <!--FiBcoinBalance-URL-END-->
+                <!--FiCcoinJournal-URL-START-->
+                <prop key="/fiCcoinJournals.html">fiCcoinJournalController</prop>
+                <prop key="/editFiCcoinJournal.html">fiCcoinJournalFormController</prop>
+                <!--FiCcoinJournal-URL-END-->
+                <!--FiCcoinBalance-URL-START-->
+                <prop key="/fiCcoinBalances.html">fiCcoinBalanceController</prop>
+                <prop key="/editFiCcoinBalance.html">fiCcoinBalanceFormController</prop>
+                <!--FiCcoinBalance-URL-END-->
+               
+                <!--FiBankbookBalance-URL-START-->
+                <prop key="/fiBankbookBalances.html">fiBankbookBalanceController</prop>
+                <prop key="/editFiBankbookBalance.html">fiBankbookBalanceFormController</prop>
+                <!--FiBankbookBalance-URL-END-->
+                
+                <!--FiBankbookJournal-URL-START-->
+                <prop key="/fiBankbookJournals.html">fiBankbookJournalController</prop>
+                <prop key="/editFiBankbookJournal.html">fiBankbookJournalFormController</prop>
+                <!--FiBankbookJournal-URL-END-->
+                <!--FiBankbookTemp-URL-START-->
+                <prop key="/fiBankbookTemps.html">fiBankbookTempController</prop>
+                <prop key="/editFiBankbookTemp.html">fiBankbookTempFormController</prop>
+                <!--FiBankbookTemp-URL-END-->
+                 <!--FiBankbookTemp-URL-START-->
+                <prop key="/fiProductPointTemps.html">fiProductPointTempController</prop>
+                <prop key="/editFiProductPointTemp.html">fiProductPointTempFormController</prop>
+                <prop key="/importFiProductPointTemp.html">fiProductPointTempImportController</prop>
+                <!--FiBankbookTemp-URL-END-->
+                <!--JfiTenpayLog-URL-START-->
+                <prop key="/jfiTenpayLogs.html">jfiTenpayLogController</prop>
+                <prop key="/editJfiTenpayLog.html">jfiTenpayLogFormController</prop>
+                <!--JfiTenpayLog-URL-END-->
+                
+                <!--Foundation-URL-START-->
+                <prop key="/jfiPayFoundation.html">jfiPayFoundationController</prop>
+                <prop key="/jfiPayFoundationReceive.html">jfiPayFoundationReceiveController</prop>
+                
+                <prop key="/fiLovecoinJournals.html">fiLovecoinJournalController</prop>
+                <prop key="/fiLovecoinBalances.html">fiLovecoinBalanceController</prop>
+                
+                <prop key="/foundationOrders.html">foundationOrderController</prop>
+                <prop key="/editFoundationOrder.html">foundationOrderFormController</prop>
+
+                <prop key="/foundationItems.html">foundationItemController</prop>
+                <prop key="/editFoundationItem.html">foundationItemFormController</prop>
+                <!--FoundationItem-URL-END-->
+                <!--FiBillAccount-URL-START-->
+                <prop key="/fiBillAccounts.html">fiBillAccountController</prop>
+                <prop key="/editFiBillAccount.html">fiBillAccountFormController</prop>
+                
+                <prop key="/businessList.html">businessController</prop>
+                <prop key="/editBusiness.html">businessFromController</prop>
+                <prop key="/fiBillAccountCheck.html">fiBillAccountCheckController</prop>
+                <prop key="/fiBillAccountImport.html">fiBillAccountImportController</prop>
+                <!--FiBillAccount-URL-END-->
+                <!--FiBillAccountRelation-URL-START-->
+                <prop key="/fiBillAccountRelations.html">fiBillAccountRelationController</prop>
+                <prop key="/editFiBillAccountRelation.html">fiBillAccountRelationFormController</prop>
+                <!--FiBillAccountRelation-URL-END-->
+                <!--FiGetbillaccountLog-URL-START-->
+                <prop key="/fiGetbillaccountLogs.html">fiGetbillaccountLogController</prop>
+                <prop key="/editFiGetbillaccountLog.html">fiGetbillaccountLogFormController</prop>
+                <!--FiGetbillaccountLog-URL-END-->
+                <!--FiCommonAddr-URL-START-->
+                <prop key="/fiCommonAddrs.html">fiCommonAddrController</prop>
+                <prop key="/editFiCommonAddr.html">fiCommonAddrFormController</prop>
+                <!--FiCommonAddr-URL-END-->
+                
+                <!--FiFundbookBalance-URL-START-->
+                <prop key="/fiFundbookBalances.html">fiFundbookBalanceController</prop>
+                <prop key="/editFiFundbookBalance.html">fiFundbookBalanceFormController</prop>
+                <!--FiFundbookBalance-URL-END-->
+                <!--FiFundbookJournal-URL-START-->
+                <prop key="/fiFundbookJournals.html">fiFundbookJournalController</prop>
+                <prop key="/editFiFundbookJournal.html">fiFundbookJournalFormController</prop>
+                <!--FiFundbookJournal-URL-END-->
+                <!--FiFundbookTemp-URL-START-->
+                <prop key="/fiFundbookTemps.html">fiFundbookTempController</prop>
+                <prop key="/editFiFundbookTemp.html">fiFundbookTempFormController</prop>
+                <prop key="/fiFundbookTempsChk.html">fiFundbookTempChkController</prop>
+                <prop key="/importFiFundbookTemp.html">fiFundbookTempImportController</prop>
+                <!--FiFundbookTemp-URL-END-->
+                <prop key="/fiFundbookDayReport.html">fiFundbookDayReportController</prop>
+                <prop key="/fiFunkbookIncExpStat.html">fiFunkbookIncExpStatController</prop>
+                <!--FiTransferFundbook-URL-START-->
+                <prop key="/fiTransferFundbooks.html">fiTransferFundbookController</prop>
+                <prop key="/editFiTransferFundbook.html">fiTransferFundbookFormController</prop>
+                <prop key="/fiTransferFundbooksChk.html">fiTransferFundbookChkController</prop>
+                <!--FiTransferFundbook-URL-END-->
+                
+                <!--FiBcoinPayconfig-URL-START-->
+                <prop key="/fiBcoinPayconfigs.html">fiBcoinPayconfigController</prop>
+                <prop key="/editFiBcoinPayconfig.html">fiBcoinPayconfigFormController</prop>
+                <!--FiBcoinPayconfig-URL-END-->
+                <!--FiBcoinPayconfigDetail-URL-START-->
+                <prop key="/fiBcoinPayconfigDetails.html">fiBcoinPayconfigDetailController</prop>
+                <prop key="/editFiBcoinPayconfigDetail.html">fiBcoinPayconfigDetailFormController</prop>
+                <!--FiBcoinPayconfigDetail-URL-END-->
+                
+                <!--FiBillAccountWarning-URL-START-->
+                <prop key="/fiBillAccountWarnings.html">fiBillAccountWarningController</prop>
+                <prop key="/fiBillAccountWarningsChk.html">fiBillAccountWarningChkController</prop>
+                <prop key="/editFiBillAccountWarning.html">fiBillAccountWarningFormController</prop>
+                <!--FiBillAccountWarning-URL-END-->
+                
+                <!--JfiDepositMoney-URL-START-->
+                <prop key="/jfiDepositMoneys.html">jfiDepositMoneyController</prop>
+                <prop key="/editJfiDepositMoney.html">jfiDepositMoneyFormController</prop>
+                <!--JfiDepositMoney-URL-END-->
+                
+                
+                <!--JfiInvoiceDeposit-URL-START-->
+                <prop key="/jfiInvoiceDeposits.html">jfiInvoiceDepositController</prop>
+                <prop key="/editJfiInvoiceDeposit.html">jfiInvoiceDepositFormController</prop>
+                <!--JfiInvoiceDeposit-URL-END-->
+                <!--JfiDepositList-URL-START-->
+                <prop key="/jfiDepositLists.html">jfiDepositListController</prop>
+                <prop key="/editJfiDepositList.html">jfiDepositListFormController</prop>
+                <!--JfiDepositList-URL-END-->
+                
+                <!--JfiInvoice-URL-START-->
+                <prop key="/jfiInvoices.html">jfiInvoiceController</prop>
+                <prop key="/editJfiInvoice.html">jfiInvoiceFormController</prop>
+                <prop key="/importJfiInvoice.html">jfiInvoiceImportController</prop>
+                
+                <prop key="/exportJfiInvoiceDeposit.html">jfiInvoiceDepositExportController</prop>
+                <!--JfiInvoice-URL-END-->
+                
+                <!--JfiDepositJournal-URL-START-->
+                <prop key="/jfiDepositJournals.html">jfiDepositJournalController</prop>
+                <prop key="/editJfiDepositJournal.html">jfiDepositJournalFormController</prop>
+                <!--JfiDepositJournal-URL-END-->
+                <!--JfiDepositSend-URL-START-->
+                <prop key="/jfiDepositSends.html">jfiDepositSendController</prop>
+                <prop key="/editJfiDepositSend.html">jfiDepositSendFormController</prop>
+                <!--JfiDepositSend-URL-END-->
+                <!--JfiDepositBalance-URL-START-->
+                <prop key="/jfiDepositBalances.html">jfiDepositBalanceController</prop>
+                <prop key="/editJfiDepositBalance.html">jfiDepositBalanceFormController</prop>
+                <!--JfiDepositBalance-URL-END-->
+                <!--JfiDepositTemp-URL-START-->
+                <prop key="/jfiDepositTemps.html">jfiDepositTempController</prop>
+                <prop key="/editJfiDepositTemp.html">jfiDepositTempFormController</prop>
+                <!--JfiDepositTemp-URL-END-->
+                <prop key="/jfiDepositImport.html">jfiDepositImportController</prop>
+                
+                <!--FiAvailableInvoice-URL-START-->
+                <prop key="/fiAvailableInvoices.html">fiAvailableInvoiceController</prop>
+                <prop key="/editFiAvailableInvoice.html">fiAvailableInvoiceFormController</prop>
+                <!--FiAvailableInvoice-URL-END-->
+                <!-- mofify fu 2015-11-29 -->
+                <prop key="/fiAvailableInvoiceImport.html">fiAvailableImportController</prop>
+                 <!--FiInvoiceBalance-URL-START-->
+                <prop key="/fiInvoiceBalances.html">fiInvoiceBalanceController</prop>
+                <prop key="/editFiInvoiceBalance.html">fiInvoiceBalanceFormController</prop>
+                <!--FiInvoiceBalance-URL-END-->
+                <!--FiInvoiceChange-URL-START-->
+                <prop key="/fiInvoiceChanges.html">fiInvoiceChangeController</prop>
+                <prop key="/editFiInvoiceChange.html">fiInvoiceChangeFormController</prop>
+                <!--FiInvoiceChange-URL-END-->
+                
+                <!--JfiQuota-URL-START-->
+                <prop key="/jfiQuotas.html">jfiQuotaController</prop>
+                <prop key="/editJfiQuota.html">jfiQuotaFormController</prop>
+                <!--JfiQuota-URL-END-->
+                <!--JfiAmountDetail-URL-START-->
+                <prop key="/jfiAmountDetails.html">jfiAmountDetailController</prop>
+                <prop key="/editJfiAmountDetail.html">jfiAmountDetailFormController</prop>
+                <!--JfiAmountDetail-URL-END-->
+            	<prop key="/fiPpBankbookDayReport.html">fiPpBankbookDayReportController</prop>
+            	<prop key="/fiPpSettleStat.html">fiPpSettleStatController</prop>
+				<prop key="/fiPpIncExpStat.html">fiPpIncExpStatController</prop>
+				<prop key="/fiViewProductPointJournal.html">fiViewProductPointJournalController</prop>
+
+				<prop key="/fiProductPointBalances.html">fiProductPointBalanceController</prop>
+                <prop key="/editJfiProductPointBalance.html">fiProductPointBalanceFormController</prop>
+                <prop key="/fiProductPointJournals.html">fiProductPointJournalController</prop>
+                <prop key="/editFiProductPointJournal.html">fiProductPointJournalFormController</prop>
+                <prop key="/fiProductPointFMonthReport.html">fiProductPointFMonthReportController</prop>
+				
+				<!--fiProductPointTempsChk-URL-END-->
+				<prop key="/fiProductPointTempsChk.html">fiProductPointTempChkController</prop>
+                <!--fiProductPointTempsChk-URL-START-->
+                <prop key="/jpmCouponInfoDayReport.html">jpmCouponInfoDayReportController</prop>
+            </props>
+           </property>
+    </bean>
+</beans>

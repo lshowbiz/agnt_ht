@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.al.model.AlStateProvince"
+            table="JAL_STATE_PROVINCE"
+    >
+
+    <id
+        name="stateProvinceId"
+            column="STATE_PROVINCE_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_AL]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="belongArea"
+                    column="BELONG_AREA"
+                length="50"
+        >
+
+        </property>
+
+        <many-to-one
+            name="alCountry"
+                not-null="true"
+        >
+
+            <column
+                name="COUNTRY_ID" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="stateProvinceCode"
+                    column="STATE_PROVINCE_CODE"
+                length="30"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="stateProvinceName"
+                    column="STATE_PROVINCE_NAME"
+                length="150"
+                not-null="true"
+        >
+
+        </property>
+
+        <set
+            name="alCitys"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+            order-by="CITY_CODE asc"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="STATE_PROVINCE_ID"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.al.model.AlCity"
+            />
+
+        </set>
+
+    </class>    
+
+</hibernate-mapping>
+

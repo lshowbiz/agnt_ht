@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.am.model.JamPromotion"
+            table="JAM_PROMOTION"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_AM]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="pmName"
+                    column="PM_NAME"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="pmTarget"
+                    column="PM_TARGET"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="pmWay"
+                    column="PM_WAY"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="pmType"
+                    column="PM_TYPE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="noticeDate"
+                    column="NOTICE_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="startTime"
+                    column="START_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="endTime"
+                    column="END_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="targetGroup"
+                    column="TARGET_GROUP"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="detail"
+                    column="DETAIL"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="proposer"
+                    column="PROPOSER"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="analyzed"
+                    column="ANALYZED"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="createUser"
+                    column="CREATE_USER"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="createDate"
+                    column="CREATE_DATE"
+                length="7"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

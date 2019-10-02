@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pd.model.PdLogisticsBase"
+            table="PD_LOGISTICS_BASE"
+    >
+
+    <id
+        name="baseId"
+            column="BASE_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="member_order_no"
+                    column="MEMBER_ORDER_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="si_no"
+                    column="SI_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="wms_do"
+                    column="WMS_DO"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="status_time"
+                    column="STATUS_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="status_code"
+                    column="STATUS_CODE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="status_name"
+                    column="STATUS_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="operator"
+                    column="OPERATOR"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="otherOne"
+                    column="OTHER_ONE"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="otherTwo"
+                    column="OTHER_TWO"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="otherThree"
+                    column="OTHER_THREE"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="otherFour"
+                    column="OTHER_FOUR"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="otherFive"
+                    column="OTHER_FIVE"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="num_order_type"
+                    column="NUM_ORDER_TYPE"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="isfull_pay"
+                    column="ISFULL_PAY"
+                length="2"
+        >
+
+        </property>
+
+        <list
+            name="mail_list"
+            inverse="true"
+            cascade="all"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="BASE_ID"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-index tag is deprecated, use @hibernate.index instead -->
+            <index
+                column="positionPdNum"
+            />
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.pd.model.PdLogisticsBaseNum"
+            />
+
+        </list>
+
+    </class>    
+
+</hibernate-mapping>
+

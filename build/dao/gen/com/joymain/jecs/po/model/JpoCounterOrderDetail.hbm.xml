@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.po.model.JpoCounterOrderDetail"
+            table="JPO_COUNTER_ORDER_DETAIL"
+    >
+
+    <id
+        name="codNo"
+            column="COD_NO"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PO]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="price"
+                    column="PRICE"
+                length="11"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="qty"
+                    column="QTY"
+                length="8"
+                not-null="true"
+        >
+
+        </property>
+
+        <many-to-one
+            name="jpmProductSaleNew"
+                not-null="true"
+        >
+
+            <column
+                name="PRODUCT_ID" 
+            />
+
+        </many-to-one>
+
+        <many-to-one
+            name="jpoCounterOrder"
+                not-null="true"
+        >
+
+            <column
+                name="CO_NO" 
+            />
+
+        </many-to-one>
+
+    </class>    
+
+</hibernate-mapping>
+

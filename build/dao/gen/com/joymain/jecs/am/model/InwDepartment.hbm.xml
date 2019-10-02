@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.am.model.InwDepartment"
+            table="INW_DEPARTMENT"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_AM]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="name"
+                    column="NAME"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="category"
+                    column="CATEGORY"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="higerId"
+                    column="HIGER_ID"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="higerDepartName"
+                    column="HIGER_DEPART_NAME"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="createUserCode"
+                    column="CREATE_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="auditTime"
+                    column="AUDIT_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="auditUserCode"
+                    column="AUDIT_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="2"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

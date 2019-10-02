@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JmiMemberTeam"
+            table="JMI_MEMBER_TEAM"
+    >
+
+    <id
+        name="code"
+            column="CODE"
+                type="java.lang.String"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="name"
+                    column="NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="isBuy"
+                    column="IS_BUY"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="fullName"
+                    column="FULL_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="isPromotions"
+                    column="IS_PROMOTIONS"
+                length="1"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

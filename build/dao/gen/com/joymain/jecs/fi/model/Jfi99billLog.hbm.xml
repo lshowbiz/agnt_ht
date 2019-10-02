@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.Jfi99billLog"
+            table="JFI_99BILL_LOG"
+    >
+
+    <id
+        name="logId"
+            column="LOG_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_FI]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="merchantAcctId"
+                    column="MERCHANT_ACCT_ID"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="version"
+                    column="VERSION"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="billLanguage"
+                    column="BILL_LANGUAGE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="signType"
+                    column="SIGN_TYPE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="payType"
+                    column="PAY_TYPE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="bankId"
+                    column="BANK_ID"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="orderId"
+                    column="ORDER_ID"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="orderTime"
+                    column="ORDER_TIME"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="orderAmount"
+                    column="ORDER_AMOUNT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="dealId"
+                    column="DEAL_ID"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="bankDealId"
+                    column="BANK_DEAL_ID"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="dealTime"
+                    column="DEAL_TIME"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="payAmount"
+                    column="PAY_AMOUNT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="fee"
+                    column="FEE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="ext1"
+                    column="EXT1"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="ext2"
+                    column="EXT2"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="payResult"
+                    column="PAY_RESULT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="errCode"
+                    column="ERR_CODE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="signMsg"
+                    column="SIGN_MSG"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="url"
+                    column="URL"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="verifySignResult"
+                    column="VERIFY_SIGN_RESULT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="inc"
+                    column="INC"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="referer"
+                    column="REFERER"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="returnMsg"
+                    column="RETURN_MSG"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="ip"
+                    column="IP"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="dataType"
+                    column="DATA_TYPE"
+                length="1"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,1279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <!-- Hibernate SessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+		<property name="configLocation">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+		<property name="lobHandler">
+                        <ref bean="lobHandler" />
+   		</property>
+	
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</prop>
+                <prop key="hibernate.query.substitutions">true 'Y', false 'N'</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.max_fetch_depth">3</prop>
+				<prop key="hibernate.hibernate.use_outer_join">true</prop>
+				<prop key="hibernate.jdbc.batch_size">10</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+                <!-- Create/update the database tables automatically when the JVM starts up
+                <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+                <!-- Turn batching off for better error messages under PostgreSQL 
+                <prop key="hibernate.jdbc.batch_size">0</prop> -->
+            </props>
+        </property>
+		<property name="entityInterceptor">
+			<ref local="auditLogInterceptor" />
+		</property>
+	</bean>
+
+	<bean id="lobHandler" lazy-init="true"   class="org.springframework.jdbc.support.lob.DefaultLobHandler"/>
+
+	<bean id="sessionFactory2" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource2" />
+		<property name="configLocation">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+		<property name="lobHandler">
+          	<ref bean="lobHandler" />
+    	</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</prop>
+				<prop key="hibernate.query.substitutions">true 'Y', false 'N'</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.max_fetch_depth">3</prop>
+				<prop key="hibernate.hibernate.use_outer_join">true</prop>
+				<prop key="hibernate.jdbc.batch_size">10</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<!-- Create/update the database tables automatically when the JVM starts up
+					<prop key="hibernate.hbm2ddl.auto">update</prop> -->
+				<!-- Turn batching off for better error messages under PostgreSQL 
+					<prop key="hibernate.jdbc.batch_size">0</prop> -->
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="sessionFactoryReport" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceReport" />
+		<property name="configLocation">
+			<value>classpath:report.hibernate.cfg.xml</value>
+		</property>
+		<property name="lobHandler">
+          	<ref bean="lobHandler" />
+    	</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</prop>
+				<prop key="hibernate.query.substitutions">true 'Y', false 'N'</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.max_fetch_depth">3</prop>
+				<prop key="hibernate.hibernate.use_outer_join">true</prop>
+				<prop key="hibernate.jdbc.batch_size">10</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<!-- Create/update the database tables automatically when the JVM starts up
+					<prop key="hibernate.hbm2ddl.auto">update</prop> -->
+				<!-- Turn batching off for better error messages under PostgreSQL 
+					<prop key="hibernate.jdbc.batch_size">0</prop> -->
+			</props>
+		</property>
+	</bean>
+
+	<bean id="auditLogInterceptor" class="com.joymain.jecs.log.interceptor.JecsDataLogInterceptor" />
+
+	<bean id="dataLog" class="com.joymain.jecs.webapp.interceptor.DataLog">
+		<property name="sessionFactory">
+			<ref local="sessionFactory2" />
+		</property>
+	</bean>
+
+	<!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+    <!-- Generic Dao - can be used when doing standard CRUD -->
+    <bean id="dao" class="com.joymain.jecs.dao.hibernate.BaseDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+    
+    <bean id="daoReport" class="com.joymain.jecs.dao.hibernate.BaseDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactoryReport"/>
+		<property name="jdbcTemplate" ref="jdbcTemplateReport" />
+    </bean>
+
+    <!-- LookupDao: Hibernate implementation -->
+    <bean id="lookupDao" class="com.joymain.jecs.dao.hibernate.LookupDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- UserDao: Hibernate implementation -->
+    <bean id="userDao" class="com.joymain.jecs.dao.hibernate.UserDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <!-- RoleDao: Hibernate implementation -->
+    <bean id="roleDao" class="com.joymain.jecs.dao.hibernate.RoleDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    
+
+
+	<!--AlBranch-START-->
+	<bean id="alBranchDao" class="com.joymain.jecs.al.dao.hibernate.AlBranchDaoHibernate" autowire="byName" />
+	<!--AlBranch-END-->
+	<!--AlCharacterCoding-START-->
+	<bean id="alCharacterCodingDao" class="com.joymain.jecs.al.dao.hibernate.AlCharacterCodingDaoHibernate" autowire="byName" />
+	<!--AlCharacterCoding-END-->
+	<!--AlCharacterKey-START-->
+	<bean id="alCharacterKeyDao" class="com.joymain.jecs.al.dao.hibernate.AlCharacterKeyDaoHibernate" autowire="byName" />
+	<!--AlCharacterKey-END-->
+	<!--AlCharacterValue-START-->
+	<bean id="alCharacterValueDao" class="com.joymain.jecs.al.dao.hibernate.AlCharacterValueDaoHibernate" autowire="byName" />
+	<!--AlCharacterValue-END-->
+	<!--AlCompany-START-->
+	<bean id="alCompanyDao" class="com.joymain.jecs.al.dao.hibernate.AlCompanyDaoHibernate" autowire="byName" />
+	<!--AlCompany-END-->
+	<!--AlCountry-START-->
+	<bean id="alCountryDao" class="com.joymain.jecs.al.dao.hibernate.AlCountryDaoHibernate" autowire="byName" />
+	<!--AlCountry-END-->
+	<!--AlCurrency-START-->
+	<bean id="alCurrencyDao" class="com.joymain.jecs.al.dao.hibernate.AlCurrencyDaoHibernate" autowire="byName" />
+	<!--AlCurrency-END-->
+	<!--AlRegion-START-->
+	<bean id="alRegionDao" class="com.joymain.jecs.al.dao.hibernate.AlRegionDaoHibernate" autowire="byName" />
+	<!--AlRegion-END-->
+	<!--AlStateProvince-START-->
+	<bean id="alStateProvinceDao" class="com.joymain.jecs.al.dao.hibernate.AlStateProvinceDaoHibernate" autowire="byName" />
+	<!--AlStateProvince-END-->
+
+	<!--Start system manage's DAO bean definition  by Asii-->
+	<bean id="sysUserDao" class="com.joymain.jecs.sys.dao.hibernate.SysUserDaoHibernate" autowire="byName" />
+	<bean id="sysRoleUserDao" class="com.joymain.jecs.sys.dao.hibernate.SysRoleUserDaoHibernate" autowire="byName" />
+	<!--End system manage's DAO bean definition-->
+
+	<bean id="sysListKeyDao" class="com.joymain.jecs.sys.dao.hibernate.SysListKeyDaoHibernate" autowire="byName" />
+	<!--SysListKey-END-->
+	<!--SysListValue-START-->
+	<bean id="sysListValueDao" class="com.joymain.jecs.sys.dao.hibernate.SysListValueDaoHibernate" autowire="byName" />
+	<!--SysListValue-END-->
+	<!--SysConfigKey-START-->
+	<bean id="sysConfigKeyDao" class="com.joymain.jecs.sys.dao.hibernate.SysConfigKeyDaoHibernate" autowire="byName" />
+	<!--SysConfigKey-END-->
+	<!--SysConfigValue-START-->
+	<bean id="sysConfigValueDao" class="com.joymain.jecs.sys.dao.hibernate.SysConfigValueDaoHibernate" autowire="byName" />
+	<!--SysConfigValue-END-->
+	<!--SysId-START-->
+	<bean id="sysIdDao" class="com.joymain.jecs.sys.dao.hibernate.SysIdDaoHibernate" autowire="byName" />
+	<!--SysId-END-->
+	<!--AlCharacterType-START-->
+	<bean id="alCharacterTypeDao" class="com.joymain.jecs.al.dao.hibernate.AlCharacterTypeDaoHibernate" autowire="byName" />
+	<!--AlCharacterType-END-->
+	<!--SysClickLog-START-->
+	<bean id="sysClickLogDao" class="com.joymain.jecs.sys.dao.hibernate.SysClickLogDaoHibernate" autowire="byName" />
+	<!--SysClickLog-END-->
+	<!--SysDataLog-START-->
+	<bean id="sysDataLogDao" class="com.joymain.jecs.sys.dao.hibernate.SysDataLogDaoHibernate" autowire="byName" />
+	<!--SysDataLog-END-->
+    <!--BdOperationLog-START-->
+    <bean id="sysOperationLogDao" class="com.joymain.jecs.sys.dao.hibernate.SysOperationLogDaoHibernate" autowire="byName"/>
+    <!--BdOperationLog-END-->
+    <!--SysUsrTypePow-START-->
+    <bean id="sysUsrTypePowDao" class="com.joymain.jecs.sys.dao.hibernate.SysUsrTypePowDaoHibernate" autowire="byName"/>
+    <!--SysUsrTypePow-END-->
+    
+    <!--SysManagerModlPow-START-->
+    <bean id="sysManagerModlPowDao" class="com.joymain.jecs.sys.dao.hibernate.SysManagerModlPowDaoHibernate" autowire="byName"/>
+    <!--SysManagerModlPow-END-->
+    
+    <!--SysCompanyPow-START-->
+    <bean id="sysCompanyPowDao" class="com.joymain.jecs.sys.dao.hibernate.SysCompanyPowDaoHibernate" autowire="byName"/>
+    <!--SysCompanyPow-END-->
+    <!--SysDepartment-START-->
+    <bean id="sysDepartmentDao" class="com.joymain.jecs.sys.dao.hibernate.SysDepartmentDaoHibernate" autowire="byName"/>
+    <!--SysDepartment-END-->
+    <!--SysManager-START-->
+    <bean id="sysManagerDao" class="com.joymain.jecs.sys.dao.hibernate.SysManagerDaoHibernate" autowire="byName"/>
+    <!--SysManager-END-->
+    <!--SysManagerUser-START-->
+    <bean id="sysManagerUserDao" class="com.joymain.jecs.sys.dao.hibernate.SysManagerUserDaoHibernate" autowire="byName"/>
+    <!--SysManagerUser-END-->
+    <!--SysModule-START-->
+    <bean id="sysModuleDao" class="com.joymain.jecs.sys.dao.hibernate.SysModuleDaoHibernate" autowire="byName"/>
+    <!--SysModule-END-->
+    <!--SysRole-START-->
+    <bean id="sysRoleDao" class="com.joymain.jecs.sys.dao.hibernate.SysRoleDaoHibernate" autowire="byName"/>
+    <!--SysRole-END-->
+    <!--SysUserRole-START-->
+    <bean id="sysUserRoleDao" class="com.joymain.jecs.sys.dao.hibernate.SysUserRoleDaoHibernate" autowire="byName"/>
+    <!--SysUserRole-END-->
+    <!--SysRolePower-START-->
+    <bean id="sysRolePowerDao" class="com.joymain.jecs.sys.dao.hibernate.SysRolePowerDaoHibernate" autowire="byName"/>
+    <!--SysRolePower-END-->
+    <!--SysBank-START-->
+    <bean id="sysBankDao" class="com.joymain.jecs.sys.dao.hibernate.SysBankDaoHibernate" autowire="byName"/>
+    <!--SysBank-END-->
+    <!--SysVisitLog-START-->
+    <bean id="sysVisitLogDao" class="com.joymain.jecs.sys.dao.hibernate.SysVisitLogDaoHibernate" autowire="byName"/>
+    <!--SysVisitLog-END-->
+    <!--SysUserIp-START-->
+    <bean id="sysUserIpDao" class="com.joymain.jecs.sys.dao.hibernate.SysUserIpDaoHibernate" autowire="byName"/>
+    <!--SysUserIp-END-->
+    <!--SysReportLog-START-->
+    <bean id="sysReportLogDao" class="com.joymain.jecs.sys.dao.hibernate.SysReportLogDaoHibernate" autowire="byName"/>
+    <!--SysReportLog-END-->
+    <!--AlCompanyArea-START-->
+    <bean id="alCompanyAreaDao" class="com.joymain.jecs.al.dao.hibernate.AlCompanyAreaDaoHibernate" autowire="byName"/>
+    <!--AlCompanyArea-END-->
+    
+    <!-- Add new Daos here -->
+    
+    <!--JmiMember-START-->
+    <bean id="jmiMemberDao" class="com.joymain.jecs.mi.dao.hibernate.JmiMemberDaoHibernate" autowire="byName"/>
+    <bean id="jmiMemberDaoReport" class="com.joymain.jecs.mi.dao.hibernate.JmiMemberDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactoryReport"/>
+		<property name="jdbcTemplate" ref="jdbcTemplateReport" />
+    </bean>
+    <!--JmiMember-END-->
+    <!--JmiMemberUpgradeNote-START-->
+    <bean id="jmiMemberUpgradeNoteDao" class="com.joymain.jecs.mi.dao.hibernate.JmiMemberUpgradeNoteDaoHibernate" autowire="byName"/>
+    <!--JmiMemberUpgradeNote-END-->
+    <!--JfiBankbookBalance-START-->
+    <bean id="jfiBankbookBalanceDao" class="com.joymain.jecs.fi.dao.hibernate.JfiBankbookBalanceDaoHibernate" autowire="byName"/>
+    <!--JfiBankbookBalance-END-->
+    <!--JfiBankbookJournal-START-->
+    <bean id="jfiBankbookJournalDao" class="com.joymain.jecs.fi.dao.hibernate.JfiBankbookJournalDaoHibernate" autowire="byName"/>
+    <!--JfiBankbookJournal-END-->
+    <!--JfiBankbookTemp-START-->
+    <bean id="jfiBankbookTempDao" class="com.joymain.jecs.fi.dao.hibernate.JfiBankbookTempDaoHibernate" autowire="byName"/>
+    <!--JfiBankbookTemp-END-->
+    <!--JfiPayAdvice-START-->
+    <bean id="jfiPayAdviceDao" class="com.joymain.jecs.fi.dao.hibernate.JfiPayAdviceDaoHibernate" autowire="byName"/>
+    <!--JfiPayAdvice-END-->
+    <!--JfiPayBank-START-->
+    <bean id="jfiPayBankDao" class="com.joymain.jecs.fi.dao.hibernate.JfiPayBankDaoHibernate" autowire="byName"/>
+    <!--JfiPayBank-END-->
+    <!--JfiPayData-START-->
+    <bean id="jfiPayDataDao" class="com.joymain.jecs.fi.dao.hibernate.JfiPayDataDaoHibernate" autowire="byName"/>
+    <!--JfiPayData-END-->
+    <!--JmiAddrBook-START-->
+    <bean id="jmiAddrBookDao" class="com.joymain.jecs.mi.dao.hibernate.JmiAddrBookDaoHibernate" autowire="byName"/>
+    <!--JmiAddrBook-END-->
+    <!--JmiLinkRef-START-->
+    <bean id="jmiLinkRefDao" class="com.joymain.jecs.mi.dao.hibernate.JmiLinkRefDaoHibernate" autowire="byName"/>
+    <bean id="jmiLinkRefDaoReport" class="com.joymain.jecs.mi.dao.hibernate.JmiLinkRefDaoHibernate" >
+        <property name="sessionFactory" ref="sessionFactoryReport"/>
+		<property name="jdbcTemplate" ref="jdbcTemplateReport" />
+    </bean>
+    <!--JmiLinkRef-END-->
+    <!--JmiRecommendRef-START-->
+    <bean id="jmiRecommendRefDao" class="com.joymain.jecs.mi.dao.hibernate.JmiRecommendRefDaoHibernate" autowire="byName"/>
+    <bean id="jmiRecommendRefDaoReport" class="com.joymain.jecs.mi.dao.hibernate.JmiRecommendRefDaoHibernate" >
+        <property name="sessionFactory" ref="sessionFactoryReport"/>
+		<property name="jdbcTemplate" ref="jdbcTemplateReport" />
+    </bean>
+    <!--JmiRecommendRef-END-->
+    <!--JpmProduct-START-->
+    <bean id="jpmProductDao" class="com.joymain.jecs.pm.dao.hibernate.JpmProductDaoHibernate" autowire="byName"/>
+    <!--JpmProduct-END-->
+    <!--JpmProductSale-START-->
+    <bean id="jpmProductSaleDao" class="com.joymain.jecs.pm.dao.hibernate.JpmProductSaleDaoHibernate" autowire="byName"/>
+    <!--JpmProductSale-END-->
+    <!--JpmProductSaleLog-START-->
+    <bean id="jpmProductSaleLogDao" class="com.joymain.jecs.pm.dao.hibernate.JpmProductSaleLogDaoHibernate" autowire="byName"/>
+    <!--JpmProductSaleLog-END-->
+    <!--Jfi99billLog-START-->
+    <bean id="jfi99billLogDao" class="com.joymain.jecs.fi.dao.hibernate.Jfi99billLogDaoHibernate" autowire="byName"/>
+    <!--Jfi99billLog-END-->
+    <!--PdWarehouse-START-->
+    <bean id="pdWarehouseDao" class="com.joymain.jecs.pd.dao.hibernate.PdWarehouseDaoHibernate" autowire="byName"/>
+    <!--PdWarehouse-END-->
+    <!--PdWarehouseStockTrace-START-->
+    <bean id="pdWarehouseStockTraceDao" class="com.joymain.jecs.pd.dao.hibernate.PdWarehouseStockTraceDaoHibernate" autowire="byName"/>
+    <!--PdWarehouseStockTrace-END-->
+    <!--PdWarehouseStock-START-->
+    <bean id="pdWarehouseStockDao" class="com.joymain.jecs.pd.dao.hibernate.PdWarehouseStockDaoHibernate" autowire="byName"/>
+    <!--PdWarehouseStock-END-->
+    <!--PdSendInfo-START-->
+    <bean id="pdSendInfoDao" class="com.joymain.jecs.pd.dao.hibernate.PdSendInfoDaoHibernate" autowire="byName"/>
+    <!--PdSendInfo-END-->
+    <!--PdSendInfoDetail-START-->
+    <bean id="pdSendInfoDetailDao" class="com.joymain.jecs.pd.dao.hibernate.PdSendInfoDetailDaoHibernate" autowire="byName"/>
+    <!--PdSendInfoDetail-END-->
+    <!--PdShipmentsDetail-START-->
+    <bean id="pdShipmentsDetailDao" class="com.joymain.jecs.pd.dao.hibernate.PdShipmentsDetailDaoHibernate" autowire="byName"/>
+    <!--PdShipmentsDetail-END-->
+    <!--PdWarehouseUser-START-->
+    <bean id="pdWarehouseUserDao" class="com.joymain.jecs.pd.dao.hibernate.PdWarehouseUserDaoHibernate" autowire="byName"/>
+    <!--PdWarehouseUser-END-->
+    <!--PdWarehouseArea-START-->
+    <bean id="pdWarehouseAreaDao" class="com.joymain.jecs.pd.dao.hibernate.PdWarehouseAreaDaoHibernate" autowire="byName"/>
+    <!--PdWarehouseArea-END-->
+    <!--AmAnnounce-START-->
+    <bean id="amAnnounceDao" class="com.joymain.jecs.am.dao.hibernate.AmAnnounceDaoHibernate" autowire="byName"/>
+    <!--AmAnnounce-END-->
+    <!--AmAnnounceRecord-START-->
+    <bean id="amAnnounceRecordDao" class="com.joymain.jecs.am.dao.hibernate.AmAnnounceRecordDaoHibernate" autowire="byName"/>
+    <!--AmAnnounceRecord-END-->
+    <!--AmPermit-START-->
+    <bean id="amPermitDao" class="com.joymain.jecs.am.dao.hibernate.AmPermitDaoHibernate" autowire="byName"/>
+    <!--AmPermit-END-->
+    <!--JpoMemberOrder-START-->
+    <bean id="jpoMemberOrderDao" class="com.joymain.jecs.po.dao.hibernate.JpoMemberOrderDaoHibernate" autowire="byName"/>
+    <bean id="jpoMemberOrderDaoReport" class="com.joymain.jecs.po.dao.hibernate.JpoMemberOrderDaoHibernate">
+        <property name="sessionFactory" ref="sessionFactoryReport"/>
+		<property name="jdbcTemplate" ref="jdbcTemplateReport" />
+    </bean>
+    <!--JpoMemberOrder-END-->
+    <!--JpoMemberOrderFee-START-->
+    <bean id="jpoMemberOrderFeeDao" class="com.joymain.jecs.po.dao.hibernate.JpoMemberOrderFeeDaoHibernate" autowire="byName"/>
+    <!--JpoMemberOrderFee-END-->
+    <!--JpoMemberOrderList-START-->
+    <bean id="jpoMemberOrderListDao" class="com.joymain.jecs.po.dao.hibernate.JpoMemberOrderListDaoHibernate" autowire="byName"/>
+    <!--JpoMemberOrderList-END-->
+    <!--JprRefund-START-->
+    <bean id="jprRefundDao" class="com.joymain.jecs.pr.dao.hibernate.JprRefundDaoHibernate" autowire="byName"/>
+    <!--JprRefund-END-->
+    <!--JprRefundList-START-->
+    <bean id="jprRefundListDao" class="com.joymain.jecs.pr.dao.hibernate.JprRefundListDaoHibernate" autowire="byName"/>
+    <!--JprRefundList-END-->
+    <!--BdOutwardBank-START-->
+    <bean id="bdOutwardBankDao" class="com.joymain.jecs.bd.dao.hibernate.BdOutwardBankDaoHibernate" autowire="byName"/>
+    <!--BdOutwardBank-END-->
+    <!--JbdSendRecord-START-->
+    <bean id="jbdSendRecordDao" class="com.joymain.jecs.bd.dao.hibernate.JbdSendRecordDaoHibernate" autowire="byName"/>
+    <!--JbdSendRecord-END-->
+    <!--JbdSendRecordHist-START-->
+    <bean id="jbdSendRecordHistDao" class="com.joymain.jecs.bd.dao.hibernate.JbdSendRecordHistDaoHibernate" autowire="byName"/>
+    <!--JbdSendRecordHist-END-->
+    <!--JbdBonusBalance-START-->
+    <bean id="jbdBonusBalanceDao" class="com.joymain.jecs.bd.dao.hibernate.JbdBonusBalanceDaoHibernate" autowire="byName"/>
+    <!--JbdBonusBalance-END-->
+    <!--PdEnterWarehouse-START-->
+    <bean id="pdEnterWarehouseDao" class="com.joymain.jecs.pd.dao.hibernate.PdEnterWarehouseDaoHibernate" autowire="byName"/>
+    <!--PdEnterWarehouse-END-->
+    <!--PdEnterWarehouseDetail-START-->
+    <bean id="pdEnterWarehouseDetailDao" class="com.joymain.jecs.pd.dao.hibernate.PdEnterWarehouseDetailDaoHibernate" autowire="byName"/>
+    <!--PdEnterWarehouseDetail-END-->
+    <!--PdOutWarehouse-START-->
+    <bean id="pdOutWarehouseDao" class="com.joymain.jecs.pd.dao.hibernate.PdOutWarehouseDaoHibernate" autowire="byName"/>
+    <!--PdOutWarehouse-END-->
+    <!--PdOutWarehouseDetail-START-->
+    <bean id="pdOutWarehouseDetailDao" class="com.joymain.jecs.pd.dao.hibernate.PdOutWarehouseDetailDaoHibernate" autowire="byName"/>
+    <!--PdOutWarehouseDetail-END-->
+    
+    <!--pdJpReportDao-START-->
+    <bean id="pdJpReportDao" class="com.joymain.jecs.pd.dao.hibernate.PdJpReportHibernate" autowire="byName"/>
+    <!--pdJpReportDao-END-->
+    
+    <!--pdChnReportDao-START-->
+    <bean id="pdChnReportDao" class="com.joymain.jecs.pd.dao.hibernate.PdChnReportHibernate" autowire="byName"/>
+    <!--pdChnReportDao-END-->
+    
+    <!--PdReturnPurchase-START-->
+    <bean id="pdReturnPurchaseDao" class="com.joymain.jecs.pd.dao.hibernate.PdReturnPurchaseDaoHibernate" autowire="byName"/>
+    <!--PdReturnPurchase-END-->
+    <!--PdReturnPurchaseDetail-START-->
+    <bean id="pdReturnPurchaseDetailDao" class="com.joymain.jecs.pd.dao.hibernate.PdReturnPurchaseDetailDaoHibernate" autowire="byName"/>
+    <!--PdReturnPurchaseDetail-END-->
+    <!--PdAdjustStock-START-->
+    <bean id="pdAdjustStockDao" class="com.joymain.jecs.pd.dao.hibernate.PdAdjustStockDaoHibernate" autowire="byName"/>
+    <!--PdAdjustStock-END-->
+    <!--PdAdjustStockDetail-START-->
+    <bean id="pdAdjustStockDetailDao" class="com.joymain.jecs.pd.dao.hibernate.PdAdjustStockDetailDaoHibernate" autowire="byName"/>
+    <!--PdAdjustStockDetail-END-->
+    <!--PdFlitWarehouse-START-->
+    <bean id="pdFlitWarehouseDao" class="com.joymain.jecs.pd.dao.hibernate.PdFlitWarehouseDaoHibernate" autowire="byName"/>
+    <!--PdFlitWarehouse-END-->
+    <!--PdFlitWarehouseDetail-START-->
+    <bean id="pdFlitWarehouseDetailDao" class="com.joymain.jecs.pd.dao.hibernate.PdFlitWarehouseDetailDaoHibernate" autowire="byName"/>
+    <!--PdFlitWarehouseDetail-END-->
+    <!--PdStatusExcStock-START-->
+    <bean id="pdStatusExcStockDao" class="com.joymain.jecs.pd.dao.hibernate.PdStatusExcStockDaoHibernate" autowire="byName"/>
+    <!--PdStatusExcStock-END-->
+    <!--PdStatusExcStockDetail-START-->
+    <bean id="pdStatusExcStockDetailDao" class="com.joymain.jecs.pd.dao.hibernate.PdStatusExcStockDetailDaoHibernate" autowire="byName"/>
+    <!--PdStatusExcStockDetail-END-->
+    <!--BdPeriod-START-->
+    <bean id="bdPeriodDao" class="com.joymain.jecs.bd.dao.hibernate.BdPeriodDaoHibernate" autowire="byName"/>
+    <!--BdPeriod-END-->
+    <!--BdBounsDeduct-START-->
+    <bean id="bdBounsDeductDao" class="com.joymain.jecs.bd.dao.hibernate.BdBounsDeductDaoHibernate" autowire="byName"/>
+    <!--BdBounsDeduct-END-->
+    
+    <!--JbdYd399RecommendList  -->
+    
+    <bean id="jbdYd399RecommendListDao" class="com.joymain.jecs.bd.dao.hibernate.JbdYd399RecommendListDaoHibernate" autowire="byName"/>
+    <bean id="jbdYd399RecommendHistDao" class="com.joymain.jecs.bd.dao.hibernate.JbdYd399RecommendHistDaoHibernate" autowire="byName"/>
+    
+    
+    
+    
+    <!--JbdDayCustRecommend-START-->
+    <bean id="jbdDayCustRecommendDao" class="com.joymain.jecs.bd.dao.hibernate.JbdDayCustRecommendDaoHibernate" autowire="byName"/>
+    <!--JbdDayCustRecommend-END-->
+    <!--JbdDayCustRecommend-START-->
+    <bean id="jbdDayCustRecommendKbDao" class="com.joymain.jecs.bd.dao.hibernate.JbdDayCustRecommendKbDaoHibernate" autowire="byName"/>
+    <!--JbdDayCustRecommend-END-->
+    <!--JbdDayCustRecommend-START-->
+    <bean id="jbdDayCustRecommendOrderDao" class="com.joymain.jecs.bd.dao.hibernate.JbdDayCustRecommendOrderDaoHibernate" autowire="byName"/>
+    <!--JbdDayCustRecommend-END-->
+    <!--JbdSellCalcSubHist-START-->
+    <bean id="jbdSellCalcSubHistDao" class="com.joymain.jecs.bd.dao.hibernate.JbdSellCalcSubHistDaoHibernate" autowire="byName"/>
+    <!--JbdSellCalcSubHist-END-->
+    <!--JbdMemberLinkCalcHist-START-->
+    <bean id="jbdMemberLinkCalcHistDao" class="com.joymain.jecs.bd.dao.hibernate.JbdMemberLinkCalcHistDaoHibernate" autowire="byName"/>
+    <!--JbdMemberLinkCalcHist-END-->
+    <!--AlDistrict-START-->
+    <bean id="alDistrictDao" class="com.joymain.jecs.al.dao.hibernate.AlDistrictDaoHibernate" autowire="byName"/>
+    <!--AlDistrict-END-->
+    <!--AlCity-START-->
+    <bean id="alCityDao" class="com.joymain.jecs.al.dao.hibernate.AlCityDaoHibernate" autowire="byName"/>
+    <!--AlCity-END-->
+    <!--AmRegularMsg-START-->
+    <bean id="amRegularMsgDao" class="com.joymain.jecs.am.dao.hibernate.AmRegularMsgDaoHibernate" autowire="byName"/>
+    <!--AmRegularMsg-END-->
+    <!--AmMessage-START-->
+    <bean id="amMessageDao" class="com.joymain.jecs.am.dao.hibernate.AmMessageDaoHibernate" autowire="byName"/>
+    <!--AmMessage-END-->
+    <!--JbdUserCardList-START-->
+    <bean id="jbdUserCardListDao" class="com.joymain.jecs.bd.dao.hibernate.JbdUserCardListDaoHibernate" autowire="byName"/>
+    <!--JbdUserCardList-END-->
+    <!--JpoShippingFee-START-->
+    <bean id="jpoShippingFeeDao" class="com.joymain.jecs.po.dao.hibernate.JpoShippingFeeDaoHibernate" autowire="byName"/>
+    <!--JpoShippingFee-END-->
+    <!--JbdDayBounsCalc-START-->
+    <bean id="jbdDayBounsCalcDao" class="com.joymain.jecs.bd.dao.hibernate.JbdDayBounsCalcDaoHibernate" autowire="byName"/>
+    <!--JbdDayBounsCalc-END-->
+    <!--JbdDayBounsCalcHist-START-->
+    <bean id="jbdDayBounsCalcHistDao" class="com.joymain.jecs.bd.dao.hibernate.JbdDayBounsCalcHistDaoHibernate" autowire="byName"/>
+    <!--JbdDayBounsCalcHist-END-->
+    
+    <!--JbdManuallyAdjustStar-START-->
+    <bean id="jbdManuallyAdjustStarDao" class="com.joymain.jecs.bd.dao.hibernate.JbdManuallyAdjustStarDaoHibernate" autowire="byName"/>
+    <!--JbdManuallyAdjustStar-END-->
+    <!--JbdVentureLeaderSubHist-START-->
+    <bean id="jbdVentureLeaderSubHistDao" class="com.joymain.jecs.bd.dao.hibernate.JbdVentureLeaderSubHistDaoHibernate" autowire="byName"/>
+    <!--JbdVentureLeaderSubHist-END-->
+    <!--JbdSellCalcSubDetailHist-START-->
+    <bean id="jbdSellCalcSubDetailHistDao" class="com.joymain.jecs.bd.dao.hibernate.JbdSellCalcSubDetailHistDaoHibernate" autowire="byName"/>
+    <!--JbdSellCalcSubDetailHist-END-->
+    <!--AmMessagePermit-START-->
+    <bean id="amMessagePermitDao" class="com.joymain.jecs.am.dao.hibernate.AmMessagePermitDaoHibernate" autowire="byName"/>
+    <!--AmMessagePermit-END-->
+
+    <!--SysBackServiceInfo-START-->
+    <bean id="sysBackServiceInfoDao" class="com.joymain.jecs.sys.dao.hibernate.SysBackServiceInfoDaoHibernate" autowire="byName"/>
+    <!--SysBackServiceInfo-END-->
+
+    <!--BillAccount-START-->
+    <bean id="billAccountDao" class="com.joymain.jecs.fi.dao.hibernate.BillAccountDaoHibernate" autowire="byName"/>
+    <!--BillAccount-END-->
+
+    <!--JpoCounterOrder-START-->
+    <bean id="jpoCounterOrderDao" class="com.joymain.jecs.po.dao.hibernate.JpoCounterOrderDaoHibernate" autowire="byName"/>
+    <!--JpoCounterOrder-END-->
+    <!--JpoCounterOrderDetail-START-->
+    <bean id="jpoCounterOrderDetailDao" class="com.joymain.jecs.po.dao.hibernate.JpoCounterOrderDetailDaoHibernate" autowire="byName"/>
+    <!--JpoCounterOrderDetail-END-->
+    <!--JamMsnType-START-->
+    <bean id="jamMsnTypeDao" class="com.joymain.jecs.am.dao.hibernate.JamMsnTypeDaoHibernate" autowire="byName"/>
+    <!--JamMsnType-END-->
+    <!--JamMsnDetail-START-->
+    <bean id="jamMsnDetailDao" class="com.joymain.jecs.am.dao.hibernate.JamMsnDetailDaoHibernate" autowire="byName"/>
+    <!--JamMsnDetail-END-->
+    <!--SysLoginLog-START-->
+    <bean id="sysLoginLogDao" class="com.joymain.jecs.sys.dao.hibernate.SysLoginLogDaoHibernate" autowire="byName"/>
+    <!--SysLoginLog-END-->
+    
+    <!--JpmProductCombination-START-->
+    <bean id="jpmProductCombinationDao" class="com.joymain.jecs.pm.dao.hibernate.JpmProductCombinationDaoHibernate" autowire="byName"/>
+    <!--JpmProductCombination-END-->
+    <!--PdCombinationOrder-START-->
+    <bean id="pdCombinationOrderDao" class="com.joymain.jecs.pd.dao.hibernate.PdCombinationOrderDaoHibernate" autowire="byName"/>
+    <!--PdCombinationOrder-END-->
+    <!--PdCombinationDetail-START-->
+    <bean id="pdCombinationDetailDao" class="com.joymain.jecs.pd.dao.hibernate.PdCombinationDetailDaoHibernate" autowire="byName"/>
+    <!--PdCombinationDetail-END-->
+    <!--JbdCaculateLog-START-->
+    <bean id="jbdCaculateLogDao" class="com.joymain.jecs.bd.dao.hibernate.JbdCaculateLogDaoHibernate" autowire="byName"/>
+    <!--JbdCaculateLog-END-->
+
+    <!--SmsSendLog-START-->
+    <bean id="smsSendLogDao" class="com.joymain.jecs.sms.dao.hibernate.SmsSendLogDaoHibernate" autowire="byName"/>
+    <!--SmsSendLog-END-->
+
+    <!--PdCheckstockOrder-START-->
+    <bean id="pdCheckstockOrderDao" class="com.joymain.jecs.pd.dao.hibernate.PdCheckstockOrderDaoHibernate" autowire="byName"/>
+    <!--PdCheckstockOrder-END-->
+    <!--PdCheckstockOrderDetail-START-->
+    <bean id="pdCheckstockOrderDetailDao" class="com.joymain.jecs.pd.dao.hibernate.PdCheckstockOrderDetailDaoHibernate" autowire="byName"/>
+    <!--PdCheckstockOrderDetail-END-->
+
+    <!--JamMsnModule-START-->
+    <bean id="jamMsnModuleDao" class="com.joymain.jecs.am.dao.hibernate.JamMsnModuleDaoHibernate" autowire="byName"/>
+    <!--JamMsnModule-END-->
+    <!--VtVote-START-->
+    <bean id="vtVoteDao" class="com.joymain.jecs.vt.dao.hibernate.VtVoteDaoHibernate" autowire="byName"/>
+    <!--VtVote-END-->
+    <!--VtVoteDetail-START-->
+    <bean id="vtVoteDetailDao" class="com.joymain.jecs.vt.dao.hibernate.VtVoteDetailDaoHibernate" autowire="byName"/>
+    <!--VtVoteDetail-END-->
+    <!--VtVoteNote-START-->
+    <bean id="vtVoteNoteDao" class="com.joymain.jecs.vt.dao.hibernate.VtVoteNoteDaoHibernate" autowire="byName"/>
+    <!--VtVoteNote-END-->
+     <!--jmiRemitSaleDao-start-->
+     <bean id="jmiRemitSaleDao" class="com.joymain.jecs.mi.dao.hibernate.JmiRemitSaleDaoHibernate" autowire="byName"/>
+      <!--jmiRemitSaleDao-END-->
+    <!--VtVotePow-START-->
+    <bean id="vtVotePowDao" class="com.joymain.jecs.vt.dao.hibernate.VtVotePowDaoHibernate" autowire="byName"/>
+    <!--VtVotePow-END-->
+    <!--JbdUserCompanyCode-START-->
+    <bean id="jbdUserCompanyCodeDao" class="com.joymain.jecs.bd.dao.hibernate.JbdUserCompanyCodeDaoHibernate" autowire="byName"/>
+    <!--JbdUserCompanyCode-END-->
+    
+    
+    
+    <!--JmiMemberCompanyNote-START-->
+    <bean id="jmiMemberCompanyNoteDao" class="com.joymain.jecs.mi.dao.hibernate.JmiMemberCompanyNoteDaoHibernate" autowire="byName"/>
+    <!--JmiMemberCompanyNote-END-->
+    
+    <!--Jfi99billPosLog-START-->
+    <bean id="jfi99billPosLogDao" class="com.joymain.jecs.fi.dao.hibernate.Jfi99billPosLogDaoHibernate" autowire="byName"/>
+    <!--Jfi99billPosLog-END-->
+    <!--Jfi99billPosSendLog-START-->
+    <bean id="jfi99billPosSendLogDao" class="com.joymain.jecs.fi.dao.hibernate.Jfi99billPosSendLogDaoHibernate" autowire="byName"/>
+    <!--Jfi99billPosSendLog-END-->
+    
+    <!--JpmCardSeq-START-->
+    <bean id="jpmCardSeqDao" class="com.joymain.jecs.pm.dao.hibernate.JpmCardSeqDaoHibernate" autowire="byName"/>
+    <!--JpmCardSeq-END-->
+    <!--JfiSunMemberOrderList-START-->
+    <bean id="jfiSunMemberOrderListDao" class="com.joymain.jecs.fi.dao.hibernate.JfiSunMemberOrderListDaoHibernate" autowire="byName"/>
+    <!--JfiSunMemberOrderList-END-->
+    <!--JfiSunMemberOrderFee-START-->
+    <bean id="jfiSunMemberOrderFeeDao" class="com.joymain.jecs.fi.dao.hibernate.JfiSunMemberOrderFeeDaoHibernate" autowire="byName"/>
+    <!--JfiSunMemberOrderFee-END-->
+    <!--JfiSunMemberOrder-START-->
+    <bean id="jfiSunMemberOrderDao" class="com.joymain.jecs.fi.dao.hibernate.JfiSunMemberOrderDaoHibernate" autowire="byName"/>
+    <!--JfiSunMemberOrder-END-->
+    <!--JfiSunDistribution-START-->
+    <bean id="jfiSunDistributionDao" class="com.joymain.jecs.fi.dao.hibernate.JfiSunDistributionDaoHibernate" autowire="byName"/>
+    <!--JfiSunDistribution-END-->
+    <!--JfiSunConfigKey-START-->
+    <bean id="jfiSunConfigKeyDao" class="com.joymain.jecs.fi.dao.hibernate.JfiSunConfigKeyDaoHibernate" autowire="byName"/>
+    <!--JfiSunConfigKey-END-->
+    <!--JbdTaiwanTravelPoint-START-->
+    <bean id="jbdTaiwanTravelPointDao" class="com.joymain.jecs.bd.dao.hibernate.JbdTaiwanTravelPointDaoHibernate" autowire="byName"/>
+    <!--JbdTaiwanTravelPoint-END-->
+    <!--JmiTaiwanTravel-START-->
+    <bean id="jmiTaiwanTravelDao" class="com.joymain.jecs.mi.dao.hibernate.JmiTaiwanTravelDaoHibernate" autowire="byName"/>
+    <!--JmiTaiwanTravel-END-->
+    <!--PdExchangeOrder-START-->
+    <bean id="pdExchangeOrderDao" class="com.joymain.jecs.pd.dao.hibernate.PdExchangeOrderDaoHibernate" autowire="byName"/>
+    <!--PdExchangeOrder-END-->
+    <!--PdExchangeOrderBack-START-->
+    <bean id="pdExchangeOrderBackDao" class="com.joymain.jecs.pd.dao.hibernate.PdExchangeOrderBackDaoHibernate" autowire="byName"/>
+    <!--PdExchangeOrderBack-END-->
+    <!--PdExchangeOrderDetail-START-->
+    <bean id="pdExchangeOrderDetailDao" class="com.joymain.jecs.pd.dao.hibernate.PdExchangeOrderDetailDaoHibernate" autowire="byName"/>
+    <!--PdExchangeOrderDetail-END-->
+    <!--JmiSubStore-START-->
+    <bean id="jmiSubStoreDao" class="com.joymain.jecs.mi.dao.hibernate.JmiSubStoreDaoHibernate" autowire="byName"/>
+    <!--JmiSubStore-END-->
+    <!--JpoAutoShip-START-->
+    <bean id="jpoAutoShipDao" class="com.joymain.jecs.po.dao.hibernate.JpoAutoShipDaoHibernate" autowire="byName"/>
+    <!--JpoAutoShip-END-->
+    <!--JbdUserValidList-START-->
+    <bean id="jbdUserValidListDao" class="com.joymain.jecs.bd.dao.hibernate.JbdUserValidListDaoHibernate" autowire="byName"/>
+    <!--JbdUserValidList-END-->
+    <!--JalTown-START-->
+    <bean id="jalTownDao" class="com.joymain.jecs.al.dao.hibernate.JalTownDaoHibernate" autowire="byName"/>
+    <!--JalTown-END-->
+    <!--JmiStore-START-->
+    <bean id="jmiStoreDao" class="com.joymain.jecs.mi.dao.hibernate.JmiStoreDaoHibernate" autowire="byName"/>
+    <!--JmiStore-END-->
+    
+    <!--fiBcoinJournalDao-START-->
+    <bean id="fiBcoinJournalDao" class="com.joymain.jecs.fi.dao.hibernate.FiBcoinJournalDaoHibernate" autowire="byName"/>
+    <!--fiBcoinJournalDao-END-->
+    
+    <!--fiBcoinBalanceDao-START-->
+    <bean id="fiBcoinBalanceDao" class="com.joymain.jecs.fi.dao.hibernate.FiBcoinBalanceDaoHibernate" autowire="byName"/>
+    <!--fiBcoinBalanceDao-END-->
+    
+    <!--FiCoinLog-START-->
+    <bean id="fiCoinLogDao" class="com.joymain.jecs.fi.dao.hibernate.FiCoinLogDaoHibernate" autowire="byName"/>
+    <!--FiCoinLog-END-->
+    <!--JfiAlipayLog-START-->
+    <bean id="jfiAlipayLogDao" class="com.joymain.jecs.fi.dao.hibernate.JfiAlipayLogDaoHibernate" autowire="byName"/>
+    <!--JfiAlipayLog-END-->
+    <!--JamDownload-START-->
+    <bean id="jamDownloadDao" class="com.joymain.jecs.am.dao.hibernate.JamDownloadDaoHibernate" autowire="byName"/>
+    <!--JamDownload-END-->
+    <!--JmiBlacklist-START-->
+    <bean id="jmiBlacklistDao" class="com.joymain.jecs.mi.dao.hibernate.JmiBlacklistDaoHibernate" autowire="byName"/>
+    <!--JmiBlacklist-END-->
+    <!--JfiHiTrustLog-START-->
+    <bean id="jfiHiTrustLogDao" class="com.joymain.jecs.fi.dao.hibernate.JfiHiTrustLogDaoHibernate" autowire="byName"/>
+    <!--JfiHiTrustLog-END-->
+    
+    <!--JbdManuallyAdjustAlgebra-START-->
+    <bean id="jbdManuallyAdjustAlgebraDao" class="com.joymain.jecs.bd.dao.hibernate.JbdManuallyAdjustAlgebraDaoHibernate" autowire="byName"/>
+    <!--JbdManuallyAdjustAlgebra-END-->
+    <!--JpoMemberOrderTask-START-->
+    <bean id="jpoMemberOrderTaskDao" class="com.joymain.jecs.po.dao.hibernate.JpoMemberOrderTaskDaoHibernate" autowire="byName"/>
+    <!--JpoMemberOrderTask-END-->
+    <!--JpoMemberOrderListTask-START-->
+    <bean id="jpoMemberOrderListTaskDao" class="com.joymain.jecs.po.dao.hibernate.JpoMemberOrderListTaskDaoHibernate" autowire="byName"/>
+    <!--JpoMemberOrderListTask-END-->
+    <!--JamPromotion-START-->
+    <bean id="jamPromotionDao" class="com.joymain.jecs.am.dao.hibernate.JamPromotionDaoHibernate" autowire="byName"/>
+    <!--JamPromotion-END-->
+    <!--UpsInteractiveLog-START-->
+    <bean id="upsInteractiveLogDao" class="com.joymain.jecs.sys.dao.hibernate.UpsInteractiveLogDaoHibernate" autowire="byName"/>
+    <!--UpsInteractiveLog-END-->
+    <!--JbdTravelPoint-START-->
+    <bean id="jbdTravelPointDao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPointDaoHibernate" autowire="byName"/>
+    <!--JbdTravelPoint-END-->
+    <!--JbdTravelPointDetail-START-->
+    <bean id="jbdTravelPointDetailDao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPointDetailDaoHibernate" autowire="byName"/>
+    <!--JbdTravelPointDetail-END-->
+    <!--JbdTravelPointLog-START-->
+    <bean id="jbdTravelPointLogDao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPointLogDaoHibernate" autowire="byName"/>
+    <!--JbdTravelPointLog-END-->
+    <!--JbdSummaryList-START-->
+    <bean id="jbdSummaryListDao" class="com.joymain.jecs.bd.dao.hibernate.JbdSummaryListDaoHibernate" autowire="byName"/>
+    <!--JbdSummaryList-END-->
+    <!--PdSendExtra-START-->
+    <bean id="pdSendExtraDao" class="com.joymain.jecs.pd.dao.hibernate.PdSendExtraDaoHibernate" autowire="byName"/>
+    <!--PdSendExtra-END-->
+    <!--JbdVentureFundList-START-->
+    <bean id="jbdVentureFundListDao" class="com.joymain.jecs.bd.dao.hibernate.JbdVentureFundListDaoHibernate" autowire="byName"/>
+    <!--JbdVentureFundList-END-->
+    <!--JfiUsCreditCardLog-START-->
+    <bean id="jfiUsCreditCardLogDao" class="com.joymain.jecs.fi.dao.hibernate.JfiUsCreditCardLogDaoHibernate" autowire="byName"/>
+    <!--JfiUsCreditCardLog-END-->
+    
+    
+    
+    <!--JfiSunOrderList-START-->
+    <bean id="jfiSunOrderListDao" class="com.joymain.jecs.fi.dao.hibernate.JfiSunOrderListDaoHibernate" autowire="byName"/>
+    <!--JfiSunOrderList-END-->
+    <!--JfiSunOrder-START-->
+    <bean id="jfiSunOrderDao" class="com.joymain.jecs.fi.dao.hibernate.JfiSunOrderDaoHibernate" autowire="byName"/>
+    <!--JfiSunOrder-END-->
+    <!--JfiSunJmiMember-START-->
+    <bean id="jfiSunJmiMemberDao" class="com.joymain.jecs.fi.dao.hibernate.JfiSunJmiMemberDaoHibernate" autowire="byName"/>
+    <!--JfiSunJmiMember-END-->
+    <!--JalPostalcode-START-->
+    <bean id="jalPostalcodeDao" class="com.joymain.jecs.al.dao.hibernate.JalPostalcodeDaoHibernate" autowire="byName"/>
+    <!--JalPostalcode-END-->
+    <!--SunDistShip-START-->
+    <bean id="sunDistShipDao" class="com.joymain.jecs.sun.dao.hibernate.SunDistShipDaoHibernate" autowire="byName"/>
+    <!--SunDistShip-END-->
+    <!--SunProductInfo-START-->
+    <bean id="sunProductInfoDao" class="com.joymain.jecs.sun.dao.hibernate.SunProductInfoDaoHibernate" autowire="byName"/>
+    <!--SunProductInfo-END-->
+    <!--JbdSendNote-START-->
+    <bean id="jbdSendNoteDao" class="com.joymain.jecs.bd.dao.hibernate.JbdSendNoteDaoHibernate" autowire="byName"/>
+    <!--JbdSendNote-END-->
+    <!--JbdNetworkList-START-->
+    <bean id="jbdNetworkListDao" class="com.joymain.jecs.bd.dao.hibernate.JbdNetworkListDaoHibernate" autowire="byName"/>
+    <!--JbdNetworkList-END-->
+    <!--JmiCustomerLevelNote-START-->
+    <bean id="jmiCustomerLevelNoteDao" class="com.joymain.jecs.mi.dao.hibernate.JmiCustomerLevelNoteDaoHibernate" autowire="byName"/>
+    <!--JmiCustomerLevelNote-END-->
+    <!--JfiCreditCardLog-START-->
+    <bean id="jfiCreditCardLogDao" class="com.joymain.jecs.fi.dao.hibernate.JfiCreditCardLogDaoHibernate" autowire="byName"/>
+    <!--JfiCreditCardLog-END-->
+    <!--FiCcoinJournal-START-->
+    <bean id="fiCcoinJournalDao" class="com.joymain.jecs.fi.dao.hibernate.FiCcoinJournalDaoHibernate" autowire="byName"/>
+    <!--FiCcoinJournal-END-->
+    <!--FiCcoinBalance-START-->
+    <bean id="fiCcoinBalanceDao" class="com.joymain.jecs.fi.dao.hibernate.FiCcoinBalanceDaoHibernate" autowire="byName"/>
+    <!--FiCcoinBalance-END-->
+    <!--PdShipStrategy-START-->
+    <bean id="pdShipStrategyDao" class="com.joymain.jecs.pd.dao.hibernate.PdShipStrategyDaoHibernate" autowire="byName"/>
+    <!--PdShipStrategy-END-->
+    <!--PdShipStrategyDetail-START-->
+    <bean id="pdShipStrategyDetailDao" class="com.joymain.jecs.pd.dao.hibernate.PdShipStrategyDetailDaoHibernate" autowire="byName"/>
+    <!--PdShipStrategyDetail-END-->
+    <!--FiBankbookBalance-START-->
+    <bean id="fiBankbookBalanceDao" class="com.joymain.jecs.fi.dao.hibernate.FiBankbookBalanceDaoHibernate" autowire="byName"/>
+    <!--FiBankbookBalance-END-->
+    <!--FiBankbookJournal-START-->
+    <bean id="fiBankbookJournalDao" class="com.joymain.jecs.fi.dao.hibernate.FiBankbookJournalDaoHibernate" autowire="byName"/>
+    <!--FiBankbookJournal-END-->
+    <!--FiBankbookTemp-START-->
+    <bean id="fiBankbookTempDao" class="com.joymain.jecs.fi.dao.hibernate.FiBankbookTempDaoHibernate" autowire="byName"/>
+    <!--FiBankbookTemp-END-->
+    <!--JbdTravelPoint2012-START-->
+    <bean id="jbdTravelPoint2012Dao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPoint2012DaoHibernate" autowire="byName"/>
+    <!--JbdTravelPoint2012-END-->
+    <!--JbdTravelPointDetail2012-START-->
+    <bean id="jbdTravelPointDetail2012Dao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPointDetail2012DaoHibernate" autowire="byName"/>
+    <!--JbdTravelPointDetail2012-END-->
+    <!--JbdTravelPointLog2012-START-->
+    <bean id="jbdTravelPointLog2012Dao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPointLog2012DaoHibernate" autowire="byName"/>
+    <!--JbdTravelPointLog2012-END-->
+    <!--JfiTenpayLog-START-->
+    <bean id="jfiTenpayLogDao" class="com.joymain.jecs.fi.dao.hibernate.JfiTenpayLogDaoHibernate" autowire="byName"/>
+    <!--JfiTenpayLog-END-->
+    <!--PdShipFee-START-->
+    <bean id="pdShipFeeDao" class="com.joymain.jecs.pd.dao.hibernate.PdShipFeeDaoHibernate" autowire="byName"/>
+    <!--PdShipFee-END-->
+    <!--Jfi99billmsLog-START-->
+    <bean id="jfi99billmsLogDao" class="com.joymain.jecs.fi.dao.hibernate.Jfi99billmsLogDaoHibernate" autowire="byName"/>
+    <!--Jfi99billmsLog-END-->
+    <!--PdWarehouseFrozenBatch-START-->
+    <bean id="pdWarehouseFrozenBatchDao" class="com.joymain.jecs.pd.dao.hibernate.PdWarehouseFrozenBatchDaoHibernate" autowire="byName"/>
+    <!--PdWarehouseFrozenBatch-END-->
+    <!--PdWarehouseFrozenDetail-START-->
+    <bean id="pdWarehouseFrozenDetailDao" class="com.joymain.jecs.pd.dao.hibernate.PdWarehouseFrozenDetailDaoHibernate" autowire="byName"/>
+    <!--PdWarehouseFrozenDetail-END-->
+    <!--AmNew-START-->
+    <bean id="amNewDao" class="com.joymain.jecs.am.dao.hibernate.AmNewDaoHibernate" autowire="byName"/>
+    <!--AmNew-END-->
+    <!--JbdGradeNote-START-->
+    <bean id="jbdGradeNoteDao" class="com.joymain.jecs.bd.dao.hibernate.JbdGradeNoteDaoHibernate" autowire="byName"/>
+    <!--JbdGradeNote-END-->
+    <!--JfiPosImport-START-->
+    <bean id="jfiPosImportDao" class="com.joymain.jecs.fi.dao.hibernate.JfiPosImportDaoHibernate" autowire="byName"/>
+    <!--JfiPosImport-END-->
+    <!--JbdTravelPoint2013-START-->
+    <bean id="jbdTravelPoint2013Dao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPoint2013DaoHibernate" autowire="byName"/>
+    <!--JbdTravelPoint2013-END-->
+    <!--JbdTravelPointLog2013-START-->
+    <bean id="jbdTravelPointLog2013Dao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPointLog2013DaoHibernate" autowire="byName"/>
+    <!--JbdTravelPointLog2013-END-->
+    <!--JbdTravelPointDetail2013-START-->
+    <bean id="jbdTravelPointDetail2013Dao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPointDetail2013DaoHibernate" autowire="byName"/>
+    <!--JbdTravelPointDetail2013-END-->
+    <!--JbdSpecialStar-START-->
+    <bean id="jbdSpecialStarDao" class="com.joymain.jecs.bd.dao.hibernate.JbdSpecialStarDaoHibernate" autowire="byName"/>
+    <!--JbdSpecialStar-END-->
+    <!--JsysResource-START-->
+    <bean id="jsysResourceDao" class="com.joymain.jecs.sys.dao.hibernate.JsysResourceDaoHibernate" autowire="byName"/>
+    <!--JsysResource-END-->
+    
+    
+    <!--JsysResRole-START-->
+    <bean id="jsysResRoleDao" class="com.joymain.jecs.sys.dao.hibernate.JsysResRoleDaoHibernate" autowire="byName"/>
+    <!--JsysResRole-END-->
+    <!--FiTransferAccount-START-->
+    <bean id="fiTransferAccountDao" class="com.joymain.jecs.fi.dao.hibernate.FiTransferAccountDaoHibernate" autowire="byName"/>
+    <!--FiTransferAccount-END-->
+
+    
+    <!--JmiMemberTeam-START-->
+    <bean id="jmiMemberTeamDao" class="com.joymain.jecs.pm.dao.hibernate.JmiMemberTeamDaoHibernate" autowire="byName"/>
+    <!--JmiMemberTeam-END-->
+    <!--JpmProductSaleNew-START-->
+    <bean id="jpmProductSaleNewDao" class="com.joymain.jecs.pm.dao.hibernate.JpmProductSaleNewDaoHibernate" autowire="byName"/>
+    <!--JpmProductSaleNew-END-->
+    <!--JpmProductSaleImage-START-->
+    <bean id="jpmProductSaleImageDao" class="com.joymain.jecs.pm.dao.hibernate.JpmProductSaleImageDaoHibernate" autowire="byName"/>
+    <!--JpmProductSaleImage-END-->
+    <!--JpmProductSaleTeamType-START-->
+    <bean id="jpmProductSaleTeamTypeDao" class="com.joymain.jecs.pm.dao.hibernate.JpmProductSaleTeamTypeDaoHibernate" autowire="byName"/>
+    <!--JpmProductSaleTeamType-END-->
+    <!--JpmProductSaleRelated-START-->
+    <bean id="jpmProductSaleRelatedDao" class="com.joymain.jecs.pm.dao.hibernate.JpmProductSaleRelatedDaoHibernate" autowire="byName"/>
+    <!--JpmProductSaleRelated-END-->
+    
+    <!--JpmProductSaleNew-START-->
+    <bean id="jpmSalesAnalysisDao" class="com.joymain.jecs.pm.dao.hibernate.JpmSalesAnalysisDaoHibernate" autowire="byName"/>
+    <!--JpmProductSaleNew-END-->
+    
+    <!--ScheduleManage-START-->
+    <bean id="scheduleManageDao" class="com.joymain.jecs.am.dao.hibernate.ScheduleManageDaoHibernate" autowire="byName"/>
+    <!--ScheduleManage-END-->
+    <!--PublicSchedule-START-->
+    <bean id="publicScheduleDao" class="com.joymain.jecs.am.dao.hibernate.PublicScheduleDaoHibernate" autowire="byName"/>
+    <!--PublicSchedule-END-->
+     <!--JpmSalePromoter-START-->
+    <bean id="jpmSalePromoterDao" class="com.joymain.jecs.pm.dao.hibernate.JpmSalePromoterDaoHibernate" autowire="byName"/>
+    <!--JpmSalePromoter-END-->
+    <!--JpmSalepromoterPro-START-->
+    <bean id="jpmSalepromoterProDao" class="com.joymain.jecs.pm.dao.hibernate.JpmSalepromoterProDaoHibernate" autowire="byName"/>
+    <!--JpmSalepromoterPro-END-->
+    <!--InwDemand-START-->
+    <bean id="inwDemandDao" class="com.joymain.jecs.am.dao.hibernate.InwDemandDaoHibernate" autowire="byName"/>
+    <!--InwDemand-END-->
+    <!--InwProblem-START-->
+    <bean id="inwProblemDao" class="com.joymain.jecs.am.dao.hibernate.InwProblemDaoHibernate" autowire="byName"/>
+    <!--InwProblem-END-->
+    <!--InwSuggestion-START-->
+    <bean id="inwSuggestionDao" class="com.joymain.jecs.am.dao.hibernate.InwSuggestionDaoHibernate" autowire="byName"/>
+    <!--InwSuggestion-END-->
+    <!--InwViewpeople-START-->
+    <bean id="inwViewpeopleDao" class="com.joymain.jecs.am.dao.hibernate.InwViewpeopleDaoHibernate" autowire="byName"/>
+    <!--InwViewpeople-END-->
+    <!--JalLibraryPlate-START-->
+    <bean id="jalLibraryPlateDao" class="com.joymain.jecs.al.dao.hibernate.JalLibraryPlateDaoHibernate" autowire="byName"/>
+    <!--JalLibraryPlate-END-->
+    <!--JalLibraryColumn-START-->
+    <bean id="jalLibraryColumnDao" class="com.joymain.jecs.al.dao.hibernate.JalLibraryColumnDaoHibernate" autowire="byName"/>
+    <!--JalLibraryColumn-END-->
+    <!--JalLibraryFile-START-->
+    <bean id="jalLibraryFileDao" class="com.joymain.jecs.al.dao.hibernate.JalLibraryFileDaoHibernate" autowire="byName"/>
+    <!--JalLibraryFile-END-->
+    <!--InwIntegration-START-->
+    <bean id="inwIntegrationDao" class="com.joymain.jecs.am.dao.hibernate.InwIntegrationDaoHibernate" autowire="byName"/>
+    <!--InwIntegration-END-->
+    <!--JbdSendRecordNote-START-->
+    <bean id="jbdSendRecordNoteDao" class="com.joymain.jecs.bd.dao.hibernate.JbdSendRecordNoteDaoHibernate" autowire="byName"/>
+    <!--JbdSendRecordNote-END-->
+
+    <!--JbdTravelPoint2014-START-->
+    <bean id="jbdTravelPoint2014Dao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPoint2014DaoHibernate" autowire="byName"/>
+    <!--JbdTravelPoint2014-END-->
+    <!--JbdTravelPointDetail2014-START-->
+    <bean id="jbdTravelPointDetail2014Dao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPointDetail2014DaoHibernate" autowire="byName"/>
+    <!--JbdTravelPointDetail2014-END-->
+    <!--JbdTravelPointLog2014-START-->
+    <bean id="jbdTravelPointLog2014Dao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPointLog2014DaoHibernate" autowire="byName"/>
+    <!--JbdTravelPointLog2014-END-->
+    
+    <!--InwDemandsort-START-->
+    <bean id="inwDemandsortDao" class="com.joymain.jecs.am.dao.hibernate.InwDemandsortDaoHibernate" autowire="byName"/>
+    <!--InwDemandsort-END-->
+    
+    
+
+    <!--JbdManualCon-START-->
+    <bean id="jbdManualConDao" class="com.joymain.jecs.bd.dao.hibernate.JbdManualConDaoHibernate" autowire="byName"/>
+    <!--JbdManualCon-END-->
+
+    <!--MiCoinLog-START-->
+    <bean id="miCoinLogDao" class="com.joymain.jecs.mi.dao.hibernate.MiCoinLogDaoHibernate" autowire="byName"/>
+    <!--MiCoinLog-END-->
+    <!--JmiEcmallNote-START-->
+    <bean id="jmiEcmallNoteDao" class="com.joymain.jecs.mi.dao.hibernate.JmiEcmallNoteDaoHibernate" autowire="byName"/>
+    <!--JmiEcmallNote-END-->
+	<!--FoundationOrder-START-->
+    <bean id="foundationOrderDao" class="com.joymain.jecs.fi.dao.hibernate.FoundationOrderDaoHibernate" autowire="byName"/>
+    <!--FoundationOrder-END-->
+    <!--FoundationItem-START-->
+    <bean id="foundationItemDao" class="com.joymain.jecs.fi.dao.hibernate.FoundationItemDaoHibernate" autowire="byName"/>
+    <!--FoundationItem-END-->
+
+	<!--fiLovecoinJournalDao-START-->
+    <bean id="fiLovecoinJournalDao" class="com.joymain.jecs.fi.dao.hibernate.FiLovecoinJournalDaoHibernate" autowire="byName"/>
+    <!--fiLovecoinJournalDao-END-->
+    
+    <!--fiLovecoinBalanceDao-START-->
+    <bean id="fiLovecoinBalanceDao" class="com.joymain.jecs.fi.dao.hibernate.FiLovecoinBalanceDaoHibernate" autowire="byName"/>
+    <!--fiLovecoinBalanceDao-END-->
+    
+    
+    
+    <!--JpmProductWineTemplate-START-->
+    <bean id="jpmProductWineTemplateDao" class="com.joymain.jecs.pm.dao.hibernate.JpmProductWineTemplateDaoHibernate" autowire="byName"/>
+    <!--JpmProductWineTemplate-END-->
+    <!--JpmProductWineTemplateSub-START-->
+    <bean id="jpmProductWineTemplateSubDao" class="com.joymain.jecs.pm.dao.hibernate.JpmProductWineTemplateSubDaoHibernate" autowire="byName"/>
+    <!--JpmProductWineTemplateSub-END-->
+    <!--JpmWineTemplatePicture-START-->
+    <bean id="jpmWineTemplatePictureDao" class="com.joymain.jecs.pm.dao.hibernate.JpmWineTemplatePictureDaoHibernate" autowire="byName"/>
+    <!--JpmWineTemplatePicture-END-->
+
+    <!--JpmWineOrderInterface-START-->
+   
+    <bean id="jpmWineOrderInterfaceDao" class="com.joymain.jecs.pm.dao.hibernate.JpmWineOrderInterfaceDaoHibernate" autowire="byName"/>
+    <!--JpmWineOrderInterface-END-->
+    <!--JpmWineOrderListInterface-START-->
+    <bean id="jpmWineOrderListInterfaceDao" class="com.joymain.jecs.pm.dao.hibernate.JpmWineOrderListInterfaceDaoHibernate" autowire="byName"/>
+    <!--JpmWineOrderListInterface-END-->
+    
+    <!--JpmWineSettingListInf-START-->
+    <bean id="jpmWineSettingListInfDao" class="com.joymain.jecs.pm.dao.hibernate.JpmWineSettingListInfDaoHibernate" autowire="byName"/>
+    <!--JpmWineSettingListInf-END-->
+    <!--JpmWineSettingInf-START-->
+    <bean id="jpmWineSettingInfDao" class="com.joymain.jecs.pm.dao.hibernate.JpmWineSettingInfDaoHibernate" autowire="byName"/>
+    <!--JpmWineSettingInf-END-->
+
+    <!--JmiZcwMember-START-->
+    <bean id="jmiZcwMemberDao" class="com.joymain.jecs.fi.dao.hibernate.JmiZcwMemberDaoHibernate" autowire="byName"/>
+    <!--JmiZcwMember-END-->
+    <!--FiSecurityDeposit-START-->
+    <bean id="fiSecurityDepositDao" class="com.joymain.jecs.fi.dao.hibernate.FiSecurityDepositDaoHibernate" autowire="byName"/>
+    <!--FiSecurityDeposit-END-->
+	<!--FiSecurityDepositJournal-START-->
+    <bean id="fiSecurityDepositJournalDao" class="com.joymain.jecs.fi.dao.hibernate.FiSecurityDepositJournalDaoHibernate" autowire="byName"/>
+    <!--FiSecurityDepositJournal-END-->
+
+    <!--JpmConfigDetailed-START-->
+    <bean id="jpmConfigDetailedDao" class="com.joymain.jecs.pm.dao.hibernate.JpmConfigDetailedDaoHibernate" autowire="byName"/>
+    <!--JpmConfigDetailed-END-->
+    <!--JpmConfigSpecDetailed-START-->
+    <bean id="jpmConfigSpecDetailedDao" class="com.joymain.jecs.pm.dao.hibernate.JpmConfigSpecDetailedDaoHibernate" autowire="byName"/>
+    <!--JpmConfigSpecDetailed-END-->
+
+    <!--JpmMemberConfig-START-->
+    <bean id="jpmMemberConfigDao" class="com.joymain.jecs.pm.dao.hibernate.JpmMemberConfigDaoHibernate" autowire="byName"/>
+    <!--JpmMemberConfig-END-->
+    
+    <!--JpoWineMemberOrder-START-->
+    <bean id="jpoWineMemberOrderDao" class="com.joymain.jecs.pm.dao.hibernate.JpoWineMemberOrderDaoHibernate" autowire="byName"/>
+    <!--JpoWineMemberOrder-END-->
+    <!--JpmSendConsignment-START-->
+    <bean id="jpmSendConsignmentDao" class="com.joymain.jecs.pm.dao.hibernate.JpmSendConsignmentDaoHibernate" autowire="byName"/>
+    <!--JpmSendConsignment-END-->
+    
+    <!--FiCoinConfig-START-->
+    <bean id="fiCoinConfigDao" class="com.joymain.jecs.fi.dao.hibernate.FiCoinConfigDaoHibernate" autowire="byName"/>
+    <!--FiCoinConfig-END-->
+    <bean id="jpoMovieDao" class="com.joymain.jecs.po.dao.hibernate.JpoMovieDaoJpa" autowire="byName"/>
+    
+    <!--FiBillAccountRelation-START-->
+    <bean id="fiBillAccountRelationDao" class="com.joymain.jecs.fi.dao.hibernate.FiBillAccountRelationDaoHibernate" autowire="byName"/>
+    <!--FiBillAccountRelation-END-->
+    
+    
+    
+    <!--FiGetbillaccountLog-START-->
+    <bean id="fiGetbillaccountLogDao" class="com.joymain.jecs.fi.dao.hibernate.FiGetbillaccountLogDaoHibernate" autowire="byName"/>
+    <!--FiGetbillaccountLog-END-->
+    
+    
+    
+    
+    <!--FiCommonAddr-START-->
+    <bean id="fiCommonAddrDao" class="com.joymain.jecs.fi.dao.hibernate.FiCommonAddrDaoHibernate" autowire="byName"/>
+    <!--FiCommonAddr-END-->
+    <!--FiFundbookBalance-START-->
+    <bean id="fiFundbookBalanceDao" class="com.joymain.jecs.fi.dao.hibernate.FiFundbookBalanceDaoHibernate" autowire="byName"/>
+    <!--FiFundbookBalance-END-->
+    <!--FiFundbookJournal-START-->
+    <bean id="fiFundbookJournalDao" class="com.joymain.jecs.fi.dao.hibernate.FiFundbookJournalDaoHibernate" autowire="byName"/>
+    <!--FiFundbookJournal-END-->
+    <!--FiFundbookTemp-START-->
+    <bean id="fiFundbookTempDao" class="com.joymain.jecs.fi.dao.hibernate.FiFundbookTempDaoHibernate" autowire="byName"/>
+    <!--FiFundbookTemp-END-->
+    <!--FiTransferFundbook-START-->
+    <bean id="fiTransferFundbookDao" class="com.joymain.jecs.fi.dao.hibernate.FiTransferFundbookDaoHibernate" autowire="byName"/>
+    <!--FiTransferFundbook-END-->
+    
+    <!--FiBcoinPayconfig-START-->
+    <bean id="fiBcoinPayconfigDao" class="com.joymain.jecs.fi.dao.hibernate.FiBcoinPayconfigDaoHibernate" autowire="byName"/>
+    <!--FiBcoinPayconfig-END-->
+    <!--FiBcoinPayconfigDetail-START-->
+    <bean id="fiBcoinPayconfigDetailDao" class="com.joymain.jecs.fi.dao.hibernate.FiBcoinPayconfigDetailDaoHibernate" autowire="byName"/>
+    <!--FiBcoinPayconfigDetail-END-->
+    <!--InwDepartment-START-->
+    <bean id="inwDepartmentDao" class="com.joymain.jecs.am.dao.hibernate.InwDepartmentDaoHibernate" autowire="byName"/>
+    <!--InwDepartment-END-->
+    <!--InwDepartCompetence-START-->
+    <bean id="inwDepartCompetenceDao" class="com.joymain.jecs.am.dao.hibernate.InwDepartCompetenceDaoHibernate" autowire="byName"/>
+    <!--InwDepartCompetence-END-->
+
+    <!--JmiTicket-START-->
+    <bean id="jmiTicketDao" class="com.joymain.jecs.mi.dao.hibernate.JmiTicketDaoHibernate" autowire="byName"/>
+    <!--JmiTicket-END-->
+
+    <!--InwIntegrationTotal-START-->
+    <bean id="inwIntegrationTotalDao" class="com.joymain.jecs.am.dao.hibernate.InwIntegrationTotalDaoHibernate" autowire="byName"/>
+    <!--InwIntegrationTotal-END-->
+	
+	<bean id="jbdMemberStarRewardsDao" class="com.joymain.jecs.bd.dao.hibernate.JbdMemberStarRewardsDaoHibernate" autowire="byName"/>
+    <!--FiBillAccount-START-->
+    <bean id="fiBillAccountDao" class="com.joymain.jecs.fi.dao.hibernate.FiBillAccountDaoHibernate" autowire="byName"/>
+    <!--FiBillAccount-END-->
+    <!--FiBillAccountWarning-START-->
+    <bean id="fiBillAccountWarningDao" class="com.joymain.jecs.fi.dao.hibernate.FiBillAccountWarningDaoHibernate" autowire="byName"/>
+    <!--FiBillAccountWarning-END-->
+    
+    <!-- new star congrations -->
+    <bean id="jbdMemberCongrationsDao" class="com.joymain.jecs.bd.dao.hibernate.JbdMemberCongrationsDaoHibernate" autowire="byName"/>
+    <!--InwDepartPerson-START-->
+    <bean id="inwDepartPersonDao" class="com.joymain.jecs.am.dao.hibernate.InwDepartPersonDaoHibernate" autowire="byName"/>
+    <!--InwDepartPerson-END-->
+    <!--PdShUrl-START-->
+    <bean id="pdShUrlDao" class="com.joymain.jecs.pd.dao.hibernate.PdShUrlDaoHibernate" autowire="byName"/>
+    <!--PdShUrl-END-->
+    
+    <bean id="jmiRefStateLogDao" class="com.joymain.jecs.mi.dao.hibernate.JmiRefStateLogDaoHibernate" autowire="byName"/>
+    <!--JfiChinapayPosLog-START-->
+    <bean id="jfiChinapayPosLogDao" class="com.joymain.jecs.fi.dao.hibernate.JfiChinapayPosLogDaoHibernate" autowire="byName"/>
+    <!--JfiChinapayPosLog-END-->
+    <!--JbdTravelPoint2015-START-->
+    <bean id="jbdTravelPoint2015Dao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPoint2015DaoHibernate" autowire="byName"/>
+    <!--JbdTravelPoint2015-END-->
+    <!--JbdTravelPointLog2015-START-->
+    <bean id="jbdTravelPointLog2015Dao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPointLog2015DaoHibernate" autowire="byName"/>
+    <!--JbdTravelPointLog2015-END-->
+    <!--JmiValidLevelList-START-->
+    <bean id="jmiValidLevelListDao" class="com.joymain.jecs.mi.dao.hibernate.JmiValidLevelListDaoHibernate" autowire="byName"/>
+    <!--JmiValidLevelList-END-->
+    <!--JmiLevelLock-START-->
+    <bean id="jmiLevelLockDao" class="com.joymain.jecs.mi.dao.hibernate.JmiLevelLockDaoHibernate" autowire="byName"/>
+    <!--JmiLevelLock-END-->
+    <!--JmiLevelNote-START-->
+    <bean id="jmiLevelNoteDao" class="com.joymain.jecs.mi.dao.hibernate.JmiLevelNoteDaoHibernate" autowire="byName"/>
+    <!--JmiLevelNote-END-->
+    <!--JfiChanjetLog-START-->
+    <bean id="jfiChanjetLogDao" class="com.joymain.jecs.fi.dao.hibernate.JfiChanjetLogDaoHibernate" autowire="byName"/>
+    <!--JfiChanjetLog-END-->
+
+    <!--JmiGradeLock-START-->
+    <bean id="jmiGradeLockDao" class="com.joymain.jecs.mi.dao.hibernate.JmiGradeLockDaoHibernate" autowire="byName"/>
+    <!--JmiGradeLock-END-->
+
+    <!--FiMovieOrder-START-->
+    <bean id="fiMovieOrderDao" class="com.joymain.jecs.fi.dao.hibernate.FiMovieOrderDaoHibernate" autowire="byName"/>
+    <!--FiMovieOrder-END-->
+
+    
+    <!--JpoProductNumLimit-START-->
+    <bean id="jpoProductNumLimitDao" class="com.joymain.jecs.po.dao.hibernate.JpoProductNumLimitDaoHibernate" autowire="byName"/>
+    <!--JpoProductNumLimit-END-->
+    
+    <!--JfiUmbpayLog-START-->
+    <bean id="jfiUmbpayLogDao" class="com.joymain.jecs.fi.dao.hibernate.JfiUmbpayLogDaoHibernate" autowire="byName"/>
+    <!--JfiUmbpayLog-END-->
+    <!--JfiChinapnrLog-START-->
+    <bean id="jfiChinapnrLogDao" class="com.joymain.jecs.fi.dao.hibernate.JfiChinapnrLogDaoHibernate" autowire="byName"/>
+    <!--JfiChinapnrLog-END-->
+    
+    <bean id="fiChannelLogDao" class="com.joymain.jecs.fi.dao.hibernate.FiChannelLogDaoHibernate" autowire="byName"/>
+    <!--JmiDealList-START-->
+    <bean id="jmiDealListDao" class="com.joymain.jecs.mi.dao.hibernate.JmiDealListDaoHibernate" autowire="byName"/>
+    <!--JmiDealList-END-->
+    
+    <!--PdMailReceipt-START-->
+    <bean id="pdMailReceiptDao" class="com.joymain.jecs.pd.dao.hibernate.PdMailReceiptDaoHibernate" autowire="byName"/>
+    <!--PdMailReceipt-END-->
+    
+     <!--MailStatus-START-->
+    <bean id="mailStatusDao" class="com.joymain.jecs.pd.dao.hibernate.MailStatusDaoHibernate" autowire="byName"/>
+    <!--MailStatus-END-->
+    <!--Items-START-->
+    <bean id="itemsDao" class="com.joymain.jecs.pd.dao.hibernate.ItemsDaoHibernate" autowire="byName"/>
+    <!--Items-END-->
+    
+     <!--PdLogisticsBase-START-->
+    <bean id="pdLogisticsBaseDao" class="com.joymain.jecs.pd.dao.hibernate.PdLogisticsBaseDaoHibernate" autowire="byName"/>
+    <!--PdLogisticsBase-END-->
+    <!--PdLogisticsBaseNum-START-->
+    <bean id="pdLogisticsBaseNumDao" class="com.joymain.jecs.pd.dao.hibernate.PdLogisticsBaseNumDaoHibernate" autowire="byName"/>
+    <!--PdLogisticsBaseNum-END-->
+    <!--PdLogisticsBaseDetail-START-->
+    <bean id="pdLogisticsBaseDetailDao" class="com.joymain.jecs.pd.dao.hibernate.PdLogisticsBaseDetailDaoHibernate" autowire="byName"/>
+    <!--PdLogisticsBaseDetail-END-->
+    <!--JocsInterfaceRetransmission-START-->
+    <bean id="jocsInterfaceRetransmissionDao" class="com.joymain.jecs.pm.dao.hibernate.JocsInterfaceRetransmissionDaoHibernate" autowire="byName"/>
+    <!--JocsInterfaceRetransmission-END-->
+    
+    <!--JmiStateLog-START-->
+    <bean id="jmiStateLogDao" class="com.joymain.jecs.mi.dao.hibernate.JmiStateLogDaoHibernate" autowire="byName"/>
+    <!--JmiStateLog-END-->
+    
+    <!--FiPayAccount-START-->
+    <bean id="fiPayAccountDao" class="com.joymain.jecs.fi.dao.hibernate.FiPayAccountDaoHibernate" autowire="byName"/>
+    <!--FiPayAccount-END-->
+    <!--FiPayAccountConfig-START-->
+    <bean id="fiPayAccountConfigDao" class="com.joymain.jecs.fi.dao.hibernate.FiPayAccountConfigDaoHibernate" autowire="byName"/>
+    <!--FiPayAccountConfig-END-->
+    <!--JfiYeepayLog-START-->
+    <bean id="jfiYeepayLogDao" class="com.joymain.jecs.fi.dao.hibernate.JfiYeepayLogDaoHibernate" autowire="byName"/>
+    <!--JfiYeepayLog-END-->
+   
+    <!--JfiReapalLog-START-->
+    <bean id="jfiReapalLogDao" class="com.joymain.jecs.fi.dao.hibernate.JfiReapalLogDaoHibernate" autowire="byName"/>
+    <!--JfiReapalLog-END-->
+    <!--JmiSpecialList-START-->
+    <bean id="jmiSpecialListDao" class="com.joymain.jecs.mi.dao.hibernate.JmiSpecialListDaoHibernate" autowire="byName"/>
+    <!--JmiSpecialList-END-->
+    
+    
+    
+    <!--JfiInvoiceDeposit-START-->
+    <bean id="jfiInvoiceDepositDao" class="com.joymain.jecs.fi.dao.hibernate.JfiInvoiceDepositDaoHibernate" autowire="byName"/>
+    <!--JfiInvoiceDeposit-END-->
+    <!--JfiDepositList-START-->
+    <bean id="jfiDepositListDao" class="com.joymain.jecs.fi.dao.hibernate.JfiDepositListDaoHibernate" autowire="byName"/>
+    <!--JfiDepositList-END-->
+    
+    <!--JfiInvoice-START-->
+    <bean id="jfiInvoiceDao" class="com.joymain.jecs.fi.dao.hibernate.JfiInvoiceDaoHibernate" autowire="byName"/>
+    <!--JfiInvoice-END-->
+	 <bean id="checkedFailedDao" class="com.joymain.jecs.po.dao.hibernate.JpoCheckedFailedHibernate" autowire="byName"/>
+
+	 <!--JfiPayLog-START-->
+    <bean id="jfiPayLogDao" class="com.joymain.jecs.fi.dao.hibernate.JfiPayLogDaoHibernate" autowire="byName"/>
+    <!--JfiPayLog-END-->
+    
+    <!--JfiDepositJournal-START-->
+    <bean id="jfiDepositJournalDao" class="com.joymain.jecs.fi.dao.hibernate.JfiDepositJournalDaoHibernate" autowire="byName"/>
+    <!--JfiDepositJournal-END-->
+    <!--JfiDepositMoney-START-->
+    <bean id="jfiDepositMoneyDao" class="com.joymain.jecs.fi.dao.hibernate.JfiDepositMoneyDaoHibernate" autowire="byName"/>
+    <!--JfiDepositMoney-END-->
+    <!--JfiDepositSend-START-->
+    <bean id="jfiDepositSendDao" class="com.joymain.jecs.fi.dao.hibernate.JfiDepositSendDaoHibernate" autowire="byName"/>
+    <!--JfiDepositSend-END-->
+    <!--JfiDepositBalance-START-->
+    <bean id="jfiDepositBalanceDao" class="com.joymain.jecs.fi.dao.hibernate.JfiDepositBalanceDaoHibernate" autowire="byName"/>
+    <!--JfiDepositBalance-END-->
+    <!--JfiDepositTemp-START-->
+    <bean id="jfiDepositTempDao" class="com.joymain.jecs.fi.dao.hibernate.JfiDepositTempDaoHibernate" autowire="byName"/>
+    <!--JfiDepositTemp-END-->
+    <!--FiAvailableInvoice-START-->
+    <bean id="fiAvailableInvoiceDao" class="com.joymain.jecs.fi.dao.hibernate.FiAvailableInvoiceDaoHibernate" autowire="byName"/>
+    <!--FiAvailableInvoice-END-->
+    
+    <!--FiInvoiceBalance-START-->
+    <bean id="fiInvoiceBalanceDao" class="com.joymain.jecs.fi.dao.hibernate.FiInvoiceBalanceDaoHibernate" autowire="byName"/>
+    <!--FiInvoiceBalance-END-->
+    <!--FiInvoiceChange-START-->
+    <bean id="fiInvoiceChangeDao" class="com.joymain.jecs.fi.dao.hibernate.FiInvoiceChangeDaoHibernate" autowire="byName"/>
+    <!--FiInvoiceChange-END-->
+    
+    <bean id="jmiMemberRecordDao" class="com.joymain.jecs.memberrecord.dao.hibernate.JmiMemberRecordDaoHibernate" autowire="byName"/>
+    
+    <!--JmiMemberLog-START-->
+    <bean id="jmiMemberLogDao" class="com.joymain.jecs.mi.dao.hibernate.JmiMemberLogDaoHibernate" autowire="byName"/>
+    <!--JmiMemberLog-END-->
+    <!--JmiPrizeTourism-START-->
+    <bean id="jmiPrizeTourismDao" class="com.joymain.jecs.mi.dao.hibernate.JmiPrizeTourismDaoHibernate" autowire="byName"/>
+    <!--JmiPrizeTourism-END-->
+    <!--JbdTravelPointAll-START-->
+    <bean id="jbdTravelPointAllDao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPointAllDaoHibernate" autowire="byName"/>
+    <!--JbdTravelPointAll-END-->
+    <!--JbdTravelPointLogAll-START-->
+    <bean id="jbdTravelPointLogAllDao" class="com.joymain.jecs.bd.dao.hibernate.JbdTravelPointLogAllDaoHibernate" autowire="byName"/>
+    <!--JbdTravelPointLogAll-END-->
+    
+    <!--PdShipStrategyMain-START-->
+    <bean id="pdShipStrategyMainDao" class="com.joymain.jecs.pd.dao.hibernate.PdShipStrategyMainDaoHibernate" autowire="byName"/>
+    <!--PdShipStrategyMain-END-->
+    <!--JfiBusinessNum-START-->
+    <bean id="jfiBusinessNumDao" class="com.joymain.jecs.fi.dao.hibernate.JfiBusinessNumDaoHibernate" autowire="byName"/>
+    <!--JfiBusinessNum-END-->
+    <!--JfiQuota-START-->
+    <bean id="jfiQuotaDao" class="com.joymain.jecs.fi.dao.hibernate.JfiQuotaDaoHibernate" autowire="byName"/>
+    <!--JfiQuota-END-->
+    <!--JfiAmountDetail-START-->
+    <bean id="jfiAmountDetailDao" class="com.joymain.jecs.fi.dao.hibernate.JfiAmountDetailDaoHibernate" autowire="byName"/>
+    <!--JfiAmountDetail-END-->
+    <!--JpmCombinationRelated-START-->
+    <bean id="jpmCombinationRelatedDao" class="com.joymain.jecs.pm.dao.hibernate.JpmCombinationRelatedDaoHibernate" autowire="byName"/>
+    <!--JpmCombinationRelated-END-->
+    <!--PdNotChangeProduct-START-->
+    <bean id="pdNotChangeProductDao" class="com.joymain.jecs.pd.dao.hibernate.PdNotChangeProductDaoHibernate" autowire="byName"/>
+    <!--PdNotChangeProduct-END-->
+    <bean id="jpoBankBookPayListDao" class="com.joymain.jecs.po.dao.hibernate.JpoBankBookPayListDaoHibernate" autowire="byName"/>
+    <!--JbdSubBonusList-START-->
+    <bean id="jbdSubBonusListDao" class="com.joymain.jecs.bd.dao.hibernate.JbdSubBonusListDaoHibernate" autowire="byName"/>
+    <!--JbdSubBonusList-END-->
+    <!--JmiAssure-START-->
+    <bean id="jmiAssureDao" class="com.joymain.jecs.mi.dao.hibernate.JmiAssureDaoHibernate" autowire="byName"/>
+    <!--JmiAssure-END-->
+    <!--JpoMemberNyc-START-->
+    <bean id="jpoMemberNycDao" class="com.joymain.jecs.po.dao.hibernate.JpoMemberNycDaoHibernate" autowire="byName"/>
+    <!--JpoMemberNyc-END-->
+    <!--JpoMemberNycLog-START-->
+    <bean id="jpoMemberNycLogDao" class="com.joymain.jecs.po.dao.hibernate.JpoMemberNycLogDaoHibernate" autowire="byName"/>
+    <!--JpoMemberNycLog-END-->
+    <!--JpoMemberNycQualify-START-->
+    <bean id="jpoMemberNycQualifyDao" class="com.joymain.jecs.po.dao.hibernate.JpoMemberNycQualifyDaoHibernate" autowire="byName"/>
+    <!--JpoMemberNycQualify-END-->
+    <!--JbdMemberFrozen-START-->
+    <bean id="jbdMemberFrozenDao" class="com.joymain.jecs.bd.dao.hibernate.JbdMemberFrozenDaoHibernate" autowire="byName"/>
+    <!--JbdMemberFrozen-END-->
+    <!--FiProductPointTemp-START-->
+    <bean id="fiProductPointTempDao" class="com.joymain.jecs.fi.dao.hibernate.FiProductPointTempDaoHibernate" autowire="byName"/>
+    <!--FiProductPointTemp-END-->
+    <!--FiProductPointTemp-START-->
+    <bean id="fiProductPointJournalDao" class="com.joymain.jecs.fi.dao.hibernate.FiProductPointJournalDaoHibernate" autowire="byName"/>
+    <!--FiProductPointTemp-END-->
+    <!--FiProductPointTemp-START-->
+    <bean id="fiProductPointBalanceDao" class="com.joymain.jecs.fi.dao.hibernate.FiProductPointBalanceDaoHibernate" autowire="byName"/>
+    <!--FiProductPointTemp-END-->
+    
+       <!--JpmCouponInfo-START-->
+    <bean id="jpmCouponInfoDao" class="com.joymain.jecs.pm.dao.hibernate.JpmCouponInfoDaoHibernate" autowire="byName"/>
+    <!--JpmCouponInfo-END-->
+    <!--JpmCouponRelationship-START-->
+    <bean id="jpmCouponRelationshipDao" class="com.joymain.jecs.pm.dao.hibernate.JpmCouponRelationshipDaoHibernate" autowire="byName"/>
+    <!--JpmCouponRelationship-END-->
+    <!--JpoUserCoupon-START-->
+    <bean id="jpoUserCouponDao" class="com.joymain.jecs.po.dao.hibernate.JpoUserCouponDaoHibernate" autowire="byName"/>
+    <!--JpoUserCoupon-END-->
+    <!--JpoCouponRelationship-START-->
+    <bean id="jpoCouponRelationshipDao" class="com.joymain.jecs.po.dao.hibernate.JpoCouponRelationshipDaoHibernate" autowire="byName"/>
+    <!--JpoCouponRelationship-END-->
+    
+    
+    
+    <!--JbdCalcDayFb-START-->
+    <bean id="jbdCalcDayFbDao" class="com.joymain.jecs.bd.dao.hibernate.JbdCalcDayFbDaoHibernate" autowire="byName"/>
+    <!--JbdCalcDayFb-END-->
+    <!--JbdCalcDayKbList-START-->
+    <bean id="jbdCalcDayKbListDao" class="com.joymain.jecs.bd.dao.hibernate.JbdCalcDayKbListDaoHibernate" autowire="byName"/>
+    <!--JbdCalcDayKbList-END-->
+        <bean id="ydOrderDao" class="com.joymain.jecs.po.dao.hibernate.YDorderDaoHibernate" autowire="byName"/>
+        <bean id="jpoInviteListDao" class="com.joymain.jecs.po.dao.hibernate.JpoInviteListDaoHibernate" autowire="byName"/>
+	<!--JbdJdSendRecord-START-->
+    <bean id="jbdJdSendRecordDao" class="com.joymain.jecs.bd.dao.hibernate.JbdJdSendRecordDaoHibernate" autowire="byName"/>
+    <!--JbdJdSendRecord-END-->
+    <!--JbdYkJiandianList-START-->
+    <bean id="jbdYkJiandianListDao" class="com.joymain.jecs.bd.dao.hibernate.JbdYkJiandianListDaoHibernate" autowire="byName"/>
+    <!--JbdYkJiandianList-END-->
+
+	<!--JbdYdRebateListDao-START-->
+    <bean id="jbdYdRebateListDao" class="com.joymain.jecs.bd.dao.hibernate.JbdYdRebateListDaoHibernate" autowire="byName"/>
+    <!--JbdYdRebateListDao-END-->
+    <!--JbdYdRebateListDao-START-->
+    <bean id="jbdYdRebateHistDao" class="com.joymain.jecs.bd.dao.hibernate.JbdYdRebateHistDaoHibernate" autowire="byName"/>
+    <!--JbdYdRebateListDao-END-->
+    
+	<bean id="jmiSmsNoteDao" class="com.joymain.jecs.mi.dao.hibernate.JmiSmsNoteDaoHibernate" autowire="byName"/>
+	<bean id="jmiYdSendListDao" class="com.joymain.jecs.mi.dao.hibernate.JmiYdSendListDaoHibernate" autowire="byName"/>
+    
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

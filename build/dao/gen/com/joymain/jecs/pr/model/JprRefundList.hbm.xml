@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pr.model.JprRefundList"
+            table="JPR_REFUND_LIST"
+    >
+
+    <id
+        name="prlId"
+            column="PRL_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PR]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="price"
+                    column="PRICE"
+                length="18"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="qty"
+                    column="QTY"
+                length="5"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="pv"
+                    column="PV"
+                length="18"
+        >
+
+        </property>
+
+        <many-to-one
+            name="jprRefund"
+                    column="RO_NO"
+                not-null="true"
+        >
+
+        </many-to-one>
+
+        <many-to-one
+            name="jpmProductSaleTeamType"
+                    column="PRODUCT_ID"
+                cascade="none"
+        >
+
+        </many-to-one>
+
+        <property
+            name="erpProductNo"
+                    column="ERP_PRODUCT_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="erpPrice"
+                    column="ERP_PRICE"
+        >
+
+        </property>
+
+        <property
+            name="molId"
+                    column="MOL_ID"
+                length="10"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,978 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+
+ <!--JbdCaculateLog-BEAN-START-->
+    <bean id="jbdCaculateLogController" class="com.joymain.jecs.bd.webapp.action.JbdCaculateLogController" autowire="byName"/>
+
+    <bean id="jbdCaculateLogFormController" class="com.joymain.jecs.bd.webapp.action.JbdCaculateLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdCaculateLogForm"/>
+        <property name="successView" value="redirect:jbdCaculateLogs.html"/>
+    </bean>
+    <!--JbdCaculateLog-BEAN-END-->
+    
+    <bean id="bdNewOldPeriodController" class="com.joymain.jecs.bd.webapp.action.BdNewOldPeriodController" autowire="byName"/>
+    <!--JbdUserCardList-BEAN-START-->
+    <bean id="jbdUserCardListController" class="com.joymain.jecs.bd.webapp.action.JbdUserCardListController" autowire="byName"/>
+
+    <bean id="jbdUserCardListFormController" class="com.joymain.jecs.bd.webapp.action.JbdUserCardListFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdUserCardListForm"/>
+        <property name="successView" value="redirect:jbdUserCardLists.html"/>
+    </bean>
+    <!--JbdUserCardList-BEAN-END-->
+    
+    <!--BdOutwardBank-BEAN-START-->
+    <bean id="bdOutwardBankController" class="com.joymain.jecs.bd.webapp.action.BdOutwardBankController" autowire="byName"/>
+
+    <bean id="bdOutwardBankFormController" class="com.joymain.jecs.bd.webapp.action.BdOutwardBankFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/bdOutwardBankForm"/>
+        <property name="successView" value="redirect:bdOutwardBanks.html"/>
+    </bean>
+    <!--BdOutwardBank-BEAN-END-->
+    <!--JbdSendRecord-BEAN-START-->
+    <bean id="jbdSendRecordController" class="com.joymain.jecs.bd.webapp.action.JbdSendRecordController" autowire="byName"/>
+
+    <bean id="jbdSendRecordFormController" class="com.joymain.jecs.bd.webapp.action.JbdSendRecordFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdSendRecordForm"/>
+        <property name="successView" value="redirect:jbdSendRecords.html"/>
+    </bean>
+    <!--JbdSendRecord-BEAN-END-->
+    <!--JbdSendRecordHist-BEAN-START-->
+    <bean id="jbdSendRecordHistController" class="com.joymain.jecs.bd.webapp.action.JbdSendRecordHistController" autowire="byName"/>
+
+    <bean id="jbdSendRecordHistFormController" class="com.joymain.jecs.bd.webapp.action.JbdSendRecordHistFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdSendRecordHistForm"/>
+        <property name="successView" value="redirect:jbdSendRecordHists.html"/>
+    </bean>
+    <!--JbdSendRecordHist-BEAN-END-->
+    <!--JbdBonusBalance-BEAN-START-->
+    <bean id="jbdBonusBalanceController" class="com.joymain.jecs.bd.webapp.action.JbdBonusBalanceController" autowire="byName"/>
+
+    <bean id="jbdBonusBalanceFormController" class="com.joymain.jecs.bd.webapp.action.JbdBonusBalanceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdBonusBalanceForm"/>
+        <property name="successView" value="redirect:jbdBonusBalances.html"/>
+    </bean>
+    <!--JbdBonusBalance-BEAN-END-->
+    <!--BdPeriod-BEAN-START-->
+    <bean id="bdPeriodController" class="com.joymain.jecs.bd.webapp.action.BdPeriodController" autowire="byName"/>
+
+    <bean id="bdPeriodFormController" class="com.joymain.jecs.bd.webapp.action.BdPeriodFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/bdPeriodForm"/>
+        <property name="successView" value="redirect:bdPeriods.html"/>
+    </bean>
+    <!--BdPeriod-BEAN-END-->
+    <bean id="bdOrderStatisticPrintController" class="com.joymain.jecs.bd.webapp.action.BdOrderStatisticPrintController" autowire="byName"/>
+    <bean id="bdOrderStatisticPrintBController" class="com.joymain.jecs.bd.webapp.action.BdOrderStatisticPrintBController" autowire="byName"/>
+    
+    <bean id="jbdSendRecordAllotController" class="com.joymain.jecs.bd.webapp.action.JbdSendRecordAllotController" autowire="byName"/>
+    <bean id="jbdSendRecordAllotFiController" class="com.joymain.jecs.bd.webapp.action.JbdSendRecordAllotFiController" autowire="byName"/>
+     <bean id="bdSendRegisterController" class="com.joymain.jecs.bd.webapp.action.BdSendRegisterController" autowire="byName"/>
+    <bean id="bdSendSupplyController" class="com.joymain.jecs.bd.webapp.action.BdSendSupplyController" autowire="byName"/>
+    <bean id="bdSendSupplyFormController" class="com.joymain.jecs.bd.webapp.action.BdSendSupplyFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/bdSendSupplyForm"/>
+        <property name="successView" value=""/>
+    </bean>
+    <bean id="bdSendChangeRegisterController" class="com.joymain.jecs.bd.webapp.action.BdSendChangeRegisterController" autowire="byName"/>
+    <bean id="bdSendChangeRegisterFormController" class="com.joymain.jecs.bd.webapp.action.BdSendChangeRegisterFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/bdSendChangeRegisterForm"/>
+        <property name="successView" value=""/>
+    </bean>
+    <bean id="bdSendOperaterStatisticController" class="com.joymain.jecs.bd.webapp.action.BdSendOperaterStatisticController" autowire="byName"/>
+    
+    
+    <bean id="bdBounsDeductController" class="com.joymain.jecs.bd.webapp.action.BdBounsDeductController" autowire="byName"/>
+
+    <bean id="bdBounsDeductFormController" class="com.joymain.jecs.bd.webapp.action.BdBounsDeductFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/bdBounsDeductForm"/>
+        <property name="successView" value="redirect:bdBounsDeducts.html"/>
+    </bean>
+    <bean id="bdBounsDeductCreateController" class="com.joymain.jecs.bd.webapp.action.BdBounsDeductCreateController" autowire="byName"/>
+    <bean id="bdBounsDeductCreateFormController" class="com.joymain.jecs.bd.webapp.action.BdBounsDeductCreateFormController" autowire="byName">       
+        <property name="formView" value="bd/bdBounsDeductCreateForm"/>
+        <property name="successView" value=""/>
+    </bean>
+    <bean id="bdBounsDeductCheckController" class="com.joymain.jecs.bd.webapp.action.BdBounsDeductCheckController" autowire="byName"/>
+    <bean id="bdBounsDeductCheckFormController" class="com.joymain.jecs.bd.webapp.action.BdBounsDeductCheckFormController" autowire="byName">       
+        <property name="formView" value="bd/bdBounsDeductCheckForm"/>
+        <property name="successView" value=""/>
+    </bean>
+
+    <bean id="bdBounsDeductFindMemberController" class="com.joymain.jecs.bd.webapp.action.BdBounsDeductFindMemberController" autowire="byName"/>
+    
+    <!--JbdSellCalcSubHist-BEAN-START-->
+    <bean id="jbdSellCalcSubHistController" class="com.joymain.jecs.bd.webapp.action.JbdSellCalcSubHistController" autowire="byName"/>
+
+    <bean id="jbdSellCalcSubHistFormController" class="com.joymain.jecs.bd.webapp.action.JbdSellCalcSubHistFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdSellCalcSubHistForm"/>
+        <property name="successView" value="redirect:jbdSellCalcSubHists.html"/>
+    </bean>
+    <!--JbdSellCalcSubHist-BEAN-END-->
+    <!--JbdMemberLinkCalcHist-BEAN-START-->
+    <bean id="jbdMemberLinkCalcHistController" class="com.joymain.jecs.bd.webapp.action.JbdMemberLinkCalcHistController" autowire="byName"/>
+    <bean id="jbdMemberLinkCalcHistMController" class="com.joymain.jecs.bd.webapp.action.JbdMemberLinkCalcHistMController" autowire="byName"/>
+
+    <bean id="jbdMemberLinkCalcHistFormController" class="com.joymain.jecs.bd.webapp.action.JbdMemberLinkCalcHistFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdMemberLinkCalcHistForm"/>
+        <property name="successView" value="redirect:jbdMemberLinkCalcHists.html"/>
+    </bean>
+    <!--JbdMemberLinkCalcHist-BEAN-END-->
+    <bean id="bdSendRecordToBankReportController" class="com.joymain.jecs.bd.webapp.action.BdSendRecordToBankReportController" autowire="byName" scope="prototype">
+    	<property name="formView" value="bd/bdSendRecordToBankReport"/>
+        <property name="successView" value="redirect:bdSendRecordToBankReport.html"/>
+    </bean>
+    <bean id="BdSendRecordAllotReportController" class="com.joymain.jecs.bd.webapp.action.BdSendRecordAllotReportController" autowire="byName" scope="prototype">
+    	<property name="formView" value="bd/bdSendRecordAllotReport"/>
+        <property name="successView" value="redirect:bdSendRecordAllotReport.html"/>
+    </bean>
+    <bean id="BdSendRecordAllotFiReportController" class="com.joymain.jecs.bd.webapp.action.BdSendRecordAllotFiReportController" autowire="byName" scope="prototype">
+    	<property name="formView" value="bd/bdSendRecordAllotFiReport"/>
+        <property name="successView" value="redirect:bdSendRecordAllotFiReport.html"/>
+    </bean>
+    <bean id="BdSendRecordAllotTWReportController" class="com.joymain.jecs.bd.webapp.action.BdSendRecordAllotTWReportController" autowire="byName" scope="prototype">
+    	<property name="formView" value="bd/bdSendRecordAllotTWReport"/>
+        <property name="successView" value="redirect:bdSendRecordAllotTWReport.html"/>
+    </bean>
+    <bean id="BdSendRecordAllotBReportController" class="com.joymain.jecs.bd.webapp.action.BdSendRecordAllotBReportController" autowire="byName" scope="prototype">
+    	<property name="formView" value="bd/bdSendRecordAllotBReport"/>
+        <property name="successView" value="redirect:bdSendRecordAllotBReport.html"/>
+    </bean>
+    <bean id="bdBonusDeductImportController" class="com.joymain.jecs.bd.webapp.action.BdBonusDeductImportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/bd_bonus_deduct_import"/>
+        <property name="successView" value="redirect:bd_bonus_deduct_import.html"/>
+    </bean>
+    <bean id="JbdDetailController" class="com.joymain.jecs.bd.webapp.action.JbdDetailController" autowire="byName"/>
+    <!--JbdDayBounsCalc-BEAN-START-->
+    <bean id="jbdDayBounsCalcController" class="com.joymain.jecs.bd.webapp.action.JbdDayBounsCalcController" autowire="byName"/>
+
+    <bean id="jbdDayBounsCalcFormController" class="com.joymain.jecs.bd.webapp.action.JbdDayBounsCalcFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdDayBounsCalcForm"/>
+        <property name="successView" value="redirect:jbdDayBounsCalcs.html"/>
+    </bean>
+    <!--JbdDayBounsCalc-BEAN-END-->
+    <!--JbdDayBounsCalcHist-BEAN-START-->
+    <bean id="jbdDayBounsCalcHistController" class="com.joymain.jecs.bd.webapp.action.JbdDayBounsCalcHistController" autowire="byName"/>
+
+    <bean id="jbdDayBounsCalcHistFormController" class="com.joymain.jecs.bd.webapp.action.JbdDayBounsCalcHistFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdDayBounsCalcHistForm"/>
+        <property name="successView" value="redirect:jbdDayBounsCalcHists.html"/>
+    </bean>
+    <!--JbdDayBounsCalcHist-BEAN-END-->
+    <!--JbdManuallyAdjustStar-BEAN-START-->
+    <bean id="jbdManuallyAdjustStarController" class="com.joymain.jecs.bd.webapp.action.JbdManuallyAdjustStarController" autowire="byName"/>
+
+    <bean id="jbdManuallyAdjustStarFormController" class="com.joymain.jecs.bd.webapp.action.JbdManuallyAdjustStarFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdManuallyAdjustStarForm"/>
+        <property name="successView" value="redirect:jbdManuallyAdjustStars.html"/>
+    </bean>
+    
+    <bean id="batchUpdateJbdManuallyAdjustStarController" class="com.joymain.jecs.bd.webapp.action.BatchUpdateJbdManuallyAdjustStarController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/batchUpdateJbdManuallyAdjustStar"/>
+        <property name="successView" value="redirect:batchUpdateJbdManuallyAdjustStar.html"/>
+    </bean>
+    <!--JbdManuallyAdjustStar-BEAN-END-->
+    <bean id="bdOrganiseStatusController" class="com.joymain.jecs.bd.webapp.action.BdOrganiseStatusController" autowire="byName"/>
+    <bean id="bdBonusTreeController" class="com.joymain.jecs.bd.webapp.action.BdBonusTreeController" autowire="byName"/> 
+    <bean id="bdRecommendBonusTreeController" class="com.joymain.jecs.bd.webapp.action.BdRecommendBonusTreeController" autowire="byName"/> 
+    
+    <bean id="bdSendRecordBReportController" class="com.joymain.jecs.bd.webapp.action.BdSendRecordBReportController" autowire="byName" scope="prototype">
+    	<property name="formView" value="bd/bdSendRecordBReport"/>
+        <property name="successView" value="redirect:bdSendRecordBReport.html"/>
+    </bean>
+    
+    <bean id="jbdFreezeStatusReportController" class="com.joymain.jecs.bd.webapp.action.JbdFreezeStatusReportController" autowire="byName" scope="prototype">
+    	<property name="formView" value="bd/jbdFreezeStatusReport"/>
+        <property name="successView" value="redirect:jbdFreezeStatusReport.html"/>
+    </bean>
+    
+    <!--JbdVentureLeaderSubHist-BEAN-START-->
+    <bean id="jbdVentureLeaderSubHistController" class="com.joymain.jecs.bd.webapp.action.JbdVentureLeaderSubHistController" autowire="byName"/>
+
+    <bean id="jbdVentureLeaderSubHistFormController" class="com.joymain.jecs.bd.webapp.action.JbdVentureLeaderSubHistFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdVentureLeaderSubHistForm"/>
+        <property name="successView" value="redirect:jbdVentureLeaderSubHists.html"/>
+    </bean>
+    <!--JbdVentureLeaderSubHist-BEAN-END-->
+    <!--JbdSellCalcSubDetailHist-BEAN-START-->
+    <bean id="jbdSellCalcSubDetailHistController" class="com.joymain.jecs.bd.webapp.action.JbdSellCalcSubDetailHistController" autowire="byName"/>
+
+    <bean id="jbdSellCalcSubDetailHistFormController" class="com.joymain.jecs.bd.webapp.action.JbdSellCalcSubDetailHistFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdSellCalcSubDetailHistForm"/>
+        <property name="successView" value="redirect:jbdSellCalcSubDetailHists.html"/>
+    </bean>
+    <bean id="bdSendOperaterStatisticReportController" class="com.joymain.jecs.bd.webapp.action.BdSendOperaterStatisticReportController" autowire="byName"/>
+    <bean id="jbdMemberStarController" class="com.joymain.jecs.bd.webapp.action.JbdMemberStarController" autowire="byName"/>
+    <!--JbdSellCalcSubDetailHist-BEAN-END-->
+    <!--JbdUserCompanyCode-BEAN-START-->
+    <bean id="jbdUserCompanyCodeController" class="com.joymain.jecs.bd.webapp.action.JbdUserCompanyCodeController" autowire="byName"/>
+
+    <bean id="jbdUserCompanyCodeFormController" class="com.joymain.jecs.bd.webapp.action.JbdUserCompanyCodeFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdUserCompanyCodeForm"/>
+        <property name="successView" value="redirect:jbdUserCompanyCodes.html"/>
+    </bean>
+    <!--JbdUserCompanyCode-BEAN-END-->
+    <bean id="jbdSendRecordActiveController" class="com.joymain.jecs.bd.webapp.action.JbdSendRecordActiveController" autowire="byName"/>
+    <bean id="jbdSendRecordFreezeController" class="com.joymain.jecs.bd.webapp.action.JbdSendRecordFreezeController" autowire="byName"/>
+    
+    
+    <!--JbdTaiwanTravelPoint-BEAN-START-->
+    <bean id="jbdTaiwanTravelPointController" class="com.joymain.jecs.bd.webapp.action.JbdTaiwanTravelPointController" autowire="byName"/>
+
+    <bean id="jbdTaiwanTravelPointFormController" class="com.joymain.jecs.bd.webapp.action.JbdTaiwanTravelPointFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTaiwanTravelPointForm"/>
+        <property name="successView" value="redirect:jbdTaiwanTravelPoints.html"/>
+    </bean>
+    <!--JbdTaiwanTravelPoint-BEAN-END-->
+    <!--JbdManuallyAdjustAlgebra-BEAN-START-->
+    <bean id="jbdManuallyAdjustAlgebraController" class="com.joymain.jecs.bd.webapp.action.JbdManuallyAdjustAlgebraController" autowire="byName"/>
+
+    <bean id="jbdManuallyAdjustAlgebraFormController" class="com.joymain.jecs.bd.webapp.action.JbdManuallyAdjustAlgebraFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdManuallyAdjustAlgebraForm"/>
+        <property name="successView" value="redirect:jbdManuallyAdjustAlgebras.html"/>
+    </bean>
+    <!--JbdManuallyAdjustAlgebra-BEAN-END-->
+    <bean id="jbdPinTitleReportController" class="com.joymain.jecs.bd.webapp.action.JbdPinTitleReportController" autowire="byName" scope="prototype">
+    	<property name="formView" value="bd/jbdPinTitleReport"/>
+        <property name="successView" value="redirect:jbdPinTitleReport.html"/>
+    </bean>
+    <bean id="jbdPassStarReportController" class="com.joymain.jecs.bd.webapp.action.JbdPassStarReportController" autowire="byName" scope="prototype">
+    	<property name="formView" value="bd/jbdPassStarReport"/>
+        <property name="successView" value="redirect:jbdPassStarReport.html"/>
+    </bean>
+    <bean id="jbdBudgetPinTitleReportController" class="com.joymain.jecs.bd.webapp.action.JbdBudgetPinTitleReportController" autowire="byName" scope="prototype">
+    	<property name="formView" value="bd/jbdBudgetPinTitleReport"/>
+        <property name="successView" value="redirect:jbdBudgetPinTitleReport.html"/>
+    </bean>
+    <!--JbdTravelPoint-BEAN-START-->
+    <bean id="jbdTravelPointController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointController" autowire="byName"/>
+    
+    
+    
+    <bean id="jbdYd399RecommendListController" class="com.joymain.jecs.bd.webapp.action.JbdYd399RecommendListController" autowire="byName"/>
+    <bean id="jbdYd399RecommendListAllotFiController" class="com.joymain.jecs.bd.webapp.action.JbdYd399RecommendListAllotFiController" autowire="byName"/>
+    
+    
+    
+    
+    
+    
+    <bean id="jbdDayCustRecommendController" class="com.joymain.jecs.bd.webapp.action.JbdDayCustRecommendController" autowire="byName"/>
+    
+    <bean id="jbdTravelPointFormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPointForm"/>
+        <property name="successView" value="redirect:jbdTravelPoints.html"/>
+    </bean>
+    <!--JbdTravelPoint-BEAN-END-->
+    <!--JbdTravelPointDetail-BEAN-START-->
+    <bean id="jbdTravelPointDetailController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointDetailController" autowire="byName"/>
+
+    <bean id="jbdTravelPointDetailFormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPointDetailForm"/>
+        <property name="successView" value="redirect:jbdTravelPointDetails.html"/>
+    </bean>
+    <!--JbdTravelPointDetail-BEAN-END-->
+    <!--JbdTravelPointLog-BEAN-START-->
+    <bean id="jbdTravelPointLogController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointLogController" autowire="byName"/>
+
+    <bean id="jbdTravelPointLogFormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPointLogForm"/>
+        <property name="successView" value="redirect:jbdTravelPointLogs.html"/>
+    </bean>
+    <!--JbdTravelPointLog-BEAN-END-->
+    <!--JbdSummaryList-BEAN-START-->
+    <bean id="jbdSummaryListController" class="com.joymain.jecs.bd.webapp.action.JbdSummaryListController" autowire="byName"/>
+
+    <bean id="jbdSummaryListFormController" class="com.joymain.jecs.bd.webapp.action.JbdSummaryListFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdSummaryListForm"/>
+        <property name="successView" value="redirect:jbdSummaryLists.html"/>
+    </bean>
+    <!--JbdSummaryList-BEAN-END-->
+    <!--JbdVentureFundList-BEAN-START-->
+    <bean id="jbdVentureFundListController" class="com.joymain.jecs.bd.webapp.action.JbdVentureFundListController" autowire="byName"/>
+
+    <bean id="jbdVentureFundListFormController" class="com.joymain.jecs.bd.webapp.action.JbdVentureFundListFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdVentureFundListForm"/>
+        <property name="successView" value="redirect:jbdVentureFundLists.html"/>
+    </bean>
+    <!--JbdVentureFundList-BEAN-END-->
+    <bean id="jbdMonthBonusSortReportController" class="com.joymain.jecs.bd.webapp.action.JbdMonthBonusSortReportController" autowire="byName" scope="prototype">
+    	<property name="formView" value="bd/jbdMonthBonusSortReport"/>
+        <property name="successView" value="redirect:jbdMonthBonusSortReport.html"/>
+    </bean>
+    <!--JbdSendNote-BEAN-START-->
+    <bean id="jbdSendNoteController" class="com.joymain.jecs.bd.webapp.action.JbdSendNoteController" autowire="byName"/>
+
+    <bean id="jbdSendNoteFormController" class="com.joymain.jecs.bd.webapp.action.JbdSendNoteFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdSendNoteForm"/>
+        <property name="successView" value="redirect:jbdSendNotes.html"/>
+    </bean>
+    <!--JbdSendNote-BEAN-END-->
+    <bean id="jbdSendNoteAllotController" class="com.joymain.jecs.bd.webapp.action.JbdSendNoteAllotController" autowire="byName"/>
+    <bean id="jbdSendNoteRegisterController" class="com.joymain.jecs.bd.webapp.action.JbdSendNoteRegisterController" autowire="byName"/>
+    <bean id="jbdSendNoteChangeRegisterController" class="com.joymain.jecs.bd.webapp.action.JbdSendNoteChangeRegisterController" autowire="byName"/>
+    <bean id="jbdSendNoteSupplyController" class="com.joymain.jecs.bd.webapp.action.JbdSendNoteSupplyController" autowire="byName"/>
+    
+    <!--JbdNetworkList-BEAN-START-->
+    <bean id="jbdNetworkListController" class="com.joymain.jecs.bd.webapp.action.JbdNetworkListController" autowire="byName"/>
+
+    <bean id="jbdNetworkListFormController" class="com.joymain.jecs.bd.webapp.action.JbdNetworkListFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdNetworkListForm"/>
+        <property name="successView" value="redirect:jbdNetworkLists.html"/>
+    </bean>
+    <!--JbdNetworkList-BEAN-END-->
+    <bean id="jbdSendNoteChangeRegisterFormController" class="com.joymain.jecs.bd.webapp.action.JbdSendNoteChangeRegisterFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdSendNoteChangeRegisterForm"/>
+        <property name="successView" value=""/>
+    </bean>
+    <bean id="BdSendRecordAllotJPReportController" class="com.joymain.jecs.bd.webapp.action.BdSendRecordAllotJPReportController" autowire="byName" scope="prototype">
+    	<property name="formView" value="bd/bdSendRecordAllotJPReport"/>
+        <property name="successView" value="redirect:bdSendRecordAllotJPReport.html"/>
+    </bean>
+    <bean id="jbdSendRecordAllotDevController" class="com.joymain.jecs.bd.webapp.action.JbdSendRecordAllotDevController" autowire="byName"/>
+    <!--JbdTravelPoint2012-BEAN-START-->
+    <bean id="jbdTravelPoint2012Controller" class="com.joymain.jecs.bd.webapp.action.JbdTravelPoint2012Controller" autowire="byName"/>
+
+    <bean id="jbdTravelPoint2012FormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPoint2012FormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPoint2012Form"/>
+        <property name="successView" value="redirect:jbdTravelPoint2012s.html"/>
+    </bean>
+    <!--JbdTravelPoint2012-BEAN-END-->
+    <!--JbdTravelPointDetail2012-BEAN-START-->
+    <bean id="jbdTravelPointDetail2012Controller" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointDetail2012Controller" autowire="byName"/>
+
+    <bean id="jbdTravelPointDetail2012FormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointDetail2012FormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPointDetail2012Form"/>
+        <property name="successView" value="redirect:jbdTravelPointDetail2012s.html"/>
+    </bean>
+    <!--JbdTravelPointDetail2012-BEAN-END-->
+    <!--JbdTravelPointLog2012-BEAN-START-->
+    <bean id="jbdTravelPointLog2012Controller" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointLog2012Controller" autowire="byName"/>
+
+    <bean id="jbdTravelPointLog2012FormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointLog2012FormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPointLog2012Form"/>
+        <property name="successView" value="redirect:jbdTravelPointLog2012s.html"/>
+    </bean>
+    <!--JbdTravelPointLog2012-BEAN-END-->
+    <bean id="jbdTopHonorStarReportController" class="com.joymain.jecs.bd.webapp.action.JbdTopHonorStarReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTopHonorStarReport"/>
+        <property name="successView" value="redirect:jbdTopHonorStarReport.html"/>
+    </bean>
+    <bean id="jbdComingHonorStarReportController" class="com.joymain.jecs.bd.webapp.action.JbdComingHonorStarReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdComingHonorStarReport"/>
+        <property name="successView" value="redirect:jbdComingHonorStarReport.html"/>
+    </bean>
+    <!--JbdGradeNote-BEAN-START-->
+    <bean id="jbdGradeNoteController" class="com.joymain.jecs.bd.webapp.action.JbdGradeNoteController" autowire="byName"/>
+
+    <bean id="jbdGradeNoteFormController" class="com.joymain.jecs.bd.webapp.action.JbdGradeNoteFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdGradeNoteForm"/>
+        <property name="successView" value="redirect:jbdGradeNotes.html"/>
+    </bean>
+    <!--JbdGradeNote-BEAN-END-->
+    <bean id="jbdMemberLinkCalcHistGradeController" class="com.joymain.jecs.bd.webapp.action.JbdMemberLinkCalcHistGradeController" autowire="byName"/>
+    <bean id="jbdMemberLinkCalcHistGradeFormController" class="com.joymain.jecs.bd.webapp.action.JbdMemberLinkCalcHistGradeFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdMemberLinkCalcHistGradeForm"/>
+        <property name="successView" value=""/>
+    </bean>
+    <bean id="jbdBonusListReportController" class="com.joymain.jecs.bd.webapp.action.JbdBonusListReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdBonusListReport"/>
+        <property name="successView" value="redirect:jbdBonusListReport.html"/>
+    </bean>
+    <bean id="jbdMonthlyAnalysisReportController" class="com.joymain.jecs.bd.webapp.action.JbdMonthlyAnalysisReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdMonthlyAnalysisReport"/>
+        <property name="successView" value="redirect:jbdMonthlyAnalysisReport.html"/>
+    </bean>
+    <bean id="jbdSendRecordFreezeImportController" class="com.joymain.jecs.bd.webapp.action.JbdSendRecordFreezeImportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdSendRecordFreezeImport"/>
+        <property name="successView" value="redirect:jbdSendRecordFreezeImport.html"/>
+    </bean>
+    <!--JbdSpecialStar-BEAN-START-->
+    <bean id="jbdSpecialStarController" class="com.joymain.jecs.bd.webapp.action.JbdSpecialStarController" autowire="byName"/>
+
+    <bean id="jbdSpecialStarFormController" class="com.joymain.jecs.bd.webapp.action.JbdSpecialStarFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdSpecialStarForm"/>
+        <property name="successView" value="redirect:jbdSpecialStars.html"/>
+    </bean>
+    <!--JbdSpecialStar-BEAN-END-->
+    <bean id="jbdTravelPointDetailImportController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointDetailImportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPointDetailImport"/>
+        <property name="successView" value="redirect:jbdTravelPointDetailImport.html"/>
+    </bean>
+    <bean id="jbdTravelPointLogImportController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointLogImportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPointLogImport"/>
+        <property name="successView" value="redirect:jbdTravelPointLogImport.html"/>
+    </bean>
+    <bean id="jbdTravelPointLogAllImportController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointLogAllImportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPointLogAllImport"/>
+        <property name="successView" value="redirect:jbdTravelPointLogAllImport.html"/>
+    </bean>
+
+    
+    <!--JbdTravelPoint2014-BEAN-START-->
+    <bean id="jbdTravelPoint2014Controller" class="com.joymain.jecs.bd.webapp.action.JbdTravelPoint2014Controller" autowire="byName"/>
+
+    <bean id="jbdTravelPoint2014FormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPoint2014FormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPoint2014Form"/>
+        <property name="successView" value="redirect:jbdTravelPoint2014s.html"/>
+    </bean>
+    <!--JbdTravelPoint2014-BEAN-END-->
+    <!--JbdTravelPointDetail2014-BEAN-START-->
+    <bean id="jbdTravelPointDetail2014Controller" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointDetail2014Controller" autowire="byName"/>
+
+    <bean id="jbdTravelPointDetail2014FormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointDetail2014FormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPointDetail2014Form"/>
+        <property name="successView" value="redirect:jbdTravelPointDetail2014s.html"/>
+    </bean>
+    <!--JbdTravelPointDetail2014-BEAN-END-->
+    <!--JbdTravelPointLog2014-BEAN-START-->
+    <bean id="jbdTravelPointLog2014Controller" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointLog2014Controller" autowire="byName"/>
+
+    <bean id="jbdTravelPointLog2014FormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointLog2014FormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPointLog2014Form"/>
+        <property name="successView" value="redirect:jbdTravelPointLog2014s.html"/>
+    </bean>
+    <!--JbdTravelPointLog2014-BEAN-END-->
+    
+    <!--JbdManualCon-BEAN-START-->
+    <bean id="jbdManualConController" class="com.joymain.jecs.bd.webapp.action.JbdManualConController" autowire="byName"/>
+
+    <bean id="jbdManualConFormController" class="com.joymain.jecs.bd.webapp.action.JbdManualConFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdManualConForm"/>
+        <property name="successView" value="redirect:jbdManualCons.html"/>
+    </bean>
+    <!--JbdManualCon-BEAN-END-->
+    
+    <bean id="jbdManualConImportController" class="com.joymain.jecs.bd.webapp.action.JbdManualConImportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdManualConImport"/>
+        <property name="successView" value="redirect:jbdManualConImport.html"/>
+    </bean>
+    
+    <bean id="jbdMonthlyAnalysisAmountReportController" class="com.joymain.jecs.bd.webapp.action.JbdMonthlyAnalysisAmountReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdMonthlyAnalysisAmountReport"/>
+        <property name="successView" value="redirect:jbdMonthlyAnalysisAmountReport.html"/>
+    </bean>
+    
+    <bean id="jbdMemberQualifyStarImportController" class="com.joymain.jecs.bd.webapp.action.JbdMemberQualifyStarImportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdMemberQualifyStarImport"/>
+        <property name="successView" value="redirect:jbdMemberQualifyStarImport.html"/>
+    </bean>
+    
+    <!-- member star rewards -->
+    <bean id="jbdMemberStarRewardsController" class="com.joymain.jecs.bd.webapp.action.JbdMemberStarRewardsController" autowire="byName"/>
+    <bean id="jbdMemberStarRewardsFormController" class="com.joymain.jecs.bd.webapp.action.JbdMemberStarRewardsFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdMemberStarRewardsForm"/>
+        <property name="successView" value="redirect:jbdMemberStarRewardsForm.html"/>
+    </bean>
+    <bean id="jbdMemberStarRewardsImportController" class="com.joymain.jecs.bd.webapp.action.JbdMemberStarRewardsImportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdMemberStarRewardsImport"/>
+        <property name="successView" value="redirect:jbdMemberStarRewardsImport.html"/>
+    </bean>
+    
+    <!-- new star congrations -->
+    <bean id="jbdMemberCongrationsController" class="com.joymain.jecs.bd.webapp.action.JbdMemberCongrationsController" autowire="byName"/>
+    <bean id="jbdMemberCongrationsFormController" class="com.joymain.jecs.bd.webapp.action.JbdMemberCongrationsFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdMemberCongrationsForm"/>
+        <property name="successView" value="redirect:jbdMemberCongrationsForm.html"/>
+    </bean>
+    <bean id="jbdMemberCongrationsImportController" class="com.joymain.jecs.bd.webapp.action.JbdMemberCongrationsImportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdMemberCongrationsImport"/>
+        <property name="successView" value="redirect:jbdMemberCongrationsImport.html"/>
+    </bean>
+    
+    <!--JbdTravelPoint2015-BEAN-START-->
+    <bean id="jbdTravelPoint2015Controller" class="com.joymain.jecs.bd.webapp.action.JbdTravelPoint2015Controller" autowire="byName"/>
+
+    <bean id="jbdTravelPoint2015FormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPoint2015FormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPoint2015Form"/>
+        <property name="successView" value="redirect:jbdTravelPoint2015s.html"/>
+    </bean>
+    <!--JbdTravelPoint2015-BEAN-END-->
+    <!--JbdTravelPointLog2015-BEAN-START-->
+    <bean id="jbdTravelPointLog2015Controller" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointLog2015Controller" autowire="byName"/>
+
+    <bean id="jbdTravelPointLog2015FormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointLog2015FormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPointLog2015Form"/>
+        <property name="successView" value="redirect:jbdTravelPointLog2015s.html"/>
+    </bean>
+    <!--JbdTravelPointLog2015-BEAN-END-->
+    
+    <!--JmiValidLevelList-BEAN-START-->
+    <bean id="jmiValidLevelListController" class="com.joymain.jecs.mi.webapp.action.JmiValidLevelListController" autowire="byName"/>
+
+    <bean id="jmiValidLevelListFormController" class="com.joymain.jecs.mi.webapp.action.JmiValidLevelListFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiValidLevelListForm"/>
+        <property name="successView" value="redirect:jmiValidLevelLists.html"/>
+    </bean>
+    <!--JmiValidLevelList-BEAN-END-->
+    <!--JmiLevelLock-BEAN-START-->
+    <bean id="jmiLevelLockController" class="com.joymain.jecs.mi.webapp.action.JmiLevelLockController" autowire="byName"/>
+
+    <bean id="jmiLevelLockFormController" class="com.joymain.jecs.mi.webapp.action.JmiLevelLockFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiLevelLockForm"/>
+        <property name="successView" value="redirect:jmiLevelLocks.html"/>
+    </bean>
+    <!--JmiLevelLock-BEAN-END-->
+    <!--JmiLevelNote-BEAN-START-->
+    <bean id="jmiLevelNoteController" class="com.joymain.jecs.mi.webapp.action.JmiLevelNoteController" autowire="byName"/>
+
+    <bean id="jmiLevelNoteFormController" class="com.joymain.jecs.mi.webapp.action.JmiLevelNoteFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiLevelNoteForm"/>
+        <property name="successView" value="redirect:jmiLevelNotes.html"/>
+    </bean>
+    <!--JmiLevelNote-BEAN-END-->
+    <bean id="bdAlgebraBonusController" class="com.joymain.jecs.bd.webapp.action.BdAlgebraBonusController" autowire="byName"/>
+    
+    
+    
+    <bean id="jbdSendTypeReportController" class="com.joymain.jecs.bd.webapp.action.JbdSendTypeReportController" autowire="byName" scope="prototype">
+    	<property name="formView" value="bd/jbdSendTypeReport"/>
+        <property name="successView" value="redirect:jbdSendTypeReport.html"/>
+    </bean>
+    
+    
+    <bean id="bdDiaMemberController" class="com.joymain.jecs.bd.webapp.action.BdDiaMemberController" autowire="byName"/>
+    <bean id="bdLevelCompressionController" class="com.joymain.jecs.bd.webapp.action.BdLevelCompressionController" autowire="byName"/>
+    
+    
+    <bean id="jbdNewComerReportController" class="com.joymain.jecs.bd.webapp.action.JbdNewComerReportController" autowire="byName" scope="prototype">
+    	<property name="formView" value="bd/jbdNewComerReport"/>
+        <property name="successView" value="redirect:jbdNewComerReport.html"/>
+    </bean>
+    
+    <bean id="jbdCubMembersController" class="com.joymain.jecs.bd.webapp.action.JbdCubMembersController" autowire="byName"/>
+    
+    <bean id="bdPassLinkController" class="com.joymain.jecs.bd.webapp.action.BdPassLinkController" autowire="byName"/>
+    <bean id="bdReSaleBonusController" class="com.joymain.jecs.bd.webapp.action.BdReSaleBonusController" autowire="byName"/>
+    <bean id="bdSaleLinkController" class="com.joymain.jecs.bd.webapp.action.BdSaleLinkController" autowire="byName"/>
+    <bean id="bdServiceLinkController" class="com.joymain.jecs.bd.webapp.action.BdServiceLinkController" autowire="byName"/>
+    
+    <!--JbdSubBonusList-BEAN-START-->
+    <bean id="jbdSubBonusListController" class="com.joymain.jecs.bd.webapp.action.JbdSubBonusListController" autowire="byName"/>
+
+    <bean id="jbdSubBonusListFormController" class="com.joymain.jecs.bd.webapp.action.JbdSubBonusListFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdSubBonusListForm"/>
+        <property name="successView" value="redirect:jbdSubBonusLists.html"/>
+    </bean>
+    <!--JbdSubBonusList-BEAN-END-->
+    
+    <!--JbdMemberFrozen-BEAN-START-->
+    <bean id="jbdMemberFrozenController" class="com.joymain.jecs.bd.webapp.action.JbdMemberFrozenController" autowire="byName"/>
+
+    <bean id="jbdMemberFrozenFormController" class="com.joymain.jecs.bd.webapp.action.JbdMemberFrozenFormController" autowire="byName">
+        <property name="formView" value="bd/jbdMemberFrozenForm"/>
+        <property name="successView" value="redirect:jbdMemberFrozens.html"/>
+    </bean>
+    <!--JbdMemberFrozen-BEAN-END-->
+    
+      <!--JbdCalcDayFb-BEAN-START-->
+    <bean id="jbdCalcDayFbController" class="com.joymain.jecs.bd.webapp.action.JbdCalcDayFbController" autowire="byName"/>
+
+    <bean id="jbdCalcDayFbFormController" class="com.joymain.jecs.bd.webapp.action.JbdCalcDayFbFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdCalcDayFbForm"/>
+        <property name="successView" value="redirect:jbdCalcDayFbs.html"/>
+    </bean>
+    <!--JbdCalcDayFb-BEAN-END-->
+    
+    <!--JbdCalcDayKbList-BEAN-START-->
+    <bean id="jbdCalcDayKbListController" class="com.joymain.jecs.bd.webapp.action.JbdCalcDayKbListController" autowire="byName"/>
+
+    <bean id="jbdCalcDayKbListFormController" class="com.joymain.jecs.bd.webapp.action.JbdCalcDayKbListFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdCalcDayKbListForm"/>
+        <property name="successView" value="redirect:jbdCalcDayKbLists.html"/>
+    </bean>
+    <!--JbdCalcDayKbList-BEAN-END-->
+           <!--JbdJdSendRecord-BEAN-START-->
+    <bean id="jbdJdSendRecordController" class="com.joymain.jecs.bd.webapp.action.JbdJdSendRecordController" autowire="byName"/>
+
+    <bean id="jbdYdRebateListController" class="com.joymain.jecs.bd.webapp.action.JbdYdRebateListController" autowire="byName"/>
+ 	<bean id="jbdYdRebateAllotFiController" class="com.joymain.jecs.bd.webapp.action.JbdYdRebateAllotFiController" autowire="byName"/>
+   
+
+
+
+    <bean id="jbdJdSendRecordFormController" class="com.joymain.jecs.bd.webapp.action.JbdJdSendRecordFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdJdSendRecordForm"/>
+        <property name="successView" value="redirect:jbdJdSendRecords.html"/>
+    </bean>
+    <!--JbdJdSendRecord-BEAN-END-->
+    
+    
+   <bean id="jbdDayCustRecommendKbController" class="com.joymain.jecs.bd.webapp.action.JbdDayCustRecommendKbController" autowire="byName"/>
+    
+   <bean id="jbdDayCustRecommendKbFormController" class="com.joymain.jecs.bd.webapp.action.JbdDayCustRecommendKbFormController" autowire="byName">
+        <property name="formView" value="bd/jbdDayCustRecommendKbListForm"/>
+        <property name="successView" value="redirect:jbdDayCustRecommendKbList.html"/>
+    </bean>
+    
+    
+    
+     <!--JbdYkJiandianList-BEAN-START-->
+    <bean id="jbdYkJiandianListController" class="com.joymain.jecs.bd.webapp.action.JbdYkJiandianListController" autowire="byName"/>
+
+    <bean id="jbdYkJiandianListFormController" class="com.joymain.jecs.bd.webapp.action.JbdYkJiandianListFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdYkJiandianListForm"/>
+        <property name="successView" value="redirect:jbdYkJiandianLists.html"/>
+    </bean>
+    <!--JbdYkJiandianList-BEAN-END-->
+    
+    <bean id="jbdCalcDayFbAllotProductPointController" class="com.joymain.jecs.bd.webapp.action.JbdCalcDayFbAllotProductPointController" autowire="byName"/>
+    <bean id="jbdJdRecordAllotFiController" class="com.joymain.jecs.bd.webapp.action.JbdJdRecordAllotFiController" autowire="byName"/>
+    <bean id="jbdDayCustRecommendAllotFiController" class="com.joymain.jecs.bd.webapp.action.JbdDayCustRecommendAllotFiController" autowire="byName"/>
+    
+    
+	<!-- Add additional controller beans here -->
+	<bean id="bdUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+                <!--JbdCaculateLog-URL-START-->
+                <prop key="/jbdCaculateLogs.html">jbdCaculateLogController</prop>
+                <prop key="/editJbdCaculateLog.html">jbdCaculateLogFormController</prop>
+                <!--JbdCaculateLog-URL-END-->
+            	<prop key="/bd/bdOrderStatistic.html">forwardJspController</prop>
+            	<prop key="/bdOrderStatisticPrint.html">bdOrderStatisticPrintController</prop>
+            	<prop key="/bd/bdOrderStatisticB.html">forwardJspController</prop>
+            	<prop key="/bdOrderStatisticPrintB.html">bdOrderStatisticPrintBController</prop>
+                <prop key="/bd_new_old_period.html">bdNewOldPeriodController</prop>
+                <!--BdOutwardBank-URL-START-->
+                <prop key="/bdOutwardBanks.html">bdOutwardBankController</prop>
+                <prop key="/editBdOutwardBank.html">bdOutwardBankFormController</prop>
+                <!--BdOutwardBank-URL-END-->
+                <!--JbdSendRecord-URL-START-->
+                <prop key="/jbdSendRecords.html">jbdSendRecordController</prop>
+                <prop key="/editJbdSendRecord.html">jbdSendRecordFormController</prop>
+                <!--JbdSendRecord-URL-END-->
+                <!--JbdSendRecordHist-URL-START-->
+                <prop key="/jbdSendRecordHists.html">jbdSendRecordHistController</prop>
+                <prop key="/editJbdSendRecordHist.html">jbdSendRecordHistFormController</prop>
+                <!--JbdSendRecordHist-URL-END-->
+                <!--JbdBonusBalance-URL-START-->
+                <prop key="/jbdBonusBalances.html">jbdBonusBalanceController</prop>
+                <prop key="/editJbdBonusBalance.html">jbdBonusBalanceFormController</prop>
+                <!--JbdBonusBalance-URL-END-->
+  				<!--BdPeriod-URL-START-->
+                <prop key="/bdPeriods.html">bdPeriodController</prop>
+                <prop key="/editBdPeriod.html">bdPeriodFormController</prop>
+                <!--BdPeriod-URL-END--> 
+				<prop key="/jbdSendRecordAllot.html">jbdSendRecordAllotController</prop>
+                <prop key="/bdSendRegister.html">bdSendRegisterController</prop>
+                <prop key="/bdSendSupply.html">bdSendSupplyController</prop>
+                <prop key="/editBdSendSupply.html">bdSendSupplyFormController</prop>
+                <prop key="/bdSendChangeRegister.html">bdSendChangeRegisterController</prop>
+                <prop key="/editBdSendChangeRegister.html">bdSendChangeRegisterFormController</prop>
+                <prop key="/bdSendOperaterStatistic.html">bdSendOperaterStatisticController</prop>
+                <!--JbdUserCardList-URL-START-->
+                <prop key="/jbdUserCardLists.html">jbdUserCardListController</prop>
+                <prop key="/editJbdUserCardList.html">jbdUserCardListFormController</prop>
+                <!--JbdUserCardList-URL-END-->
+                
+                
+                
+                <prop key="/bdBounsDeducts.html">bdBounsDeductController</prop>
+                <prop key="/jbdDayCustRecommends.html">jbdDayCustRecommendController</prop>
+                
+                <prop key="/jbdYd399RecommendLists.html">jbdYd399RecommendListController</prop>
+                <prop key="/jbdYd399RecommendListAllotFi.html">jbdYd399RecommendListAllotFiController</prop>
+                
+                
+                <prop key="/editBdBounsDeduct.html">bdBounsDeductFormController</prop>
+                
+                <prop key="/bdBounsDeductsCreate.html">bdBounsDeductCreateController</prop>
+                <prop key="/editBdBounsDeductCreate.html">bdBounsDeductCreateFormController</prop>
+
+                <prop key="/bdBounsDeductsCheck.html">bdBounsDeductCheckController</prop>
+                <prop key="/editBdBounsDeductCheck.html">bdBounsDeductCheckFormController</prop>
+        		<prop key="/bdBounsDeductFindMembers.html">bdBounsDeductFindMemberController</prop>
+              
+                              <!--JbdSellCalcSubHist-URL-START-->
+                <prop key="/jbdSellCalcSubHists.html">jbdSellCalcSubHistController</prop>
+                <prop key="/editJbdSellCalcSubHist.html">jbdSellCalcSubHistFormController</prop>
+                <!--JbdSellCalcSubHist-URL-END-->
+                <!--JbdMemberLinkCalcHist-URL-START-->
+                <prop key="/bdSendRecords.html">jbdMemberLinkCalcHistController</prop>
+                <prop key="/bdSendRecordMs.html">jbdMemberLinkCalcHistMController</prop>
+                <prop key="/editJbdMemberLinkCalcHist.html">jbdMemberLinkCalcHistFormController</prop>
+                <prop key="/jbdDetail.html">JbdDetailController</prop>
+        		<prop key="/bdSendRecordToBankReport.html">bdSendRecordToBankReportController</prop>
+        		<prop key="/bdSendRecordAllotReport.html">BdSendRecordAllotReportController</prop>
+        		<prop key="/bdSendRecordAllotTWReport.html">BdSendRecordAllotTWReportController</prop>
+        		<prop key="/bdSendRecordAllotBReport.html">BdSendRecordAllotBReportController</prop>
+                <prop key="/bd_bonus_deduct_import.html">bdBonusDeductImportController</prop>
+                <!--JbdMemberLinkCalcHist-URL-END-->
+                <!--JbdDayBounsCalc-URL-START-->
+                <prop key="/jbdDayBounsCalcs.html">jbdDayBounsCalcController</prop>
+                <prop key="/editJbdDayBounsCalc.html">jbdDayBounsCalcFormController</prop>
+                <!--JbdDayBounsCalc-URL-END-->
+                <!--JbdDayBounsCalcHist-URL-START-->
+                <prop key="/jbdDayBounsCalcHists.html">jbdDayBounsCalcHistController</prop>
+                <prop key="/editJbdDayBounsCalcHist.html">jbdDayBounsCalcHistFormController</prop>
+                <!--JbdDayBounsCalcHist-URL-END-->
+                <!--JbdManuallyAdjustStar-URL-START-->
+                <prop key="/jbdManuallyAdjustStars.html">jbdManuallyAdjustStarController</prop>
+                <prop key="/editJbdManuallyAdjustStar.html">jbdManuallyAdjustStarFormController</prop>
+                <prop key="/batchUpdateJbdManuallyAdjustStar.html">batchUpdateJbdManuallyAdjustStarController</prop>
+                <!--JbdManuallyAdjustStar-URL-END-->
+        		<prop key="/bd_organise_status.html">bdOrganiseStatusController</prop>
+        		<prop key="/bd_bonus_tree.html">bdBonusTreeController</prop>
+        		<prop key="/bd_recommend_bonus_tree.html">bdRecommendBonusTreeController</prop>
+        		<prop key="/bdSendRecordBReport.html">bdSendRecordBReportController</prop>
+        		<prop key="/jbdFreezeStatusReport.html">jbdFreezeStatusReportController</prop>
+        		
+                <!--JbdVentureLeaderSubHist-URL-START-->
+                <prop key="/jbdVentureLeaderSubHists.html">jbdVentureLeaderSubHistController</prop>
+                <prop key="/editJbdVentureLeaderSubHist.html">jbdVentureLeaderSubHistFormController</prop>
+                <!--JbdVentureLeaderSubHist-URL-END-->
+                <!--JbdSellCalcSubDetailHist-URL-START-->
+                <prop key="/jbdSellCalcSubDetailHists.html">jbdSellCalcSubDetailHistController</prop>
+                <prop key="/editJbdSellCalcSubDetailHist.html">jbdSellCalcSubDetailHistFormController</prop>
+                <!--JbdSellCalcSubDetailHist-URL-END-->
+				<prop key="/bdSendOperaterStatisticReport.html">bdSendOperaterStatisticReportController</prop>
+				<prop key="/jbdMemberStars.html">jbdMemberStarController</prop>
+                <!--JbdUserCompanyCode-URL-START-->
+                <prop key="/jbdUserCompanyCodes.html">jbdUserCompanyCodeController</prop>
+                <prop key="/editJbdUserCompanyCode.html">jbdUserCompanyCodeFormController</prop>
+                <!--JbdUserCompanyCode-URL-END-->
+				<prop key="/jbdSendRecordActive.html">jbdSendRecordActiveController</prop>
+				<prop key="/jbdSendRecordFreeze.html">jbdSendRecordFreezeController</prop>
+                <!--JbdTaiwanTravelPoint-URL-START-->
+                <prop key="/jbdTaiwanTravelPoints.html">jbdTaiwanTravelPointController</prop>
+                <prop key="/editJbdTaiwanTravelPoint.html">jbdTaiwanTravelPointFormController</prop>
+                <!--JbdTaiwanTravelPoint-URL-END-->
+                <!--JbdManuallyAdjustAlgebra-URL-START-->
+                <prop key="/jbdManuallyAdjustAlgebras.html">jbdManuallyAdjustAlgebraController</prop>
+                <prop key="/editJbdManuallyAdjustAlgebra.html">jbdManuallyAdjustAlgebraFormController</prop>
+                <!--JbdManuallyAdjustAlgebra-URL-END-->
+        		<prop key="/jbdPinTitleReport.html">jbdPinTitleReportController</prop>
+        		<prop key="/jbdPassStarReport.html">jbdPassStarReportController</prop>
+        		<prop key="/jbdBudgetPinTitleReport.html">jbdBudgetPinTitleReportController</prop>
+                <!--JbdTravelPoint-URL-START-->
+                <prop key="/jbdTravelPoints.html">jbdTravelPointController</prop>
+                <prop key="/editJbdTravelPoint.html">jbdTravelPointFormController</prop>
+                <!--JbdTravelPoint-URL-END-->
+                <!--JbdTravelPointDetail-URL-START-->
+                <prop key="/jbdTravelPointDetails.html">jbdTravelPointDetailController</prop>
+                <prop key="/editJbdTravelPointDetail.html">jbdTravelPointDetailFormController</prop>
+                <!--JbdTravelPointDetail-URL-END-->
+                <!--JbdTravelPointLog-URL-START-->
+                <prop key="/jbdTravelPointLogs.html">jbdTravelPointLogController</prop>
+                <prop key="/editJbdTravelPointLog.html">jbdTravelPointLogFormController</prop>
+                <!--JbdTravelPointLog-URL-END-->
+                <!--JbdSummaryList-URL-START-->
+                <prop key="/jbdSummaryLists.html">jbdSummaryListController</prop>
+                <prop key="/editJbdSummaryList.html">jbdSummaryListFormController</prop>
+                <!--JbdSummaryList-URL-END-->
+                <!--JbdVentureFundList-URL-START-->
+                <prop key="/jbdVentureFundLists.html">jbdVentureFundListController</prop>
+                <prop key="/editJbdVentureFundList.html">jbdVentureFundListFormController</prop>
+                <!--JbdVentureFundList-URL-END-->
+        		<prop key="/jbdMonthBonusSortReport.html">jbdMonthBonusSortReportController</prop>
+                <!--JbdSendNote-URL-START-->
+                <prop key="/jbdSendNotes.html">jbdSendNoteController</prop>
+                <prop key="/editJbdSendNote.html">jbdSendNoteFormController</prop>
+                <!--JbdSendNote-URL-END-->
+                <prop key="/jbdSendNoteAllot.html">jbdSendNoteAllotController</prop>
+                <prop key="/jbdSendNoteRegister.html">jbdSendNoteRegisterController</prop>
+                <prop key="/jbdSendNoteChangeRegister.html">jbdSendNoteChangeRegisterController</prop>
+                <prop key="/jbdSendNoteSupply.html">jbdSendNoteSupplyController</prop>
+                <prop key="/jbdSendRecordAllotFi.html">jbdSendRecordAllotFiController</prop>
+                <!--JbdNetworkList-URL-START-->
+                <prop key="/jbdNetworkLists.html">jbdNetworkListController</prop>
+                <prop key="/editJbdNetworkList.html">jbdNetworkListFormController</prop>
+                <!--JbdNetworkList-URL-END-->
+        		<prop key="/bdSendRecordAllotFiReport.html">BdSendRecordAllotFiReportController</prop>
+                <prop key="/editJbdSendNoteChangeRegister.html">jbdSendNoteChangeRegisterFormController</prop>
+        		<prop key="/bdSendRecordAllotJPReport.html">BdSendRecordAllotJPReportController</prop>
+        		<prop key="/jbdSendRecordAllotDev.html">jbdSendRecordAllotDevController</prop>
+                <!--JbdTravelPoint2012-URL-START-->
+                <prop key="/jbdTravelPoint2012s.html">jbdTravelPoint2012Controller</prop>
+                <prop key="/editJbdTravelPoint2012.html">jbdTravelPoint2012FormController</prop>
+                <!--JbdTravelPoint2012-URL-END-->
+                <!--JbdTravelPointDetail2012-URL-START-->
+                <prop key="/jbdTravelPointDetail2012s.html">jbdTravelPointDetail2012Controller</prop>
+                <prop key="/editJbdTravelPointDetail2012.html">jbdTravelPointDetail2012FormController</prop>
+                <!--JbdTravelPointDetail2012-URL-END-->
+                <!--JbdTravelPointLog2012-URL-START-->
+                <prop key="/jbdTravelPointLog2012s.html">jbdTravelPointLog2012Controller</prop>
+                <prop key="/editJbdTravelPointLog2012.html">jbdTravelPointLog2012FormController</prop>
+                <!--JbdTravelPointLog2012-URL-END-->
+                <prop key="/jbdTopHonorStarReport.html">jbdTopHonorStarReportController</prop>
+                <prop key="/jbdComingHonorStarReport.html">jbdComingHonorStarReportController</prop>
+                <!--JbdGradeNote-URL-START-->
+                <prop key="/jbdGradeNotes.html">jbdGradeNoteController</prop>
+                <prop key="/editJbdGradeNote.html">jbdGradeNoteFormController</prop>
+                <!--JbdGradeNote-URL-END-->
+                <prop key="/jbdMemberLinkCalcHistGrade.html">jbdMemberLinkCalcHistGradeController</prop>
+                <prop key="/editJbdMemberLinkCalcHistGrade.html">jbdMemberLinkCalcHistGradeFormController</prop>
+                
+                <prop key="/jbdBonusListReport.html">jbdBonusListReportController</prop>
+                <prop key="/jbdMonthlyAnalysisReport.html">jbdMonthlyAnalysisReportController</prop>
+                <prop key="/jbdSendRecordFreezeImport.html">jbdSendRecordFreezeImportController</prop>                <!--JbdSpecialStar-URL-START-->
+                <prop key="/jbdSpecialStars.html">jbdSpecialStarController</prop>
+                <prop key="/editJbdSpecialStar.html">jbdSpecialStarFormController</prop>
+                <!--JbdSpecialStar-URL-END-->
+                <prop key="/jbdTravelPointDetailImport.html">jbdTravelPointDetailImportController</prop>  
+                <prop key="/jbdTravelPointLogImport.html">jbdTravelPointLogImportController</prop>  
+                
+                <!--JbdTravelPoint2014-URL-START-->
+                <prop key="/jbdTravelPoint2014s.html">jbdTravelPoint2014Controller</prop>
+                <prop key="/editJbdTravelPoint2014.html">jbdTravelPoint2014FormController</prop>
+                <!--JbdTravelPoint2014-URL-END-->
+                <!--JbdTravelPointDetail2014-URL-START-->
+                <prop key="/jbdTravelPointDetail2014s.html">jbdTravelPointDetail2014Controller</prop>
+                <prop key="/editJbdTravelPointDetail2014.html">jbdTravelPointDetail2014FormController</prop>
+                <!--JbdTravelPointDetail2014-URL-END-->
+                <!--JbdTravelPointLog2014-URL-START-->
+                <prop key="/jbdTravelPointLog2014s.html">jbdTravelPointLog2014Controller</prop>
+                <prop key="/editJbdTravelPointLog2014.html">jbdTravelPointLog2014FormController</prop>
+                <!--JbdTravelPointLog2014-URL-END-->
+                <!--JbdManualCon-URL-START-->
+                <prop key="/jbdManualCons.html">jbdManualConController</prop>
+                <prop key="/editJbdManualCon.html">jbdManualConFormController</prop>
+                <prop key="/jbdManualConImport.html">jbdManualConImportController</prop>
+                <!--JbdManualCon-URL-END-->
+                <prop key="/jbdMonthlyAnalysisAmountReport.html">jbdMonthlyAnalysisAmountReportController</prop>
+				<prop key="/jbdMemberQualifyStarImport.html">jbdMemberQualifyStarImportController</prop>
+				
+				<prop key="/jbdMemberStarRewards.html">jbdMemberStarRewardsController</prop>
+				<prop key="/editJbdMemberStarRewards.html">jbdMemberStarRewardsFormController</prop>
+				<prop key="/jbdMemberStarRewardsImport.html">jbdMemberStarRewardsImportController</prop>
+				
+				<prop key="/jbdMemberCongrations.html">jbdMemberCongrationsController</prop>
+				<prop key="/editJbdMemberCongrations.html">jbdMemberCongrationsFormController</prop>
+				<prop key="/jbdMemberCongrationsImport.html">jbdMemberCongrationsImportController</prop>
+                <!--JbdTravelPoint2015-URL-START-->
+                <prop key="/jbdTravelPoint2015s.html">jbdTravelPoint2015Controller</prop>
+                <prop key="/editJbdTravelPoint2015.html">jbdTravelPoint2015FormController</prop>
+                <!--JbdTravelPoint2015-URL-END-->
+                <!--JbdTravelPointLog2015-URL-START-->
+                <prop key="/jbdTravelPointLog2015s.html">jbdTravelPointLog2015Controller</prop>
+                <prop key="/editJbdTravelPointLog2015.html">jbdTravelPointLog2015FormController</prop>
+                <!--JbdTravelPointLog2015-URL-END-->
+                <!--JmiValidLevelList-URL-START-->
+                <prop key="/jmiValidLevelLists.html">jmiValidLevelListController</prop>
+                <prop key="/editJmiValidLevelList.html">jmiValidLevelListFormController</prop>
+                <!--JmiValidLevelList-URL-END-->
+                <!--JmiLevelLock-URL-START-->
+                <prop key="/jmiLevelLocks.html">jmiLevelLockController</prop>
+                <prop key="/editJmiLevelLock.html">jmiLevelLockFormController</prop>
+                <!--JmiLevelLock-URL-END-->
+                <!--JmiLevelNote-URL-START-->
+                <prop key="/jmiLevelNotes.html">jmiLevelNoteController</prop>
+                <prop key="/editJmiLevelNote.html">jmiLevelNoteFormController</prop>
+                <!--JmiLevelNote-URL-END-->
+                <prop key="/bdAlgebraBonus.html">bdAlgebraBonusController</prop>
+                <prop key="/jbdSendTypeReport.html">jbdSendTypeReportController</prop>
+                <prop key="/bdDiaMember.html">bdDiaMemberController</prop>
+                <prop key="/bdLevelCompression.html">bdLevelCompressionController</prop>
+                <prop key="/jbdNewComerReport.html">jbdNewComerReportController</prop>
+                
+                <prop key="/jbdCubMembers.html">jbdCubMembersController</prop>
+                <prop key="/bdPassLink.html">bdPassLinkController</prop>
+				<prop key="/jbdTravelPointLogAllImport.html">jbdTravelPointLogAllImportController</prop>
+                <prop key="/bdReSaleBonus.html">bdReSaleBonusController</prop>
+                <prop key="/bdSaleLink.html">bdSaleLinkController</prop>
+                <prop key="/bdServiceLink.html">bdServiceLinkController</prop>
+
+                <!--JbdSubBonusList-URL-START-->
+                <prop key="/jbdSubBonusLists.html">jbdSubBonusListController</prop>
+                <prop key="/editJbdSubBonusList.html">jbdSubBonusListFormController</prop>
+                <!--JbdSubBonusList-URL-END-->
+                
+                <!--JbdMemberFrozen-URL-START-->
+                <prop key="/jbdMemberFrozens.html">jbdMemberFrozenController</prop>
+                <prop key="/editJbdMemberFrozen.html">jbdMemberFrozenFormController</prop>
+                <!--JbdMemberFrozen-URL-END-->
+                <!--JbdCalcDayFb-URL-START-->
+                <prop key="/jbdCalcDayFbs.html">jbdCalcDayFbController</prop>
+                <prop key="/editJbdCalcDayFb.html">jbdCalcDayFbFormController</prop>
+                <!--JbdCalcDayFb-URL-END-->
+                <!--JbdCalcDayKbList-URL-START-->
+                <prop key="/jbdCalcDayKbLists.html">jbdCalcDayKbListController</prop>
+                <prop key="/editJbdCalcDayKbList.html">jbdCalcDayKbListFormController</prop>
+                <!--JbdCalcDayKbList-URL-END-->
+                <prop key="/jbdCalcDayFbAllotProductPoint.html">jbdCalcDayFbAllotProductPointController</prop>
+				 <!--JbdJdSendRecord-URL-START-->
+                <prop key="/jbdJdSendRecords.html">jbdJdSendRecordController</prop>
+                <prop key="/editJbdJdSendRecord.html">jbdJdSendRecordFormController</prop>
+                <!--JbdJdSendRecord-URL-END-->
+                
+                
+                 <prop key="/jbdDayCustRecommendKbList.html">jbdDayCustRecommendKbController</prop>
+                  <prop key="/editJbdDayCustRecommendKb.html">jbdDayCustRecommendKbFormController</prop>
+                 
+                <!--JbdYkJiandianList-URL-START-->
+                <prop key="/jbdYkJiandianLists.html">jbdYkJiandianListController</prop>
+                <prop key="/editJbdYkJiandianList.html">jbdYkJiandianListFormController</prop>
+                <!--JbdYkJiandianList-URL-END-->
+                <prop key="/jbdJdRecordAllotFi.html">jbdJdRecordAllotFiController</prop>
+                <prop key="/jbdDayCustRecommendAllotFi.html">jbdDayCustRecommendAllotFiController</prop>
+                <prop key="/jbdYdRebateLists.html">jbdYdRebateListController</prop>
+                <prop key="/jbdYdRebateAllotFi.html">jbdYdRebateAllotFiController</prop>
+                 
+			</props>
+		</property>
+	</bean>
+</beans>

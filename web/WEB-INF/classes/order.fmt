@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+body p {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #565863;
+	font-size: 12px;
+}
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #333;
+}
+a {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #f58220;
+}
+a:visited {
+	color: #f58220;
+}
+a:hover {
+	color: #666;
+}
+a:active {
+	color: #f58220;
+}
+h1 {
+	font-size: 14px;
+}
+</style>
+<style type="text/css">
+<!--
+p.MsoNormal {
+margin:0in;
+margin-bottom:.0001pt;
+font-size:12.0pt;
+font-family:"Times New Roman";
+}
+li.MsoNormal {
+margin:0in;
+margin-bottom:.0001pt;
+font-size:12.0pt;
+font-family:"Times New Roman";
+}
+.bold {
+	font-weight: bold;
+}
+.header {
+	font-family: Arial, Helvetica, sans-serif;
+}
+-->
+</style>
+</head>
+
+<body>
+<table width="640" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="file:///C|/Documents and Settings/revenco/My Documents/joy_email_header.jpg" width="640" height="227" alt="Joylife email header" /></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top" bgcolor="#FFFFFF"><p>&nbsp;</p>
+      <p><strong>Dear ${firstName}:</strong></p>
+      <p>Thank you for placing an order with Joy Life USA. Here are your order details:</p>
+      <p>Order Number:${orderNo}</p>
+      <p>Order Description:</p>
+      <p>&lt;table&gt;</p>
+      <p>&lt;tr&gt;&lt;td&gt;Product#&lt;/td&gt;&lt;td&gt;Product Name &lt;/td&gt;&lt;td&gt;Price&lt;/td&gt;&lt;td&gt;Qty&lt;/td&gt;&lt;/tr&gt;</p>
+      <p>&lt;#list details as detail &gt;</p>
+      <p>&lt;tr&gt;&lt;td&gt;${detail.jpmProductSale.jpmProduct.productNo}&lt;/td&gt;&lt;td&gt;${detail.jpmProductSale.productName} &lt;/td&gt;&lt;td&gt;${detail.price}&lt;/td&gt;&lt;td&gt;${detail.qty}&lt;/td&gt;&lt;/tr&gt;</p>
+      <p>&lt;/#list&gt;</p>
+      <p>&lt;/table&gt;</p>
+      <p>You will receive an email when your order has left our warehouse.</p>
+      <p>If you have any questions regarding your order, please email cs@joylifeusa.com.</p>
+      <p>&nbsp;</p>
+      <p><strong>JOYoulsy.</strong>      </p>
+      <p class="MsoNormal" style="background:white;">&nbsp;</p>
+      <p class="MsoNormal" style="background:white;"><strong><span style="font-family:Arial; font-size:10.0pt; color:black; ">Joy Life USA</span></strong></p>
+      <p class="MsoNormal" style="background:white;"><strong><span style="font-family:Arial; font-size:10.0pt; color:black; ">17<sup>th</sup> Floor, 655 N. Central Blvd, </span></strong></p>
+    <p class="MsoNormal" style="background:white;"><strong><span style="font-family:Arial; font-size:10.0pt; color:black; ">Glendale, CA 91203</span></strong></p><p>&nbsp;</p></td>
+  </tr>
+</table>
+</body>
+</html>

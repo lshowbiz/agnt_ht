@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.vt.model.VtVote"
+            table="VT_VOTE"
+    >
+
+    <id
+        name="vtId"
+            column="VT_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="state"
+                    column="STATE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="subject"
+                    column="SUBJECT"
+                length="250"
+        >
+
+        </property>
+
+        <property
+            name="description"
+                    column="DESCRIPTION"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="optionNum"
+                    column="OPTION_NUM"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="startTime"
+                    column="START_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="endTime"
+                    column="END_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="createUser"
+                    column="CREATE_USER"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <set
+            name="vtVoteDetails"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+            order-by="ORDER_NO asc"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="VT_ID"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.vt.model.VtVoteDetail"
+            />
+
+        </set>
+
+        <set
+            name="vtVotePows"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="VT_ID"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.vt.model.VtVotePow"
+            />
+
+        </set>
+
+    </class>    
+
+</hibernate-mapping>
+

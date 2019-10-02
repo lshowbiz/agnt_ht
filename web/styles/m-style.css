@@ -1,0 +1,35 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body {
+	position: relative;
+	min-width: 320px; 
+	width: 320px; 
+	margin: 0 auto;
+	padding: 0px;
+}
+.ui-mobile-viewport {
+	margin: 0 auto;
+}
+label.ui-input-text {
+    display: inline-block;
+    width: 110px;
+}
+label.ui-select {
+    display: inline-block;
+    width: 110px;
+}
+input.ui-input-text {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 70%;
+}
+.ui-select{
+	width: 79%;
+}
+
+/* 
+所有*List.jsp列表中图片按钮的样式
+*/
+.pPadding {
+	padding: 5px 15px;
+}

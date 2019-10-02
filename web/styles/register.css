@@ -1,0 +1,65 @@
+/* CSS Document */
+.main {
+	border: 1px solid #165AB3;
+	width: 750px;
+	text-align:left;
+}
+.language {
+  width: 750px;
+  height: 30px;
+  text-align:right;
+}
+.registerTitle {
+	background-image:url(../images/register/title_bg.png);
+	height:76px;
+	border-bottom: 1px solid #165AB3;
+}
+.title_info {
+    text-align:left;
+	position:relative;
+	top: 30px;
+	left:100px;
+}
+.step {
+	width: 170px;
+	padding: 10px;
+	float:left;
+}
+.stepon {
+	width: 156px;
+	height: 36px;
+	padding:6px;
+	margin-bottom: 15px;
+	background-color: #BED5F0;
+	border: 1px solid #165AB3;
+}
+.stepoff {
+	width: 156px;
+	height: 36px;
+	padding:6px;
+	margin-bottom: 15px;
+	background-color: #F2F2F2;
+	border: 1px solid #BED5F0;
+}
+.step_text {
+	font-family:"Microsoft YaHei";
+	font-size:9pt;
+	color: #165AB3;
+	position:relative;
+	top: 5px;
+	width:110px;
+}
+.data {
+	width: 540px;
+	padding: 10px;
+	float:right;
+}
+.copyright {
+  width: 750px;
+  height: 30px;
+  text-align:right;
+}
+.descript {
+	width: 200pd;
+	color: #676767;
+}

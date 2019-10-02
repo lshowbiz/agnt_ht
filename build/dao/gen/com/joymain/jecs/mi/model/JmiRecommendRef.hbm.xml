@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.mi.model.JmiRecommendRef"
+            table="JMI_RECOMMEND_REF"
+    >
+
+    <id
+        name="userCode"
+            column="USER_CODE"
+                type="java.lang.String"
+    >
+
+    </id>
+
+        <property
+            name="layerId"
+                    column="LAYER_ID"
+                length="12"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="treeNo"
+                    column="TREE_NO"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="treeIndex"
+                    column="TREE_INDEX"
+                length="4000"
+                not-null="true"
+        >
+
+        </property>
+
+        <many-to-one
+            name="recommendJmiMember"
+                not-null="true"
+        >
+
+            <column
+                name="RECOMMEND_NO" 
+            />
+
+        </many-to-one>
+
+        <one-to-one
+            name="jmiMember"
+            constrained="true"
+        >
+
+        </one-to-one>
+
+    </class>    
+
+</hibernate-mapping>
+

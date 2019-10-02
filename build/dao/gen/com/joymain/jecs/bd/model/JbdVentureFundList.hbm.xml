@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.JbdVentureFundList"
+            table="JBD_VENTURE_FUND_LIST"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_BD]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="wweek"
+                    column="W_WEEK"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="recommendNo"
+                    column="RECOMMEND_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="orderNo"
+                    column="ORDER_NO"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="orderType"
+                    column="ORDER_TYPE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="pvAmt"
+                    column="PV_AMT"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="percentage"
+                    column="PERCENTAGE"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="createWeek"
+                    column="CREATE_WEEK"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="calcStatus"
+                    column="CALC_STATUS"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="2000"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="22"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sys.model.SysId"
+            table="JSYS_ID"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_SYS]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="seqTable"
+                    column="SEQ_TABLE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="idName"
+                    column="ID_NAME"
+                length="30"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="idValue"
+                    column="ID_VALUE"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="idCode"
+                    column="ID_CODE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="dateFormat"
+                    column="DATE_FORMAT"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="dateValue"
+                    column="DATE_VALUE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="prefix"
+                    column="PREFIX"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="postfix"
+                    column="POSTFIX"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="idLength"
+                    column="ID_LENGTH"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="fixed"
+                    column="FIXED"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="version"
+                    column="VERSION"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="infix"
+                    column="INFIX"
+                length="30"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

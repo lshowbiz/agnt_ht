@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.FiBcoinBalance"
+            table="FI_BCOIN_BALANCE"
+    >
+
+    <id
+        name="userCode"
+            column="USER_CODE"
+                type="java.lang.String"
+    >
+
+    </id>
+
+        <property
+            name="balance"
+                    column="BALANCE"
+                length="18"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.JfiYeepayLog"
+            table="JFI_YEEPAY_LOG"
+    >
+
+    <id
+        name="logId"
+            column="LOG_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="merchantId"
+                    column="MERCHANT_ID"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="businessType"
+                    column="BUSINESS_TYPE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="orderId"
+                    column="ORDER_ID"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="orderDate"
+                    column="ORDER_DATE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="orderAmount"
+                    column="ORDER_AMOUNT"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="orderTime"
+                    column="ORDER_TIME"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="detailId"
+                    column="DETAIL_ID"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="detailTime"
+                    column="DETAIL_TIME"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="bankId"
+                    column="BANK_ID"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="bankDealId"
+                    column="BANK_DEAL_ID"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="amount"
+                    column="AMOUNT"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="amtType"
+                    column="AMT_TYPE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="payResult"
+                    column="PAY_RESULT"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="errCode"
+                    column="ERR_CODE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="errMsg"
+                    column="ERR_MSG"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="signMsg"
+                    column="SIGN_MSG"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="dataType"
+                    column="DATA_TYPE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="inc"
+                    column="INC"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="returnMsg"
+                    column="RETURN_MSG"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="url"
+                    column="URL"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

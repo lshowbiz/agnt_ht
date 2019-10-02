@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+    
+    <bean id="jprRefundBackingController" class="com.joymain.jecs.pr.webapp.action.JprRefundBackingController" autowire="byName"/>
+    
+    <bean id="jprRefundIntoController" class="com.joymain.jecs.pr.webapp.action.JprRefundIntoController" autowire="byName"/>
+
+    <bean id="jprRefundIntoFormController" class="com.joymain.jecs.pr.webapp.action.JprRefundIntoFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pr/jprRefundIntoForm"/>
+        <property name="successView" value="redirect:jprRefundIntos.html"/>
+    </bean>
+    
+    <bean id="jprRefundRefundController" class="com.joymain.jecs.pr.webapp.action.JprRefundRefundController" autowire="byName"/>
+
+    <bean id="jprRefundRefundFormController" class="com.joymain.jecs.pr.webapp.action.JprRefundRefundFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pr/jprRefundRefundForm"/>
+        <property name="successView" value="redirect:jprRefundRefunds.html"/>
+    </bean>
+    
+	<bean id="jprRefundStatisticController" class="com.joymain.jecs.pr.webapp.action.JprRefundStatisticController" autowire="byName"/>
+	<bean id="jprRefundViewController" class="com.joymain.jecs.pr.webapp.action.JprRefundViewController" autowire="byName"/>
+    <!--JprRefund-BEAN-START-->
+    <bean id="jprRefundController" class="com.joymain.jecs.pr.webapp.action.JprRefundController" autowire="byName"/>
+
+    <bean id="jprRefundFormController" class="com.joymain.jecs.pr.webapp.action.JprRefundFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pr/jprRefundForm"/>
+        <property name="successView" value="redirect:jprRefunds.html"/>
+    </bean>
+    <!--JprRefund-BEAN-END-->
+    <!--JprRefundList-BEAN-START-->
+    <bean id="jprRefundListController" class="com.joymain.jecs.pr.webapp.action.JprRefundListController" autowire="byName"/>
+
+    <bean id="jprRefundListFormController" class="com.joymain.jecs.pr.webapp.action.JprRefundListFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pr/jprRefundListForm"/>
+        <property name="successView" value="redirect:jprRefundLists.html"/>
+    </bean>
+    <!--JprRefundList-BEAN-END-->
+
+	    
+    <bean id="batchUpdateRefundController" class="com.joymain.jecs.pr.webapp.action.BatchUpdateRefundController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pr/batchUpdateRefund"/>
+        <property name="successView" value="redirect:batchUpdateRefund.html"/>
+    </bean>
+
+	
+    <bean id="PrUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+            	<prop key="/jprRefundIntos.html">jprRefundIntoController</prop>
+                <prop key="/editJprRefundInto.html">jprRefundIntoFormController</prop>
+            	<prop key="/jprRefundBacking.html">jprRefundBackingController</prop>
+            	<prop key="/jprRefundRefunds.html">jprRefundRefundController</prop>
+                <prop key="/editJprRefundRefund.html">jprRefundRefundFormController</prop>
+            	<prop key="/viewJprRefund.html">jprRefundViewController</prop>
+            	<prop key="/jprRefundStatistic.html">jprRefundStatisticController</prop>
+                <!--JprRefund-URL-START-->
+                <prop key="/jprRefunds.html">jprRefundController</prop>
+                <prop key="/editJprRefund.html">jprRefundFormController</prop>
+                <!--JprRefund-URL-END-->
+                <!--JprRefundList-URL-START-->
+                <prop key="/jprRefundLists.html">jprRefundListController</prop>
+                <prop key="/editJprRefundList.html">jprRefundListFormController</prop>
+                <!--JprRefundList-URL-END-->
+                <prop key="/refundExport.html">jprRefundStatisticController</prop>
+				<prop key="/batchUpdateRefund.html">batchUpdateRefundController</prop>
+            </props>
+           </property>
+    </bean>
+</beans>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmProductWineTemplate"
+            table="JPM_PRODUCT_WINE_TEMPLATE"
+    >
+
+    <id
+        name="productTemplateNo"
+            column="PRODUCT_TEMPLATE_NO"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <set
+            name="jpmProductWineTemplateSub"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+            order-by="PRODUCT_TEMPLATE_NO"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="PRODUCT_TEMPLATE_NO"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.pm.model.JpmProductWineTemplateSub"
+            />
+
+        </set>
+
+        <property
+            name="productTemplateName"
+                    column="PRODUCT_TEMPLATE_Name"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="productNo"
+                    column="PRODUCT_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="productName"
+                    column="PRODUCT_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="isDefault"
+                    column="IS_DEFAULT"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="isInvalid"
+                    column="IS_INVALID"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="memo"
+                    column="MEMO"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="parentQty"
+                    type="java.lang.Integer"
+                    column="PARENT_QTY"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

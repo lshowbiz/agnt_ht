@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.FiPayAccount"
+            table="FI_PAY_ACCOUNT"
+    >
+
+    <id
+        name="accountId"
+            column="ACCOUNT_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_FI]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="createUserCode"
+                    column="CREATE_USER_CODE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="createUserName"
+                    column="CREATE_USER_NAME"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="accountName"
+                    column="ACCOUNT_NAME"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="registerEmail"
+                    column="REGISTER_EMAIL"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="providerType"
+                    column="PROVIDER_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="accountCode"
+                    column="ACCOUNT_CODE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="accountType"
+                    column="ACCOUNT_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="isDefault"
+                    column="IS_DEFAULT"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="passKey"
+                    column="PASS_KEY"
+                length="50"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pd.model.PdReturnPurchase"
+            table="PD_RETURN_PURCHASE"
+    >
+
+    <id
+        name="rpNo"
+            column="RP_NO"
+                type="java.lang.String"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <set
+            name="pdReturnPurchaseDetails"
+            lazy="true"
+            inverse="true"
+            cascade="all-delete-orphan"
+            order-by="product_No desc"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="RP_NO"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.pd.model.PdReturnPurchaseDetail"
+            />
+
+        </set>
+
+        <many-to-one
+            name="customer"
+                not-null="true"
+        >
+
+            <column
+                name="CUSTOMER_CODE" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="amount"
+                    column="AMOUNT"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="returnWarehouseNo"
+                    column="RETURN_WAREHOUSE_NO"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createUsrCode"
+                    column="CREATE_USR_CODE"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="checkTime"
+                    column="CHECK_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="checkUsrCode"
+                    column="CHECK_USR_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="checkRemark"
+                    column="CHECK_REMARK"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="financeTime"
+                    column="FINANCE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="financeUsrCode"
+                    column="FINANCE_USR_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="financeRemark"
+                    column="FINANCE_REMARK"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="okTime"
+                    column="OK_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="okUsrCode"
+                    column="OK_USR_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="okRemark"
+                    column="OK_REMARK"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="editTime"
+                    column="EDIT_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="editUsrCode"
+                    column="EDIT_USR_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="orderFlag"
+                    column="ORDER_FLAG"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="stockFlag"
+                    column="STOCK_FLAG"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="returnType"
+                    column="RETURN_TYPE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="firstName"
+                    column="FIRST_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="lastName"
+                    column="LAST_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="province"
+                    column="PROVINCE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="city"
+                    column="CITY"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="address"
+                    column="ADDRESS"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="postalcode"
+                    column="POSTALCODE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="phone"
+                    column="PHONE"
+                length="30"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="email"
+                    column="EMAIL"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="mobiletele"
+                    column="MOBILETELE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="district"
+                    column="DISTRICT"
+                length="20"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

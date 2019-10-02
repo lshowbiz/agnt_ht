@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.mi.model.JmiMemberLog"
+            table="JMI_MEMBER_LOG"
+    >
+
+    <id
+        name="logId"
+            column="LOG_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_MI]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="userName"
+                    column="USER_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="beforeBank"
+                    column="BEFORE_BANK"
+                length="80"
+        >
+
+        </property>
+
+        <property
+            name="beforeBankaddress"
+                    column="BEFORE_BANKADDRESS"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="beforeBankbook"
+                    column="BEFORE_BANKBOOK"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="beforeBankcard"
+                    column="BEFORE_BANKCARD"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="beforeBankprovince"
+                    column="BEFORE_BANKPROVINCE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="beforeBankcity"
+                    column="BEFORE_BANKCITY"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="logTime"
+                    column="LOG_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="logType"
+                    column="LOG_TYPE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="logUserCode"
+                    column="LOG_USER_CODE"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="afterBank"
+                    column="AFTER_BANK"
+                length="80"
+        >
+
+        </property>
+
+        <property
+            name="afterBankaddress"
+                    column="AFTER_BANKADDRESS"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="afterBankbook"
+                    column="AFTER_BANKBOOK"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="afterBankcard"
+                    column="AFTER_BANKCARD"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="afterBankprovince"
+                    column="AFTER_BANKPROVINCE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="afterBankcity"
+                    column="AFTER_BANKCITY"
+                length="20"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

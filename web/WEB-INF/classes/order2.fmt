@@ -1,0 +1,225 @@
+<STYLE type="text/css"> <!--@import url(scrollbar.css); --></STYLE>
+<HTML><HEAD>
+<META content="text/html; charset=UTF-8" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 8.00.6001.18939">
+<STYLE>@font-face {
+	font-family: 宋体;
+}
+@font-face {
+	font-family: Verdana;
+}
+@font-face {
+	font-family: @宋体;
+}
+@page Section1 {size: 595.3pt 841.9pt; margin: 72.0pt 90.0pt 72.0pt 90.0pt; layout-grid: 15.6pt; }
+P.MsoNormal {
+	TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "Times New Roman"; FONT-SIZE: 10.5pt
+}
+LI.MsoNormal {
+	TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "Times New Roman"; FONT-SIZE: 10.5pt
+}
+DIV.MsoNormal {
+	TEXT-JUSTIFY: inter-ideograph; TEXT-ALIGN: justify; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "Times New Roman"; FONT-SIZE: 10.5pt
+}
+A:link {
+	COLOR: blue; TEXT-DECORATION: underline
+}
+SPAN.MsoHyperlink {
+	COLOR: blue; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: purple; TEXT-DECORATION: underline
+}
+SPAN.MsoHyperlinkFollowed {
+	COLOR: purple; TEXT-DECORATION: underline
+}
+SPAN.EmailStyle17 {
+	FONT-STYLE: normal; FONT-FAMILY: Verdana; COLOR: windowtext; FONT-WEIGHT: normal; TEXT-DECORATION: none; mso-style-type: personal-compose
+}
+DIV.Section1 {
+	page: Section1
+}
+BLOCKQUOTE {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 2em
+}
+OL {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px
+}
+UL {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px
+}
+</STYLE>
+</HEAD>
+<BODY>
+
+<DIV><FONT size=2 face=Verdana></FONT>&nbsp;</DIV>
+<DIV align=left>
+<DIV align=left><FONT size=2 face=Verdana>
+
+</FONT></DIV>
+<DIV>
+
+<BLOCKQUOTE 
+style="BORDER-LEFT: blue 2px solid; PADDING-LEFT: 8px; FONT-FAMILY: verdana; COLOR: black; MARGIN-LEFT: 8px; FONT-SIZE: 10pt" 
+id=replyBlockquote webmail="1">
+  <DIV id=wmQuoteWrapper>-------- Original Message --------<BR>Subject: Joy Life 
+  USA - Order 240<BR>From: Joy Life USA&lt;<A 
+  href="mailto:cs@joylifeusa.com">cs@joylifeusa.com</A>&gt;<BR>Date: Tue, March 
+  08, 2011 3:45 pm<BR>To: <A 
+  href="mailto:shuang@joylifeusa.com">shuang@joylifeusa.com</A><BR><BR>
+  <HR>
+  <BR>Order ID: 240<BR>Date Ordered: 03/08/2011<BR>Order Status: 
+  Pending<BR><BR>Products:<BR>1x Energy Cup (35PV) (001) 
+  $55.00<BR><BR>Totals:<BR>Sub-Total: $55.00<BR>Enroller Bonus: $0.00<BR>Joylife 
+  Shipping: $3.30<BR>Tax: $0.00<BR>Total: $58.30<BR><BR>Additional 
+  Information:<BR><BR>Distributor name: Steinway Huang<BR>Distributor ID: 
+  Test<BR>Total Order PV: 35<BR><BR><BR><BR><BR>Please reply to this email if 
+  you have any questions. 
+  <HR>
+
+  <TABLE 
+  style="WIDTH: 600px; FONT-FAMILY: Verdana,sans-serif; COLOR: #374953; FONT-SIZE: 11px">
+    <TBODY>
+    <TR>
+      <TD align=left><A title="Joy Life USA" href="https://joylifeusa.biz/" 
+        target=_blank><IMG 
+        style="BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none" 
+        alt="Joy Life USA" src="spacer.gif" 
+        wbeuser="shuang@joylifeusa.com"></A></TD></TR>
+    <TR>
+      <TD>&nbsp;</TD></TR>
+    <TR>
+      <TD align=left>Thank you for your interest in Joy Life USA products. 
+        Your order has been received and will be processed once payment has been 
+        confirmed.</TD></TR>
+    <TR>
+      <TD>&nbsp;</TD></TR>
+    <TR>
+      <TD 
+      style="PADDING-BOTTOM: 0.5em; BACKGROUND-COLOR: #069; PADDING-LEFT: 1em; PADDING-RIGHT: 1em; COLOR: #fff; FONT-SIZE: 12px; FONT-WEIGHT: bold; PADDING-TOP: 0.5em" 
+      align=left>Order Details</TD></TR>
+    <TR>
+      <TD>&nbsp;</TD></TR>
+    <TR>
+	   <#list details as detail>
+      <TD align=left>Order ID: <SPAN 
+        style="COLOR: #069; FONT-WEIGHT: bold">${detail.jpoMemberOrder.moId}240</SPAN><BR>Date Ordered: ${detail.jpoMemberOrder.shippingDay}
+        03/08/2011<BR>Payment Method: <STRONG>Credit Card / Debit 
+        Card</STRONG><BR>Shipping Method: <STRONG>Joylife 
+        Shipping</STRONG><BR><BR>Email: <STRONG><A 
+        href="mailto:shuang@joylifeusa.com">${detail.jpoMemberOrder.email}shuang@joylifeusa.com</A></STRONG><BR>Telephone: 
+        <STRONG>${detail.jpoMemberOrder.mobiletele}6262153364</STRONG><BR>IP Address: <STRONG>75.103.10.13</STRONG> 
+      </TD></TR>
+    <TR>
+      <TD>&nbsp;</TD></TR>
+    <TR>
+      <TD>
+        <TABLE 
+        style="WIDTH: 100%; FONT-FAMILY: Verdana,sans-serif; COLOR: #ffffff; FONT-SIZE: 11px">
+          <TBODY>
+          <TR style="TEXT-TRANSFORM: uppercase; BACKGROUND-COLOR: #cccccc">
+            <TH 
+            style="TEXT-ALIGN: left; PADDING-BOTTOM: 0.3em; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; PADDING-TOP: 0.3em">Shipping 
+              Address</TH>
+            <TH 
+            style="TEXT-ALIGN: left; PADDING-BOTTOM: 0.3em; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; PADDING-TOP: 0.3em">Payment 
+              Address</TH></TR>
+          <TR>
+            <TD 
+            style="PADDING-BOTTOM: 0.3em; BACKGROUND-COLOR: #eeeeee; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; COLOR: #000; PADDING-TOP: 0.3em">Steinway 
+              Huang<BR>Joy Life International USA, Inc.<BR>655 N. Central Blvd, 
+              17th Floor<BR>Glendale, California 91203<BR>United States</TD>
+            <TD 
+            style="PADDING-BOTTOM: 0.3em; BACKGROUND-COLOR: #eeeeee; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; COLOR: #000; PADDING-TOP: 0.3em">Steinway 
+              Huang<BR>Joy Life International USA, Inc.<BR>655 N. Central Blvd, 
+              17th Floor<BR>Glendale, California 91203<BR>United 
+          States</TD></TR></TBODY></TABLE></TD></TR>
+    <TR>
+      <TD>&nbsp;</TD></TR>
+    <TR>
+      <TD align=left>
+        <TABLE 
+        style="WIDTH: 100%; FONT-FAMILY: Verdana,sans-serif; COLOR: #000000; FONT-SIZE: 11px">
+          <TBODY>
+          <TR style="BACKGROUND-COLOR: #cccccc">
+            <TH 
+            style="PADDING-BOTTOM: 0.3em; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; COLOR: #ffffff; PADDING-TOP: 0.3em" 
+            align=left>Product</TH>
+            <TH 
+            style="PADDING-BOTTOM: 0.3em; PADDING-LEFT: 0.3em; WIDTH: 15%; PADDING-RIGHT: 0.3em; COLOR: #ffffff; PADDING-TOP: 0.3em" 
+            align=left>Model</TH>
+            <TH 
+            style="PADDING-BOTTOM: 0.3em; PADDING-LEFT: 0.3em; WIDTH: 15%; PADDING-RIGHT: 0.3em; COLOR: #ffffff; PADDING-TOP: 0.3em" 
+            align=right>Price</TH>
+            <TH 
+            style="PADDING-BOTTOM: 0.3em; PADDING-LEFT: 0.3em; WIDTH: 15%; PADDING-RIGHT: 0.3em; COLOR: #ffffff; PADDING-TOP: 0.3em" 
+            align=right>Quantity</TH>
+            <TH 
+            style="PADDING-BOTTOM: 0.3em; PADDING-LEFT: 0.3em; WIDTH: 20%; PADDING-RIGHT: 0.3em; COLOR: #ffffff; PADDING-TOP: 0.3em" 
+            align=right>Total</TH></TR>
+          <TR style="TEXT-ALIGN: center; BACKGROUND-COLOR: #eeeeee">
+            <TD align=left>${detail.jpoMemberOrder}Energy Cup (${detail.jpoMemberOrder.pv}35PV) </TD>
+            <TD align=left>001</TD>
+            <TD align=right>${detail.price}$55.00</TD>
+            <TD align=right>${detail.qty}1</TD>
+            <TD align=right>${detail.jpoMemberOrder.amount}$55.00</TD></TR>
+          <TR style="TEXT-ALIGN: right">
+            <TD colSpan=3>&nbsp;</TD>
+            <TD 
+            style="PADDING-BOTTOM: 0.3em; BACKGROUND-COLOR: #eeeeee; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; FONT-WEIGHT: bold; PADDING-TOP: 0.3em">Sub-Total:</TD>
+            <TD 
+            style="PADDING-BOTTOM: 0.3em; BACKGROUND-COLOR: #eeeeee; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; PADDING-TOP: 0.3em">$55.00</TD></TR>
+          <TR style="TEXT-ALIGN: right">
+            <TD colSpan=3>&nbsp;</TD>
+            <TD 
+            style="PADDING-BOTTOM: 0.3em; BACKGROUND-COLOR: #eeeeee; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; FONT-WEIGHT: bold; PADDING-TOP: 0.3em">Enroller 
+              Bonus:</TD>
+            <TD 
+            style="PADDING-BOTTOM: 0.3em; BACKGROUND-COLOR: #eeeeee; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; PADDING-TOP: 0.3em">$0.00</TD></TR>
+          <TR style="TEXT-ALIGN: right">
+            <TD colSpan=3>&nbsp;</TD>
+            <TD 
+            style="PADDING-BOTTOM: 0.3em; BACKGROUND-COLOR: #eeeeee; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; FONT-WEIGHT: bold; PADDING-TOP: 0.3em">Joylife 
+              Shipping:</TD>
+            <TD 
+            style="PADDING-BOTTOM: 0.3em; BACKGROUND-COLOR: #eeeeee; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; PADDING-TOP: 0.3em">$3.30</TD></TR>
+          <TR style="TEXT-ALIGN: right">
+            <TD colSpan=3>&nbsp;</TD>
+            <TD 
+            style="PADDING-BOTTOM: 0.3em; BACKGROUND-COLOR: #eeeeee; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; FONT-WEIGHT: bold; PADDING-TOP: 0.3em">Tax:</TD>
+            <TD 
+            style="PADDING-BOTTOM: 0.3em; BACKGROUND-COLOR: #eeeeee; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; PADDING-TOP: 0.3em">$0.00</TD></TR>
+          <TR style="TEXT-ALIGN: right">
+            <TD colSpan=3>&nbsp;</TD>
+            <TD 
+            style="PADDING-BOTTOM: 0.3em; BACKGROUND-COLOR: #eeeeee; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; FONT-WEIGHT: bold; PADDING-TOP: 0.3em">Total:</TD>
+            <TD 
+            style="PADDING-BOTTOM: 0.3em; BACKGROUND-COLOR: #eeeeee; PADDING-LEFT: 0.3em; PADDING-RIGHT: 0.3em; PADDING-TOP: 0.3em">$58.30</TD></TR></TBODY></TABLE></TD></TR>
+    <TR>
+      <TD>&nbsp;</TD></TR>
+    <TR>
+      <TD 
+      style="PADDING-BOTTOM: 0.5em; BACKGROUND-COLOR: #069; PADDING-LEFT: 1em; PADDING-RIGHT: 1em; COLOR: #fff; FONT-SIZE: 12px; FONT-WEIGHT: bold; PADDING-TOP: 0.5em" 
+      align=left></TD></TR>
+    <TR>
+      <TD>&nbsp;</TD></TR>
+    <TR>
+      <TD 
+      style="PADDING-BOTTOM: 0.5em; BACKGROUND-COLOR: #069; PADDING-LEFT: 1em; PADDING-RIGHT: 1em; COLOR: #fff; FONT-SIZE: 12px; FONT-WEIGHT: bold; PADDING-TOP: 0.5em" 
+      align=left>Additional Information:</TD></TR>
+    <TR>
+      <TD>&nbsp;</TD></TR>
+    <TR>
+      <TD align=left>Distributor name: Steinway Huang<BR>Distributor ID: 
+        Test<BR>Total Order PV:${detail.jpoMemberOrder.pvAmt} 35<BR></TD></TR>
+    <TR>
+      <TD>&nbsp;</TD></TR>
+    <TR>
+      <TD style="FONT-SIZE: 10px; BORDER-TOP: #069 1px solid" align=middle><A 
+        style="COLOR: #069; FONT-WEIGHT: bold; TEXT-DECORATION: none" 
+        href="https://joylifeusa.biz/" target=_blank>Joy Life USA</A> powered by 
+        <A style="COLOR: #374953; TEXT-DECORATION: none" 
+        href="http://www.opencart.com/" 
+  target=_blank>OpenCart</A></TD></TR></TBODY></TABLE>
+  <HR>
+  </DIV></BLOCKQUOTE></SPAN><BR>

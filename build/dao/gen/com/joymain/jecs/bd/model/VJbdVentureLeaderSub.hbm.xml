@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.VJbdVentureLeaderSub"
+            table="V_JBD_VENTURE_LEADER_SUB"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="memberLevel"
+                    column="MEMBER_LEVEL"
+        >
+
+        </property>
+
+        <property
+            name="rememberLevel"
+                    column="REMEMBER_LEVEL"
+        >
+
+        </property>
+
+        <property
+            name="wyear"
+                    column="W_YEAR"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="wmonth"
+                    column="W_MONTH"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="wweek"
+                    column="W_WEEK"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="bounsType"
+                    column="BOUNS_TYPE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="nlevel"
+                    column="NLEVEL"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="recommendedCode"
+                    column="RECOMMENDED_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="passGroupPv"
+                    column="PASS_GROUP_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="bounsPoint"
+                    column="BOUNS_POINT"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="bounsMoney"
+                    column="BOUNS_MONEY"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="memberOrderNo"
+                    column="MEMBER_ORDER_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="orderType"
+                    column="ORDER_TYPE"
+                length="20"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

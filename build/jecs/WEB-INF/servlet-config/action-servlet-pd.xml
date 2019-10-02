@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	
+	   <bean id="pdLogisticsCostsStatisticsController" class="com.joymain.jecs.pd.webapp.action.PdLogisticsCostsStatisticsController" autowire="byName"/>
+	<!--PdSendExtra-BEAN-START-->
+    <bean id="pdSendExtraController" class="com.joymain.jecs.pd.webapp.action.PdSendExtraController" autowire="byName"/>
+
+    <bean id="pdSendExtraFormController" class="com.joymain.jecs.pd.webapp.action.PdSendExtraFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdSendExtraForm"/>
+        <property name="successView" value="redirect:pdSendExtras.html"/>
+    </bean>
+    <!--PdSendExtra-BEAN-END-->
+     <!--PdShipStrategy-BEAN-START-->
+    <bean id="pdShipStrategyController" class="com.joymain.jecs.pd.webapp.action.PdShipStrategyController" autowire="byName"/>
+
+    <bean id="pdShipStrategyFormController" class="com.joymain.jecs.pd.webapp.action.PdShipStrategyFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdShipStrategyForm"/>
+        <property name="successView" value="redirect:pdShipStrategys.html"/>
+    </bean>
+    <!--PdShipStrategy-BEAN-END-->
+    <!--PdShipStrategyDetail-BEAN-START-->
+    <bean id="pdShipStrategyDetailController" class="com.joymain.jecs.pd.webapp.action.PdShipStrategyDetailController" autowire="byName"/>
+
+    <bean id="pdShipStrategyDetailFormController" class="com.joymain.jecs.pd.webapp.action.PdShipStrategyDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdShipStrategyDetailForm"/>
+        <property name="successView" value="redirect:pdShipStrategyDetails.html"/>
+    </bean>
+    <!--PdShipStrategyDetail-BEAN-END-->
+	
+	<bean id="pdWarehouseStockStaticReportController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseStockStaticReportController" autowire="byName"/>
+	
+	<bean id="pdWarehouseStockReportController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseStockReportController" autowire="byName"/>
+	
+	<bean id="pdOrderPrintController" class="com.joymain.jecs.pd.webapp.action.PdOrderPrintController" autowire="byName"/>
+	
+	
+	<!--PdCombinationOrder-BEAN-START-->
+    <bean id="pdCombinationOrderController" class="com.joymain.jecs.pd.webapp.action.PdCombinationOrderController" autowire="byName"/>
+
+    <bean id="pdCombinationOrderFormController" class="com.joymain.jecs.pd.webapp.action.PdCombinationOrderFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdCombinationOrderForm"/>
+        <property name="successView" value="redirect:pdCombinationOrders.html"/>
+    </bean>
+    <!--PdCombinationOrder-BEAN-END-->
+    <!--PdCombinationDetail-BEAN-START-->
+    <bean id="pdCombinationDetailController" class="com.joymain.jecs.pd.webapp.action.PdCombinationDetailController" autowire="byName"/>
+
+    <bean id="pdCombinationDetailFormController" class="com.joymain.jecs.pd.webapp.action.PdCombinationDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdCombinationDetailForm"/>
+        <property name="successView" value="redirect:pdCombinationDetails.html"/>
+    </bean>
+    <!--PdCombinationDetail-BEAN-END-->
+    
+    <!--PdCheckstockOrder-BEAN-START-->
+    <bean id="pdCheckstockOrderController" class="com.joymain.jecs.pd.webapp.action.PdCheckstockOrderController" autowire="byName"/>
+
+    <bean id="pdCheckstockOrderFormController" class="com.joymain.jecs.pd.webapp.action.PdCheckstockOrderFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdCheckstockOrderForm"/>
+        <property name="successView" value="redirect:pdCheckstockOrders.html"/>
+    </bean>
+    <!--PdCheckstockOrder-BEAN-END-->
+    <!--PdCheckstockOrderDetail-BEAN-START-->
+    <bean id="pdCheckstockOrderDetailController" class="com.joymain.jecs.pd.webapp.action.PdCheckstockOrderDetailController" autowire="byName"/>
+
+    <bean id="pdCheckstockOrderDetailFormController" class="com.joymain.jecs.pd.webapp.action.PdCheckstockOrderDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdCheckstockOrderDetailForm"/>
+        <property name="successView" value="redirect:pdCheckstockOrderDetails.html"/>
+    </bean>
+    <!--PdCheckstockOrderDetail-BEAN-END-->
+
+	<!--PdWarehouseFrozenBatch-BEAN-START-->
+    <bean id="pdWarehouseFrozenBatchController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseFrozenBatchController" autowire="byName"/>
+
+    <bean id="pdWarehouseFrozenBatchFormController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseFrozenBatchFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdWarehouseFrozenBatchForm"/>
+        <property name="successView" value="redirect:pdWarehouseFrozenBatchs.html"/>
+    </bean>
+    <!--PdWarehouseFrozenBatch-BEAN-END-->
+    <!--PdWarehouseFrozenDetail-BEAN-START-->
+    <bean id="pdWarehouseFrozenDetailController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseFrozenDetailController" autowire="byName"/>
+
+    <bean id="pdWarehouseFrozenDetailFormController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseFrozenDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdWarehouseFrozenDetailForm"/>
+        <property name="successView" value="redirect:pdWarehouseFrozenDetails.html"/>
+    </bean>
+    <!--PdWarehouseFrozenDetail-BEAN-END-->
+    
+    
+    
+    
+    
+    <!--PdExchangeOrder-BEAN-START-->
+    <bean id="pdExchangeOrderController" class="com.joymain.jecs.pd.webapp.action.PdExchangeOrderController" autowire="byName"/>
+
+    <bean id="pdExchangeOrderFormController" class="com.joymain.jecs.pd.webapp.action.PdExchangeOrderFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdExchangeOrderForm"/>
+        <property name="successView" value="redirect:pdExchangeOrders.html"/>
+    </bean>
+    <!--PdExchangeOrder-BEAN-END-->
+    <!--PdExchangeOrderBack-BEAN-START-->
+    <bean id="pdExchangeOrderBackController" class="com.joymain.jecs.pd.webapp.action.PdExchangeOrderBackController" autowire="byName"/>
+
+    <bean id="pdExchangeOrderBackFormController" class="com.joymain.jecs.pd.webapp.action.PdExchangeOrderBackFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdExchangeOrderBackForm"/>
+        <property name="successView" value="redirect:pdExchangeOrderBacks.html"/>
+    </bean>
+    <!--PdExchangeOrderBack-BEAN-END-->
+    <!--PdExchangeOrderDetail-BEAN-START-->
+    <bean id="pdExchangeOrderDetailController" class="com.joymain.jecs.pd.webapp.action.PdExchangeOrderDetailController" autowire="byName"/>
+
+    <bean id="pdExchangeOrderDetailFormController" class="com.joymain.jecs.pd.webapp.action.PdExchangeOrderDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdExchangeOrderDetailForm"/>
+        <property name="successView" value="redirect:pdExchangeOrderDetails.html"/>
+    </bean>
+    <!--PdExchangeOrderDetail-BEAN-END-->
+    
+	 <!--PdWarehouse-BEAN-START-->
+    <bean id="pdWarehouseController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseController" autowire="byName"/>
+
+    <bean id="pdWarehouseFormController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseFormController" autowire="byName">
+        <property name="validator" ref="beanValidator"/>
+        <property name="formView" value="pd/pdWarehouseForm"/>
+        <property name="successView" value="redirect:pdWarehouses.html"/>
+    </bean>
+    <!--PdWarehouse-BEAN-END-->
+    <!--PdWarehouseStockTrace-BEAN-START-->
+    <bean id="pdWarehouseStockTraceController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseStockTraceController" autowire="byName"/>
+
+    <bean id="pdWarehouseStockTraceFormController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseStockTraceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdWarehouseStockTraceForm"/>
+        <property name="successView" value="redirect:pdWarehouseStockTraces.html"/>
+    </bean>
+    <!--PdWarehouseStockTrace-BEAN-END-->
+    <!--PdWarehouseStock-BEAN-START-->
+    <bean id="pdWarehouseStockController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseStockController" autowire="byName"/>
+
+    <bean id="pdWarehouseStockFormController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseStockFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdWarehouseStockForm"/>
+        <property name="successView" value="redirect:pdWarehouseStocks.html"/>
+    </bean>
+    <!--PdWarehouseStock-BEAN-END-->
+    <!--PdSendInfo-BEAN-START-->
+    <bean id="pdSendInfoController" class="com.joymain.jecs.pd.webapp.action.PdSendInfoController" autowire="byName"/>
+
+    <bean id="pdSendInfoFormController" class="com.joymain.jecs.pd.webapp.action.PdSendInfoFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdSendInfoForm"/>
+        <property name="successView" value="redirect:pdSendInfos.html"/>
+    </bean>
+    <!--PdSendInfo-BEAN-END-->
+    
+    <!--PdBatchSendInfo-BEAN-START-->
+    <bean id="pdBatchSendInfoController" class="com.joymain.jecs.pd.webapp.action.PdBatchSendInfoController" autowire="byName"/>
+
+    <!--PdBatchSendInfo-BEAN-END-->
+    
+    <!--PdSendInfoDetail-BEAN-START-->
+    <bean id="pdSendInfoDetailController" class="com.joymain.jecs.pd.webapp.action.PdSendInfoDetailController" autowire="byName"/>
+
+    <bean id="pdSendInfoDetailFormController" class="com.joymain.jecs.pd.webapp.action.PdSendInfoDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdSendInfoDetailForm"/>
+        <property name="successView" value="redirect:pdSendInfoDetails.html"/>
+    </bean>
+    <!--PdSendInfoDetail-BEAN-END-->
+    <!--PdShipmentsDetail-BEAN-START-->
+    <bean id="pdShipmentsDetailController" class="com.joymain.jecs.pd.webapp.action.PdShipmentsDetailController" autowire="byName"/>
+
+    <bean id="pdShipmentsDetailFormController" class="com.joymain.jecs.pd.webapp.action.PdShipmentsDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdShipmentsDetailForm"/>
+        <property name="successView" value="redirect:pdShipmentsDetails.html"/>
+    </bean>
+    <!--PdShipmentsDetail-BEAN-END-->
+    <!--PdWarehouseUser-BEAN-START-->
+    <bean id="pdWarehouseUserController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseUserController" autowire="byName"/>
+
+    <bean id="pdWarehouseUserFormController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseUserFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdWarehouseUserForm"/>
+        <property name="successView" value="redirect:pdWarehouseUsers.html"/>
+    </bean>
+    <!--PdWarehouseUser-BEAN-END-->
+    <!--PdWarehouseArea-BEAN-START-->
+    <bean id="pdWarehouseAreaController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseAreaController" autowire="byName"/>
+
+    <bean id="pdWarehouseAreaFormController" class="com.joymain.jecs.pd.webapp.action.PdWarehouseAreaFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdWarehouseAreaForm"/>
+        <property name="successView" value="redirect:pdWarehouseAreas.html"/>
+    </bean>
+    <!--PdWarehouseArea-BEAN-END-->
+	
+	<!--PdEnterWarehouse-BEAN-START-->
+    <bean id="pdEnterWarehouseController" class="com.joymain.jecs.pd.webapp.action.PdEnterWarehouseController" autowire="byName"/>
+
+    <bean id="pdEnterWarehouseFormController" class="com.joymain.jecs.pd.webapp.action.PdEnterWarehouseFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdEnterWarehouseForm"/>
+        <property name="successView" value="redirect:pdEnterWarehouses.html"/>
+    </bean>
+    <!--PdEnterWarehouse-BEAN-END-->
+    <bean id="pdEnterWarehouseFormUploadController" class="com.joymain.jecs.pd.webapp.action.PdEnterWarehouseFormUploadController" autowire="byName">
+        <property name="formView" value="pd/pdEnterWarehouseFormUpload"/>
+        <property name="successView" value="redirect:pdEnterWarehouses.html"/>
+    </bean>
+    <!--PdEnterWarehouseDetail-BEAN-START-->
+    <bean id="pdEnterWarehouseDetailController" class="com.joymain.jecs.pd.webapp.action.PdEnterWarehouseDetailController" autowire="byName"/>
+
+    <bean id="pdEnterWarehouseDetailFormController" class="com.joymain.jecs.pd.webapp.action.PdEnterWarehouseDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdEnterWarehouseDetailForm"/>
+        <property name="successView" value="redirect:pdEnterWarehouseDetails.html"/>
+    </bean>
+    <!--PdEnterWarehouseDetail-BEAN-END-->
+    <!--PdOutWarehouse-BEAN-START-->
+    <bean id="pdOutWarehouseController" class="com.joymain.jecs.pd.webapp.action.PdOutWarehouseController" autowire="byName"/>
+
+    <bean id="pdOutWarehouseFormController" class="com.joymain.jecs.pd.webapp.action.PdOutWarehouseFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdOutWarehouseForm"/>
+        <property name="successView" value="redirect:pdOutWarehouses.html"/>
+    </bean>
+    <!--PdOutWarehouse-BEAN-END-->
+    <!--PdOutWarehouseDetail-BEAN-START-->
+    <bean id="pdOutWarehouseDetailController" class="com.joymain.jecs.pd.webapp.action.PdOutWarehouseDetailController" autowire="byName"/>
+
+    <bean id="pdOutWarehouseDetailFormController" class="com.joymain.jecs.pd.webapp.action.PdOutWarehouseDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdOutWarehouseDetailForm"/>
+        <property name="successView" value="redirect:pdOutWarehouseDetails.html"/>
+    </bean>
+    <!--PdOutWarehouseDetail-BEAN-END-->
+    
+    <!--PdReturnPurchase-BEAN-START-->
+    <bean id="pdReturnPurchaseController" class="com.joymain.jecs.pd.webapp.action.PdReturnPurchaseController" autowire="byName"/>
+
+    <bean id="pdReturnPurchaseFormController" class="com.joymain.jecs.pd.webapp.action.PdReturnPurchaseFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdReturnPurchaseForm"/>
+        <property name="successView" value="redirect:pdReturnPurchases.html"/>
+    </bean>
+    <!--PdReturnPurchase-BEAN-END-->
+    <!--PdReturnPurchaseDetail-BEAN-START-->
+    <bean id="pdReturnPurchaseDetailController" class="com.joymain.jecs.pd.webapp.action.PdReturnPurchaseDetailController" autowire="byName"/>
+
+    <bean id="pdReturnPurchaseDetailFormController" class="com.joymain.jecs.pd.webapp.action.PdReturnPurchaseDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdReturnPurchaseDetailForm"/>
+        <property name="successView" value="redirect:pdReturnPurchaseDetails.html"/>
+    </bean>
+    <!--PdReturnPurchaseDetail-BEAN-END-->
+    <!--PdAdjustStock-BEAN-START-->
+    <bean id="pdAdjustStockController" class="com.joymain.jecs.pd.webapp.action.PdAdjustStockController" autowire="byName"/>
+
+    <bean id="pdAdjustStockFormController" class="com.joymain.jecs.pd.webapp.action.PdAdjustStockFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdAdjustStockForm"/>
+        <property name="successView" value="redirect:pdAdjustStocks.html"/>
+    </bean>
+    <!--PdAdjustStock-BEAN-END-->
+    <!--PdAdjustStockDetail-BEAN-START-->
+    <bean id="pdAdjustStockDetailController" class="com.joymain.jecs.pd.webapp.action.PdAdjustStockDetailController" autowire="byName"/>
+
+    <bean id="pdAdjustStockDetailFormController" class="com.joymain.jecs.pd.webapp.action.PdAdjustStockDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdAdjustStockDetailForm"/>
+        <property name="successView" value="redirect:pdAdjustStockDetails.html"/>
+    </bean>
+    <!--PdAdjustStockDetail-BEAN-END-->
+    <!--PdFlitWarehouse-BEAN-START-->
+    <bean id="pdFlitWarehouseController" class="com.joymain.jecs.pd.webapp.action.PdFlitWarehouseController" autowire="byName"/>
+
+    <bean id="pdFlitWarehouseFormController" class="com.joymain.jecs.pd.webapp.action.PdFlitWarehouseFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdFlitWarehouseForm"/>
+        <property name="successView" value="redirect:pdFlitWarehouses.html"/>
+    </bean>
+    
+    <bean id="pdFlitWarehouseUploadFormController" class="com.joymain.jecs.pd.webapp.action.PdFlitWarehouseUploadFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdFlitWarehouseUploadForm"/>
+        <property name="successView" value="redirect:pdFlitWarehouses.html"/>
+    </bean>
+    <!--PdFlitWarehouse-BEAN-END-->
+    <!--PdFlitWarehouseDetail-BEAN-START-->
+    <bean id="pdFlitWarehouseDetailController" class="com.joymain.jecs.pd.webapp.action.PdFlitWarehouseDetailController" autowire="byName"/>
+
+    <bean id="pdFlitWarehouseDetailFormController" class="com.joymain.jecs.pd.webapp.action.PdFlitWarehouseDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdFlitWarehouseDetailForm"/>
+        <property name="successView" value="redirect:pdFlitWarehouseDetails.html"/>
+    </bean>
+    <!--PdFlitWarehouseDetail-BEAN-END-->
+    <!--PdStatusExcStock-BEAN-START-->
+    <bean id="pdStatusExcStockController" class="com.joymain.jecs.pd.webapp.action.PdStatusExcStockController" autowire="byName"/>
+
+    <bean id="pdStatusExcStockFormController" class="com.joymain.jecs.pd.webapp.action.PdStatusExcStockFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdStatusExcStockForm"/>
+        <property name="successView" value="redirect:pdStatusExcStocks.html"/>
+    </bean>
+    <!--PdStatusExcStock-BEAN-END-->
+    <!--PdStatusExcStockDetail-BEAN-START-->
+    <bean id="pdStatusExcStockDetailController" class="com.joymain.jecs.pd.webapp.action.PdStatusExcStockDetailController" autowire="byName"/>
+
+    <bean id="pdStatusExcStockDetailFormController" class="com.joymain.jecs.pd.webapp.action.PdStatusExcStockDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdStatusExcStockDetailForm"/>
+        <property name="successView" value="redirect:pdStatusExcStockDetails.html"/>
+    </bean>
+    <!--PdStatusExcStockDetail-BEAN-END-->
+    <bean id="pdJpReportController" class="com.joymain.jecs.webapp.action.PdJpReportController" autowire="byName"/>
+    <bean id="pdPhReportController" class="com.joymain.jecs.webapp.action.PdPhReportController" autowire="byName"/>
+    <bean id="pdChnReportController" class="com.joymain.jecs.webapp.action.PdChnReportController" autowire="byName"/>
+    
+    <!--PdShipFee-BEAN-START-->
+    <bean id="pdShipFeeController" class="com.joymain.jecs.pd.webapp.action.PdShipFeeController" autowire="byName"/>
+			  
+    <bean id="pdShipFeeFormController" class="com.joymain.jecs.pd.webapp.action.PdShipFeeFormController" autowire="byName">
+        <!-- <property name="validator" ref="beanValidator"/> -->
+        <property name="formView" value="pd/pdShipFeeForm"/>
+        <property name="successView" value="redirect:pdShipFees.html"/>
+    </bean>
+    <!--PdShipFee-BEAN-END-->
+    
+    <!-- Add By WuCF 20130419 -->
+    <bean id="pdFileUpload2Controller" class="com.joymain.jecs.pd.webapp.action.PdFileUpload2Controller" autowire="byName">
+        <property name="validator" ref="beanValidator"/>
+        <property name="cancelView" value="redirect:pdFileUpload2.html"/>
+        <property name="formView" value="pd/pdFileUpload2Form"/>
+        <property name="successView" value="pd/pdUploadDisplay"/>
+    </bean>
+    
+     <!--PdShUrl-BEAN-START-->
+    <bean id="pdShUrlController" class="com.joymain.jecs.pd.webapp.action.PdShUrlController" autowire="byName"/>
+
+    <bean id="pdShUrlFormController" class="com.joymain.jecs.pd.webapp.action.PdShUrlFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdShUrlForm"/>
+        <property name="successView" value="redirect:pdShUrls.html"/>
+    </bean>
+    <!--PdShUrl-BEAN-END-->
+    
+     <!--PdMailReceipt-BEAN-START-->
+    <bean id="pdMailReceiptController" class="com.joymain.jecs.pd.webapp.action.PdMailReceiptController" autowire="byName"/>
+
+    <bean id="pdMailReceiptFormController" class="com.joymain.jecs.pd.webapp.action.PdMailReceiptFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdMailReceiptForm"/>
+        <property name="successView" value="redirect:pdMailReceipts.html"/>
+    </bean>
+    <!--PdMailReceipt-BEAN-END-->
+    
+    <!--MailStatus-BEAN-START-->
+    <bean id="mailStatusController" class="com.joymain.jecs.pd.webapp.action.MailStatusController" autowire="byName"/>
+
+    <bean id="mailStatusFormController" class="com.joymain.jecs.pd.webapp.action.MailStatusFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/mailStatusForm"/>
+        <property name="successView" value="redirect:mailStatuss.html"/>
+    </bean>
+    <!--MailStatus-BEAN-END-->
+    <!--Items-BEAN-START-->
+    <bean id="itemsController" class="com.joymain.jecs.pd.webapp.action.ItemsController" autowire="byName"/>
+
+    <bean id="itemsFormController" class="com.joymain.jecs.pd.webapp.action.ItemsFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/itemsForm"/>
+        <property name="successView" value="redirect:items.html"/>
+    </bean>
+    <!--Items-BEAN-END-->
+    
+     <!--PdLogisticsBase-BEAN-START-->
+    <bean id="pdLogisticsBaseController" class="com.joymain.jecs.pd.webapp.action.PdLogisticsBaseController" autowire="byName"/>
+
+    <bean id="pdLogisticsBaseFormController" class="com.joymain.jecs.pd.webapp.action.PdLogisticsBaseFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdLogisticsBaseForm"/>
+        <property name="successView" value="redirect:pdLogisticsBases.html"/>
+    </bean>
+    <!--PdLogisticsBase-BEAN-END-->
+    <!--PdLogisticsBaseNum-BEAN-START-->
+    <bean id="pdLogisticsBaseNumController" class="com.joymain.jecs.pd.webapp.action.PdLogisticsBaseNumController" autowire="byName"/>
+
+    <bean id="pdLogisticsBaseNumFormController" class="com.joymain.jecs.pd.webapp.action.PdLogisticsBaseNumFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdLogisticsBaseNumForm"/>
+        <property name="successView" value="redirect:pdLogisticsBaseNums.html"/>
+    </bean>
+    <!--PdLogisticsBaseNum-BEAN-END-->
+    <!--PdLogisticsBaseDetail-BEAN-START-->
+    <bean id="pdLogisticsBaseDetailController" class="com.joymain.jecs.pd.webapp.action.PdLogisticsBaseDetailController" autowire="byName"/>
+
+    <bean id="pdLogisticsBaseDetailFormController" class="com.joymain.jecs.pd.webapp.action.PdLogisticsBaseDetailFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdLogisticsBaseDetailForm"/>
+        <property name="successView" value="redirect:pdLogisticsBaseDetails.html"/>
+    </bean>
+    <!--PdLogisticsBaseDetail-BEAN-END-->
+    
+    <!--PdNotChangeProduct-BEAN-START-->
+    <bean id="pdNotChangeProductController" class="com.joymain.jecs.pd.webapp.action.PdNotChangeProductController" autowire="byName"/>
+
+    <bean id="pdNotChangeProductFormController" class="com.joymain.jecs.pd.webapp.action.PdNotChangeProductFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdNotChangeProductForm"/>
+        <property name="successView" value="redirect:pdNotChangeProducts.html"/>
+    </bean>
+    <!--PdNotChangeProduct-BEAN-END-->
+    
+    <bean id="pdExchangeOrderFileUploadController" class="com.joymain.jecs.pd.webapp.action.PdExchangeOrderFileUploadController" autowire="byName">
+        <property name="validator" ref="beanValidator"/>
+        <property name="cancelView" value="redirect:pdExchangeOrderFileUploadForm.html"/>
+        <property name="formView" value="pd/pdExchangeOrderFileUploadForm"/>
+        <property name="successView" value="pd/pdUploadDisplay"/>
+    </bean>
+    
+    
+	<bean id="pdUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+			
+				<prop key="/pdWarehouseStockStaticReports.html">pdWarehouseStockStaticReportController</prop>
+				
+				<prop key="/pdJpShipmentReport.html">pdJpReportController</prop>
+				<prop key="/pdPhShipmentReport.html">pdPhReportController</prop>
+				<prop key="/pdChnShipmentReport.html">pdChnReportController</prop>
+				
+				<!--PdCombinationOrder-URL-START-->
+                <prop key="/pdCombinationOrders.html">pdCombinationOrderController</prop>
+                <prop key="/editPdCombinationOrder.html">pdCombinationOrderFormController</prop>
+                <!--PdCombinationOrder-URL-END-->
+                <!--PdCombinationDetail-URL-START-->
+                <prop key="/pdCombinationDetails.html">pdCombinationDetailController</prop>
+                <prop key="/editPdCombinationDetail.html">pdCombinationDetailFormController</prop>
+                <!--PdCombinationDetail-URL-END-->
+                <!--PdCheckstockOrder-URL-START-->
+                <prop key="/pdCheckstockOrders.html">pdCheckstockOrderController</prop>
+                <prop key="/editPdCheckstockOrder.html">pdCheckstockOrderFormController</prop>
+                <!--PdCheckstockOrder-URL-END-->
+                <!--PdCheckstockOrderDetail-URL-START-->
+                <prop key="/pdCheckstockOrderDetails.html">pdCheckstockOrderDetailController</prop>
+                <prop key="/editPdCheckstockOrderDetail.html">pdCheckstockOrderDetailFormController</prop>
+                <!--PdCheckstockOrderDetail-URL-END-->
+
+                
+                
+                
+                
+                
+                <!--PdExchangeOrder-URL-START-->
+                <prop key="/pdExchangeOrders.html">pdExchangeOrderController</prop>
+                <prop key="/editPdExchangeOrder.html">pdExchangeOrderFormController</prop>
+                <!--PdExchangeOrder-URL-END-->
+                <!--PdExchangeOrderBack-URL-START-->
+                <prop key="/pdExchangeOrderBacks.html">pdExchangeOrderBackController</prop>
+                <prop key="/editPdExchangeOrderBack.html">pdExchangeOrderBackFormController</prop>
+                <!--PdExchangeOrderBack-URL-END-->
+                <!--PdExchangeOrderDetail-URL-START-->
+                <prop key="/pdExchangeOrderDetails.html">pdExchangeOrderDetailController</prop>
+                <prop key="/editPdExchangeOrderDetail.html">pdExchangeOrderDetailFormController</prop>
+                <!--PdExchangeOrderDetail-URL-END-->
+				<!--PdWarehouse-URL-START-->
+                <prop key="/pdWarehouses.html">pdWarehouseController</prop>
+                <prop key="/editPdWarehouse.html">pdWarehouseFormController</prop>
+                <!--PdWarehouse-URL-END-->
+                <!--PdWarehouseStockTrace-URL-START-->
+                <prop key="/pdWarehouseStockTraces.html">pdWarehouseStockTraceController</prop>
+                <prop key="/editPdWarehouseStockTrace.html">pdWarehouseStockTraceFormController</prop>
+                <!--PdWarehouseStockTrace-URL-END-->
+                <!--PdWarehouseStock-URL-START-->
+                <prop key="/pdWarehouseStocks.html">pdWarehouseStockController</prop>
+                <prop key="/editPdWarehouseStock.html">pdWarehouseStockFormController</prop>
+                <!--PdWarehouseStock-URL-END-->
+                <!--PdSendInfo-URL-START-->
+                <prop key="/pdSendInfos.html">pdSendInfoController</prop>
+                <prop key="/editPdSendInfo.html">pdSendInfoFormController</prop>
+                <!--PdSendInfo-URL-END-->
+                
+                <!--pdBatchSendInfo-URL-START-->
+                <prop key="/pdBatchSendInfos.html">pdBatchSendInfoController</prop>
+                <!--pdBatchSendInfo-URL-END-->
+                
+                
+                <!--PdSendInfoDetail-URL-START-->
+                <prop key="/pdSendInfoDetails.html">pdSendInfoDetailController</prop>
+                <prop key="/editPdSendInfoDetail.html">pdSendInfoDetailFormController</prop>
+                <!--PdSendInfoDetail-URL-END-->
+                <!--PdShipmentsDetail-URL-START-->
+                <prop key="/pdShipmentsDetails.html">pdShipmentsDetailController</prop>
+                <prop key="/editPdShipmentsDetail.html">pdShipmentsDetailFormController</prop>
+                <!--PdShipmentsDetail-URL-END-->
+                <!--PdWarehouseUser-URL-START-->
+                <prop key="/pdWarehouseUsers.html">pdWarehouseUserController</prop>
+                <prop key="/editPdWarehouseUser.html">pdWarehouseUserFormController</prop>
+                <!--PdWarehouseUser-URL-END-->
+                <!--PdWarehouseArea-URL-START-->
+                <prop key="/pdWarehouseAreas.html">pdWarehouseAreaController</prop>
+                <prop key="/editPdWarehouseArea.html">pdWarehouseAreaFormController</prop>
+                <!--PdWarehouseArea-URL-END-->
+                
+                
+                <prop key="/pdWarehouseStockReports.html">pdWarehouseStockReportController</prop>
+                
+                <prop key="/pdOrderPrints.html">pdOrderPrintController</prop>
+                
+                <!--PdWarehouseArea-URL-START-->
+                <prop key="/pdEnterWarehouseFormUpload.html">pdEnterWarehouseFormUploadController</prop>
+                <prop key="/pdEnterWarehouses.html">pdEnterWarehouseController</prop>
+                <prop key="/editPdEnterWarehouse.html">pdEnterWarehouseFormController</prop>
+                <!--PdWarehouseArea-URL-END-->
+                <!--PdWarehouseArea-URL-START-->
+                <prop key="/pdOutWarehouses.html">pdOutWarehouseController</prop>
+                <prop key="/editPdOutWarehouse.html">pdOutWarehouseFormController</prop>
+                <!--PdWarehouseArea-URL-END-->
+                <!--PdWarehouseArea-URL-START-->
+                <prop key="/pdFlitWarehouses.html">pdFlitWarehouseController</prop>
+                <prop key="/editPdFlitWarehouse.html">pdFlitWarehouseFormController</prop>
+                <prop key="/editPdFlitWarehouseUpload.html">pdFlitWarehouseUploadFormController</prop>
+                <!--PdWarehouseArea-URL-END-->
+                <!--PdWarehouseArea-URL-START-->
+                <prop key="/pdReturnPurchases.html">pdReturnPurchaseController</prop>
+                <prop key="/editPdReturnPurchase.html">pdReturnPurchaseFormController</prop>
+                <!--PdWarehouseArea-URL-END-->
+                <!--PdWarehouseArea-URL-START-->
+                <prop key="/pdAdjustStocks.html">pdAdjustStockController</prop>
+                <prop key="/editPdAdjustStock.html">pdAdjustStockFormController</prop>
+                <!--PdWarehouseArea-URL-END-->
+                <!--PdWarehouseArea-URL-START-->
+                <prop key="/pdStatusExcStocks.html">pdStatusExcStockController</prop>
+                <prop key="/editPdStatusExcStock.html">pdStatusExcStockFormController</prop>
+                <!--PdWarehouseArea-URL-END-->
+                
+                <!--PdWarehouseArea-URL-START-->
+                <prop key="/pdEnterWarehouseDetails.html">pdEnterWarehouseDetailController</prop>
+                <prop key="/editPdEnterWarehouseDetail.html">pdEnterWarehouseDetailFormController</prop>
+                <!--PdWarehouseArea-URL-END-->
+                <!--PdWarehouseArea-URL-START-->
+                <prop key="/pdOutWarehouseDetails.html">pdOutWarehouseDetailController</prop>
+                <prop key="/editPdOutWarehouseDetail.html">pdOutWarehouseDetailFormController</prop>
+                <!--PdWarehouseArea-URL-END-->
+                <!--PdWarehouseArea-URL-START-->
+                <prop key="/pdFlitWarehouseDetails.html">pdFlitWarehouseDetailController</prop>
+                <prop key="/editPdFlitWarehouseDetail.html">pdFlitWarehouseDetailFormController</prop>
+                <!--PdWarehouseArea-URL-END-->
+                <!--PdWarehouseArea-URL-START-->
+                <prop key="/pdReturnPurchaseDetails.html">pdReturnPurchaseDetailController</prop>
+                <prop key="/editPdReturnPurchaseDetail.html">pdReturnPurchaseDetailFormController</prop>
+                <!--PdWarehouseArea-URL-END-->
+                <!--PdWarehouseArea-URL-START-->
+                <prop key="/pdAdjustStockDetails.html">pdAdjustStockDetailController</prop>
+                <prop key="/editPdAdjustStockDetail.html">pdAdjustStockDetailFormController</prop>
+                <!--PdWarehouseArea-URL-END-->
+                <!--PdWarehouseArea-URL-START-->
+                <prop key="/pdStatusExcStockDetails.html">pdStatusExcStockDetailController</prop>
+                <prop key="/editPdStatusExcStockDetail.html">pdStatusExcStockDetailFormController</prop>
+                <!--PdWarehouseArea-URL-END-->
+                 <!--PdShipStrategy-URL-START-->
+                <prop key="/pdShipStrategys.html">pdShipStrategyController</prop>
+                <prop key="/editPdShipStrategy.html">pdShipStrategyFormController</prop>
+                <!--PdShipStrategy-URL-END-->
+                <!--PdShipStrategyDetail-URL-START-->
+                <prop key="/pdShipStrategyDetails.html">pdShipStrategyDetailController</prop>
+                <prop key="/editPdShipStrategyDetail.html">pdShipStrategyDetailFormController</prop>
+                <!--PdShipStrategyDetail-URL-END-->
+                <!--PdSendExtra-URL-START-->
+                <prop key="/pdSendExtras.html">pdSendExtraController</prop>
+                <prop key="/editPdSendExtra.html">pdSendExtraFormController</prop>
+                <!--PdSendExtra-URL-END-->
+                
+                <!--PdShipFee-URL-START-->
+                <prop key="/pdShipFees.html">pdShipFeeController</prop>
+                <prop key="/editPdShipFee.html">pdShipFeeFormController</prop>
+                <!--PdShipFee-URL-END-->
+                <prop key="/pdLogisticsCostsStatistics.html">pdLogisticsCostsStatisticsController</prop>
+                
+                <!--PdWarehouseFrozenBatch-URL-START-->
+                <prop key="/pdWarehouseFrozenBatchs.html">pdWarehouseFrozenBatchController</prop>
+                <prop key="/editPdWarehouseFrozenBatch.html">pdWarehouseFrozenBatchFormController</prop>
+                <!--PdWarehouseFrozenBatch-URL-END-->
+                <!--PdWarehouseFrozenDetail-URL-START-->
+                <prop key="/pdWarehouseFrozenDetails.html">pdWarehouseFrozenDetailController</prop>
+                <prop key="/editPdWarehouseFrozenDetail.html">pdWarehouseFrozenDetailFormController</prop>
+                <!--PdWarehouseFrozenDetail-URL-END-->
+                
+                 <!--PdShUrl-URL-START-->
+                <prop key="/pdShUrls.html">pdShUrlController</prop>
+                <prop key="/editPdShUrl.html">pdShUrlFormController</prop>
+                <!--PdShUrl-URL-END-->
+                
+                <!-- Add By WuCF 20130419 -->
+				<prop key="/pdFileUpload2.html">pdFileUpload2Controller</prop>
+			
+			     <!--PdMailReceipt-URL-START-->
+                <prop key="/pdMailReceipts.html">pdMailReceiptController</prop>
+                <prop key="/editPdMailReceipt.html">pdMailReceiptFormController</prop>
+                <!--PdMailReceipt-URL-END-->
+                
+                 <!--MailStatus-URL-START-->
+                <prop key="/mailStatuss.html">mailStatusController</prop>
+                <prop key="/editMailStatus.html">mailStatusFormController</prop>
+                <!--MailStatus-URL-END-->
+                <!--Items-URL-START-->
+                <prop key="/items.html">itemsController</prop>
+                <prop key="/editItems.html">itemsFormController</prop>
+                <!--Items-URL-END-->
+                
+                <!--PdLogisticsBase-URL-START-->
+                <prop key="/pdLogisticsBases.html">pdLogisticsBaseController</prop>
+                <prop key="/editPdLogisticsBase.html">pdLogisticsBaseFormController</prop>
+                <!--PdLogisticsBase-URL-END-->
+                <!--PdLogisticsBaseNum-URL-START-->
+                <prop key="/pdLogisticsBaseNums.html">pdLogisticsBaseNumController</prop>
+                <prop key="/editPdLogisticsBaseNum.html">pdLogisticsBaseNumFormController</prop>
+                <!--PdLogisticsBaseNum-URL-END-->
+                <!--PdLogisticsBaseDetail-URL-START-->
+                <prop key="/pdLogisticsBaseDetails.html">pdLogisticsBaseDetailController</prop>
+                <prop key="/editPdLogisticsBaseDetail.html">pdLogisticsBaseDetailFormController</prop>
+                <!--PdLogisticsBaseDetail-URL-END-->
+                
+                 <!--PdNotChangeProduct-URL-START-->
+                <prop key="/pdNotChangeProducts.html">pdNotChangeProductController</prop>
+                <prop key="/editPdNotChangeProduct.html">pdNotChangeProductFormController</prop>
+                <!--PdNotChangeProduct-URL-END-->
+			
+			    <prop key="/pdExchangeOrderFileUpload.html">pdExchangeOrderFileUploadController</prop>
+			    
+			</props>
+		</property>
+	</bean>
+</beans>

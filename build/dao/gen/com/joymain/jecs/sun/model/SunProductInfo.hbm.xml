@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sun.model.SunProductInfo"
+            table="SUN_PRODUCT_INFO"
+    >
+
+    <id
+        name="jpiId"
+            column="JPI_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PM]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <many-to-one
+            name="jpmProductSaleNew"
+                not-null="true"
+                cascade="none"
+        >
+
+            <column
+                name="PRODUCT_ID" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="discount"
+                    column="DISCOUNT"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="beginDate"
+                    column="BEGIN_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="endDate"
+                    column="END_DATE"
+                length="7"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.am.model.InwProblem"
+            table="INW_PROBLEM"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_AM]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="species"
+                    column="SPECIES"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="ask"
+                    column="ASK"
+                length="400"
+        >
+
+        </property>
+
+        <property
+            name="answer"
+                    column="ANSWER"
+                length="900"
+        >
+
+        </property>
+
+        <property
+            name="other"
+                    column="OTHER"
+                length="200"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

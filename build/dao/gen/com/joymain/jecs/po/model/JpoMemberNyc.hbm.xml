@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.po.model.JpoMemberNyc"
+            table="JPO_MEMBER_NYC"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PO]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="yearOfMonth"
+                    column="YEAR_OF_MONTH"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="memberNo"
+                    column="MEMBER_NO"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="pushAt"
+                    column="PUSH_AT"
+                length="11"
+        >
+
+        </property>
+
+        <property
+            name="remarks"
+                    column="REMARKS"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="100"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

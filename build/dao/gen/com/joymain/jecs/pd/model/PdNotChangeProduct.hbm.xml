@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pd.model.PdNotChangeProduct"
+            table="PD_NOT_CHANGE_PRODUCT"
+    >
+
+    <id
+        name="id"
+            column="ID"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PD]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="productNo"
+                    column="PRODUCT_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="teamCode"
+                    column="TEAM_CODE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="orderType"
+                    column="ORDER_TYPE"
+                length="3"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="createUserCode"
+                    column="CREATE_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="isAvailable"
+                    column="IS_AVAILABLE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="other"
+                    column="OTHER"
+                length="200"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

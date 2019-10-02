@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.am.model.InwDemandsort"
+            table="INW_DEMANDSORT"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_AM]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="name"
+                    column="NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="requireIntroduction"
+                    column="REQUIRE_INTRODUCTION"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="image"
+                    column="IMAGE"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="other"
+                    column="OTHER"
+                length="100"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

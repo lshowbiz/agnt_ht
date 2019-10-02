@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sys.model.SysDepartment"
+            table="JSYS_DEPARTMENT"
+    >
+
+    <id
+        name="departmentId"
+            column="DEPARTMENT_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_SYS]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="parentId"
+                    column="PARENT_ID"
+                length="22"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="departmentName"
+                    column="DEPARTMENT_NAME"
+                length="100"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="fullName"
+                    column="FULL_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="principal"
+                    column="PRINCIPAL"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="tel"
+                    column="TEL"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="fax"
+                    column="FAX"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="treeIndex"
+                    column="TREE_INDEX"
+                length="500"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="orderNo"
+                    column="ORDER_NO"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="treeLevel"
+                    column="TREE_LEVEL"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="allowedUser"
+                    column="ALLOWED_USER"
+                length="500"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

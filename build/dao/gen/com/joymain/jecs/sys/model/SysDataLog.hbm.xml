@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sys.model.SysDataLog"
+            table="JSYS_DATA_LOG"
+    >
+
+    <id
+        name="logId"
+            column="LOG_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_LOG]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="changeType"
+                    column="CHANGE_TYPE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="tableName"
+                    column="TABLE_NAME"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="columnName"
+                    column="COLUMN_NAME"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="pidName"
+                    column="P_ID_NAME"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="pidValue"
+                    column="P_ID_VALUE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="beforeChange"
+                    column="BEFORE_CHANGE"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="afterChange"
+                    column="AFTER_CHANGE"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="personType"
+                    column="PERSON_TYPE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="operatorPerson"
+                    column="OPERATOR_PERSON"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="operatorTime"
+                    column="OPERATOR_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="moduleName"
+                    column="MODULE_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="hostName"
+                    column="HOST_NAME"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="ipAddress"
+                    column="IP_ADDRESS"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="operationLogId"
+                    column="OPERATION_LOG_ID"
+                length="12"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

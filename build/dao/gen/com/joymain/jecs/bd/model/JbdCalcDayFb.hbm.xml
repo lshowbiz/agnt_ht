@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.JbdCalcDayFb"
+            table="JBD_CALC_DAY_FB"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="wweek"
+                    column="W_WEEK"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="userName"
+                    column="USER_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="memberLevel"
+                    column="MEMBER_LEVEL"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="fbMoney"
+                    column="FB_MONEY"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="sendMoney"
+                    column="SEND_MONEY"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="deductVolume"
+                    column="DEDUCT_VOLUME"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="rax"
+                    column="RAX"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="deductMoney"
+                    column="DEDUCT_MONEY"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="freezeStatus"
+                    column="FREEZE_STATUS"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="sendDate"
+                    column="SEND_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <many-to-one
+            name="jmiMember"
+        >
+
+            <column
+                name="USER_CODE" 
+            />
+
+        </many-to-one>
+
+    </class>    
+
+</hibernate-mapping>
+

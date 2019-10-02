@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.JfiBankbookBalance"
+            table="JFI_BANKBOOK_BALANCE"
+    >
+
+    <id
+        name="userCode"
+            column="USER_CODE"
+                type="java.lang.String"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="balance"
+                    column="BALANCE"
+                length="18"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="lastJournalId"
+                    column="LAST_JOURNAL_ID"
+                length="12"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

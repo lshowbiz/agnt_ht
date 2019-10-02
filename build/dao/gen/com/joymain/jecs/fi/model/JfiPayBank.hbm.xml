@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.JfiPayBank"
+            table="JFI_PAY_BANK"
+    >
+
+    <id
+        name="accountCode"
+            column="ACCOUNT_CODE"
+                type="java.lang.String"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="bankName"
+                    column="BANK_NAME"
+                length="100"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="bankCity"
+                    column="BANK_CITY"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="accountName"
+                    column="ACCOUNT_NAME"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="accountNo"
+                    column="ACCOUNT_NO"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="serialNo"
+                    column="SERIAL_NO"
+                length="10"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

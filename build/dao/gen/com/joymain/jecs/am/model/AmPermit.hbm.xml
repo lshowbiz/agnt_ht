@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.am.model.AmPermit"
+            table="AM_PERMIT"
+    >
+
+    <id
+        name="permitNo"
+            column="PERMIT_NO"
+                type="java.lang.String"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="permitName"
+                    column="PERMIT_NAME"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="permitClass"
+                    column="PERMIT_CLASS"
+                length="2"
+        >
+
+        </property>
+
+        <set
+            name="amAnnounces"
+            table="AM_ANNOUNCE_PERMIT"
+            lazy="true"
+            inverse="false"
+            cascade="save-update"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="PERMIT_NO"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-many-to-many tag is deprecated, use @hibernate.many-to-many instead -->
+            <many-to-many
+                class="com.joymain.jecs.am.model.AmAnnounce"
+                column="AA_NO"
+                outer-join="auto"
+             />
+
+        </set>
+
+    </class>    
+
+</hibernate-mapping>
+

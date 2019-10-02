@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.JfiAlipayLog"
+            table="JFI_ALIPAY_LOG"
+    >
+
+    <id
+        name="logId"
+            column="LOG_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_FI]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="isSuccess"
+                    column="IS_SUCCESS"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="sign"
+                    column="SIGN"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="signType"
+                    column="SIGN_TYPE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="exterface"
+                    column="EXTERFACE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="notifyTime"
+                    column="NOTIFY_TIME"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="notifyId"
+                    column="NOTIFY_ID"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="notifyType"
+                    column="NOTIFY_TYPE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="tradeNo"
+                    column="TRADE_NO"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="paymentType"
+                    column="PAYMENT_TYPE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="outTradeNo"
+                    column="OUT_TRADE_NO"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="body"
+                    column="BODY"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="subject"
+                    column="SUBJECT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="totalFee"
+                    column="TOTAL_FEE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="buyerEmail"
+                    column="BUYER_EMAIL"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="buyerId"
+                    column="BUYER_ID"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="sellerEmail"
+                    column="SELLER_EMAIL"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="sellerId"
+                    column="SELLER_ID"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="tradeStatus"
+                    column="TRADE_STATUS"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="extraCommonParam"
+                    column="EXTRA_COMMON_PARAM"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="bankSeqNo"
+                    column="BANK_SEQ_NO"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="inc"
+                    column="INC"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="referer"
+                    column="REFERER"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="returnMsg"
+                    column="RETURN_MSG"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="url"
+                    column="URL"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="ip"
+                    column="IP"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="discount"
+                    column="DISCOUNT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="gmtClose"
+                    column="GMT_CLOSE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="gmtCreate"
+                    column="GMT_CREATE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="gmtPayment"
+                    column="GMT_PAYMENT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="gmtRefund"
+                    column="GMT_REFUND"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="isTotalFeeAdjust"
+                    column="IS_TOTAL_FEE_ADJUST"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="price"
+                    column="PRICE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="useCoupon"
+                    column="USE_COUPON"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="quantity"
+                    column="QUANTITY"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="refundTrade"
+                    column="REFUND_TRADE"
+                length="4000"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

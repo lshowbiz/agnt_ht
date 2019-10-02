@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sys.model.JsysStockAccount"
+            table="JSYS_STOCK_ACCOUNT"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_SYS]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="userName"
+                    column="USER_NAME"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="stockAccount"
+                    column="STOCK_ACCOUNT"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="feeStatus"
+                    column="FEE_STATUS"
+                length="4"
+        >
+
+        </property>
+
+        <property
+            name="createDate"
+                    column="CREATE_DATE"
+                length="11"
+        >
+
+        </property>
+
+        <property
+            name="updateDate"
+                    column="UPDATE_DATE"
+                length="11"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

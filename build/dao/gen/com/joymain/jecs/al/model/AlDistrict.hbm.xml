@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.al.model.AlDistrict"
+            table="JAL_DISTRICT"
+    >
+
+    <id
+        name="districtId"
+            column="DISTRICT_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="districtCode"
+                    column="DISTRICT_CODE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="districtName"
+                    column="DISTRICT_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <many-to-one
+            name="alCity"
+                not-null="true"
+        >
+
+            <column
+                name="CITY_ID" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="postalcode"
+                    column="POSTALCODE"
+                length="10"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

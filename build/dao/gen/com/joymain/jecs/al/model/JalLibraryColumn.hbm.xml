@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.al.model.JalLibraryColumn"
+            table="JAL_LIBRARY_COLUMN"
+    >
+
+    <id
+        name="columnId"
+            column="COLUMN_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="columnName"
+                    column="COLUMN_NAME"
+                length="300"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="plateId"
+                    column="PLATE_ID"
+                length="12"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="plateName"
+                    column="PLATE_NAME"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="columnImgs"
+                    column="COLUMN_IMGS"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="columnField1"
+                    column="COLUMN_FIELD1"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="createUserCode"
+                    column="CREATE_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="createName"
+                    column="CREATE_NAME"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

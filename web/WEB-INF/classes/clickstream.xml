@@ -1,0 +1,3 @@
+<clickstream>
+    <logger class="com.joymain.jecs.webapp.listener.DBClickstreamLogger"/>
+</clickstream>

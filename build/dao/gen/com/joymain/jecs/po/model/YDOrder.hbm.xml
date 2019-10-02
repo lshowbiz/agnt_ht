@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.po.model.YDOrder"
+            table="YD_ORDER"
+    >
+
+    <id
+        name="moid"
+            column="MO_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PO]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="operateTime"
+                    column="OPERATETIME"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USERCODE"
+        >
+
+        </property>
+
+        <property
+            name="orderNo"
+                    column="ORDERNO"
+        >
+
+        </property>
+
+        <property
+            name="amount"
+                    column="AMOUNT"
+        >
+
+        </property>
+
+        <property
+            name="pvamt"
+                    column="PVAMT"
+        >
+
+        </property>
+
+        <property
+            name="orderTime"
+                    column="ORDERTIME"
+        >
+
+        </property>
+
+        <property
+            name="orderPayTime"
+                    column="ORDERPAYTIME"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATETIME"
+        >
+
+        </property>
+
+        <set
+            name="ydOrderItem"
+            lazy="false"
+            inverse="true"
+            cascade="all"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="MO_ID"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.po.model.YDOrderItem"
+            />
+
+        </set>
+
+        <property
+            name="ydPV"
+                    column="yd_pv"
+        >
+
+        </property>
+
+        <property
+            name="userLevel"
+                    column="user_level"
+        >
+
+        </property>
+
+        <property
+            name="totalRebate"
+                    column="total_rebate"
+        >
+
+        </property>
+
+        <property
+            name="ydRebate"
+                    column="yd_rebate"
+        >
+
+        </property>
+
+        <property
+            name="ecRebate"
+                    column="ec_rebate"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

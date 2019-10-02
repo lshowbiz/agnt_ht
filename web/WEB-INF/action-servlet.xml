@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.springframework.dao.DataAccessException">        
+                    dataAccessFailure
+                </prop>
+               <prop key="com.joymain.jecs.util.exception.PremissionException">        
+                    premissionFailure
+                </prop>
+            </props>
+        </property>
+    </bean>
+    
+     <bean id="boServiceController" class="com.joymain.jecs.webapp.action.BoServiceController" autowire="byName"/><!--
+   
+    --><bean id="userController" class="com.joymain.jecs.webapp.action.UserController">
+        <property name="userManager" ref="userManager"/>
+    </bean>
+
+	<bean id="pdFileUploadController" class="com.joymain.jecs.pd.webapp.action.PdFileUploadController" autowire="byName">
+        <property name="validator" ref="beanValidator"/>
+        <property name="cancelView" value="redirect:pdFileUpload.html"/>
+        <property name="formView" value="pd/pdFileUploadForm"/>
+        <property name="successView" value="pd/pdUploadDisplay"/>
+    </bean>
+    
+    
+    
+    <bean id="passwordHintController" class="com.joymain.jecs.webapp.action.PasswordHintController">
+        <property name="userManager" ref="userManager"/>
+        <property name="messageSource" ref="messageSource"/>
+        <property name="message" ref="mailMessage"/>
+    </bean>
+
+    <bean id="reloadController" class="com.joymain.jecs.webapp.action.ReloadController"/>
+    <bean id="mobileController" class="com.joymain.jecs.webapp.action.MobileController" autowire="byName"/>
+    
+    <bean id="reportController" class="com.joymain.jecs.webapp.action.ReportController"/>
+
+    <bean id="userFormController" class="com.joymain.jecs.webapp.action.UserFormController">
+        <property name="validator" ref="beanValidator"/>
+        <property name="formView" value="userForm"/>
+        <property name="successView" value="redirect:users.html"/>
+        <property name="cancelView" value="redirect:mainMenu.html"/>
+        <property name="userManager" ref="userManager"/>
+        <property name="roleManager" ref="roleManager"/>
+        <property name="mailEngine" ref="mailEngine"/>
+        <property name="message" ref="mailMessage"/>
+        <property name="templateName" value="accountCreated.vm"/>
+    </bean>
+
+    <bean id="fileUploadController" class="com.joymain.jecs.webapp.action.FileUploadController">
+        <property name="validator" ref="beanValidator"/>
+        <property name="cancelView" value="redirect:mainMenu.html"/>
+        <property name="formView" value="uploadForm"/>
+        <property name="successView" value="uploadDisplay"/>
+    </bean>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="1073741824"/>
+    </bean>
+    
+    <bean id="signupController" class="com.joymain.jecs.webapp.action.SignupController">
+        <property name="validator" ref="beanValidator"/>
+        <property name="formView" value="signup"/>
+        <property name="successView" value="redirect:mainMenu.html"/>
+        <property name="userManager" ref="userManager"/>
+        <property name="roleManager" ref="roleManager"/>
+        <property name="mailEngine" ref="mailEngine"/>
+        <property name="message" ref="mailMessage"/>
+        <property name="templateName" value="accountCreated.vm"/>
+    </bean>
+    
+    <bean id="forwardJspController" class="com.joymain.jecs.webapp.action.ForwardJspController"/>
+   <bean id="companySelectController" class="com.joymain.jecs.webapp.action.CompanySelectController" autowire="byName"/>
+   <bean id="sysUserSelectController" class="com.joymain.jecs.webapp.action.SysUserSelectController" autowire="byName"/>
+   <bean id="loginFormController" class="com.joymain.jecs.webapp.action.LoginFormController" autowire="byName">
+		<property name="formView" value="loginForm" />
+		<property name="successView" value="redirect:index.html" />
+	</bean>
+	<bean id="indexController" class="com.joymain.jecs.webapp.action.IndexController" autowire="byName"/>
+	<bean id="welcomeController" class="com.joymain.jecs.webapp.action.WelcomeController" autowire="byName"/>
+	<bean id="workspaceController" class="com.joymain.jecs.webapp.action.WorkspaceController" autowire="byName"/>
+
+    
+    
+    
+   <!--JocsInterfaceRetransmission-BEAN-START-->
+    <bean id="jocsInterfaceRetransmissionController" class="com.joymain.jecs.pm.webapp.action.JocsInterfaceRetransmissionController" autowire="byName"/>
+
+    <bean id="jocsInterfaceRetransmissionFormController" class="com.joymain.jecs.pm.webapp.action.JocsInterfaceRetransmissionFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jocsInterfaceRetransmissionForm"/>
+        <property name="successView" value="redirect:jocsInterfaceRetransmissions.html"/>
+    </bean>
+    <!--JocsInterfaceRetransmission-BEAN-END-->
+    
+    
+   
+   
+    <!--SysReportLog-BEAN-START-->
+    <bean id="sysReportLogController" class="com.joymain.jecs.sys.webapp.action.SysReportLogController" autowire="byName"/>
+
+    <bean id="sysReportLogFormController" class="com.joymain.jecs.sys.webapp.action.SysReportLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="sys/sysReportLogForm"/>
+        <property name="successView" value="redirect:sysReportLogs.html"/>
+    </bean>
+    <!--SysReportLog-BEAN-END-->
+    
+    	
+    
+    
+   
+
+   
+    <!--JpoCounterOrder-BEAN-START-->
+    <bean id="jpoCounterOrderController" class="com.joymain.jecs.po.webapp.action.JpoCounterOrderController" autowire="byName"/>
+
+    <bean id="jpoCounterOrderFormController" class="com.joymain.jecs.po.webapp.action.JpoCounterOrderFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="po/jpoCounterOrderForm"/>
+        <property name="successView" value="redirect:jpoCounterOrders.html"/>
+    </bean>
+    <!--JpoCounterOrder-BEAN-END-->
+   
+    
+   
+    <!--SmsSendLog-BEAN-START-->
+    <bean id="smsSendLogController" class="com.joymain.jecs.sms.webapp.action.SmsSendLogController" autowire="byName"/>
+
+    <bean id="smsSendLogFormController" class="com.joymain.jecs.sms.webapp.action.SmsSendLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="sms/smsSendLogForm"/>
+        <property name="successView" value="redirect:smsSendLogs.html"/>
+    </bean>
+    <!--SmsSendLog-BEAN-END-->
+
+    
+    <!--JbdUserValidList-BEAN-START-->
+    <bean id="jbdUserValidListController" class="com.joymain.jecs.bd.webapp.action.JbdUserValidListController" autowire="byName"/>
+
+    <bean id="jbdUserValidListFormController" class="com.joymain.jecs.bd.webapp.action.JbdUserValidListFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdUserValidListForm"/>
+        <property name="successView" value="redirect:jbdUserValidLists.html"/>
+    </bean>
+    <!--JbdUserValidList-BEAN-END-->
+    <!--UpsInteractiveLog-BEAN-START-->
+    <bean id="upsInteractiveLogController" class="com.joymain.jecs.sys.webapp.action.UpsInteractiveLogController" autowire="byName"/>
+
+    <bean id="upsInteractiveLogFormController" class="com.joymain.jecs.sys.webapp.action.UpsInteractiveLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="sys/upsInteractiveLogForm"/>
+        <property name="successView" value="redirect:upsInteractiveLogs.html"/>
+    </bean>
+    <!--UpsInteractiveLog-BEAN-END-->
+    
+    
+    
+    <!--JalPostalcode-BEAN-START-->
+    <bean id="jalPostalcodeController" class="com.joymain.jecs.al.webapp.action.JalPostalcodeController" autowire="byName"/>
+
+    <bean id="jalPostalcodeFormController" class="com.joymain.jecs.al.webapp.action.JalPostalcodeFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="al/jalPostalcodeForm"/>
+        <property name="successView" value="redirect:jalPostalcodes.html"/>
+    </bean>
+    <!--JalPostalcode-BEAN-END-->
+    <!--SunDistShip-BEAN-START-->
+    <bean id="sunDistShipController" class="com.joymain.jecs.sun.webapp.action.SunDistShipController" autowire="byName"/>
+
+    <bean id="sunDistShipFormController" class="com.joymain.jecs.sun.webapp.action.SunDistShipFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="sun/sunDistShipForm"/>
+        <property name="successView" value="redirect:sunDistShips.html"/>
+    </bean>
+    <!--SunDistShip-BEAN-END-->
+    <!--SunProductInfo-BEAN-START-->
+    <bean id="sunProductInfoController" class="com.joymain.jecs.sun.webapp.action.SunProductInfoController" autowire="byName"/>
+
+    <bean id="sunProductInfoFormController" class="com.joymain.jecs.sun.webapp.action.SunProductInfoFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="sun/sunProductInfoForm"/>
+        <property name="successView" value="redirect:sunProductInfos.html"/>
+    </bean>
+    <!--SunProductInfo-BEAN-END-->
+    <!--Jfi99billmsLog-BEAN-START-->
+    <bean id="jfi99billmsLogController" class="com.joymain.jecs.fi.webapp.action.Jfi99billmsLogController" autowire="byName"/>
+
+    <bean id="jfi99billmsLogFormController" class="com.joymain.jecs.fi.webapp.action.Jfi99billmsLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfi99billmsLogForm"/>
+        <property name="successView" value="redirect:jfi99billmsLogs.html"/>
+    </bean>
+    <!--Jfi99billmsLog-BEAN-END-->
+    <!--JbdTravelPoint2013-BEAN-START-->
+    <bean id="jbdTravelPoint2013Controller" class="com.joymain.jecs.bd.webapp.action.JbdTravelPoint2013Controller" autowire="byName"/>
+
+    <bean id="jbdTravelPoint2013FormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPoint2013FormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPoint2013Form"/>
+        <property name="successView" value="redirect:jbdTravelPoint2013s.html"/>
+    </bean>
+    <!--JbdTravelPoint2013-BEAN-END-->
+    <!--JbdTravelPointLog2013-BEAN-START-->
+    <bean id="jbdTravelPointLog2013Controller" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointLog2013Controller" autowire="byName"/>
+
+    <bean id="jbdTravelPointLog2013FormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointLog2013FormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPointLog2013Form"/>
+        <property name="successView" value="redirect:jbdTravelPointLog2013s.html"/>
+    </bean>
+    <!--JbdTravelPointLog2013-BEAN-END-->
+    <!--JbdTravelPointDetail2013-BEAN-START-->
+    <bean id="jbdTravelPointDetail2013Controller" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointDetail2013Controller" autowire="byName"/>
+
+    <bean id="jbdTravelPointDetail2013FormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointDetail2013FormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPointDetail2013Form"/>
+        <property name="successView" value="redirect:jbdTravelPointDetail2013s.html"/>
+    </bean>
+    <!--JbdTravelPointDetail2013-BEAN-END-->
+    
+    
+    
+    <!--JsysResRole-BEAN-START-->
+    <bean id="jsysResRoleController" class="com.joymain.jecs.sys.webapp.action.JsysResRoleController" autowire="byName"/>
+
+    <bean id="jsysResRoleFormController" class="com.joymain.jecs.sys.webapp.action.JsysResRoleFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="sys/jsysResRoleForm"/>
+        <property name="successView" value="redirect:jsysResRoles.html"/>
+    </bean>
+    <!--JsysResRole-BEAN-END-->
+    
+    
+    
+    
+    
+    
+    
+    <!--JbdSendRecordNote-BEAN-START-->
+    <bean id="jbdSendRecordNoteController" class="com.joymain.jecs.bd.webapp.action.JbdSendRecordNoteController" autowire="byName"/>
+
+    <bean id="jbdSendRecordNoteFormController" class="com.joymain.jecs.bd.webapp.action.JbdSendRecordNoteFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdSendRecordNoteForm"/>
+        <property name="successView" value="redirect:jbdSendRecordNotes.html"/>
+    </bean>
+    <!--JbdSendRecordNote-BEAN-END-->
+    <!--InwDemandsort-BEAN-START-->
+    <bean id="inwDemandsortController" class="com.joymain.jecs.am.webapp.action.InwDemandsortController" autowire="byName"/>
+
+    <bean id="inwDemandsortFormController" class="com.joymain.jecs.am.webapp.action.InwDemandsortFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwDemandsortForm"/>
+        <property name="successView" value="redirect:inwDemandsorts.html"/>
+    </bean>
+    <!--InwDemandsort-BEAN-END-->
+
+    <!--JpmConfigDetailed-BEAN-START-->
+    <bean id="jpmConfigDetailedController" class="com.joymain.jecs.pm.webapp.action.JpmConfigDetailedController" autowire="byName"/>
+
+    <bean id="jpmConfigDetailedFormController" class="com.joymain.jecs.pm.webapp.action.JpmConfigDetailedFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmConfigDetailedForm"/>
+        <property name="successView" value="redirect:jpmConfigDetaileds.html"/>
+    </bean>
+    <!--JpmConfigDetailed-BEAN-END-->
+    <!--JpmMemberConfig-BEAN-START-->
+    <bean id="jpmMemberConfigController" class="com.joymain.jecs.pm.webapp.action.JpmMemberConfigController" autowire="byName"/>
+
+    <bean id="jpmMemberConfigFormController" class="com.joymain.jecs.pm.webapp.action.JpmMemberConfigFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmMemberConfigForm"/>
+        <property name="successView" value="redirect:jpmMemberConfigs.html"/>
+    </bean>
+    <!--JpmMemberConfig-BEAN-END-->
+    <!--JpmConfigSpecDetailed-BEAN-START-->
+    <bean id="jpmConfigSpecDetailedController" class="com.joymain.jecs.pm.webapp.action.JpmConfigSpecDetailedController" autowire="byName"/>
+
+    <bean id="jpmConfigSpecDetailedFormController" class="com.joymain.jecs.pm.webapp.action.JpmConfigSpecDetailedFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmConfigSpecDetailedForm"/>
+        <property name="successView" value="redirect:jpmConfigSpecDetaileds.html"/>
+    </bean>
+    <!--JpmConfigSpecDetailed-BEAN-END-->
+    
+    <!--JpmWineMemberOrder-BEAN-START-->
+    <bean id="jpmWineMemberOrderController" class="com.joymain.jecs.pm.webapp.action.JpmWineMemberOrderController" autowire="byName"/>
+    <!-- JpmWineMemberOrder-BEAN-END -->
+    <!--JpmSendConsignment-BEAN-START-->
+    <bean id="jpmSendConsignmentController" class="com.joymain.jecs.pm.webapp.action.JpmSendConsignmentController" autowire="byName"/>
+
+    <bean id="jpmSendConsignmentFormController" class="com.joymain.jecs.pm.webapp.action.JpmSendConsignmentFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmSendConsignmentForm"/>
+        <property name="successView" value="redirect:jpmSendConsignments.html"/>
+    </bean>
+    <!--JpmSendConsignment-BEAN-END-->
+    <!--InwDepartment-BEAN-START-->
+    <bean id="inwDepartmentController" class="com.joymain.jecs.am.webapp.action.InwDepartmentController" autowire="byName"/>
+
+    <bean id="inwDepartmentFormController" class="com.joymain.jecs.am.webapp.action.InwDepartmentFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwDepartmentForm"/>
+        <property name="successView" value="redirect:inwDepartments.html"/>
+    </bean>
+    <!--InwDepartment-BEAN-END-->
+    <!--InwDepartCompetence-BEAN-START-->
+    <bean id="inwDepartCompetenceController" class="com.joymain.jecs.am.webapp.action.InwDepartCompetenceController" autowire="byName"/>
+
+    <bean id="inwDepartCompetenceFormController" class="com.joymain.jecs.am.webapp.action.InwDepartCompetenceFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwDepartCompetenceForm"/>
+        <property name="successView" value="redirect:inwDepartCompetences.html"/>
+    </bean>
+    <!--InwDepartCompetence-BEAN-END-->
+    <!--InwIntegrationTotal-BEAN-START-->
+    <bean id="inwIntegrationTotalController" class="com.joymain.jecs.am.webapp.action.InwIntegrationTotalController" autowire="byName"/>
+
+    <bean id="inwIntegrationTotalFormController" class="com.joymain.jecs.am.webapp.action.InwIntegrationTotalFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwIntegrationTotalForm"/>
+        <property name="successView" value="redirect:inwIntegrationTotals.html"/>
+    </bean>
+    <!--InwIntegrationTotal-BEAN-END-->
+    
+    <!--InwDepartPerson-BEAN-START-->
+    <bean id="inwDepartPersonController" class="com.joymain.jecs.am.webapp.action.InwDepartPersonController" autowire="byName"/>
+
+    <bean id="inwDepartPersonFormController" class="com.joymain.jecs.am.webapp.action.InwDepartPersonFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="am/inwDepartPersonForm"/>
+        <property name="successView" value="redirect:inwDepartPersons.html"/>
+    </bean>
+    <!--InwDepartPerson-BEAN-END-->
+    <!--PdShUrl-BEAN-START-->
+    <bean id="pdShUrlController" class="com.joymain.jecs.pd.webapp.action.PdShUrlController" autowire="byName"/>
+
+    <bean id="pdShUrlFormController" class="com.joymain.jecs.pd.webapp.action.PdShUrlFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdShUrlForm"/>
+        <property name="successView" value="redirect:pdShUrls.html"/>
+    </bean>
+    <!--PdShUrl-BEAN-END-->
+    
+    <!--JpoProductNumLimit-BEAN-START-->
+    <bean id="jpoProductNumLimitController" class="com.joymain.jecs.po.webapp.action.JpoProductNumLimitController" autowire="byName"/>
+
+    <bean id="jpoProductNumLimitFormController" class="com.joymain.jecs.po.webapp.action.JpoProductNumLimitFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="po/jpoProductNumLimitForm"/>
+        <property name="successView" value="redirect:jpoProductNumLimits.html"/>
+    </bean>
+    <!--JpoProductNumLimit-BEAN-END-->
+    <!--JmiDealList-BEAN-START-->
+    <bean id="jmiDealListController" class="com.joymain.jecs.mi.webapp.action.JmiDealListController" autowire="byName"/>
+
+    <bean id="jmiDealListFormController" class="com.joymain.jecs.mi.webapp.action.JmiDealListFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiDealListForm"/>
+        <property name="successView" value="redirect:jmiDealLists.html"/>
+    </bean>
+    <!--JmiDealList-BEAN-END-->
+    <!--JmiStateLog-BEAN-START-->
+    <bean id="jmiStateLogController" class="com.joymain.jecs.mi.webapp.action.JmiStateLogController" autowire="byName"/>
+
+    <bean id="jmiStateLogFormController" class="com.joymain.jecs.mi.webapp.action.JmiStateLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiStateLogForm"/>
+        <property name="successView" value="redirect:jmiStateLogs.html"/>
+    </bean>
+    <!--JmiStateLog-BEAN-END-->
+    <!--JfiPayLog-BEAN-START-->
+    <bean id="jfiPayLogController" class="com.joymain.jecs.fi.webapp.action.JfiPayLogController" autowire="byName"/>
+
+    <bean id="jfiPayLogFormController" class="com.joymain.jecs.fi.webapp.action.JfiPayLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiPayLogForm"/>
+        <property name="successView" value="redirect:jfiPayLogs.html"/>
+    </bean>
+    <!--JfiPayLog-BEAN-END-->
+    
+    
+   
+    <!--JmiMemberLog-BEAN-START-->
+    <bean id="jmiMemberLogController" class="com.joymain.jecs.mi.webapp.action.JmiMemberLogController" autowire="byName"/>
+
+    <bean id="jmiMemberLogFormController" class="com.joymain.jecs.mi.webapp.action.JmiMemberLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiMemberLogForm"/>
+        <property name="successView" value="redirect:jmiMemberLogs.html"/>
+    </bean>
+    <!--JmiMemberLog-BEAN-END-->
+    <!--JmiPrizeTourism-BEAN-START-->
+    <bean id="jmiPrizeTourismController" class="com.joymain.jecs.mi.webapp.action.JmiPrizeTourismController" autowire="byName"/>
+
+    <bean id="jmiPrizeTourismFormController" class="com.joymain.jecs.mi.webapp.action.JmiPrizeTourismFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiPrizeTourismForm"/>
+        <property name="successView" value="redirect:jmiPrizeTourisms.html"/>
+    </bean>
+    <!--JmiPrizeTourism-BEAN-END-->
+    
+    <!--PdShipStrategyMain-BEAN-START-->
+    <bean id="pdShipStrategyMainController" class="com.joymain.jecs.pd.webapp.action.PdShipStrategyMainController" autowire="byName"/>
+
+    <bean id="pdShipStrategyMainFormController" class="com.joymain.jecs.pd.webapp.action.PdShipStrategyMainFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pd/pdShipStrategyMainForm"/>
+        <property name="successView" value="redirect:pdShipStrategyMains.html"/>
+    </bean>
+    <!--PdShipStrategyMain-BEAN-END-->
+    
+    <!--JbdTravelPointAll-BEAN-START-->
+    <bean id="jbdTravelPointAllController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointAllController" autowire="byName"/>
+
+    <bean id="jbdTravelPointAllFormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointAllFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPointAllForm"/>
+        <property name="successView" value="redirect:jbdTravelPointAlls.html"/>
+    </bean>
+    <!--JbdTravelPointAll-BEAN-END-->
+    <!--JbdTravelPointLogAll-BEAN-START-->
+    <bean id="jbdTravelPointLogAllController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointLogAllController" autowire="byName"/>
+
+    <bean id="jbdTravelPointLogAllFormController" class="com.joymain.jecs.bd.webapp.action.JbdTravelPointLogAllFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="bd/jbdTravelPointLogAllForm"/>
+        <property name="successView" value="redirect:jbdTravelPointLogAlls.html"/>
+    </bean>
+    <!--JbdTravelPointLogAll-BEAN-END-->
+    <!--JfiBusinessNum-BEAN-START-->
+    <bean id="jfiBusinessNumController" class="com.joymain.jecs.fi.webapp.action.JfiBusinessNumController" autowire="byName"/>
+
+    <bean id="jfiBusinessNumFormController" class="com.joymain.jecs.fi.webapp.action.JfiBusinessNumFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiBusinessNumForm"/>
+        <property name="successView" value="redirect:jfiBusinessNums.html"/>
+    </bean>
+    <!--JfiBusinessNum-BEAN-END-->
+    
+    <!--JmiAssure-BEAN-START-->
+    <bean id="jmiAssureController" class="com.joymain.jecs.mi.webapp.action.JmiAssureController" autowire="byName"/>
+
+    <bean id="jmiAssureFormController" class="com.joymain.jecs.mi.webapp.action.JmiAssureFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiAssureForm"/>
+        <property name="successView" value="redirect:jmiAssures.html"/>
+    </bean>
+    
+    <bean id="jmiAssureReportController" class="com.joymain.jecs.mi.webapp.action.JmiAssureReportController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="mi/jmiAssureReport"/>
+        <property name="successView" value="redirect:jmiAssureReport.html"/>
+    </bean>
+    <bean id="jmiAssureListImportController" class="com.joymain.jecs.mi.webapp.action.JmiAssureListImportController" autowire="byName">
+        <property name="formView" value="mi/jmiAssureListImport"/>
+        <property name="successView" value="redirect:jmiAssures.html"/>
+    </bean>
+    <!--JmiAssure-BEAN-END-->
+    <!--JpoMemberNyc-BEAN-START-->
+    <bean id="jpoMemberNycController" class="com.joymain.jecs.po.webapp.action.JpoMemberNycController" autowire="byName"/>
+    <bean id="jpoMemberNycQualifiedController" class="com.joymain.jecs.po.webapp.action.JpoMemberNycQualifiedController" autowire="byName"/>
+    <bean id="jpoMemberNycFormController" class="com.joymain.jecs.po.webapp.action.JpoMemberNycFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="po/jpoMemberNycForm"/>
+        <property name="successView" value="redirect:jpoMemberNycs.html"/>
+    </bean>
+
+    <bean id="jpoMemberNycImportFormController" class="com.joymain.jecs.po.webapp.action.JpoMemberNycImportFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="po/importJpoMemberNycForm"/>
+        <property name="successView" value="redirect:jpoMemberNycs.html"/>
+    </bean>
+    <!--JpoMemberNyc-BEAN-END-->
+    <!--JpoMemberNycLog-BEAN-START-->
+
+    <!--JpoMemberNycLog-BEAN-END-->
+    <!--JpoMemberNycQualify-BEAN-START-->
+    <bean id="jpoMemberNycQualifyController" class="com.joymain.jecs.po.webapp.action.JpoMemberNycQualifyController" autowire="byName"/>
+
+    <bean id="jpoMemberNycQualifyFormController" class="com.joymain.jecs.po.webapp.action.JpoMemberNycQualifyFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="po/jpoMemberNycQualifyForm"/>
+        <property name="successView" value="redirect:/jpoMemberNycQualified.html"/>
+    </bean>
+    <!--JpoMemberNycQualify-BEAN-END-->
+    <!-- Add additional controller beans here -->
+    
+    
+  <!--JpmCouponInfo-BEAN-START-->
+    <bean id="jpmCouponInfoController" class="com.joymain.jecs.pm.webapp.action.JpmCouponInfoController" autowire="byName"/>
+
+    <bean id="jpmCouponInfoFormController" class="com.joymain.jecs.pm.webapp.action.JpmCouponInfoFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmCouponInfoForm"/>
+        <property name="successView" value="redirect:jpmCouponInfos.html"/>
+    </bean>
+    <!--JpmCouponInfo-BEAN-END-->
+    <!--JpmCouponRelationship-BEAN-START-->
+    <bean id="jpmCouponRelationshipController" class="com.joymain.jecs.pm.webapp.action.JpmCouponRelationshipController" autowire="byName"/>
+
+    <bean id="jpmCouponRelationshipFormController" class="com.joymain.jecs.pm.webapp.action.JpmCouponRelationshipFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="pm/jpmCouponRelationshipForm"/>
+        <property name="successView" value="redirect:jpmCouponRelationships.html"/>
+    </bean>
+    <!--JpmCouponRelationship-BEAN-END-->
+    <!--JpoUserCoupon-BEAN-START-->
+    <bean id="jpoUserCouponController" class="com.joymain.jecs.po.webapp.action.JpoUserCouponController" autowire="byName"/>
+
+    <bean id="jpoUserCouponFormController" class="com.joymain.jecs.po.webapp.action.JpoUserCouponFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="po/jpoUserCouponForm"/>
+        <property name="successView" value="redirect:jpoUserCoupons.html"/>
+    </bean>
+    <!--JpoUserCoupon-BEAN-END-->
+    <!--JpoCouponRelationship-BEAN-START-->
+    <bean id="jpoCouponRelationshipController" class="com.joymain.jecs.po.webapp.action.JpoCouponRelationshipController" autowire="byName"/>
+
+    <bean id="jpoCouponRelationshipFormController" class="com.joymain.jecs.po.webapp.action.JpoCouponRelationshipFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="po/jpoCouponRelationshipForm"/>
+        <property name="successView" value="redirect:jpoCouponRelationships.html"/>
+    </bean>
+    <!--JpoCouponRelationship-BEAN-END-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!--JfiUmbpayLog-BEAN-START-->
+    <bean id="jfiUmbpayLogController" class="com.joymain.jecs.fi.webapp.action.JfiUmbpayLogController" autowire="byName"/>
+
+    <bean id="jfiUmbpayLogFormController" class="com.joymain.jecs.fi.webapp.action.JfiUmbpayLogFormController" autowire="byName">
+        <!--property name="validator" ref="beanValidator"/-->
+        <property name="formView" value="fi/jfiUmbpayLogForm"/>
+        <property name="successView" value="redirect:jfiUmbpayLogs.html"/>
+    </bean>
+    <!--JfiUmbpayLog-BEAN-END-->
+
+
+
+
+
+
+
+
+
+   <!-- Load WEB-INF/classes/ApplicationResources.properties for i18n messages using JSTL's fmt tag -->
+    <bean id="messageSource" class="com.joymain.jecs.webapp.resource.MessageResourceBundle"/>
+	<!--
+	<bean id="messageSource"  class="org.springframework.context.support.ResourceBundleMessageSource"> 
+		<property name="basename" value="ApplicationResources"/>
+  	</bean>  
+  	-->
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/editProfile.html">userFormController</prop>
+                <prop key="/mainMenu.html">filenameController</prop>
+                <prop key="/editUser.html">userFormController</prop> 
+                <prop key="/selectFile.html">fileUploadController</prop>
+                <prop key="/uploadFile.html">fileUploadController</prop>
+                <prop key="/passwordHint.html">passwordHintController</prop>
+                <prop key="/signup.html">signupController</prop>
+                <prop key="/companySelect.html">companySelectController</prop>
+                <prop key="/dialog.html">forwardJspController</prop>
+                <prop key="/login.html">loginFormController</prop>
+                <prop key="/index.html">indexController</prop>
+                <prop key="/welcome.html">welcomeController</prop>
+                <prop key="/mobile/tm.do">mobileController</prop>
+                <prop key="/workspace.html">workspaceController</prop>
+                <prop key="/loginRedirect.html">forwardJspController</prop>
+                <prop key="/report.html">reportController</prop>
+				<prop key="/mobile/mHome.html">forwardJspController</prop>
+	
+				<prop key="/pdFileUpload.html">pdFileUploadController</prop>
+				
+
+                <prop key="/sysUserSelect.html">sysUserSelectController</prop><!--
+               
+             	  --><prop key="/boServices.do">boServiceController</prop>
+				 <prop key="/login.do">loginFormController</prop>
+                
+
+                
+                
+                
+                <!--JbdUserValidList-URL-START-->
+                <prop key="/jbdUserValidLists.html">jbdUserValidListController</prop>
+                <prop key="/editJbdUserValidList.html">jbdUserValidListFormController</prop>
+                <!--JbdUserValidList-URL-END-->
+                <!--UpsInteractiveLog-URL-START-->
+                <prop key="/upsInteractiveLogs.html">upsInteractiveLogController</prop>
+                <prop key="/editUpsInteractiveLog.html">upsInteractiveLogFormController</prop>
+                <!--UpsInteractiveLog-URL-END-->
+              
+                
+                
+                
+                <!--JalPostalcode-URL-START-->
+                <prop key="/jalPostalcodes.html">jalPostalcodeController</prop>
+                <prop key="/editJalPostalcode.html">jalPostalcodeFormController</prop>
+                <!--JalPostalcode-URL-END-->
+
+                <!--SunDistShip-URL-START-->
+                <prop key="/sunDistShips.html">sunDistShipController</prop>
+                <prop key="/editSunDistShip.html">sunDistShipFormController</prop>
+                <!--SunDistShip-URL-END-->
+                <!--SunProductInfo-URL-START-->
+                <prop key="/sunProductInfos.html">sunProductInfoController</prop>
+                <prop key="/editSunProductInfo.html">sunProductInfoFormController</prop>
+                <!--SunProductInfo-URL-END-->
+
+                <!--Jfi99billmsLog-URL-START-->
+                <prop key="/jfi99billmsLogs.html">jfi99billmsLogController</prop>
+                <prop key="/editJfi99billmsLog.html">jfi99billmsLogFormController</prop>
+                <!--Jfi99billmsLog-URL-END-->
+                <!--JbdTravelPoint2013-URL-START-->
+                <prop key="/jbdTravelPoint2013s.html">jbdTravelPoint2013Controller</prop>
+                <prop key="/editJbdTravelPoint2013.html">jbdTravelPoint2013FormController</prop>
+                <!--JbdTravelPoint2013-URL-END-->
+                <!--JbdTravelPointLog2013-URL-START-->
+                <prop key="/jbdTravelPointLog2013s.html">jbdTravelPointLog2013Controller</prop>
+                <prop key="/editJbdTravelPointLog2013.html">jbdTravelPointLog2013FormController</prop>
+                <!--JbdTravelPointLog2013-URL-END-->
+                <!--JbdTravelPointDetail2013-URL-START-->
+                <prop key="/jbdTravelPointDetail2013s.html">jbdTravelPointDetail2013Controller</prop>
+                <prop key="/editJbdTravelPointDetail2013.html">jbdTravelPointDetail2013FormController</prop>
+                <!--JbdTravelPointDetail2013-URL-END-->
+
+                
+                
+                
+                <!--JsysResRole-URL-START-->
+                <prop key="/jsysResRoles.html">jsysResRoleController</prop>
+                <prop key="/editJsysResRole.html">jsysResRoleFormController</prop>
+                <!--JsysResRole-URL-END-->
+                <!--FiTransferAccount-URL-START-->
+                <prop key="/fiTransferAccounts.html">fiTransferAccountController</prop>
+                <prop key="/editFiTransferAccount.html">fiTransferAccountFormController</prop>
+                <!--FiTransferAccount-URL-END-->
+                
+               
+               
+                
+                <!--JbdSendRecordNote-URL-START-->
+                <prop key="/jbdSendRecordNotes.html">jbdSendRecordNoteController</prop>
+                <prop key="/editJbdSendRecordNote.html">jbdSendRecordNoteFormController</prop>
+                <!--JbdSendRecordNote-URL-END-->
+                <!--InwDemandsort-URL-START-->
+                <prop key="/inwDemandsorts.html">inwDemandsortController</prop>
+                <prop key="/editInwDemandsort.html">inwDemandsortFormController</prop>
+                <!--InwDemandsort-URL-END-->
+                <!--JpmConfigDetailed-URL-START-->
+                <prop key="/jpmConfigDetaileds.html">jpmConfigDetailedController</prop>
+                <prop key="/editJpmConfigDetailed.html">jpmConfigDetailedFormController</prop>
+                <!--JpmConfigDetailed-URL-END-->
+                <!--JpmMemberConfig-URL-START-->
+                <prop key="/jpmMemberConfigs.html">jpmMemberConfigController</prop>
+                <prop key="/editJpmMemberConfig.html">jpmMemberConfigFormController</prop>
+                <!--JpmMemberConfig-URL-END-->
+                <!--JpmConfigSpecDetailed-URL-START-->
+                <prop key="/jpmConfigSpecDetaileds.html">jpmConfigSpecDetailedController</prop>
+                <prop key="/editJpmConfigSpecDetailed.html">jpmConfigSpecDetailedFormController</prop>
+                <!--JpmConfigSpecDetailed-URL-END-->
+                
+                <!--JpmWineMemberOrder-URL-START-->
+                <prop key="/jpmWineMemberOrders.html">jpmWineMemberOrderController</prop>
+                <!--JpmConfigSpecDetailed-URL-END-->
+                <!--JpmSendConsignment-URL-START-->
+                <prop key="/jpmSendConsignments.html">jpmSendConsignmentController</prop>
+                <prop key="/editJpmSendConsignment.html">jpmSendConsignmentFormController</prop>
+                <!--JpmSendConsignment-URL-END-->
+                <!--InwDepartment-URL-START-->
+                <prop key="/inwDepartments.html">inwDepartmentController</prop>
+                <prop key="/editInwDepartment.html">inwDepartmentFormController</prop>
+                <!--InwDepartment-URL-END-->
+                <!--InwDepartCompetence-URL-START-->
+                <prop key="/inwDepartCompetences.html">inwDepartCompetenceController</prop>
+                <prop key="/editInwDepartCompetence.html">inwDepartCompetenceFormController</prop>
+                <!--InwDepartCompetence-URL-END-->
+                <!--InwIntegrationTotal-URL-START-->
+                <prop key="/inwIntegrationTotals.html">inwIntegrationTotalController</prop>
+                <prop key="/editInwIntegrationTotal.html">inwIntegrationTotalFormController</prop>
+                <!--InwIntegrationTotal-URL-END-->
+                
+                <!--InwDepartPerson-URL-START-->
+                <prop key="/inwDepartPersons.html">inwDepartPersonController</prop>
+                <prop key="/editInwDepartPerson.html">inwDepartPersonFormController</prop>
+                <!--InwDepartPerson-URL-END-->
+                <!--PdShUrl-URL-START-->
+                <prop key="/pdShUrls.html">pdShUrlController</prop>
+                <prop key="/editPdShUrl.html">pdShUrlFormController</prop>
+                <!--PdShUrl-URL-END-->
+                
+                <!--JpoProductNumLimit-URL-START-->
+                <prop key="/jpoProductNumLimits.html">jpoProductNumLimitController</prop>
+                <prop key="/editJpoProductNumLimit.html">jpoProductNumLimitFormController</prop>
+                <!--JpoProductNumLimit-URL-END-->
+                <!--JmiDealList-URL-START-->
+                <prop key="/jmiDealLists.html">jmiDealListController</prop>
+                <prop key="/editJmiDealList.html">jmiDealListFormController</prop>
+                <!--JmiDealList-URL-END-->
+                <!--JmiStateLog-URL-START-->
+                <prop key="/jmiStateLogs.html">jmiStateLogController</prop>
+                <prop key="/editJmiStateLog.html">jmiStateLogFormController</prop>
+                <!--JmiStateLog-URL-END-->
+                <!--JfiPayLog-URL-START-->
+                <prop key="/jfiPayLogs.html">jfiPayLogController</prop>
+                <prop key="/editJfiPayLog.html">jfiPayLogFormController</prop>
+                <!--JfiPayLog-URL-END-->
+                
+                
+               
+                <!--JmiMemberLog-URL-START-->
+                <prop key="/jmiMemberLogs.html">jmiMemberLogController</prop>
+                <prop key="/editJmiMemberLog.html">jmiMemberLogFormController</prop>
+                <!--JmiMemberLog-URL-END-->
+                <!--JmiPrizeTourism-URL-START-->
+                <prop key="/jmiPrizeTourisms.html">jmiPrizeTourismController</prop>
+                <prop key="/editJmiPrizeTourism.html">jmiPrizeTourismFormController</prop>
+                <!--JmiPrizeTourism-URL-END-->
+                <!--JbdTravelPointAll-URL-START-->
+                <prop key="/jbdTravelPointAlls.html">jbdTravelPointAllController</prop>
+                <prop key="/editJbdTravelPointAll.html">jbdTravelPointAllFormController</prop>
+                <!--JbdTravelPointAll-URL-END-->
+                <!--JbdTravelPointLogAll-URL-START-->
+                <prop key="/jbdTravelPointLogAlls.html">jbdTravelPointLogAllController</prop>
+                <prop key="/editJbdTravelPointLogAll.html">jbdTravelPointLogAllFormController</prop>
+                <!--JbdTravelPointLogAll-URL-END-->
+                <!--JfiBusinessNum-URL-START-->
+                <prop key="/jfiBusinessNums.html">jfiBusinessNumController</prop>
+                <prop key="/editJfiBusinessNum.html">jfiBusinessNumFormController</prop>
+                <!--JfiBusinessNum-URL-END-->
+                
+                <!--JmiAssure-URL-START-->
+                <prop key="/jmiAssures.html">jmiAssureController</prop>
+                <prop key="/editJmiAssure.html">jmiAssureFormController</prop>
+                <prop key="/jmiAssureReport.html">jmiAssureReportController</prop>
+                <prop key="/jmiAssureListImport.html">jmiAssureListImportController</prop>
+                <!--JmiAssure-URL-END-->
+                <!--JpoMemberNyc-URL-START-->
+                <prop key="/jpoMemberNycs.html">jpoMemberNycController</prop>
+                <prop key="/editJpoMemberNyc.html">jpoMemberNycFormController</prop>
+                <prop key="/importJpoMemberNyc.html">jpoMemberNycImportFormController</prop>
+                <prop key="/jpoMemberNycQualified.html">jpoMemberNycQualifiedController</prop>
+                <!--JpoMemberNyc-URL-END-->
+                <!--JpoMemberNycLog-URL-START-->
+                <!--<prop key="/jpoMemberNycLogs.html">jpoMemberNycLogController</prop>-->
+                <!--<prop key="/editJpoMemberNycLog.html">jpoMemberNycLogFormController</prop>-->
+                <!--JpoMemberNycLog-URL-END-->
+                <!--JpoMemberNycQualify-URL-START-->
+                <prop key="/jpoMemberNycQualifys.html">jpoMemberNycQualifyController</prop>
+                <prop key="/importJpoMemberNycQualify.html">jpoMemberNycQualifyFormController</prop>
+                <!--JpoMemberNycQualify-URL-END-->
+                <!-- Add additional URL mappings here -->
+
+
+
+
+
+
+
+
+
+				<!--PdShipStrategyMain-URL-START-->
+                <prop key="/pdShipStrategyMains.html">pdShipStrategyMainController</prop>
+                <prop key="/editPdShipStrategyMain.html">pdShipStrategyMainFormController</prop>
+                <!--PdShipStrategyMain-URL-END-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<!--JfiUmbpayLog-URL-START-->
+                <prop key="/jfiUmbpayLogs.html">jfiUmbpayLogController</prop>
+                <prop key="/editJfiUmbpayLog.html">jfiUmbpayLogFormController</prop>
+                <!--JfiUmbpayLog-URL-END-->
+
+
+				<!--JocsInterfaceRetransmission-URL-START-->
+                <prop key="/jocsInterfaceRetransmissions.html">jocsInterfaceRetransmissionController</prop>
+                <prop key="/editJocsInterfaceRetransmission.html">jocsInterfaceRetransmissionFormController</prop>
+                <!--JocsInterfaceRetransmission-URL-END-->
+
+
+
+
+
+              <!--JpmCouponInfo-URL-START-->
+                <prop key="/jpmCouponInfos.html">jpmCouponInfoController</prop>
+                <prop key="/editJpmCouponInfo.html">jpmCouponInfoFormController</prop>
+                <!--JpmCouponInfo-URL-END-->
+                <!--JpmCouponRelationship-URL-START-->
+                <prop key="/jpmCouponRelationships.html">jpmCouponRelationshipController</prop>
+                <prop key="/editJpmCouponRelationship.html">jpmCouponRelationshipFormController</prop>
+                <!--JpmCouponRelationship-URL-END-->
+                <!--JpoUserCoupon-URL-START-->
+                <prop key="/jpoUserCoupons.html">jpoUserCouponController</prop>
+                <prop key="/editJpoUserCoupon.html">jpoUserCouponFormController</prop>
+                <!--JpoUserCoupon-URL-END-->
+                <!--JpoCouponRelationship-URL-START-->
+                <prop key="/jpoCouponRelationships.html">jpoCouponRelationshipController</prop>
+                <prop key="/editJpoCouponRelationship.html">jpoCouponRelationshipFormController</prop>
+                <!--JpoCouponRelationship-URL-END-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+                
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<prop key="/reload.do">reloadController</prop>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           </props>
+        </property>
+    </bean>
+
+    <bean id="adminUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="interceptors">
+            <list>
+                <ref bean="adminInterceptor"/>
+            </list>
+        </property>
+        <property name="mappings">
+            <props>
+                <prop key="/activeUsers.html">filenameController</prop>
+                <prop key="/users.html">userController</prop>
+                <prop key="/flushCache.html">filenameController</prop>                
+                
+            </props>
+        </property>
+    </bean>
+
+    <bean id="adminInterceptor" class="org.springframework.web.servlet.handler.UserRoleAuthorizationInterceptor">
+        <property name="authorizedRoles" value="admin"/>
+    </bean>
+    
+    <bean id="filenameController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
+
+    <!-- View Resolver for JSPs -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="requestContextAttribute" value="rc"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+</beans>

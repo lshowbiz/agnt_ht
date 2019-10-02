@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pr.model.JprRefund"
+            table="JPR_REFUND"
+    >
+
+    <id
+        name="roNo"
+            column="RO_NO"
+                type="java.lang.String"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="stjFlag"
+                    column="STJ_FLAG"
+        >
+
+        </property>
+
+        <property
+            name="wyear"
+                    column="W_YEAR"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="wmonth"
+                    column="W_MONTH"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="wweek"
+                    column="W_WEEK"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="amount"
+                    column="AMOUNT"
+                length="18"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="pvAmt"
+                    column="PV_AMT"
+                length="18"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="orderDate"
+                    column="ORDER_DATE"
+                length="7"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="resendSpNo"
+                    column="RESEND_SP_NO"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="intoStatus"
+                    column="INTO_STATUS"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="intoTime"
+                    column="INTO_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="intoUNo"
+                    column="INTO_U_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="intoRemark"
+                    column="INTO_REMARK"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="refundStatus"
+                    column="REFUND_STATUS"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="refundTime"
+                    column="REFUND_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="refundUNo"
+                    column="REFUND_U_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="refundRemark"
+                    column="REFUND_REMARK"
+                length="200"
+        >
+
+        </property>
+
+        <many-to-one
+            name="jpoMemberOrder"
+                    column="MO_ID"
+                not-found="ignore"
+                cascade="none"
+        >
+
+        </many-to-one>
+
+        <property
+            name="orderType"
+                    column="ORDER_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createUNo"
+                    column="CREATE_U_NO"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="editTime"
+                    column="EDIT_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="editUNo"
+                    column="EDIT_U_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="locked"
+                    column="LOCKED"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="returnType"
+                    column="RETURN_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <many-to-one
+            name="sysUser"
+                    column="USER_CODE"
+                not-null="true"
+        >
+
+        </many-to-one>
+
+        <set
+            name="jprReFundList"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+            order-by="PRL_ID"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="RO_NO"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.pr.model.JprRefundList"
+            />
+
+        </set>
+
+        <property
+            name="orderStatus"
+                    column="ORDER_STATUS"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="repairFee"
+                    column="REPAIR_FEE"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="renovationFee"
+                    column="RENOVATION_FEE"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="logisticsFee"
+                    column="LOGISTICS_FEE"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="settledBonus"
+                    column="SETTLED_BONUS"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="fillFreight"
+                    column="FILL_FREIGHT"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="logisticsFeeSix"
+                    column="LOGISTICS_FEE_SIX"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="logisticsFeeSeven"
+                    column="LOGISTICS_FEE_SEVEN"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="logisticsFeeEight"
+                    column="LOGISTICS_FEE_EIGHT"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="refundTye"
+                    column="REFUND_TYPE"
+                length="20"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

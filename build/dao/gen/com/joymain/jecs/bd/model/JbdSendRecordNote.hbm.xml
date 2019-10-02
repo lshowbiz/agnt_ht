@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.JbdSendRecordNote"
+            table="JBD_SEND_RECORD_NOTE"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    </id>
+
+        <property
+            name="memberLevel"
+                    column="MEMBER_LEVEL"
+        >
+
+        </property>
+
+        <property
+            name="wyear"
+                    column="W_YEAR"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="wmonth"
+                    column="W_MONTH"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="wweek"
+                    column="W_WEEK"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="recommendNo"
+                    column="RECOMMEND_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="linkNo"
+                    column="LINK_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="name"
+                    column="NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="petName"
+                    column="PET_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="cardType"
+                    column="CARD_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="bank"
+                    column="BANK"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="bankaddress"
+                    column="BANKADDRESS"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="bankbook"
+                    column="BANKBOOK"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="bankcard"
+                    column="BANKCARD"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="exitDate"
+                    column="EXIT_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="sendLateCause"
+                    column="SEND_LATE_CAUSE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="sendLateRemark"
+                    column="SEND_LATE_REMARK"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="remittanceMoney"
+                    column="REMITTANCE_MONEY"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="remittanceBNum"
+                    column="REMITTANCE_B_NUM"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="operaterTime"
+                    column="OPERATER_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="sendDate"
+                    column="SEND_DATE"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="registerStatus"
+                    column="REGISTER_STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="reissueStatus"
+                    column="REISSUE_STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="supplyTime"
+                    column="SUPPLY_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="sendTrace"
+                    column="SEND_TRACE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="sendRemark"
+                    column="SEND_REMARK"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="sendMoney"
+                    column="SEND_MONEY"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="active"
+                    column="ACTIVE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="memberType"
+                    column="MEMBER_TYPE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="startWeek"
+                    column="START_WEEK"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="validWeek"
+                    column="VALID_WEEK"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="freezeStatus"
+                    column="FREEZE_STATUS"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="beforeFreezeStatus"
+                    column="BEFORE_FREEZE_STATUS"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="totalDev"
+                    column="TOTAL_DEV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="deductedDev"
+                    column="DEDUCTED_DEV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="currentDev"
+                    column="CURRENT_DEV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="leaderDev"
+                    column="LEADER_DEV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="leaderDevPv"
+                    column="LEADER_DEV_PV"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="sendStatusDev"
+                    column="SEND_STATUS_DEV"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="sendDateDev"
+                    column="SEND_DATE_DEV"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="sendUserDev"
+                    column="SEND_USER_DEV"
+                length="20"
+        >
+
+        </property>
+
+        <many-to-one
+            name="jmiMember"
+        >
+
+            <column
+                name="USER_CODE" 
+            />
+
+        </many-to-one>
+
+        <many-to-one
+            name="operaterSysUser"
+        >
+
+            <column
+                name="OPERATER_CODE" 
+            />
+
+        </many-to-one>
+
+    </class>    
+
+</hibernate-mapping>
+

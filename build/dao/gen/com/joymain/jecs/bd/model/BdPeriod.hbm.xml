@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.BdPeriod"
+            table="JBD_PERIOD"
+    >
+
+    <id
+        name="wid"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="wyear"
+                    column="W_YEAR"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="wmonth"
+                    column="W_MONTH"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="wweek"
+                    column="W_WEEK"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="startTime"
+                    column="START_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="endTime"
+                    column="END_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="lastMark"
+                    column="LAST_MARK"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="bonusSend"
+                    column="BONUS_SEND"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="archivingStatus"
+                    column="ARCHIVING_STATUS"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="monthStatus"
+                    column="MONTH_STATUS"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="oldWeek"
+                    column="OLD_WEEK"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="fmonth"
+                    column="F_MONTH"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="fweek"
+                    column="F_WEEK"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="fyear"
+                    column="F_YEAR"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="aweek"
+                    column="A_WEEK"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="dayStatus"
+                    column="DAY_STATUS"
+                length="8"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

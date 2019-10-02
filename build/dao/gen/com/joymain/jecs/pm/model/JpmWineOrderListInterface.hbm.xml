@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmWineOrderListInterface"
+            table="JPM_WINE_ORDER_LIST_INTERFACE"
+    >
+
+    <id
+        name="idf"
+            column="IDF"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="productId"
+                    column="PRODUCT_ID"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="qty"
+                    column="QTY"
+                length="5"
+        >
+
+        </property>
+
+        <property
+            name="price"
+                    column="PRICE"
+        >
+
+        </property>
+
+        <property
+            name="creceiptcorpid"
+                    column="CRECEIPTCORPID"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="vreceiveaddress"
+                    column="VRECEIVEADDRESS"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="dconsigndate"
+                    column="DCONSIGNDATE"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="invpv"
+                    column="INV_PV"
+        >
+
+        </property>
+
+        <many-to-one
+            name="jpmWineOrderInterface"
+                not-null="true"
+        >
+
+            <column
+                name="MO_ID" 
+            />
+
+        </many-to-one>
+
+    </class>    
+
+</hibernate-mapping>
+

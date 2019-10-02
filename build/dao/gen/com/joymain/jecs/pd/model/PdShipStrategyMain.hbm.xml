@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pd.model.PdShipStrategyMain"
+            table="PD_SHIP_STRATEGY_MAIN"
+    >
+
+    <id
+        name="valueId"
+            column="VALUE_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="keyId"
+                    column="KEY_ID"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="valueCode"
+                    column="VALUE_CODE"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="valueTitle"
+                    column="VALUE_TITLE"
+                length="150"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="exCompanyCode"
+                    column="EX_COMPANY_CODE"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="orderNo"
+                    column="ORDER_NO"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="priority"
+                    column="PRIORITY"
+                length="3"
+        >
+
+        </property>
+
+        <property
+            name="importance"
+                    column="IMPORTANCE"
+                length="3"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.JfiUsCreditCardLog"
+            table="JFI_US_CREDIT_CARD_LOG"
+    >
+
+    <id
+        name="jucclId"
+            column="JUCCL_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_FI]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="jiType"
+                    column="JI_TYPE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="userName"
+                    column="USER_NAME"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="password"
+                    column="PASSWORD"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="ccNumber"
+                    column="CC_NUMBER"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="ccExp"
+                    column="CC_EXP"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="amount"
+                    column="AMOUNT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="cvv"
+                    column="CVV"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="payment"
+                    column="PAYMENT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="firstName"
+                    column="FIRST_NAME"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="lastName"
+                    column="LAST_NAME"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="address"
+                    column="ADDRESS"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="city"
+                    column="CITY"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="state"
+                    column="STATE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="zip"
+                    column="ZIP"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="country"
+                    column="COUNTRY"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="phone"
+                    column="PHONE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="email"
+                    column="EMAIL"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="response"
+                    column="RESPONSE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="responseText"
+                    column="RESPONSE_TEXT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="authCode"
+                    column="AUTH_CODE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="transactionId"
+                    column="TRANSACTION_ID"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="avsResponse"
+                    column="AVS_RESPONSE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="cvvResponse"
+                    column="CVV_RESPONSE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="orderId"
+                    column="ORDER_ID"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="typeResponse"
+                    column="TYPE_RESPONSE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="responseCode"
+                    column="RESPONSE_CODE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="inc"
+                    column="INC"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="responseStr"
+                    column="RESPONSE_STR"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

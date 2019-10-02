@@ -1,0 +1,24 @@
+/* CSS Document */
+body{margin:0 auto;padding:0; font:Arial;color:#767676;background-color:#f9f9f9;}
+.login_m1{background: url("../images/jm-bg.png") no-repeat center center fixed;
+        -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+    background-size: cover;}
+.login_m1 p {
+    display: block;
+    margin: 10px 0 0 0;
+    padding: 0;
+}
+.subRight{margin: 40px 0; text-align:center;}
+.subLeft{ margin-left: 40%; margin-top: 15%;}
+
+.subLeft1{width:220px;}
+.subLeft2 a{margin-left:90px; text-decoration:none; color:#666666}
+.login_m p{line-height:40px; margin:0; padding:0px;display:block;font:bold;font-family:"Microsoft YaHei";}
+.fm_1{height:25px; background-color:#fafafa; border:1px solid #d6d6d6; line-height:25px;width:220px;}
+.fm_2{height:25px; background-color:#fafafa; border:1px solid #d6d6d6; line-height:25px;width:130px;}
+.subButton{margin:10px 0;width:20px; cursor:pointer; background:#42b5de;  height: 32px;  width: 220px; border-radius:5px; border:1px solid #42b5de;
+font-size:18px; color:#fff;line-height:1.42857143;}
+.clear{clear:both;}
+.subLeft3{width:420px;}

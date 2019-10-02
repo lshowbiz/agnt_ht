@@ -1,0 +1,38 @@
+/*纵向打印*/
+.portrait {
+	height: 5in; 
+	width: 7.3in;
+}
+/*横向打印*/
+.landscape{
+	height: 7.3in; 
+	width: 11in;
+}
+
+table.print {
+	font-weight: 9pt;
+	border-collapse:collapse;
+	border: 0px solid #FFFFFF;
+}
+
+table.print .bottomLine {
+    font-size: 9pt; 
+	border-bottom: 1px solid Black;	
+	font-weight: normal;
+}
+
+table.print .topBottomLine {
+    font-size: 9pt; 
+    border-top: 1px solid Black;	
+	border-bottom: 1px solid Black;	
+	font-weight: normal;
+}
+
+table.print .title {
+	font-size: 18pt; 
+	font-weight: bold;
+}
+
+table.print .bigger {
+	font-size: 12pt; 
+}

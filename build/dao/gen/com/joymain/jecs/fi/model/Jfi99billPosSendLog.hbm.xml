@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.Jfi99billPosSendLog"
+            table="JFI_99BILL_POS_SEND_LOG"
+    >
+
+    <id
+        name="logId"
+            column="LOG_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="actionType"
+                    column="ACTION_TYPE"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="actionNo"
+                    column="ACTION_NO"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createCode"
+                    column="CREATE_CODE"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="returnTime"
+                    column="RETURN_TIME"
+                length="6"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="hashMd5Code"
+                    column="HASH_MD5_CODE"
+                length="32"
+        >
+
+        </property>
+
+        <property
+            name="url"
+                    column="URL"
+                length="4000"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

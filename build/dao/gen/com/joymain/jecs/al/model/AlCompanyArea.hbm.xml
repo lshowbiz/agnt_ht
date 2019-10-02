@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.al.model.AlCompanyArea"
+            table="JAL_COMPANY_AREA"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="level1AreaCode"
+                    column="LEVEL1_AREA_CODE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="level2AreaCode"
+                    column="LEVEL2_AREA_CODE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="level3AreaCode"
+                    column="LEVEL3_AREA_CODE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="level4AreaCode"
+                    column="LEVEL4_AREA_CODE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="level5AreaCode"
+                    column="LEVEL5_AREA_CODE"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="level6AreaCode"
+                    column="LEVEL6_AREA_CODE"
+                length="30"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

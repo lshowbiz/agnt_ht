@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.po.model.JpoShippingFee"
+            table="JPO_SHIPPING_FEE"
+    >
+
+    <id
+        name="jpsId"
+            column="JPS_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PO]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="province"
+                    column="PROVINCE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="city"
+                    column="CITY"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="district"
+                    column="DISTRICT"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="countryCode"
+                    column="COUNTRY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="shippingType"
+                    column="SHIPPING_TYPE"
+                length="10"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="shippingFee"
+                    column="SHIPPING_FEE"
+                length="18"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="shippingRefee"
+                    column="SHIPPING_REFEE"
+                length="18"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="shippingWeight"
+                    column="SHIPPING_WEIGHT"
+                length="18"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="shippingReweight"
+                    column="SHIPPING_REWEIGHT"
+                length="18"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

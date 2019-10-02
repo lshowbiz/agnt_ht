@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmProductSaleLog"
+            table="JPM_PRODUCT_SALE_LOG"
+    >
+
+    <id
+        name="uniNo"
+            column="UNI_NO"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_PM]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+        >
+
+        </property>
+
+        <many-to-one
+            name="jpmProduct"
+                not-null="true"
+        >
+
+            <column
+                name="PRODUCT_NO" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="productName"
+                    column="PRODUCT_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="fpPrice"
+                    column="FP_PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="fpPv"
+                    column="FP_PV"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="mpPrice"
+                    column="MP_PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="mpPv"
+                    column="MP_PV"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="storeFpPrice"
+                    column="STORE_FP_PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="storeFpPv"
+                    column="STORE_FP_PV"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="storeMpPrice"
+                    column="STORE_MP_PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="storeMpPv"
+                    column="STORE_MP_PV"
+                length="8"
+        >
+
+        </property>
+
+        <property
+            name="whoPrice"
+                    column="WHO_PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="discountPrice"
+                    column="DISCOUNT_PRICE"
+                length="18"
+        >
+
+        </property>
+
+        <property
+            name="weight"
+                    column="WEIGHT"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="volume"
+                    column="VOLUME"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="length"
+                    column="LENGTH"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="width"
+                    column="WIDTH"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="height"
+                    column="HEIGHT"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="imageLink"
+                    column="IMAGE_LINK"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="albumLink"
+                    column="ALBUM_LINK"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="confirm"
+                    column="CONFIRM"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="controlFirst"
+                    column="CONTROL_FIRST"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="controlUpdate"
+                    column="CONTROL_UPDATE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="controlRepurchase"
+                    column="CONTROL_REPURCHASE"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="editUserCode"
+                    column="EDIT_USER_CODE"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="editTime"
+                    column="EDIT_TIME"
+                length="7"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

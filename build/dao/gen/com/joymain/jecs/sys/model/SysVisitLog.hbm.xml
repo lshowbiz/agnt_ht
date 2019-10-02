@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sys.model.SysVisitLog"
+            table="JSYS_VISIT_LOG"
+    >
+
+    <id
+        name="logId"
+            column="LOG_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_LOG]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="moduleCode"
+                    column="MODULE_CODE"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="userCode"
+                    column="USER_CODE"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="visitUrl"
+                    column="VISIT_URL"
+                length="250"
+        >
+
+        </property>
+
+        <property
+            name="visitTime"
+                    column="VISIT_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="queryString"
+                    column="QUERY_STRING"
+                length="2000"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

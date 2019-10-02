@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pd.model.PdReturnPurchaseDetail"
+            table="PD_RETURN_PURCHASE_DETAIL"
+    >
+
+    <id
+        name="uniNo"
+            column="UNI_NO"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="rpNo"
+                    column="RP_NO"
+                length="17"
+        >
+
+        </property>
+
+        <property
+            name="productNo"
+                    column="PRODUCT_NO"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="price"
+                    column="PRICE"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="qty"
+                    column="QTY"
+                length="10"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="erpProductNo"
+                    column="ERP_PRODUCT_NO"
+                length="30"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

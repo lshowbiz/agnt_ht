@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmConfigDetailed"
+            table="JPM_CONFIG_DETAILED"
+    >
+
+    <id
+        name="configdetailedNo"
+            column="CONFIGDETAILED_NO"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="subNo"
+                    column="SUB_NO"
+        >
+
+        </property>
+
+        <property
+            name="subName"
+                    column="SUB_NAME"
+        >
+
+        </property>
+
+        <property
+            name="subAmount"
+                    column="SUB_AMOUNT"
+        >
+
+        </property>
+
+        <property
+            name="createtime"
+                    column="CREATETIME"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+        >
+
+        </property>
+
+        <property
+            name="specNo"
+                    column="SPEC_NO"
+        >
+
+        </property>
+
+        <property
+            name="price"
+                    column="PRICE"
+        >
+
+        </property>
+
+        <property
+            name="isMustSelected"
+                    column="IS_MUST_SELECTED"
+        >
+
+        </property>
+
+        <property
+            name="idf"
+                    column="IDF"
+        >
+
+        </property>
+
+        <property
+            name="isMainMaterial"
+                    column="IS_MAIN_MATERIAL"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.fi.model.JfiHiTrustLog"
+            table="JFI_HI_TRUST_LOG"
+    >
+
+    <id
+        name="logId"
+            column="LOG_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_FI]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="orderNo"
+                    column="ORDER_NO"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="retCode"
+                    column="RET_CODE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="currency"
+                    column="CURRENCY"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="orderDate"
+                    column="ORDER_DATE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="orderStatus"
+                    column="ORDER_STATUS"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="approveAmount"
+                    column="APPROVE_AMOUNT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="authCode"
+                    column="AUTH_CODE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="authRrn"
+                    column="AUTH_RRN"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="captureAmount"
+                    column="CAPTURE_AMOUNT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="payBatchNum"
+                    column="PAY_BATCH_NUM"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="captureDate"
+                    column="CAPTURE_DATE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="refundAmount"
+                    column="REFUND_AMOUNT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="refundBatch"
+                    column="REFUND_BATCH"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="refundRrn"
+                    column="REFUND_RRN"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="refundCode"
+                    column="REFUND_CODE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="refundDate"
+                    column="REFUND_DATE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="acquirer"
+                    column="ACQUIRER"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="cardType"
+                    column="CARD_TYPE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="url"
+                    column="URL"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="ttype"
+                    column="T_TYPE"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="eci"
+                    column="ECI"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="inc"
+                    column="INC"
+                length="1"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="referer"
+                    column="REFERER"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="returnMsg"
+                    column="RETURN_MSG"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="pageType"
+                    column="PAGE_TYPE"
+                length="4000"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="orderDesc"
+                    column="ORDER_DESC"
+                length="2"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

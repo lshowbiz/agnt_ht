@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.sys.model.SysModule"
+            table="JSYS_MODULE"
+    >
+
+    <id
+        name="moduleId"
+            column="MODULE_ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_SYS]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="parentId"
+                    column="PARENT_ID"
+                length="22"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="moduleCode"
+                    column="MODULE_CODE"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="moduleName"
+                    column="MODULE_NAME"
+                length="100"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="moduleDesc"
+                    column="MODULE_DESC"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="moduleType"
+                    column="MODULE_TYPE"
+                length="4"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="linkUrl"
+                    column="LINK_URL"
+                length="250"
+        >
+
+        </property>
+
+        <property
+            name="orderNo"
+                    column="ORDER_NO"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="isActive"
+                    column="IS_ACTIVE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="isValidate"
+                    column="IS_VALIDATE"
+                length="4"
+        >
+
+        </property>
+
+        <property
+            name="treeIndex"
+                    column="TREE_INDEX"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="treeLevel"
+                    column="TREE_LEVEL"
+                length="12"
+        >
+
+        </property>
+
+        <property
+            name="otherUrl1"
+                    column="OTHER_URL1"
+                length="250"
+        >
+
+        </property>
+
+        <property
+            name="otherUrl2"
+                    column="OTHER_URL2"
+                length="250"
+        >
+
+        </property>
+
+        <property
+            name="otherUrl3"
+                    column="OTHER_URL3"
+                length="250"
+        >
+
+        </property>
+
+        <property
+            name="otherUrl4"
+                    column="OTHER_URL4"
+                length="250"
+        >
+
+        </property>
+
+        <property
+            name="otherUrl5"
+                    column="OTHER_URL5"
+                length="250"
+        >
+
+        </property>
+
+        <set
+            name="sysCompanyPows"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="MODULE_ID"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.sys.model.SysCompanyPow"
+            />
+
+        </set>
+
+        <set
+            name="sysUsrTypePows"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="MODULE_ID"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="com.joymain.jecs.sys.model.SysUsrTypePow"
+            />
+
+        </set>
+
+    </class>    
+
+</hibernate-mapping>
+

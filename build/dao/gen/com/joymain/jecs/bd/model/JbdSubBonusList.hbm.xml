@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.bd.model.JbdSubBonusList"
+            table="JBD_SUB_BONUS_LIST"
+    >
+
+    <id
+        name="id"
+            column="ID"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[JD_SEQ]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <many-to-one
+            name="jmiMember"
+        >
+
+            <column
+                name="USER_CODE" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="amount"
+                    column="AMOUNT"
+                length="22"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                    column="REMARK"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="createNo"
+                    column="CREATE_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="treatedNo"
+                    column="TREATED_NO"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="sendNo"
+                    column="SEND_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="sendTime"
+                    column="SEND_TIME"
+                length="7"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

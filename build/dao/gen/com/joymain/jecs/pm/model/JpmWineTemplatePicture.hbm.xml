@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.pm.model.JpmWineTemplatePicture"
+            table="JPM_WINE_TEMPLATE_PICTURE"
+    >
+
+    <id
+        name="idf"
+            column="IDF"
+                type="java.lang.Long"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <many-to-one
+            name="jpmProductWineTemplateSub"
+                not-null="true"
+                cascade="none"
+        >
+
+            <column
+                name="SUB_NO" 
+            />
+
+        </many-to-one>
+
+        <property
+            name="subName"
+                    column="SUB_NAME"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="pictureName"
+                    column="PICTURE_NAME"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="picturePath"
+                    column="PICTURE_PATH"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                    column="CREATE_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="pictureSize"
+                    column="PICTURE_SIZE"
+        >
+
+        </property>
+
+        <property
+            name="pictureExt"
+                    column="PICTURE_EXT"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="isInvalid"
+                    column="IS_INVALID"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="pictureNameSrc"
+                    column="PICTURE_NAME_SRC"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="pictureNameDist"
+                    column="PICTURE_NAME_DIST"
+                length="100"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

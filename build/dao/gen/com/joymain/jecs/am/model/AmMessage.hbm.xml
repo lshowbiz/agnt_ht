@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.joymain.jecs.am.model.AmMessage"
+            table="AM_MESSAGE"
+    >
+
+    <id
+        name="uniNo"
+            column="UNI_NO"
+                type="java.lang.String"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="sequence">
+
+        <!-- The generator-param tag is deprecated, use the @hibernate.generator and @hibernate.param tags instead -->
+        <param
+                name="sequence"
+        >
+            <![CDATA[SEQ_AM]]>
+        </param>
+
+    </generator>
+
+    </id>
+
+        <property
+            name="senderName"
+                    column="SENDER_NAME"
+                length="16"
+        >
+
+        </property>
+
+        <property
+            name="agentName"
+                    column="AGENT_NAME"
+                length="16"
+        >
+
+        </property>
+
+        <property
+            name="receiverName"
+                    column="RECEIVER_NAME"
+                length="16"
+        >
+
+        </property>
+
+        <property
+            name="issueTime"
+                    column="ISSUE_TIME"
+                length="7"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="replyTime"
+                    column="REPLY_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="msgClassNo"
+                    column="MSG_CLASS_NO"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="subject"
+                    column="SUBJECT"
+                length="250"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="senderNo"
+                    column="SENDER_NO"
+                length="20"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="agentNo"
+                    column="AGENT_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="content"
+                    type="org.springframework.orm.hibernate3.support.ClobStringType"
+                    column="CONTENT"
+                length="4000"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="receiverNo"
+                    column="RECEIVER_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="replyContent"
+                    type="org.springframework.orm.hibernate3.support.ClobStringType"
+                    column="REPLY_CONTENT"
+                length="4000"
+        >
+
+        </property>
+
+        <property
+            name="checkUserNo"
+                    column="CHECK_USER_NO"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="checkMsgTime"
+                    column="CHECK_MSG_TIME"
+                length="7"
+        >
+
+        </property>
+
+        <property
+            name="companyCode"
+                    column="COMPANY_CODE"
+                length="2"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                    column="STATUS"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="sendRoute"
+                    column="SEND_ROUTE"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="discuss"
+                    column="DISCUSS"
+                length="1"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

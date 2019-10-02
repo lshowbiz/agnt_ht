@@ -1,0 +1,407 @@
+﻿<%@ page contentType="text/html; charset=utf-8" language="java" pageEncoding="UTF-8"%>
+<%@ page import="java.text.*" %>   
+<%@ page import="java.util.*" %> 
+<%@ page import="com.buybal.util.signers.*" %> 
+<%@ page import="md5.*" %> 
+<html>
+  <head>
+    <title>商户向平台下订单(网银直连)</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="../common/css/public_css_ussys.css" type="text/css">
+	<link type="text/css" rel="stylesheet" href="../common/syntaxHighlighter/css/SyntaxHighlighter.css"></link>
+	<script language="javascript" src="../common/syntaxHighlighter/js/shCore.js"></script>
+	<script language="javascript" src="../common/syntaxHighlighter/js/shBrushJava.js"></script>
+
+  </head>
+<%
+  request.setCharacterEncoding("utf-8"); 
+  response.setCharacterEncoding("utf-8"); 
+	StringBuffer signSb = new StringBuffer(); 
+	
+	signSb.append("bgUrl="); 
+	String bgUrl = ""; 
+	if(request.getParameter("bgUrl")!=null) 
+	  bgUrl = request.getParameter("bgUrl");
+	signSb.append(bgUrl);  
+
+	signSb.append("&notifyUrl="); 
+	String notifyUrl = ""; 
+	if(request.getParameter("notifyUrl")!=null) 
+	  notifyUrl = request.getParameter("notifyUrl"); 
+	signSb.append(notifyUrl);  
+	  
+		
+	signSb.append("&businessId="); 
+	String businessId = ""; 
+	if(request.getParameter("businessId")!=null) 
+	  businessId = request.getParameter("businessId"); 
+	signSb.append(businessId);  
+	 
+	
+	
+	signSb.append("&platIdtfy="); 
+	String platIdtfy = ""; 
+	if(request.getParameter("platIdtfy")!=null) 
+	  platIdtfy = request.getParameter("platIdtfy"); 
+	signSb.append(platIdtfy);  
+	 
+	
+	signSb.append("&merchantId="); 
+	String merchantId = ""; 
+	if(request.getParameter("merchantId")!=null) 
+	  merchantId = request.getParameter("merchantId"); 
+	signSb.append(merchantId);  
+	 
+	
+	
+	signSb.append("&orderId="); 
+	String orderId = ""; 
+	if(request.getParameter("orderId")!=null) 
+	  orderId = request.getParameter("orderId");
+	signSb.append(orderId);  
+	 
+	
+	
+	signSb.append("&orderDate="); 
+	String orderDate = ""; 
+	if(request.getParameter("orderDate")!=null) 
+	  orderDate = request.getParameter("orderDate");
+	signSb.append(orderDate);  
+	 
+	
+	
+	signSb.append("&bankType="); 
+	String bankType = ""; 
+	if(request.getParameter("bankType")!=null) 
+	  bankType = request.getParameter("bankType");
+	signSb.append(bankType);  
+	 
+	
+	signSb.append("&payeeBankAccount="); 
+	String payeeBankAccount = ""; 
+	if(request.getParameter("payeeBankAccount")!=null) 
+	  payeeBankAccount = request.getParameter("payeeBankAccount");
+	signSb.append(payeeBankAccount);  
+	 
+	
+	signSb.append("&payeeBankType="); 
+	String payeeBankType = ""; 
+	if(request.getParameter("payeeBankType")!=null) 
+	  payeeBankType = request.getParameter("payeeBankType");
+	signSb.append(payeeBankType);  
+	 
+	
+	signSb.append("&payeeBankName="); 
+	String payeeBankName = ""; 
+	if(request.getParameter("payeeBankName")!=null) 
+	  payeeBankName = request.getParameter("payeeBankName");
+	signSb.append(payeeBankName);  
+	 
+	
+	signSb.append("&payeeName="); 
+	String payeeName = ""; 
+	if(request.getParameter("payeeName")!=null) 
+	  payeeName = request.getParameter("payeeName");
+	signSb.append(payeeName);  
+	 
+	
+	signSb.append("&deviceId="); 
+	String deviceId = ""; 
+	if(request.getParameter("deviceId")!=null) 
+	  deviceId = request.getParameter("deviceId");
+	signSb.append(deviceId);  
+	 
+
+	signSb.append("&payerName="); 
+	String payerName = ""; 
+	if(request.getParameter("payerName")!=null) 
+	  payerName = request.getParameter("payerName");
+	signSb.append(payerName);  
+	 
+	
+	signSb.append("&payerCardType="); 
+	String payerCardType = ""; 
+	if(request.getParameter("payerCardType")!=null) 
+	  payerCardType = request.getParameter("payerCardType");
+	signSb.append(payerCardType);  
+	 
+	
+	signSb.append("&payerContactMbl="); 
+	String payerContactMbl = ""; 
+	if(request.getParameter("payerContactMbl")!=null) 
+	  payerContactMbl = request.getParameter("payerContactMbl");
+	signSb.append(payerContactMbl);  
+	 
+	
+	signSb.append("&payerContactMal="); 
+	String payerContactMal = ""; 
+	if(request.getParameter("payerContactMal")!=null) 
+	  payerContactMal = request.getParameter("payerContactMal");
+	signSb.append(payerContactMal);  
+	 
+	
+	signSb.append("&orderAmount="); 
+	String orderAmount = ""; 
+	if(request.getParameter("orderAmount")!=null) 
+	  orderAmount = request.getParameter("orderAmount");
+	signSb.append(orderAmount);  
+	 
+	
+	signSb.append("&amtType="); 
+	String amtType = ""; 
+	if(request.getParameter("amtType")!=null) 
+	  amtType = request.getParameter("amtType");
+	signSb.append(amtType);  
+	 
+	
+	signSb.append("&orderTime="); 
+	String orderTime = ""; 
+	if(request.getParameter("orderTime")!=null) 
+	  orderTime = request.getParameter("orderTime");
+	signSb.append(orderTime);  
+	 
+	
+	signSb.append("&expireTime="); 
+	String expireTime = ""; 
+	if(request.getParameter("expireTime")!=null) 
+	  expireTime = request.getParameter("expireTime");
+	signSb.append(expireTime);  
+	 
+	
+	signSb.append("&goodsId="); 
+	String goodsId = ""; 
+	if(request.getParameter("goodsId")!=null) 
+	  goodsId = request.getParameter("goodsId");
+	signSb.append(goodsId);  
+	 
+	
+	signSb.append("&productName="); 
+	String productName = ""; 
+	if(request.getParameter("productName")!=null) 
+	  productName = request.getParameter("productName");
+	signSb.append(productName);  
+	 
+	
+	signSb.append("&productNum="); 
+	String productNum = ""; 
+	if(request.getParameter("productNum")!=null) 
+	  productNum = request.getParameter("productNum");
+	signSb.append(productNum);  
+	 
+	
+	signSb.append("&productDesc="); 
+	String productDesc = ""; 
+	if(request.getParameter("productDesc")!=null) 
+	  productDesc = request.getParameter("productDesc");
+	signSb.append(productDesc);  
+	 
+	
+	signSb.append("&redoFlag="); 
+	String redoFlag = ""; 
+	if(request.getParameter("redoFlag")!=null) 
+	  redoFlag = request.getParameter("redoFlag");
+	signSb.append(redoFlag);  
+	 
+	
+	
+	signSb.append("&merPriv="); 
+	String merPriv = ""; 
+	if(request.getParameter("merPriv")!=null) 
+	  merPriv = request.getParameter("merPriv");
+	signSb.append(merPriv);  
+	 
+	
+	signSb.append("&expand="); 
+	String expand = ""; 
+	if(request.getParameter("expand")!=null) 
+	  expand = request.getParameter("expand");
+	signSb.append(expand);  
+	 
+	
+	signSb.append("&expand2="); 
+	String expand2 = ""; 
+	if(request.getParameter("expand2")!=null) 
+	  expand2 = request.getParameter("expand2");
+	signSb.append(expand2);  
+
+    //MD5签名	
+	
+	String key="&key=12356780Poi)(*";//MD5商户密钥
+	signSb.append(key);
+	String plain = signSb.toString();//这个是为了在本DEMO中显示签名原串
+	byte[]  temp  =   plain.getBytes("UTF-8");
+	String pubString=new String(temp);
+	String sign=Md5.encodeMD5(pubString);
+	
+	
+	
+	//公私钥签名 商户号100000131
+    /*
+	String plain = signSb.toString();
+    String sign = SignVer.sign(plain, "D:/Program Files/apache-tomcat-7.0.37/webapps/demo/WEB-INF/cert/100000131.key.p8");
+    */
+   
+   //这个是为了在本DEMO中显示签名结果。
+   System.out.println("签名前的串:"+plain);
+   System.out.println("签名后的串:"+sign);
+	
+%>
+
+  <body>
+    <div id="HEADA"><jsp:include page="./head.jsp"/></div>
+    <div id="MAINA">
+      <div class="mindexa">
+        <div class="mleft">
+          <jsp:include page="./left.jsp"/>
+        </div>
+         <div class="mright">
+          <h3>提交信息及签名查看</h3>
+          <div class="mrmain">
+		   <form name="sendOrder" action="http://59.151.72.42:2917/gateway/gatewayManage.do?action=paymentManage" method="post" >
+            <table>
+              <tbody>
+                <tr>
+                  <th nowrap>商户号【merchantId】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="merchantId" value="<%=request.getParameter("merchantId")%>"> </strong></td>
+				 </tr>
+				 <tr>
+                  <th nowrap>手机号【payerContactMbl】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="payerContactMbl" value="<%=request.getParameter("payerContactMbl")%>"></strong></td>
+                </tr>
+         <tr>
+                  <th nowrap>邮箱【payerContactMal】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="payerContactMal" value="<%=request.getParameter("payerContactMal")%>"></strong></td>
+                </tr>
+				<tr>
+                  <th nowrap>商品号【goodsId】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="goodsId" value="<%=request.getParameter("goodsId")%>"></strong></td>
+				</tr>
+				<tr>
+                  <th>产品名称【productName】：</th>
+                  <td><input type="text" value="<%=request.getParameter("productName")%>" class="wtxt" name="productName"/></td>
+                </tr>
+				<tr>
+                  <th nowrap>商品信息【productDesc】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="productDesc" value="<%=request.getParameter("productDesc")%>"></strong></td>
+                </tr>
+				<tr>
+                  <th nowrap>订单号【orderId】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="orderId" value="<%=request.getParameter("orderId")%>"></strong></td>
+				</tr>
+				<tr>
+                  <th nowrap>下单日期【orderDate】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="orderDate" value="<%=request.getParameter("orderDate")%>"></strong></td>
+                </tr>
+        <tr>
+                  <th>下单详细时间【orderTime】：</th>
+                  <td><input type="text" value="<%=request.getParameter("orderTime")%>" class="wtxt" name="orderTime"/> <span>*</span></td>
+                </tr>
+				<tr>
+                  <th nowrap>金额【orderAmount】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="orderAmount" value="<%=request.getParameter("orderAmount")%>"></strong></td>
+				</tr>
+				<tr>
+                  <th nowrap>金额类型【amtType】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="amtType" value="<%=request.getParameter("amtType")%>"></strong></td>
+                </tr>
+                 <tr>
+                  <th>平台身份表示【platIdtfy】：</th>
+                  <td><input type="text" class="wtxt" name="platIdtfy" value="<%=request.getParameter("platIdtfy")%>"/> <span>*</span></td>
+                </tr>
+				<tr>
+                  <th nowrap>支付方式【bankType】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="bankType" value="<%=request.getParameter("bankType")%>"></strong></td>
+				</tr>
+				<tr>
+                  <th>业务编号【businessId】：</th>
+                  <td><input type="text" value="<%=request.getParameter("businessId")%>" class="wtxt" name="businessId"/> <span>*</span></td>
+                </tr>
+				<tr>
+                  <th nowrap>网银网关【gateId】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="gateId" value=""></strong></td>
+                </tr>
+				<tr>
+                  <th nowrap>页面返回地址【bgUrl】：</th>
+                  <td><strong><input type="text" readonly="readonly" name="bgUrl" value="<%=request.getParameter("bgUrl")%>"></strong></td>
+                </tr>
+				<tr>
+                  <th nowrap>结果通讯地址【notifyUrl】：</th>
+                  <td><strong><input type="readoly" name="notifyUrl" value="<%=request.getParameter("notifyUrl")%>"></strong></td>
+                </tr>
+				<tr>
+                  <th nowrap>商户私有信息【merPriv】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="merPriv" value="<%=request.getParameter("merPriv")%>"></strong></td>
+				</tr>
+				<tr>
+                  <th nowrap>商户扩展信息【expand】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="expand" value="<%=request.getParameter("expand")%>"></strong></td>
+                </tr>
+         <tr>
+                  <th nowrap>商户扩展信息2【expand2】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="expand2" value="<%=request.getParameter("expand2")%>"></strong></td>
+                </tr>
+                 <tr>
+                  <th nowrap>支付人名称【payerName】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="payerName" value="<%=request.getParameter("payerName")%>"></strong></td>
+                </tr> 
+                <tr>
+                  <th nowrap>支付卡类型【payerCardType】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="payerCardType" value="<%=request.getParameter("payerCardType")%>"></strong></td>
+                </tr>
+                <tr>
+                  <th nowrap>设备id【deviceId】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="deviceId" value=""></strong></td>
+                </tr>               
+				<tr>
+                  <th nowrap>版本号【version】：</th>
+                  <td nowrap><strong><input type="text" readonly="readonly" name="version" value="<%=request.getParameter("version")%>"></strong></td>
+				</tr>
+				<tr>
+                  <th>是否重复提交标识【redoFlag】：</th>
+                  <td><input type="text" class="wtxt" name="redoFlag" value="0"/> <span>*</span></td>
+        </tr>
+				<tr>
+                  <th>签名类型【signType】：</th>
+                  <td><input type="text" class="wtxt" name="signType" value="<%=request.getParameter("signType")%>"/> <span>*</span></td>
+                </tr>
+        <tr>
+                  <th>过期时长【expireTime】：</th>
+                  <td><input type="text" value="<%=request.getParameter("expireTime")%>" class="wtxt" name="expireTime"/> <span>*</span></td>
+                </tr>
+				<tr>
+                  <th valign="top" nowrap>签名串【sign】：</th>
+                  <td><input type="text" readonly="readonly" name="signMsg" value="<%=sign%>"></textarea></td>
+                </tr>
+                <tr>
+                  <th valign="top" nowrap>签名串【plain】：</th>
+                  <td><textarea name="plain" cols="40" rows="5" readonly="readonly"><%=plain%></textarea></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><div class="pbutton2 pline" align="center">
+                 <input type="submit" value="提交" class="button" onClick="sub()"/>
+                  </div></td>
+                </tr>
+              </tbody>
+            </table>
+	</form>		
+			<div id="codeDiv" style="display:none">
+			
+			</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div id="FOOTA"><jsp:include page="./bottom.jsp"/></div>
+
+  </body>
+</html>
+<script>
+
+function sub(){
+	document.sendOrder.submit();
+}
+</script>
